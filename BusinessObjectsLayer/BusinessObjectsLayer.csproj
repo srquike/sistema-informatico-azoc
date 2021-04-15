@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Models\Aportacion.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Asociado.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Beneficiario.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Cargo.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\CategoriaAsociado.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Credito.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Cuota.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Deduccion.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\DeduccionCredito.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Empleado.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\EstadoCredito.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\EstadoCuota.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Permiso.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\PermisoUsuario.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\TipoCuota.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+    <Compile Update="Models\Usuario.cs">
+      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
+</Project>
