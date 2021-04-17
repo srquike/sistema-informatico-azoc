@@ -1,18 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using BusinessObjectsLayer.Models;
+using System;
 using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmPrincipal : Form
     {
-        public FrmPrincipal()
+        private Usuario _usuario;
+
+        public FrmPrincipal(Usuario usuario)
         {
+            _usuario = usuario;
+
             InitializeComponent();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
+
+            TxtNombreEmpleado.Text = nombreEmpleado;
         }
     }
 }
