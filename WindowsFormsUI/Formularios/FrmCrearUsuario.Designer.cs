@@ -30,6 +30,11 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.GrpPermisos = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkPuedeEliminar = new System.Windows.Forms.CheckBox();
+            this.chkPuedeEditar = new System.Windows.Forms.CheckBox();
+            this.chkPuedeAgregar = new System.Windows.Forms.CheckBox();
+            this.chkPuedeVer = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnTomarFoto = new System.Windows.Forms.Button();
@@ -47,10 +52,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.BtnLimpiar = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
-            this.chkPuedeVer = new System.Windows.Forms.CheckBox();
-            this.chkPuedeAgregar = new System.Windows.Forms.CheckBox();
-            this.chkPuedeEditar = new System.Windows.Forms.CheckBox();
-            this.chkPuedeEliminar = new System.Windows.Forms.CheckBox();
+            this.ChkVerClaves = new System.Windows.Forms.CheckBox();
             this.GrpPermisos.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,16 +61,72 @@ namespace WindowsFormsUI.Formularios
             // 
             // GrpPermisos
             // 
+            this.GrpPermisos.Controls.Add(this.checkBox1);
             this.GrpPermisos.Controls.Add(this.chkPuedeEliminar);
             this.GrpPermisos.Controls.Add(this.chkPuedeEditar);
             this.GrpPermisos.Controls.Add(this.chkPuedeAgregar);
             this.GrpPermisos.Controls.Add(this.chkPuedeVer);
-            this.GrpPermisos.Location = new System.Drawing.Point(359, 6);
+            this.GrpPermisos.Location = new System.Drawing.Point(407, 6);
             this.GrpPermisos.Name = "GrpPermisos";
-            this.GrpPermisos.Size = new System.Drawing.Size(115, 123);
+            this.GrpPermisos.Size = new System.Drawing.Size(127, 167);
             this.GrpPermisos.TabIndex = 6;
             this.GrpPermisos.TabStop = false;
             this.GrpPermisos.Text = "Permisos";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 142);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(118, 19);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Tag = "6";
+            this.checkBox1.Text = "Acceso completo";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // chkPuedeEliminar
+            // 
+            this.chkPuedeEliminar.AutoSize = true;
+            this.chkPuedeEliminar.Location = new System.Drawing.Point(6, 112);
+            this.chkPuedeEliminar.Name = "chkPuedeEliminar";
+            this.chkPuedeEliminar.Size = new System.Drawing.Size(105, 19);
+            this.chkPuedeEliminar.TabIndex = 3;
+            this.chkPuedeEliminar.Tag = "4";
+            this.chkPuedeEliminar.Text = "Puede eliminar";
+            this.chkPuedeEliminar.UseVisualStyleBackColor = true;
+            // 
+            // chkPuedeEditar
+            // 
+            this.chkPuedeEditar.AutoSize = true;
+            this.chkPuedeEditar.Location = new System.Drawing.Point(6, 82);
+            this.chkPuedeEditar.Name = "chkPuedeEditar";
+            this.chkPuedeEditar.Size = new System.Drawing.Size(92, 19);
+            this.chkPuedeEditar.TabIndex = 2;
+            this.chkPuedeEditar.Tag = "3";
+            this.chkPuedeEditar.Text = "Puede editar";
+            this.chkPuedeEditar.UseVisualStyleBackColor = true;
+            // 
+            // chkPuedeAgregar
+            // 
+            this.chkPuedeAgregar.AutoSize = true;
+            this.chkPuedeAgregar.Location = new System.Drawing.Point(6, 52);
+            this.chkPuedeAgregar.Name = "chkPuedeAgregar";
+            this.chkPuedeAgregar.Size = new System.Drawing.Size(102, 19);
+            this.chkPuedeAgregar.TabIndex = 1;
+            this.chkPuedeAgregar.Tag = "2";
+            this.chkPuedeAgregar.Text = "Puede agregar";
+            this.chkPuedeAgregar.UseVisualStyleBackColor = true;
+            // 
+            // chkPuedeVer
+            // 
+            this.chkPuedeVer.AutoSize = true;
+            this.chkPuedeVer.Location = new System.Drawing.Point(6, 22);
+            this.chkPuedeVer.Name = "chkPuedeVer";
+            this.chkPuedeVer.Size = new System.Drawing.Size(78, 19);
+            this.chkPuedeVer.TabIndex = 0;
+            this.chkPuedeVer.Tag = "1";
+            this.chkPuedeVer.Text = "Puede ver";
+            this.chkPuedeVer.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -76,9 +134,9 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.BtnTomarFoto);
             this.groupBox2.Controls.Add(this.BtnElegirImagen);
             this.groupBox2.Controls.Add(this.BtnQuitarImagen);
-            this.groupBox2.Location = new System.Drawing.Point(480, 6);
+            this.groupBox2.Location = new System.Drawing.Point(540, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(223, 123);
+            this.groupBox2.Size = new System.Drawing.Size(223, 167);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imagen";
@@ -87,7 +145,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.pictureBox1.Location = new System.Drawing.Point(6, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(100, 137);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -120,6 +178,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ChkVerClaves);
             this.groupBox3.Controls.Add(this.CmbEmpleados);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.TxtClave);
@@ -130,7 +189,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(12, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(341, 152);
+            this.groupBox3.Size = new System.Drawing.Size(389, 167);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
@@ -140,7 +199,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbEmpleados.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbEmpleados.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbEmpleados.FormattingEnabled = true;
-            this.CmbEmpleados.Location = new System.Drawing.Point(124, 115);
+            this.CmbEmpleados.Location = new System.Drawing.Point(124, 136);
             this.CmbEmpleados.Name = "CmbEmpleados";
             this.CmbEmpleados.Size = new System.Drawing.Size(211, 23);
             this.CmbEmpleados.TabIndex = 13;
@@ -148,7 +207,7 @@ namespace WindowsFormsUI.Formularios
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 118);
+            this.label4.Location = new System.Drawing.Point(6, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 15);
             this.label4.TabIndex = 12;
@@ -209,7 +268,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnGuardar
             // 
-            this.BtnGuardar.Location = new System.Drawing.Point(597, 135);
+            this.BtnGuardar.Location = new System.Drawing.Point(433, 179);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(106, 23);
             this.BtnGuardar.TabIndex = 11;
@@ -219,7 +278,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnLimpiar
             // 
-            this.BtnLimpiar.Location = new System.Drawing.Point(478, 135);
+            this.BtnLimpiar.Location = new System.Drawing.Point(545, 179);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(106, 23);
             this.BtnLimpiar.TabIndex = 12;
@@ -228,63 +287,30 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(359, 136);
+            this.BtnCancelar.Location = new System.Drawing.Point(657, 179);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(106, 23);
             this.BtnCancelar.TabIndex = 13;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
             // 
-            // chkPuedeVer
+            // ChkVerClaves
             // 
-            this.chkPuedeVer.AutoSize = true;
-            this.chkPuedeVer.Location = new System.Drawing.Point(6, 22);
-            this.chkPuedeVer.Name = "chkPuedeVer";
-            this.chkPuedeVer.Size = new System.Drawing.Size(78, 19);
-            this.chkPuedeVer.TabIndex = 0;
-            this.chkPuedeVer.Tag = "1";
-            this.chkPuedeVer.Text = "Puede ver";
-            this.chkPuedeVer.UseVisualStyleBackColor = true;
-            // 
-            // chkPuedeAgregar
-            // 
-            this.chkPuedeAgregar.AutoSize = true;
-            this.chkPuedeAgregar.Location = new System.Drawing.Point(6, 47);
-            this.chkPuedeAgregar.Name = "chkPuedeAgregar";
-            this.chkPuedeAgregar.Size = new System.Drawing.Size(102, 19);
-            this.chkPuedeAgregar.TabIndex = 1;
-            this.chkPuedeAgregar.Tag = "2";
-            this.chkPuedeAgregar.Text = "Puede agregar";
-            this.chkPuedeAgregar.UseVisualStyleBackColor = true;
-            // 
-            // chkPuedeEditar
-            // 
-            this.chkPuedeEditar.AutoSize = true;
-            this.chkPuedeEditar.Location = new System.Drawing.Point(6, 72);
-            this.chkPuedeEditar.Name = "chkPuedeEditar";
-            this.chkPuedeEditar.Size = new System.Drawing.Size(92, 19);
-            this.chkPuedeEditar.TabIndex = 2;
-            this.chkPuedeEditar.Tag = "3";
-            this.chkPuedeEditar.Text = "Puede editar";
-            this.chkPuedeEditar.UseVisualStyleBackColor = true;
-            // 
-            // chkPuedeEliminar
-            // 
-            this.chkPuedeEliminar.AutoSize = true;
-            this.chkPuedeEliminar.Location = new System.Drawing.Point(6, 97);
-            this.chkPuedeEliminar.Name = "chkPuedeEliminar";
-            this.chkPuedeEliminar.Size = new System.Drawing.Size(105, 19);
-            this.chkPuedeEliminar.TabIndex = 3;
-            this.chkPuedeEliminar.Tag = "4";
-            this.chkPuedeEliminar.Text = "Puede eliminar";
-            this.chkPuedeEliminar.UseVisualStyleBackColor = true;
+            this.ChkVerClaves.AutoSize = true;
+            this.ChkVerClaves.Location = new System.Drawing.Point(124, 111);
+            this.ChkVerClaves.Name = "ChkVerClaves";
+            this.ChkVerClaves.Size = new System.Drawing.Size(108, 19);
+            this.ChkVerClaves.TabIndex = 15;
+            this.ChkVerClaves.Text = "Ver contraseñas";
+            this.ChkVerClaves.UseVisualStyleBackColor = true;
+            this.ChkVerClaves.CheckedChanged += new System.EventHandler(this.ChkVerClaves_CheckedChanged);
             // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(715, 171);
+            this.ClientSize = new System.Drawing.Size(775, 211);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.BtnGuardar);
@@ -330,5 +356,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.CheckBox chkPuedeEditar;
         private System.Windows.Forms.CheckBox chkPuedeAgregar;
         private System.Windows.Forms.CheckBox chkPuedeVer;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ChkVerClaves;
     }
 }

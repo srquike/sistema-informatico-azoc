@@ -88,5 +88,21 @@ namespace WindowsFormsUI.Formularios
                 MessageBox.Show("No se pudo crear el usuario.");
             }            
         }
+
+        private void ChkVerClaves_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox check = (CheckBox)sender;
+
+            if (check.Checked)
+            {
+                TxtClave.UseSystemPasswordChar = false;
+                TxtRepetirClave.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                TxtClave.UseSystemPasswordChar = true;
+                TxtRepetirClave.UseSystemPasswordChar = true;
+            }
+        }
     }
 }
