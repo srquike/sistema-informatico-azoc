@@ -21,16 +21,9 @@ namespace BusinessLogicLayer.Logics
 
             if (usuario != null)
             {
-                try
-                {
-                    _usuarioRepository.DeleteUsuario(usuario);
-                    _usuarioRepository.Save();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                _usuarioRepository.DeleteUsuario(usuario);
+                _usuarioRepository.Save();
+                return true;
             }
 
             return false;
@@ -55,16 +48,9 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(Usuario usuario)
         {
-            try
-            {
-                _usuarioRepository.UpdateUsuario(usuario);
-                _usuarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _usuarioRepository.UpdateUsuario(usuario);
+            _usuarioRepository.Save();
+            return true;
         }
     }
 }
