@@ -67,6 +67,6 @@ namespace DataAccessLayer
             _context.Entry(permiso).State = EntityState.Modified;
         }
 
-        public void borrar()
+
     }
 }
