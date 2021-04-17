@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using BusinessLogicLayer.Logics;
+using BusinessObjectsLayer.Models;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Linq;
 using System.Windows.Forms;
-using BusinessLogicLayer.Logics;
-using BusinessObjectsLayer.Models;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -86,7 +82,7 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 MessageBox.Show("No se pudo crear el usuario.");
-            }            
+            }
         }
 
         private void ChkVerClaves_CheckedChanged(object sender, EventArgs e)
