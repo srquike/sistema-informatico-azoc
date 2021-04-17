@@ -18,7 +18,13 @@ namespace WindowsFormsUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCrearUsuario());
+
+            FrmInicioSesion inicioSesion = new FrmInicioSesion();
+
+            if (inicioSesion.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FrmCrearUsuario());
+            }            
         }
     }
 }

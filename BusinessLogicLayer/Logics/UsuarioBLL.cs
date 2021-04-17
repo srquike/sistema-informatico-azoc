@@ -3,6 +3,7 @@ using DataAccessLayer;
 using RepositoryLayer;
 using System;
 using System.Collections.Generic;
+using BusinessLogicLayer.Services;
 
 namespace BusinessLogicLayer.Logics
 {
@@ -15,22 +16,29 @@ namespace BusinessLogicLayer.Logics
             _usuarioRepository = new UsuarioRepository(new AzocDbContext());
         }
 
+        public Usuario Authentication(string userName, string password)
+        {
+            string hashPassword = CryptoService.EncodePassword(string.Concat(userName, password));
+
+            Usuario usuario = _usuarioRepository.Authentication(userName, hashPassword);
+
+            if (usuario != null)
+            {
+                return usuario;
+            }
+
+            return null;
+        }
+
         public bool Delete(int id)
         {
             Usuario usuario = _usuarioRepository.GetUsuarioById(id);
 
             if (usuario != null)
             {
-                try
-                {
-                    _usuarioRepository.DeleteUsuario(usuario);
-                    _usuarioRepository.Save();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                _usuarioRepository.DeleteUsuario(usuario);
+                _usuarioRepository.Save();
+                return true;
             }
 
             return false;
@@ -48,6 +56,10 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(Usuario usuario)
         {
+            string hashPassword = CryptoService.EncodePassword(string.Concat(usuario.Nombre, usuario.Clave));
+
+            usuario.Clave = hashPassword;
+
             _usuarioRepository.InsertUsuario(usuario);
             _usuarioRepository.Save();
             return true;
@@ -55,16 +67,9 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(Usuario usuario)
         {
-            try
-            {
-                _usuarioRepository.UpdateUsuario(usuario);
-                _usuarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _usuarioRepository.UpdateUsuario(usuario);
+            _usuarioRepository.Save();
+            return true;
         }
     }
 }

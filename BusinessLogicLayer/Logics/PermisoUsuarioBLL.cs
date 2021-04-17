@@ -22,16 +22,9 @@ namespace BusinessLogicLayer.Logics
 
             if (permisoUsuario != null)
             {
-                try
-                {
-                    _permisoUsuarioRepository.DeletePermisoUsuario(permisoUsuario);
-                    _permisoUsuarioRepository.Save();
-                    return true;
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+                _permisoUsuarioRepository.DeletePermisoUsuario(permisoUsuario);
+                _permisoUsuarioRepository.Save();
+                return true;
             }
 
             return false;
@@ -56,16 +49,9 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(PermisoUsuario permisoUsuario)
         {
-            try
-            {
-                _permisoUsuarioRepository.UpdatePermisoUsuario(permisoUsuario);
-                _permisoUsuarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _permisoUsuarioRepository.UpdatePermisoUsuario(permisoUsuario);
+            _permisoUsuarioRepository.Save();
+            return true;
         }
     }
 }
