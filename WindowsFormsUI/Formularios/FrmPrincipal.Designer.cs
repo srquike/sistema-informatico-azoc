@@ -31,12 +31,15 @@ namespace WindowsFormsUI.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PnlBarraLateral = new System.Windows.Forms.Panel();
+            this.BtnAdministracion = new System.Windows.Forms.Button();
             this.TxtNombreEmpleado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnCerrarSesion = new System.Windows.Forms.Button();
             this.BtnConfiguracion = new System.Windows.Forms.Button();
             this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.PctLogo = new System.Windows.Forms.PictureBox();
+            this.BtnUsuarios = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -45,6 +48,7 @@ namespace WindowsFormsUI.Formularios
             // PnlBarraLateral
             // 
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
+            this.PnlBarraLateral.Controls.Add(this.BtnAdministracion);
             this.PnlBarraLateral.Controls.Add(this.TxtNombreEmpleado);
             this.PnlBarraLateral.Controls.Add(this.label1);
             this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
@@ -57,13 +61,22 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Size = new System.Drawing.Size(230, 683);
             this.PnlBarraLateral.TabIndex = 1;
             // 
+            // BtnAdministracion
+            // 
+            this.BtnAdministracion.Location = new System.Drawing.Point(12, 392);
+            this.BtnAdministracion.Name = "BtnAdministracion";
+            this.BtnAdministracion.Size = new System.Drawing.Size(206, 49);
+            this.BtnAdministracion.TabIndex = 7;
+            this.BtnAdministracion.Text = "Administración";
+            this.BtnAdministracion.UseVisualStyleBackColor = true;
+            // 
             // TxtNombreEmpleado
             // 
             this.TxtNombreEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TxtNombreEmpleado.Location = new System.Drawing.Point(12, 246);
             this.TxtNombreEmpleado.Multiline = true;
             this.TxtNombreEmpleado.Name = "TxtNombreEmpleado";
-            this.TxtNombreEmpleado.Size = new System.Drawing.Size(206, 62);
+            this.TxtNombreEmpleado.Size = new System.Drawing.Size(206, 49);
             this.TxtNombreEmpleado.TabIndex = 6;
             this.TxtNombreEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -79,7 +92,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnCerrarSesion
             // 
-            this.BtnCerrarSesion.Location = new System.Drawing.Point(61, 343);
+            this.BtnCerrarSesion.Location = new System.Drawing.Point(61, 330);
             this.BtnCerrarSesion.Name = "BtnCerrarSesion";
             this.BtnCerrarSesion.Size = new System.Drawing.Size(109, 23);
             this.BtnCerrarSesion.TabIndex = 4;
@@ -88,7 +101,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnConfiguracion
             // 
-            this.BtnConfiguracion.Location = new System.Drawing.Point(61, 314);
+            this.BtnConfiguracion.Location = new System.Drawing.Point(61, 301);
             this.BtnConfiguracion.Name = "BtnConfiguracion";
             this.BtnConfiguracion.Size = new System.Drawing.Size(109, 23);
             this.BtnConfiguracion.TabIndex = 3;
@@ -115,15 +128,35 @@ namespace WindowsFormsUI.Formularios
             this.PctLogo.TabIndex = 0;
             this.PctLogo.TabStop = false;
             // 
+            // BtnUsuarios
+            // 
+            this.BtnUsuarios.Location = new System.Drawing.Point(236, 392);
+            this.BtnUsuarios.Name = "BtnUsuarios";
+            this.BtnUsuarios.Size = new System.Drawing.Size(206, 49);
+            this.BtnUsuarios.TabIndex = 8;
+            this.BtnUsuarios.Text = "Usuarios";
+            this.BtnUsuarios.UseVisualStyleBackColor = true;
+            this.BtnUsuarios.Click += new System.EventHandler(this.BtnUsuarios_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(230, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(860, 25);
+            this.toolStrip1.TabIndex = 10;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 683);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.BtnUsuarios);
             this.Controls.Add(this.PnlBarraLateral);
             this.IsMdiContainer = true;
             this.Name = "FrmPrincipal";
-            this.Text = "Cooperativa AZOC de R. L. :: Principal";
+            this.Text = "Cooperativa AZOC de R. L.";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.PnlBarraLateral.ResumeLayout(false);
@@ -131,6 +164,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -143,5 +177,8 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.PictureBox PctLogo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TxtNombreEmpleado;
+        private System.Windows.Forms.Button BtnAdministracion;
+        private System.Windows.Forms.Button BtnUsuarios;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

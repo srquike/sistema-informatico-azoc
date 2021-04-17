@@ -20,15 +20,20 @@ namespace WindowsFormsUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             FrmInicioSesion inicioSesion = new FrmInicioSesion();
+            inicioSesion.ShowDialog();
 
-            if (inicioSesion.ShowDialog() == DialogResult.OK)
+            if (inicioSesion.DialogResult == DialogResult.OK)
             {
                 Application.Run(new FrmPrincipal(inicioSesion.Usuario));
+            }
+            else if (inicioSesion.DialogResult == DialogResult.Retry)
+            {
+                inicioSesion.ShowDialog();
             }
             else
             {
                 inicioSesion.Close();
-            }            
+            }         
         }
     }
 }

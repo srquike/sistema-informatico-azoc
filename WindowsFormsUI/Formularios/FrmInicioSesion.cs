@@ -20,18 +20,32 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            Autenticar();
-            DialogResult = DialogResult.OK;
+            if (IsUsuarioValido())
+            {
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("El usuario no existe!");
+                DialogResult = DialogResult.Retry;
+            }
         }
 
-        private void Autenticar()
+        private bool IsUsuarioValido()
         {
             string userName, password;
 
             userName = TxtUsuario.Text;
             password = TxtClave.Text;
 
-            Usuario = _usuario.Authentication(userName, password);
+            Usuario usuario = _usuario.Authentication(userName, password);
+
+            if (usuario != null)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

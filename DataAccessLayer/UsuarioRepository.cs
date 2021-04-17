@@ -43,12 +43,14 @@ namespace DataAccessLayer
 
         public IEnumerable<Usuario> GetUsuarios()
         {
-            return _context.Usuarios.ToList();
+            return _context.Usuarios.Include(u => u.Empleado).ToList();
         }
 
         public Usuario GetUsuarioById(int id)
         {
-            return _context.Usuarios.Find(id);
+            Usuario usuario = _context.Usuarios.Find(id);
+
+            return usuario;
         }
 
         public void InsertUsuario(Usuario usuario)
@@ -68,14 +70,9 @@ namespace DataAccessLayer
 
         public Usuario Authentication(string userName, string passwordHash)
         {
-            var usuario = _context.Usuarios.Where(u => u.Nombre == userName && u.Clave == passwordHash).Include(u => u.Empleado).FirstOrDefault();
+            Usuario usuario = _context.Usuarios.Where(u => u.Nombre == userName && u.Clave == passwordHash).Include(u => u.Empleado).FirstOrDefault();
 
-            if (usuario != null)
-            {
-                return usuario;
-            }
-
-            return null;
+            return usuario;
         }
     }
 }

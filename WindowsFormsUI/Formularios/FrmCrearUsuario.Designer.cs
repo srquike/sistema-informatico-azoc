@@ -36,16 +36,11 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeAgregar = new System.Windows.Forms.CheckBox();
             this.chkPuedeVer = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.BtnTomarFoto = new System.Windows.Forms.Button();
             this.BtnElegirImagen = new System.Windows.Forms.Button();
             this.BtnQuitarImagen = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.CmbEmpleados = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.BtnGuardar = new System.Windows.Forms.Button();
-            this.BtnLimpiar = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
             this.ChkVerClaves = new System.Windows.Forms.CheckBox();
             this.TxtClave = new System.Windows.Forms.TextBox();
             this.TxtRepetirClave = new System.Windows.Forms.TextBox();
@@ -53,9 +48,15 @@ namespace WindowsFormsUI.Formularios
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.CmbEmpleados = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.BtnLimpiar = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
+            this.OfdElegirAvatar = new System.Windows.Forms.OpenFileDialog();
             this.GrpPermisos.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +131,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.PctAvatar);
             this.groupBox2.Controls.Add(this.BtnTomarFoto);
             this.groupBox2.Controls.Add(this.BtnElegirImagen);
             this.groupBox2.Controls.Add(this.BtnQuitarImagen);
@@ -141,13 +142,14 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imagen";
             // 
-            // pictureBox1
+            // PctAvatar
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 137);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.PctAvatar.Location = new System.Drawing.Point(6, 22);
+            this.PctAvatar.Name = "PctAvatar";
+            this.PctAvatar.Size = new System.Drawing.Size(100, 137);
+            this.PctAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PctAvatar.TabIndex = 0;
+            this.PctAvatar.TabStop = false;
             // 
             // BtnTomarFoto
             // 
@@ -166,6 +168,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnElegirImagen.TabIndex = 8;
             this.BtnElegirImagen.Text = "Elegir";
             this.BtnElegirImagen.UseVisualStyleBackColor = true;
+            this.BtnElegirImagen.Click += new System.EventHandler(this.BtnElegirImagen_Click);
             // 
             // BtnQuitarImagen
             // 
@@ -194,53 +197,6 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
             // 
-            // CmbEmpleados
-            // 
-            this.CmbEmpleados.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.CmbEmpleados.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CmbEmpleados.FormattingEnabled = true;
-            this.CmbEmpleados.Location = new System.Drawing.Point(124, 16);
-            this.CmbEmpleados.Name = "CmbEmpleados";
-            this.CmbEmpleados.Size = new System.Drawing.Size(211, 23);
-            this.CmbEmpleados.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 15);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Empleado:";
-            // 
-            // BtnGuardar
-            // 
-            this.BtnGuardar.Location = new System.Drawing.Point(391, 179);
-            this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(106, 23);
-            this.BtnGuardar.TabIndex = 11;
-            this.BtnGuardar.Text = "Guardar";
-            this.BtnGuardar.UseVisualStyleBackColor = true;
-            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
-            // 
-            // BtnLimpiar
-            // 
-            this.BtnLimpiar.Location = new System.Drawing.Point(503, 179);
-            this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(106, 23);
-            this.BtnLimpiar.TabIndex = 12;
-            this.BtnLimpiar.Text = "Limpiar";
-            this.BtnLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // BtnCancelar
-            // 
-            this.BtnCancelar.Location = new System.Drawing.Point(615, 179);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(106, 23);
-            this.BtnCancelar.TabIndex = 13;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
-            // 
             // ChkVerClaves
             // 
             this.ChkVerClaves.AutoSize = true;
@@ -250,6 +206,7 @@ namespace WindowsFormsUI.Formularios
             this.ChkVerClaves.TabIndex = 22;
             this.ChkVerClaves.Text = "Ver contraseñas";
             this.ChkVerClaves.UseVisualStyleBackColor = true;
+            this.ChkVerClaves.CheckedChanged += new System.EventHandler(this.ChkVerClaves_CheckedChanged);
             // 
             // TxtClave
             // 
@@ -304,6 +261,58 @@ namespace WindowsFormsUI.Formularios
             this.label1.TabIndex = 16;
             this.label1.Text = "Nombre de usuario:";
             // 
+            // CmbEmpleados
+            // 
+            this.CmbEmpleados.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.CmbEmpleados.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CmbEmpleados.FormattingEnabled = true;
+            this.CmbEmpleados.Location = new System.Drawing.Point(124, 16);
+            this.CmbEmpleados.Name = "CmbEmpleados";
+            this.CmbEmpleados.Size = new System.Drawing.Size(211, 23);
+            this.CmbEmpleados.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 15);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Empleado:";
+            // 
+            // BtnGuardar
+            // 
+            this.BtnGuardar.Location = new System.Drawing.Point(391, 179);
+            this.BtnGuardar.Name = "BtnGuardar";
+            this.BtnGuardar.Size = new System.Drawing.Size(106, 23);
+            this.BtnGuardar.TabIndex = 11;
+            this.BtnGuardar.Text = "Guardar";
+            this.BtnGuardar.UseVisualStyleBackColor = true;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
+            // 
+            // BtnLimpiar
+            // 
+            this.BtnLimpiar.Location = new System.Drawing.Point(503, 179);
+            this.BtnLimpiar.Name = "BtnLimpiar";
+            this.BtnLimpiar.Size = new System.Drawing.Size(106, 23);
+            this.BtnLimpiar.TabIndex = 12;
+            this.BtnLimpiar.Text = "Limpiar";
+            this.BtnLimpiar.UseVisualStyleBackColor = true;
+            // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.Location = new System.Drawing.Point(615, 179);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(106, 23);
+            this.BtnCancelar.TabIndex = 13;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // OfdElegirAvatar
+            // 
+            this.OfdElegirAvatar.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF";
+            this.OfdElegirAvatar.Title = "Seleccionar imagen para el avatar";
+            // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -324,7 +333,7 @@ namespace WindowsFormsUI.Formularios
             this.GrpPermisos.ResumeLayout(false);
             this.GrpPermisos.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -335,7 +344,7 @@ namespace WindowsFormsUI.Formularios
 
         private System.Windows.Forms.GroupBox GrpPermisos;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox PctAvatar;
         private System.Windows.Forms.Button BtnTomarFoto;
         private System.Windows.Forms.Button BtnElegirImagen;
         private System.Windows.Forms.Button BtnQuitarImagen;
@@ -357,5 +366,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog OfdElegirAvatar;
     }
 }

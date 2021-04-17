@@ -78,6 +78,7 @@ namespace WindowsFormsUI.Formularios
             if (_usuario.Create(usuario))
             {
                 AgregarPermisos(usuario.UsuarioId);
+                DialogResult = DialogResult.OK;
             }
             else
             {
@@ -98,6 +99,14 @@ namespace WindowsFormsUI.Formularios
             {
                 TxtClave.UseSystemPasswordChar = true;
                 TxtRepetirClave.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void BtnElegirImagen_Click(object sender, EventArgs e)
+        {
+            if (OfdElegirAvatar.ShowDialog() == DialogResult.OK)
+            {
+                PctAvatar.ImageLocation = OfdElegirAvatar.FileName;
             }
         }
     }

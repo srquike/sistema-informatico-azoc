@@ -21,5 +21,12 @@ namespace WindowsFormsUI.Formularios
 
             TxtNombreEmpleado.Text = nombreEmpleado;
         }
+
+        private void BtnUsuarios_Click(object sender, EventArgs e)
+        {
+            FrmUsuarios frmUsuarios = new FrmUsuarios();
+            frmUsuarios.MdiParent = this;
+            frmUsuarios.Show();
+        }
     }
 }

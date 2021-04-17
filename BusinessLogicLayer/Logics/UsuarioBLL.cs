@@ -22,12 +22,7 @@ namespace BusinessLogicLayer.Logics
 
             Usuario usuario = _usuarioRepository.Authentication(userName, hashPassword);
 
-            if (usuario != null)
-            {
-                return usuario;
-            }
-
-            return null;
+            return usuario;
         }
 
         public bool Delete(int id)
@@ -51,7 +46,9 @@ namespace BusinessLogicLayer.Logics
 
         public Usuario Find(int id)
         {
-            return _usuarioRepository.GetUsuarioById(id);
+            Usuario usuario = _usuarioRepository.GetUsuarioById(id);
+
+            return usuario;
         }
 
         public bool Create(Usuario usuario)
