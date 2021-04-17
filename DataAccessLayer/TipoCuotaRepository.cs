@@ -47,7 +47,7 @@ namespace DataAccessLayer
             return _context.TipoCuota.Find(id);
         }
 
-        public IEnumerable<TipoCuota> GetTipoCuotasUsuario()
+        public IEnumerable<TipoCuota> GetTipoCuotas()
         {
             return _context.TipoCuota.ToList();
         }

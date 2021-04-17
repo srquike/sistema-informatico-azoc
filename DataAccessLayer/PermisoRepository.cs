@@ -47,7 +47,7 @@ namespace DataAccessLayer
             return _context.Permisos.Find(id);
         }
 
-        public IEnumerable<Permiso> GetPermisosUsuario()
+        public IEnumerable<Permiso> GetPermisos()
         {
             return _context.Permisos.ToList();
         }
