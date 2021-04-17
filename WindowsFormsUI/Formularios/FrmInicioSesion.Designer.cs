@@ -40,7 +40,7 @@ namespace WindowsFormsUI.Formularios
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 13);
+            this.label1.Location = new System.Drawing.Point(285, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 15);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@ namespace WindowsFormsUI.Formularios
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 69);
+            this.label2.Location = new System.Drawing.Point(285, 210);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 1;
@@ -57,7 +57,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // TxtUsuario
             // 
-            this.TxtUsuario.Location = new System.Drawing.Point(150, 10);
+            this.TxtUsuario.Location = new System.Drawing.Point(394, 151);
             this.TxtUsuario.Name = "TxtUsuario";
             this.TxtUsuario.PlaceholderText = "Escriba el nombre del usuario";
             this.TxtUsuario.Size = new System.Drawing.Size(251, 23);
@@ -65,7 +65,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // TxtClave
             // 
-            this.TxtClave.Location = new System.Drawing.Point(150, 66);
+            this.TxtClave.Location = new System.Drawing.Point(394, 207);
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña del usuario";
             this.TxtClave.Size = new System.Drawing.Size(251, 23);
@@ -73,7 +73,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnIngresar
             // 
-            this.BtnIngresar.Location = new System.Drawing.Point(150, 105);
+            this.BtnIngresar.Location = new System.Drawing.Point(394, 246);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(75, 23);
             this.BtnIngresar.TabIndex = 4;
@@ -83,7 +83,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(231, 105);
+            this.BtnCancelar.Location = new System.Drawing.Point(475, 246);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
             this.BtnCancelar.TabIndex = 5;
@@ -94,7 +94,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 156);
+            this.ClientSize = new System.Drawing.Size(679, 310);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnIngresar);
             this.Controls.Add(this.TxtClave);
