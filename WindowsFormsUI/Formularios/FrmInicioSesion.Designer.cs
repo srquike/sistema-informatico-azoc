@@ -79,6 +79,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnIngresar.TabIndex = 4;
             this.BtnIngresar.Text = "Ingresar";
             this.BtnIngresar.UseVisualStyleBackColor = true;
+            this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
             // 
             // BtnCancelar
             // 
