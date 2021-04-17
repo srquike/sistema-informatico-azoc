@@ -21,6 +21,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             Autenticar();
+            DialogResult = DialogResult.OK;
         }
 
         private void Autenticar()

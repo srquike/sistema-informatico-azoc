@@ -31,22 +31,24 @@ namespace WindowsFormsUI.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PnlBarraLateral = new System.Windows.Forms.Panel();
-            this.PctLogo = new System.Windows.Forms.PictureBox();
-            this.PctAvatar = new System.Windows.Forms.PictureBox();
-            this.LblNombreEmpleado = new System.Windows.Forms.Label();
-            this.BtnConfiguracion = new System.Windows.Forms.Button();
+            this.TxtNombreEmpleado = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.BtnCerrarSesion = new System.Windows.Forms.Button();
+            this.BtnConfiguracion = new System.Windows.Forms.Button();
+            this.PctAvatar = new System.Windows.Forms.PictureBox();
+            this.PctLogo = new System.Windows.Forms.PictureBox();
             this.PnlBarraLateral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlBarraLateral
             // 
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
+            this.PnlBarraLateral.Controls.Add(this.TxtNombreEmpleado);
+            this.PnlBarraLateral.Controls.Add(this.label1);
             this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
             this.PnlBarraLateral.Controls.Add(this.BtnConfiguracion);
-            this.PnlBarraLateral.Controls.Add(this.LblNombreEmpleado);
             this.PnlBarraLateral.Controls.Add(this.PctAvatar);
             this.PnlBarraLateral.Controls.Add(this.PctLogo);
             this.PnlBarraLateral.Dock = System.Windows.Forms.DockStyle.Left;
@@ -55,15 +57,43 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Size = new System.Drawing.Size(230, 683);
             this.PnlBarraLateral.TabIndex = 1;
             // 
-            // PctLogo
+            // TxtNombreEmpleado
             // 
-            this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
-            this.PctLogo.Location = new System.Drawing.Point(12, 12);
-            this.PctLogo.Name = "PctLogo";
-            this.PctLogo.Size = new System.Drawing.Size(206, 77);
-            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PctLogo.TabIndex = 0;
-            this.PctLogo.TabStop = false;
+            this.TxtNombreEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNombreEmpleado.Location = new System.Drawing.Point(12, 246);
+            this.TxtNombreEmpleado.Multiline = true;
+            this.TxtNombreEmpleado.Name = "TxtNombreEmpleado";
+            this.TxtNombreEmpleado.Size = new System.Drawing.Size(206, 62);
+            this.TxtNombreEmpleado.TabIndex = 6;
+            this.TxtNombreEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(70, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "BIENVENIDO(A)";
+            // 
+            // BtnCerrarSesion
+            // 
+            this.BtnCerrarSesion.Location = new System.Drawing.Point(61, 343);
+            this.BtnCerrarSesion.Name = "BtnCerrarSesion";
+            this.BtnCerrarSesion.Size = new System.Drawing.Size(109, 23);
+            this.BtnCerrarSesion.TabIndex = 4;
+            this.BtnCerrarSesion.Text = "Cerrar sesión";
+            this.BtnCerrarSesion.UseVisualStyleBackColor = true;
+            // 
+            // BtnConfiguracion
+            // 
+            this.BtnConfiguracion.Location = new System.Drawing.Point(61, 314);
+            this.BtnConfiguracion.Name = "BtnConfiguracion";
+            this.BtnConfiguracion.Size = new System.Drawing.Size(109, 23);
+            this.BtnConfiguracion.TabIndex = 3;
+            this.BtnConfiguracion.Text = "Configuracion";
+            this.BtnConfiguracion.UseVisualStyleBackColor = true;
             // 
             // PctAvatar
             // 
@@ -75,32 +105,15 @@ namespace WindowsFormsUI.Formularios
             this.PctAvatar.TabIndex = 1;
             this.PctAvatar.TabStop = false;
             // 
-            // LblNombreEmpleado
+            // PctLogo
             // 
-            this.LblNombreEmpleado.AutoSize = true;
-            this.LblNombreEmpleado.Location = new System.Drawing.Point(46, 218);
-            this.LblNombreEmpleado.Name = "LblNombreEmpleado";
-            this.LblNombreEmpleado.Size = new System.Drawing.Size(139, 15);
-            this.LblNombreEmpleado.TabIndex = 2;
-            this.LblNombreEmpleado.Text = "<Nombre de empleado>";
-            // 
-            // BtnConfiguracion
-            // 
-            this.BtnConfiguracion.Location = new System.Drawing.Point(61, 247);
-            this.BtnConfiguracion.Name = "BtnConfiguracion";
-            this.BtnConfiguracion.Size = new System.Drawing.Size(109, 23);
-            this.BtnConfiguracion.TabIndex = 3;
-            this.BtnConfiguracion.Text = "Configuracion";
-            this.BtnConfiguracion.UseVisualStyleBackColor = true;
-            // 
-            // BtnCerrarSesion
-            // 
-            this.BtnCerrarSesion.Location = new System.Drawing.Point(61, 276);
-            this.BtnCerrarSesion.Name = "BtnCerrarSesion";
-            this.BtnCerrarSesion.Size = new System.Drawing.Size(109, 23);
-            this.BtnCerrarSesion.TabIndex = 4;
-            this.BtnCerrarSesion.Text = "Cerrar sesión";
-            this.BtnCerrarSesion.UseVisualStyleBackColor = true;
+            this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
+            this.PctLogo.Location = new System.Drawing.Point(12, 12);
+            this.PctLogo.Name = "PctLogo";
+            this.PctLogo.Size = new System.Drawing.Size(206, 77);
+            this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PctLogo.TabIndex = 0;
+            this.PctLogo.TabStop = false;
             // 
             // FrmPrincipal
             // 
@@ -112,10 +125,11 @@ namespace WindowsFormsUI.Formularios
             this.Name = "FrmPrincipal";
             this.Text = "Cooperativa AZOC de R. L. :: Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.PnlBarraLateral.ResumeLayout(false);
             this.PnlBarraLateral.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,8 +139,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Panel PnlBarraLateral;
         private System.Windows.Forms.Button BtnCerrarSesion;
         private System.Windows.Forms.Button BtnConfiguracion;
-        private System.Windows.Forms.Label LblNombreEmpleado;
         private System.Windows.Forms.PictureBox PctAvatar;
         private System.Windows.Forms.PictureBox PctLogo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TxtNombreEmpleado;
     }
 }

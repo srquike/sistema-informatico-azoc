@@ -23,7 +23,11 @@ namespace WindowsFormsUI
 
             if (inicioSesion.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new FrmCrearUsuario());
+                Application.Run(new FrmPrincipal(inicioSesion.Usuario));
+            }
+            else
+            {
+                inicioSesion.Close();
             }            
         }
     }

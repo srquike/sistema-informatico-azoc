@@ -68,7 +68,7 @@ namespace DataAccessLayer
 
         public Usuario Authentication(string userName, string passwordHash)
         {
-            var usuario = _context.Usuarios.Where(u => u.Nombre == userName && u.Clave == passwordHash).FirstOrDefault();
+            var usuario = _context.Usuarios.Where(u => u.Nombre == userName && u.Clave == passwordHash).Include(u => u.Empleado).FirstOrDefault();
 
             if (usuario != null)
             {
