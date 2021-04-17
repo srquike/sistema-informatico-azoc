@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Logics
 {
    public class DeducccionCreditoBLL
     {
-        private IDeduccionCreditopository _deduccioncreditoRepository;
+        private IDeduccionCreditoRepository _deduccioncreditoRepository;
 
         public DeducccionCreditoBLL()
         {

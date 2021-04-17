@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using BusinessObjectsLayer.Models;
 using RepositoryLayer;
 using Microsoft.EntityFrameworkCore;
@@ -7,8 +8,9 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class DeduccionCreditoRepository : IDeduccionCreditoRepository, IDisposable
+    public class TipoCuotaRepository : ITipoCuotaRepository, IDisposable
     {
+
         private AzocDbContext _context;
         private bool disposed = false;
 
@@ -25,13 +27,13 @@ namespace DataAccessLayer
             disposed = true;
         }
 
-        public DeduccionCreditoRepository(AzocDbContext context)
+        public TipoCuotaRepository(AzocDbContext context)
         {
             _context = context;
         }
-        public void DeleteDeduccionCredito(DeduccionCredito deduccioncredito)
+        public void DeleteTipoCuota(TipoCuota tipocuota)
         {
-            _context.DeduccionCreditos.Remove(deduccioncredito);
+            _context.TipoCuota.Remove(tipocuota);
         }
 
         public void Dispose()
@@ -40,19 +42,19 @@ namespace DataAccessLayer
             GC.SuppressFinalize(this);
         }
 
-        public DeduccionCredito GetDeduccionCreditoById(int id)
+        public TipoCuota GetTipoCuotaById(int id)
         {
-            return _context.DeduccionCreditos.Find(id);
+            return _context.TipoCuota.Find(id);
         }
 
-        public IEnumerable<DeduccionCredito> GetDeduccionCreditos()
+        public IEnumerable<TipoCuota> GetTipoCuotasUsuario()
         {
-            return _context.DeduccionCreditos.ToList();
+            return _context.TipoCuota.ToList();
         }
 
-        public void InsertDeduccionCredito(DeduccionCredito deduccioncredito)
+        public void InsertTipoCuota(TipoCuota tipocuota)
         {
-            _context.DeduccionCreditos.Add(deduccioncredito);
+            _context.TipoCuota.Add(tipocuota);
         }
 
         public void Save()
@@ -60,9 +62,9 @@ namespace DataAccessLayer
             _context.SaveChanges();
         }
 
-        public void UpdateDeduccionCredito(DeduccionCredito deduccioncredito)
+        public void UpdateTipoCuota(TipoCuota tipocuota)
         {
-            _context.Entry(deduccioncredito).State = EntityState.Modified;
+            _context.Entry(tipocuota).State = EntityState.Modified;
         }
     }
 }

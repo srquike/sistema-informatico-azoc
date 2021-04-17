@@ -4,7 +4,7 @@ using BusinessObjectsLayer.Models;
 
 namespace RepositoryLayer
 {
-    public interface IDeduccionCreditopository: IDisposable
+    public interface IDeduccionCreditoRepository: IDisposable
     {
         IEnumerable<DeduccionCredito> GetDeduccionCreditos();
         DeduccionCredito GetDeduccionCreditoById(int id);
