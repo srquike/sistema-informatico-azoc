@@ -13,8 +13,6 @@ namespace RepositoryLayer
         void DeleteCredito(Credito credito);
         void UpdateCredito(Credito credito);
         void Save();
-        
+        void PruebaPull();
     }
-
-    
 }
