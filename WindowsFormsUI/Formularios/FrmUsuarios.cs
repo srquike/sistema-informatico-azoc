@@ -13,14 +13,12 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmUsuarios : Form
     {
         private UsuarioBLL _usuario;
-
         public FrmUsuarios()
         {
             InitializeComponent();
 
             _usuario = new UsuarioBLL();
         }
-
         private void RefrescarDataGridView(ref DataGridView dataGrid)
         {
             var usuarios = _usuario.List();
