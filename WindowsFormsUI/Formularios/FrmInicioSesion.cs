@@ -48,6 +48,7 @@ namespace WindowsFormsUI.Formularios
 
             if (usuario != null)
             {
+                UsuarioLogIn = usuario;
                 return true;
             }
 
