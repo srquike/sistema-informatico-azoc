@@ -3,6 +3,7 @@ using BusinessObjectsLayer.Models;
 using System;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -102,6 +103,18 @@ namespace WindowsFormsUI.Formularios
         private void FrmInicioSesion_Load(object sender, EventArgs e)
         {
             Icon = Properties.Resources.icon;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.White;
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.Black;
         }
     }
 }

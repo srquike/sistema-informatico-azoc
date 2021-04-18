@@ -51,15 +51,15 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnIngresar
             // 
-            this.BtnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
-            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
-            this.BtnIngresar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
+            this.BtnIngresar.BackColor = System.Drawing.Color.White;
+            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
             this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnIngresar.ForeColor = System.Drawing.Color.White;
+            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
             this.BtnIngresar.Image = global::WindowsFormsUI.Properties.Resources.log_in;
             this.BtnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIngresar.Location = new System.Drawing.Point(431, 130);
+            this.BtnIngresar.Location = new System.Drawing.Point(432, 109);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(118, 35);
             this.BtnIngresar.TabIndex = 4;
@@ -67,13 +67,15 @@ namespace WindowsFormsUI.Formularios
             this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnIngresar.UseVisualStyleBackColor = false;
             this.BtnIngresar.Click += new System.EventHandler(this.BtnIngresar_Click);
+            this.BtnIngresar.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.BtnIngresar.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // PctLogo
             // 
             this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
-            this.PctLogo.Location = new System.Drawing.Point(24, 21);
+            this.PctLogo.Location = new System.Drawing.Point(12, 12);
             this.PctLogo.Name = "PctLogo";
-            this.PctLogo.Size = new System.Drawing.Size(357, 144);
+            this.PctLogo.Size = new System.Drawing.Size(346, 132);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PctLogo.TabIndex = 6;
             this.PctLogo.TabStop = false;
@@ -82,7 +84,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.TxtClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrPClave.SetIconPadding(this.TxtClave, 5);
-            this.TxtClave.Location = new System.Drawing.Point(431, 54);
+            this.TxtClave.Location = new System.Drawing.Point(394, 45);
             this.TxtClave.MaxLength = 50;
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña del usuario";
@@ -94,7 +96,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ChkVerClave.AutoSize = true;
             this.ChkVerClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkVerClave.Location = new System.Drawing.Point(431, 84);
+            this.ChkVerClave.Location = new System.Drawing.Point(394, 75);
             this.ChkVerClave.Name = "ChkVerClave";
             this.ChkVerClave.Size = new System.Drawing.Size(125, 24);
             this.ChkVerClave.TabIndex = 2;
@@ -106,7 +108,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.LLblRecuperarClave.AutoSize = true;
             this.LLblRecuperarClave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LLblRecuperarClave.Location = new System.Drawing.Point(590, 84);
+            this.LLblRecuperarClave.Location = new System.Drawing.Point(553, 75);
             this.LLblRecuperarClave.Name = "LLblRecuperarClave";
             this.LLblRecuperarClave.Size = new System.Drawing.Size(121, 15);
             this.LLblRecuperarClave.TabIndex = 3;
@@ -115,15 +117,15 @@ namespace WindowsFormsUI.Formularios
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
-            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
-            this.BtnCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(143)))), ((int)(((byte)(149)))));
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
             this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
             this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
             this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(593, 130);
+            this.BtnCancelar.Location = new System.Drawing.Point(556, 109);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(118, 35);
             this.BtnCancelar.TabIndex = 5;
@@ -131,6 +133,8 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            this.BtnCancelar.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.BtnCancelar.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // ErrPNombreUsuario
             // 
@@ -140,7 +144,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrPNombreUsuario.SetIconPadding(this.MTxtUsuario, 5);
-            this.MTxtUsuario.Location = new System.Drawing.Point(431, 21);
+            this.MTxtUsuario.Location = new System.Drawing.Point(394, 12);
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
@@ -154,20 +158,20 @@ namespace WindowsFormsUI.Formularios
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsFormsUI.Properties.Resources.user24px;
-            this.pictureBox1.Location = new System.Drawing.Point(401, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(364, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.Size = new System.Drawing.Size(24, 27);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsUI.Properties.Resources.key;
-            this.pictureBox2.Location = new System.Drawing.Point(401, 57);
+            this.pictureBox2.Location = new System.Drawing.Point(364, 45);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.Size = new System.Drawing.Size(24, 27);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
@@ -175,8 +179,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(209)))));
-            this.ClientSize = new System.Drawing.Size(736, 192);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(700, 157);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.MTxtUsuario);
