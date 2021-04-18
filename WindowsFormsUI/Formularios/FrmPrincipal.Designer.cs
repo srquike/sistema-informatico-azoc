@@ -121,7 +121,7 @@ namespace WindowsFormsUI.Formularios
             // PctLogo
             // 
             this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
-            this.PctLogo.Location = new System.Drawing.Point(12, 12);
+            this.PctLogo.Location = new System.Drawing.Point(12, 32);
             this.PctLogo.Name = "PctLogo";
             this.PctLogo.Size = new System.Drawing.Size(206, 77);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
