@@ -68,7 +68,7 @@ namespace WindowsFormsUI.Formularios
         {
             Usuario usuario = new Usuario
             {
-                Nombre = TxtNombreUsuario.Text,
+                Nombre = MTxtUsuario.Text.Replace("-", ""),
                 Clave = TxtClave.Text,
                 FechaCreacion = DateTime.Today,
                 UltimoAcceso = DateTime.Now,

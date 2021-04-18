@@ -62,7 +62,7 @@ namespace WindowsFormsUI.Formularios
             {
                 string user, password;
 
-                user = MTxtUsuario.Text;
+                user = MTxtUsuario.Text.Replace("-", "");
                 password = TxtClave.Text;
 
                 if (AutenticarUsuario(user, password))
@@ -77,7 +77,7 @@ namespace WindowsFormsUI.Formularios
                     TxtClave.Clear();
                     MTxtUsuario.Focus();
                 }
-            }            
+            }
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)
