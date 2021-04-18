@@ -34,17 +34,19 @@ namespace WindowsFormsUI.Formularios
             this.BtnIngresar = new System.Windows.Forms.Button();
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.TxtClave = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.ChkVerClave = new System.Windows.Forms.CheckBox();
             this.LLblRecuperarClave = new System.Windows.Forms.LinkLabel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.ErrPNombreUsuario = new System.Windows.Forms.ErrorProvider(this.components);
             this.MTxtUsuario = new System.Windows.Forms.MaskedTextBox();
             this.ErrPClave = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPNombreUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPClave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnIngresar
@@ -57,7 +59,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnIngresar.ForeColor = System.Drawing.Color.White;
             this.BtnIngresar.Image = global::WindowsFormsUI.Properties.Resources.log_in;
             this.BtnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIngresar.Location = new System.Drawing.Point(467, 121);
+            this.BtnIngresar.Location = new System.Drawing.Point(431, 130);
             this.BtnIngresar.Name = "BtnIngresar";
             this.BtnIngresar.Size = new System.Drawing.Size(118, 35);
             this.BtnIngresar.TabIndex = 4;
@@ -69,7 +71,7 @@ namespace WindowsFormsUI.Formularios
             // PctLogo
             // 
             this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
-            this.PctLogo.Location = new System.Drawing.Point(12, 12);
+            this.PctLogo.Location = new System.Drawing.Point(24, 21);
             this.PctLogo.Name = "PctLogo";
             this.PctLogo.Size = new System.Drawing.Size(357, 144);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -80,7 +82,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.TxtClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrPClave.SetIconPadding(this.TxtClave, 5);
-            this.TxtClave.Location = new System.Drawing.Point(467, 45);
+            this.TxtClave.Location = new System.Drawing.Point(431, 54);
             this.TxtClave.MaxLength = 50;
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña del usuario";
@@ -88,31 +90,11 @@ namespace WindowsFormsUI.Formularios
             this.TxtClave.TabIndex = 1;
             this.TxtClave.UseSystemPasswordChar = true;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(375, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Contraseña:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(375, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 20);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Usuario:";
-            // 
             // ChkVerClave
             // 
             this.ChkVerClave.AutoSize = true;
             this.ChkVerClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkVerClave.Location = new System.Drawing.Point(467, 75);
+            this.ChkVerClave.Location = new System.Drawing.Point(431, 84);
             this.ChkVerClave.Name = "ChkVerClave";
             this.ChkVerClave.Size = new System.Drawing.Size(125, 24);
             this.ChkVerClave.TabIndex = 2;
@@ -124,7 +106,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.LLblRecuperarClave.AutoSize = true;
             this.LLblRecuperarClave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LLblRecuperarClave.Location = new System.Drawing.Point(626, 75);
+            this.LLblRecuperarClave.Location = new System.Drawing.Point(590, 84);
             this.LLblRecuperarClave.Name = "LLblRecuperarClave";
             this.LLblRecuperarClave.Size = new System.Drawing.Size(121, 15);
             this.LLblRecuperarClave.TabIndex = 3;
@@ -141,7 +123,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.ForeColor = System.Drawing.Color.White;
             this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
             this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(629, 121);
+            this.BtnCancelar.Location = new System.Drawing.Point(593, 130);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(118, 35);
             this.BtnCancelar.TabIndex = 5;
@@ -158,7 +140,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrPNombreUsuario.SetIconPadding(this.MTxtUsuario, 5);
-            this.MTxtUsuario.Location = new System.Drawing.Point(467, 12);
+            this.MTxtUsuario.Location = new System.Drawing.Point(431, 21);
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
@@ -169,19 +151,39 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ErrPClave.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsUI.Properties.Resources.user24px;
+            this.pictureBox1.Location = new System.Drawing.Point(401, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsUI.Properties.Resources.key;
+            this.pictureBox2.Location = new System.Drawing.Point(401, 57);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 11;
+            this.pictureBox2.TabStop = false;
+            // 
             // FrmInicioSesion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(210)))), ((int)(((byte)(209)))));
-            this.ClientSize = new System.Drawing.Size(784, 168);
+            this.ClientSize = new System.Drawing.Size(736, 192);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.MTxtUsuario);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.LLblRecuperarClave);
             this.Controls.Add(this.ChkVerClave);
             this.Controls.Add(this.TxtClave);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.PctLogo);
             this.Controls.Add(this.BtnIngresar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -194,6 +196,8 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPNombreUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPClave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,13 +207,13 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnIngresar;
         private System.Windows.Forms.PictureBox PctLogo;
         private System.Windows.Forms.TextBox TxtClave;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox ChkVerClave;
         private System.Windows.Forms.LinkLabel LLblRecuperarClave;
         private System.Windows.Forms.Button BtnCancelar;
         private System.Windows.Forms.ErrorProvider ErrPNombreUsuario;
         private System.Windows.Forms.ErrorProvider ErrPClave;
         private System.Windows.Forms.MaskedTextBox MTxtUsuario;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
