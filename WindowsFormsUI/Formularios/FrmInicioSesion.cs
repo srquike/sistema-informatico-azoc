@@ -2,13 +2,16 @@
 using BusinessObjectsLayer.Models;
 using System;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmInicioSesion : Form
     {
         private UsuarioBLL _usuarioLogic;
+        private bool continuar = false;
         public Usuario UsuarioLogIn;
+        
 
         public FrmInicioSesion()
         {
@@ -17,22 +20,63 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogic = new UsuarioBLL();
         }
 
-        private void BtnIngresar_Click(object sender, EventArgs e)
+        private void ValidarControles()
         {
-            string userName = TxtUsuario.Text;
-            string password = TxtClave.Text;
-
-            Usuario usuario = _usuarioLogic.Authentication(userName, password);
-
-            if (usuario != null)
+            if (MTxtUsuario.MaskFull != true)
             {
-                UsuarioLogIn = usuario;
-                DialogResult = DialogResult.OK;
+                ErrPNombreUsuario.SetError(MTxtUsuario, "Por favor, ingrese el nombre de usuario para continuar!");
             }
             else
             {
-                MessageBox.Show("El usuario solicitado no exites!");
+                ErrPNombreUsuario.Clear();
+
+                if (string.IsNullOrEmpty(TxtClave.Text))
+                {
+                    ErrPClave.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
+                }
+                else
+                {
+                    ErrPClave.Clear();
+                    continuar = true;
+                }
             }
+        }
+
+        private bool AutenticarUsuario(string user, string password)
+        {
+            Usuario usuario = _usuarioLogic.Authentication(user, password);
+
+            if (usuario != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void BtnIngresar_Click(object sender, EventArgs e)
+        {
+            ValidarControles();
+            if (continuar)
+            {
+                string user, password;
+
+                user = MTxtUsuario.Text;
+                password = TxtClave.Text;
+
+                if (AutenticarUsuario(user, password))
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("El nombre de usuario o contraseña es incorrecto, por favor vuelva a ingresarlos", "Inicio de sesión: Error de usuario o contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    MTxtUsuario.Clear();
+                    TxtClave.Clear();
+                    MTxtUsuario.Focus();
+                }
+            }            
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)
@@ -52,6 +96,11 @@ namespace WindowsFormsUI.Formularios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void FrmInicioSesion_Load(object sender, EventArgs e)
+        {
+            Icon = Properties.Resources.icon;
         }
     }
 }
