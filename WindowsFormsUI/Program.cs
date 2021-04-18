@@ -24,16 +24,12 @@ namespace WindowsFormsUI
 
             if (inicioSesion.DialogResult == DialogResult.OK)
             {
-                Application.Run(new FrmPrincipal(inicioSesion.Usuario));
-            }
-            else if (inicioSesion.DialogResult == DialogResult.Retry)
-            {
-                inicioSesion.ShowDialog();
+                Application.Run(new FrmPrincipal(inicioSesion.UsuarioLogIn));
             }
             else
             {
                 inicioSesion.Close();
-            }         
+            }            
         }
     }
 }

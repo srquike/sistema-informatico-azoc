@@ -7,45 +7,51 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmInicioSesion : Form
     {
-        private UsuarioBLL _usuario;
-
-        public Usuario Usuario { get; set; }
+        private UsuarioBLL _usuarioLogic;
+        public Usuario UsuarioLogIn;
 
         public FrmInicioSesion()
         {
             InitializeComponent();
 
-            _usuario = new UsuarioBLL();
+            _usuarioLogic = new UsuarioBLL();
         }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            if (IsUsuarioValido())
+            string userName = TxtUsuario.Text;
+            string password = TxtClave.Text;
+
+            Usuario usuario = _usuarioLogic.Authentication(userName, password);
+
+            if (usuario != null)
             {
+                UsuarioLogIn = usuario;
                 DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("El usuario no existe!");
-                DialogResult = DialogResult.Retry;
+                MessageBox.Show("El usuario solicitado no exites!");
             }
         }
 
-        private bool IsUsuarioValido()
+        private void ChkVerClave_CheckedChanged(object sender, EventArgs e)
         {
-            string userName, password;
+            CheckBox check = (CheckBox)sender;
 
-            userName = TxtUsuario.Text;
-            password = TxtClave.Text;
-
-            Usuario usuario = _usuario.Authentication(userName, password);
-
-            if (usuario != null)
+            if (check.Checked)
             {
-                return true;
+                TxtClave.UseSystemPasswordChar = false;
             }
+            else
+            {
+                TxtClave.UseSystemPasswordChar = true;
+            }
+        }
 
-            return false;
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

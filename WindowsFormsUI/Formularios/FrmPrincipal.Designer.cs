@@ -33,13 +33,12 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral = new System.Windows.Forms.Panel();
             this.BtnAdministracion = new System.Windows.Forms.Button();
             this.TxtNombreEmpleado = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblSaludo = new System.Windows.Forms.Label();
             this.BtnCerrarSesion = new System.Windows.Forms.Button();
             this.BtnConfiguracion = new System.Windows.Forms.Button();
             this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.PctLogo = new System.Windows.Forms.PictureBox();
             this.BtnUsuarios = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -50,7 +49,7 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
             this.PnlBarraLateral.Controls.Add(this.BtnAdministracion);
             this.PnlBarraLateral.Controls.Add(this.TxtNombreEmpleado);
-            this.PnlBarraLateral.Controls.Add(this.label1);
+            this.PnlBarraLateral.Controls.Add(this.LblSaludo);
             this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
             this.PnlBarraLateral.Controls.Add(this.BtnConfiguracion);
             this.PnlBarraLateral.Controls.Add(this.PctAvatar);
@@ -80,15 +79,15 @@ namespace WindowsFormsUI.Formularios
             this.TxtNombreEmpleado.TabIndex = 6;
             this.TxtNombreEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label1
+            // LblSaludo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(70, 228);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "BIENVENIDO(A)";
+            this.LblSaludo.AutoSize = true;
+            this.LblSaludo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblSaludo.Location = new System.Drawing.Point(76, 228);
+            this.LblSaludo.Name = "LblSaludo";
+            this.LblSaludo.Size = new System.Drawing.Size(79, 15);
+            this.LblSaludo.TabIndex = 5;
+            this.LblSaludo.Text = "BIENVENIDO";
             // 
             // BtnCerrarSesion
             // 
@@ -138,20 +137,11 @@ namespace WindowsFormsUI.Formularios
             this.BtnUsuarios.UseVisualStyleBackColor = true;
             this.BtnUsuarios.Click += new System.EventHandler(this.BtnUsuarios_Click);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(230, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(860, 25);
-            this.toolStrip1.TabIndex = 10;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 683);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.BtnUsuarios);
             this.Controls.Add(this.PnlBarraLateral);
             this.IsMdiContainer = true;
@@ -164,7 +154,6 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -175,10 +164,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnConfiguracion;
         private System.Windows.Forms.PictureBox PctAvatar;
         private System.Windows.Forms.PictureBox PctLogo;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblSaludo;
         private System.Windows.Forms.TextBox TxtNombreEmpleado;
         private System.Windows.Forms.Button BtnAdministracion;
         private System.Windows.Forms.Button BtnUsuarios;
-        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

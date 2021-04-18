@@ -19,6 +19,15 @@ namespace WindowsFormsUI.Formularios
         {
             string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
+            if (_usuario.Empleado.Genero == "M")
+            {
+                LblSaludo.Text = "BIENVENIDO";
+            }
+            else if (_usuario.Empleado.Genero == "F")
+            {
+                LblSaludo.Text = "BIENVENIDA";
+            }
+
             TxtNombreEmpleado.Text = nombreEmpleado;
         }
 
