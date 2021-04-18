@@ -177,9 +177,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // FrmInicioSesion
             // 
+            this.AcceptButton = this.BtnIngresar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(700, 157);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);

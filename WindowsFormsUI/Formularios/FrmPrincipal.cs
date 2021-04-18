@@ -31,11 +31,27 @@ namespace WindowsFormsUI.Formularios
             TxtNombreEmpleado.Text = nombreEmpleado;
         }
 
-        private void BtnUsuarios_Click(object sender, EventArgs e)
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            FrmUsuarios frmUsuarios = new FrmUsuarios();
-            frmUsuarios.MdiParent = this;
-            frmUsuarios.Show();
+            if (MessageBox.Show("¿Esta seguro de querer salir del sistema?", "Cerrar sesión: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("¿Esta seguro de querer salir del sistema?", "Cerrar sesión: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FrmUsuarios usuarios = new FrmUsuarios();
+            usuarios.MdiParent = this;
+            usuarios.Show();
         }
     }
 }

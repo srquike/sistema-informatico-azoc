@@ -29,7 +29,7 @@ namespace WindowsFormsUI.Formularios
             {
                 string nombreEmpleado = $"{usuario.Empleado.PrimerNombre} {usuario.Empleado.SegundoNombre} {usuario.Empleado.TercerNombre} {usuario.Empleado.PrimerApellido} {usuario.Empleado.SegundoApellido} {usuario.Empleado.TercerApellido}";
 
-                dataGrid.Rows.Add(usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion), nombreEmpleado);
+                dataGrid.Rows.Add(usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion),"Activo", nombreEmpleado);
             }
 
             dataGrid.ClearSelection();

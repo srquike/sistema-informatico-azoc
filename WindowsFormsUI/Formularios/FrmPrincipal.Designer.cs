@@ -31,14 +31,18 @@ namespace WindowsFormsUI.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PnlBarraLateral = new System.Windows.Forms.Panel();
-            this.BtnAdministracion = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.BtnCreditos = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.BtnCerrarSesion = new System.Windows.Forms.Button();
+            this.BtnIngresar = new System.Windows.Forms.Button();
             this.TxtNombreEmpleado = new System.Windows.Forms.TextBox();
             this.LblSaludo = new System.Windows.Forms.Label();
-            this.BtnCerrarSesion = new System.Windows.Forms.Button();
-            this.BtnConfiguracion = new System.Windows.Forms.Button();
             this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.PctLogo = new System.Windows.Forms.PictureBox();
-            this.BtnUsuarios = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -47,11 +51,14 @@ namespace WindowsFormsUI.Formularios
             // PnlBarraLateral
             // 
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
-            this.PnlBarraLateral.Controls.Add(this.BtnAdministracion);
+            this.PnlBarraLateral.Controls.Add(this.panel2);
+            this.PnlBarraLateral.Controls.Add(this.BtnCreditos);
+            this.PnlBarraLateral.Controls.Add(this.panel1);
+            this.PnlBarraLateral.Controls.Add(this.button1);
+            this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
+            this.PnlBarraLateral.Controls.Add(this.BtnIngresar);
             this.PnlBarraLateral.Controls.Add(this.TxtNombreEmpleado);
             this.PnlBarraLateral.Controls.Add(this.LblSaludo);
-            this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
-            this.PnlBarraLateral.Controls.Add(this.BtnConfiguracion);
             this.PnlBarraLateral.Controls.Add(this.PctAvatar);
             this.PnlBarraLateral.Controls.Add(this.PctLogo);
             this.PnlBarraLateral.Dock = System.Windows.Forms.DockStyle.Left;
@@ -60,21 +67,104 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Size = new System.Drawing.Size(230, 683);
             this.PnlBarraLateral.TabIndex = 1;
             // 
-            // BtnAdministracion
+            // panel2
             // 
-            this.BtnAdministracion.Location = new System.Drawing.Point(12, 392);
-            this.BtnAdministracion.Name = "BtnAdministracion";
-            this.BtnAdministracion.Size = new System.Drawing.Size(206, 49);
-            this.BtnAdministracion.TabIndex = 7;
-            this.BtnAdministracion.Text = "Administración";
-            this.BtnAdministracion.UseVisualStyleBackColor = true;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel2.Location = new System.Drawing.Point(12, 488);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(23, 58);
+            this.panel2.TabIndex = 10;
+            // 
+            // BtnCreditos
+            // 
+            this.BtnCreditos.BackColor = System.Drawing.Color.White;
+            this.BtnCreditos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCreditos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCreditos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCreditos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnCreditos.ForeColor = System.Drawing.Color.Black;
+            this.BtnCreditos.Image = global::WindowsFormsUI.Properties.Resources.salary;
+            this.BtnCreditos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCreditos.Location = new System.Drawing.Point(41, 488);
+            this.BtnCreditos.Name = "BtnCreditos";
+            this.BtnCreditos.Size = new System.Drawing.Size(177, 58);
+            this.BtnCreditos.TabIndex = 9;
+            this.BtnCreditos.Text = "Créditos";
+            this.BtnCreditos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCreditos.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel1.Location = new System.Drawing.Point(12, 424);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(23, 58);
+            this.panel1.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = global::WindowsFormsUI.Properties.Resources.administrator;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(41, 424);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(177, 58);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Administración";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // BtnCerrarSesion
+            // 
+            this.BtnCerrarSesion.BackColor = System.Drawing.Color.White;
+            this.BtnCerrarSesion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrarSesion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCerrarSesion.ForeColor = System.Drawing.Color.Black;
+            this.BtnCerrarSesion.Image = global::WindowsFormsUI.Properties.Resources.logout;
+            this.BtnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCerrarSesion.Location = new System.Drawing.Point(41, 342);
+            this.BtnCerrarSesion.Name = "BtnCerrarSesion";
+            this.BtnCerrarSesion.Size = new System.Drawing.Size(149, 35);
+            this.BtnCerrarSesion.TabIndex = 2;
+            this.BtnCerrarSesion.Text = "Cerrar sesión";
+            this.BtnCerrarSesion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCerrarSesion.UseVisualStyleBackColor = false;
+            this.BtnCerrarSesion.Click += new System.EventHandler(this.BtnCerrarSesion_Click);
+            // 
+            // BtnIngresar
+            // 
+            this.BtnIngresar.BackColor = System.Drawing.Color.White;
+            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
+            this.BtnIngresar.Image = global::WindowsFormsUI.Properties.Resources.settings;
+            this.BtnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnIngresar.Location = new System.Drawing.Point(41, 301);
+            this.BtnIngresar.Name = "BtnIngresar";
+            this.BtnIngresar.Size = new System.Drawing.Size(149, 35);
+            this.BtnIngresar.TabIndex = 1;
+            this.BtnIngresar.Text = "Configuración";
+            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnIngresar.UseVisualStyleBackColor = false;
             // 
             // TxtNombreEmpleado
             // 
+            this.TxtNombreEmpleado.BackColor = System.Drawing.Color.White;
             this.TxtNombreEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TxtNombreEmpleado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtNombreEmpleado.Location = new System.Drawing.Point(12, 246);
             this.TxtNombreEmpleado.Multiline = true;
             this.TxtNombreEmpleado.Name = "TxtNombreEmpleado";
+            this.TxtNombreEmpleado.ReadOnly = true;
             this.TxtNombreEmpleado.Size = new System.Drawing.Size(206, 49);
             this.TxtNombreEmpleado.TabIndex = 6;
             this.TxtNombreEmpleado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -82,30 +172,12 @@ namespace WindowsFormsUI.Formularios
             // LblSaludo
             // 
             this.LblSaludo.AutoSize = true;
-            this.LblSaludo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblSaludo.Location = new System.Drawing.Point(76, 228);
+            this.LblSaludo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LblSaludo.Location = new System.Drawing.Point(65, 228);
             this.LblSaludo.Name = "LblSaludo";
-            this.LblSaludo.Size = new System.Drawing.Size(79, 15);
+            this.LblSaludo.Size = new System.Drawing.Size(101, 20);
             this.LblSaludo.TabIndex = 5;
             this.LblSaludo.Text = "BIENVENIDO";
-            // 
-            // BtnCerrarSesion
-            // 
-            this.BtnCerrarSesion.Location = new System.Drawing.Point(61, 330);
-            this.BtnCerrarSesion.Name = "BtnCerrarSesion";
-            this.BtnCerrarSesion.Size = new System.Drawing.Size(109, 23);
-            this.BtnCerrarSesion.TabIndex = 4;
-            this.BtnCerrarSesion.Text = "Cerrar sesión";
-            this.BtnCerrarSesion.UseVisualStyleBackColor = true;
-            // 
-            // BtnConfiguracion
-            // 
-            this.BtnConfiguracion.Location = new System.Drawing.Point(61, 301);
-            this.BtnConfiguracion.Name = "BtnConfiguracion";
-            this.BtnConfiguracion.Size = new System.Drawing.Size(109, 23);
-            this.BtnConfiguracion.TabIndex = 3;
-            this.BtnConfiguracion.Text = "Configuracion";
-            this.BtnConfiguracion.UseVisualStyleBackColor = true;
             // 
             // PctAvatar
             // 
@@ -122,51 +194,69 @@ namespace WindowsFormsUI.Formularios
             this.PctLogo.Image = ((System.Drawing.Image)(resources.GetObject("PctLogo.Image")));
             this.PctLogo.Location = new System.Drawing.Point(12, 32);
             this.PctLogo.Name = "PctLogo";
-            this.PctLogo.Size = new System.Drawing.Size(206, 77);
+            this.PctLogo.Size = new System.Drawing.Size(206, 80);
             this.PctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PctLogo.TabIndex = 0;
             this.PctLogo.TabStop = false;
             // 
-            // BtnUsuarios
+            // button2
             // 
-            this.BtnUsuarios.Location = new System.Drawing.Point(236, 392);
-            this.BtnUsuarios.Name = "BtnUsuarios";
-            this.BtnUsuarios.Size = new System.Drawing.Size(206, 49);
-            this.BtnUsuarios.TabIndex = 8;
-            this.BtnUsuarios.Text = "Usuarios";
-            this.BtnUsuarios.UseVisualStyleBackColor = true;
-            this.BtnUsuarios.Click += new System.EventHandler(this.BtnUsuarios_Click);
+            this.button2.Location = new System.Drawing.Point(262, 443);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.Location = new System.Drawing.Point(230, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(860, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1090, 683);
-            this.Controls.Add(this.BtnUsuarios);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.PnlBarraLateral);
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.Text = "Cooperativa AZOC de R. L.";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.PnlBarraLateral.ResumeLayout(false);
             this.PnlBarraLateral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel PnlBarraLateral;
-        private System.Windows.Forms.Button BtnCerrarSesion;
-        private System.Windows.Forms.Button BtnConfiguracion;
         private System.Windows.Forms.PictureBox PctAvatar;
         private System.Windows.Forms.PictureBox PctLogo;
         private System.Windows.Forms.Label LblSaludo;
         private System.Windows.Forms.TextBox TxtNombreEmpleado;
-        private System.Windows.Forms.Button BtnAdministracion;
-        private System.Windows.Forms.Button BtnUsuarios;
+        private System.Windows.Forms.Button BtnCerrarSesion;
+        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button BtnCreditos;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
