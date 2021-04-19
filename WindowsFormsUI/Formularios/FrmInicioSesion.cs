@@ -10,7 +10,7 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmInicioSesion : Form
     {
         private UsuarioBLL _usuarioLogic;
-        private bool continuar = false;
+        private bool _continuar = false;
         public Usuario UsuarioLogIn;
         
 
@@ -38,46 +38,55 @@ namespace WindowsFormsUI.Formularios
                 else
                 {
                     ErrPClave.Clear();
-                    continuar = true;
+                    _continuar = true;
                 }
             }
         }
 
-        private bool AutenticarUsuario(string user, string password)
+        private void AutenticarUsuario(string user, string password)
         {
             Usuario usuario = _usuarioLogic.Authentication(user, password);
 
             if (usuario != null)
             {
-                UsuarioLogIn = usuario;
-                return true;
+                if (usuario.Estado != '0')
+                {
+                    UsuarioLogIn = usuario;
+                    UsuarioLogIn.UltimoAcceso = DateTime.Now;
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("El usuario esta desactivado actualmente. Solicite al administrador que lo active.", "Inicio de sesión: Usuario desactivado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    LimpiarControles();
+                }
             }
+            else
+            {
+                MessageBox.Show("El nombre de usuario o contraseña es incorrecto, por favor vuelva a ingresarlos", "Inicio de sesión: Error de usuario o contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LimpiarControles();
+            }
+        }
 
-            return false;
+        private void LimpiarControles()
+        {
+            MTxtUsuario.Clear();
+            TxtClave.Clear();
+            ChkVerClave.Checked = false;
+            MTxtUsuario.Focus();
         }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
             ValidarControles();
-            if (continuar)
+            if (_continuar)
             {
                 string user, password;
 
                 user = MTxtUsuario.Text.Replace("-", "");
                 password = TxtClave.Text;
 
-                if (AutenticarUsuario(user, password))
-                {
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("El nombre de usuario o contraseña es incorrecto, por favor vuelva a ingresarlos", "Inicio de sesión: Error de usuario o contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    MTxtUsuario.Clear();
-                    TxtClave.Clear();
-                    MTxtUsuario.Focus();
-                }
+                AutenticarUsuario(user, password);
             }
         }
 

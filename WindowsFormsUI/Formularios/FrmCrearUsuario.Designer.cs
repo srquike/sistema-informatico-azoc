@@ -41,6 +41,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnElegirImagen = new System.Windows.Forms.Button();
             this.BtnQuitarImagen = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ChkActivarUsuario = new System.Windows.Forms.CheckBox();
             this.MTxtUsuario = new System.Windows.Forms.MaskedTextBox();
             this.ChkVerClaves = new System.Windows.Forms.CheckBox();
             this.TxtClave = new System.Windows.Forms.TextBox();
@@ -67,10 +68,10 @@ namespace WindowsFormsUI.Formularios
             this.GrpPermisos.Controls.Add(this.chkPuedeEditar);
             this.GrpPermisos.Controls.Add(this.chkPuedeAgregar);
             this.GrpPermisos.Controls.Add(this.chkPuedeVer);
-            this.GrpPermisos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.GrpPermisos.Location = new System.Drawing.Point(413, 6);
+            this.GrpPermisos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GrpPermisos.Location = new System.Drawing.Point(430, 12);
             this.GrpPermisos.Name = "GrpPermisos";
-            this.GrpPermisos.Size = new System.Drawing.Size(173, 187);
+            this.GrpPermisos.Size = new System.Drawing.Size(150, 177);
             this.GrpPermisos.TabIndex = 6;
             this.GrpPermisos.TabStop = false;
             this.GrpPermisos.Text = "Permisos";
@@ -141,10 +142,10 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.BtnTomarFoto);
             this.groupBox2.Controls.Add(this.BtnElegirImagen);
             this.groupBox2.Controls.Add(this.BtnQuitarImagen);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(592, 6);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(605, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(223, 187);
+            this.groupBox2.Size = new System.Drawing.Size(248, 177);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imagen";
@@ -153,7 +154,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.PctAvatar.Location = new System.Drawing.Point(6, 22);
             this.PctAvatar.Name = "PctAvatar";
-            this.PctAvatar.Size = new System.Drawing.Size(114, 137);
+            this.PctAvatar.Size = new System.Drawing.Size(124, 149);
             this.PctAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PctAvatar.TabIndex = 0;
             this.PctAvatar.TabStop = false;
@@ -161,9 +162,9 @@ namespace WindowsFormsUI.Formularios
             // BtnTomarFoto
             // 
             this.BtnTomarFoto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnTomarFoto.Location = new System.Drawing.Point(126, 92);
+            this.BtnTomarFoto.Location = new System.Drawing.Point(136, 98);
             this.BtnTomarFoto.Name = "BtnTomarFoto";
-            this.BtnTomarFoto.Size = new System.Drawing.Size(92, 28);
+            this.BtnTomarFoto.Size = new System.Drawing.Size(106, 33);
             this.BtnTomarFoto.TabIndex = 10;
             this.BtnTomarFoto.Text = "Tomar foto";
             this.BtnTomarFoto.UseVisualStyleBackColor = true;
@@ -171,9 +172,9 @@ namespace WindowsFormsUI.Formularios
             // BtnElegirImagen
             // 
             this.BtnElegirImagen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnElegirImagen.Location = new System.Drawing.Point(126, 22);
+            this.BtnElegirImagen.Location = new System.Drawing.Point(136, 20);
             this.BtnElegirImagen.Name = "BtnElegirImagen";
-            this.BtnElegirImagen.Size = new System.Drawing.Size(92, 31);
+            this.BtnElegirImagen.Size = new System.Drawing.Size(106, 33);
             this.BtnElegirImagen.TabIndex = 8;
             this.BtnElegirImagen.Text = "Elegir";
             this.BtnElegirImagen.UseVisualStyleBackColor = true;
@@ -182,15 +183,16 @@ namespace WindowsFormsUI.Formularios
             // BtnQuitarImagen
             // 
             this.BtnQuitarImagen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnQuitarImagen.Location = new System.Drawing.Point(126, 59);
+            this.BtnQuitarImagen.Location = new System.Drawing.Point(136, 59);
             this.BtnQuitarImagen.Name = "BtnQuitarImagen";
-            this.BtnQuitarImagen.Size = new System.Drawing.Size(92, 27);
+            this.BtnQuitarImagen.Size = new System.Drawing.Size(106, 33);
             this.BtnQuitarImagen.TabIndex = 9;
             this.BtnQuitarImagen.Text = "Quitar";
             this.BtnQuitarImagen.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ChkActivarUsuario);
             this.groupBox3.Controls.Add(this.MTxtUsuario);
             this.groupBox3.Controls.Add(this.ChkVerClaves);
             this.groupBox3.Controls.Add(this.TxtClave);
@@ -200,29 +202,40 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.CmbEmpleados);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(12, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 187);
+            this.groupBox3.Size = new System.Drawing.Size(412, 207);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
             // 
+            // ChkActivarUsuario
+            // 
+            this.ChkActivarUsuario.AutoSize = true;
+            this.ChkActivarUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkActivarUsuario.Location = new System.Drawing.Point(152, 177);
+            this.ChkActivarUsuario.Name = "ChkActivarUsuario";
+            this.ChkActivarUsuario.Size = new System.Drawing.Size(126, 24);
+            this.ChkActivarUsuario.TabIndex = 24;
+            this.ChkActivarUsuario.Text = "Activar usuario";
+            this.ChkActivarUsuario.UseVisualStyleBackColor = true;
+            // 
             // MTxtUsuario
             // 
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MTxtUsuario.Location = new System.Drawing.Point(148, 48);
+            this.MTxtUsuario.Location = new System.Drawing.Point(152, 50);
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
-            this.MTxtUsuario.Size = new System.Drawing.Size(183, 27);
+            this.MTxtUsuario.Size = new System.Drawing.Size(254, 27);
             this.MTxtUsuario.TabIndex = 23;
             // 
             // ChkVerClaves
             // 
             this.ChkVerClaves.AutoSize = true;
             this.ChkVerClaves.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkVerClaves.Location = new System.Drawing.Point(148, 145);
+            this.ChkVerClaves.Location = new System.Drawing.Point(152, 147);
             this.ChkVerClaves.Name = "ChkVerClaves";
             this.ChkVerClaves.Size = new System.Drawing.Size(131, 24);
             this.ChkVerClaves.TabIndex = 22;
@@ -233,20 +246,20 @@ namespace WindowsFormsUI.Formularios
             // TxtClave
             // 
             this.TxtClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtClave.Location = new System.Drawing.Point(148, 81);
+            this.TxtClave.Location = new System.Drawing.Point(152, 81);
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña";
-            this.TxtClave.Size = new System.Drawing.Size(211, 27);
+            this.TxtClave.Size = new System.Drawing.Size(254, 27);
             this.TxtClave.TabIndex = 21;
             this.TxtClave.UseSystemPasswordChar = true;
             // 
             // TxtRepetirClave
             // 
             this.TxtRepetirClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtRepetirClave.Location = new System.Drawing.Point(148, 112);
+            this.TxtRepetirClave.Location = new System.Drawing.Point(152, 114);
             this.TxtRepetirClave.Name = "TxtRepetirClave";
             this.TxtRepetirClave.PlaceholderText = "Escriba nuevamente la contraseña";
-            this.TxtRepetirClave.Size = new System.Drawing.Size(211, 27);
+            this.TxtRepetirClave.Size = new System.Drawing.Size(254, 27);
             this.TxtRepetirClave.TabIndex = 20;
             this.TxtRepetirClave.UseSystemPasswordChar = true;
             // 
@@ -259,7 +272,6 @@ namespace WindowsFormsUI.Formularios
             this.label3.Size = new System.Drawing.Size(136, 20);
             this.label3.TabIndex = 18;
             this.label3.Text = "Repetir contraseña:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -287,9 +299,9 @@ namespace WindowsFormsUI.Formularios
             this.CmbEmpleados.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbEmpleados.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbEmpleados.FormattingEnabled = true;
-            this.CmbEmpleados.Location = new System.Drawing.Point(148, 16);
+            this.CmbEmpleados.Location = new System.Drawing.Point(152, 16);
             this.CmbEmpleados.Name = "CmbEmpleados";
-            this.CmbEmpleados.Size = new System.Drawing.Size(211, 28);
+            this.CmbEmpleados.Size = new System.Drawing.Size(254, 28);
             this.CmbEmpleados.TabIndex = 13;
             // 
             // label4
@@ -305,9 +317,9 @@ namespace WindowsFormsUI.Formularios
             // BtnGuardar
             // 
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.Location = new System.Drawing.Point(390, 199);
+            this.BtnGuardar.Location = new System.Drawing.Point(522, 195);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(106, 40);
+            this.BtnGuardar.Size = new System.Drawing.Size(107, 45);
             this.BtnGuardar.TabIndex = 11;
             this.BtnGuardar.Text = "Guardar";
             this.BtnGuardar.UseVisualStyleBackColor = true;
@@ -316,9 +328,9 @@ namespace WindowsFormsUI.Formularios
             // BtnLimpiar
             // 
             this.BtnLimpiar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnLimpiar.Location = new System.Drawing.Point(503, 199);
+            this.BtnLimpiar.Location = new System.Drawing.Point(635, 195);
             this.BtnLimpiar.Name = "BtnLimpiar";
-            this.BtnLimpiar.Size = new System.Drawing.Size(106, 40);
+            this.BtnLimpiar.Size = new System.Drawing.Size(106, 45);
             this.BtnLimpiar.TabIndex = 12;
             this.BtnLimpiar.Text = "Limpiar";
             this.BtnLimpiar.UseVisualStyleBackColor = true;
@@ -326,9 +338,9 @@ namespace WindowsFormsUI.Formularios
             // BtnCancelar
             // 
             this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.Location = new System.Drawing.Point(615, 199);
+            this.BtnCancelar.Location = new System.Drawing.Point(747, 195);
             this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(106, 40);
+            this.BtnCancelar.Size = new System.Drawing.Size(106, 45);
             this.BtnCancelar.TabIndex = 13;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.UseVisualStyleBackColor = true;
@@ -343,7 +355,7 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(827, 272);
+            this.ClientSize = new System.Drawing.Size(867, 251);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.BtnGuardar);
@@ -392,5 +404,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog OfdElegirAvatar;
         private System.Windows.Forms.MaskedTextBox MTxtUsuario;
+        private System.Windows.Forms.CheckBox ChkActivarUsuario;
     }
 }
