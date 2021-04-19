@@ -109,5 +109,10 @@ namespace WindowsFormsUI.Formularios
                 PctAvatar.ImageLocation = OfdElegirAvatar.FileName;
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
