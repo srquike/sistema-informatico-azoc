@@ -37,12 +37,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
-
-            if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
-            {
-                RefrescarDataGridView(ref DgvListaUsuarios);
-            }
+            
         }
 
         private void DgvListaUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -63,6 +58,61 @@ namespace WindowsFormsUI.Formularios
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
             RefrescarDataGridView(ref DgvListaUsuarios);
+        }
+
+        private void BtnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void BtnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+                BtnMaximizar.Image = Properties.Resources.normal;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+                BtnMaximizar.Image = Properties.Resources.maximize;
+            }
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnCrearNuevo_Click(object sender, EventArgs e)
+        {
+            FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
+
+            if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
+            {
+                RefrescarDataGridView(ref DgvListaUsuarios);
+            }
+        }
+
+        private void DgvListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGridView = (DataGridView)sender;
+
+            if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                switch (e.ColumnIndex)
+                {
+                    case 6:
+                        int userId = int.Parse(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                        FrmDetallesUsuario frmDetallesUsuario = new FrmDetallesUsuario(userId);
+                        frmDetallesUsuario.Show();
+
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
