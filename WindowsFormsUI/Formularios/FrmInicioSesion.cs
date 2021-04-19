@@ -50,6 +50,7 @@ namespace WindowsFormsUI.Formularios
             if (usuario != null)
             {
                 UsuarioLogIn = usuario;
+                UsuarioLogIn.UltimoAcceso = DateTime.Now;
                 return true;
             }
 
@@ -68,6 +69,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (AutenticarUsuario(user, password))
                 {
+                    _usuarioLogic.Edit(UsuarioLogIn);
                     DialogResult = DialogResult.OK;
                 }
                 else

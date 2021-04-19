@@ -75,6 +75,15 @@ namespace WindowsFormsUI.Formularios
                 EmpleadoId = int.Parse(CmbEmpleados.SelectedValue.ToString())
             };
 
+            if (ChkActivarUsuario.Checked)
+            {
+                usuario.Estado = '1';
+            }
+            else
+            {
+                usuario.Estado = '0';
+            }
+
             if (_usuario.Create(usuario))
             {
                 AgregarPermisos(usuario.UsuarioId);

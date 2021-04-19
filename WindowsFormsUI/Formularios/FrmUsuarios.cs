@@ -12,24 +12,39 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmUsuarios : Form
     {
-        private UsuarioBLL _usuario;
+        private UsuarioBLL _usuarioLogic;
+
         public FrmUsuarios()
         {
             InitializeComponent();
 
-            _usuario = new UsuarioBLL();
+            _usuarioLogic = new UsuarioBLL();
         }
         private void RefrescarDataGridView(ref DataGridView dataGrid)
         {
-            var usuarios = _usuario.List();
+            var usuarios = _usuarioLogic.List();
 
             dataGrid.Rows.Clear();
 
             foreach (Usuario usuario in usuarios)
             {
                 string nombreEmpleado = $"{usuario.Empleado.PrimerNombre} {usuario.Empleado.SegundoNombre} {usuario.Empleado.TercerNombre} {usuario.Empleado.PrimerApellido} {usuario.Empleado.SegundoApellido} {usuario.Empleado.TercerApellido}";
+                string estado;
 
-                dataGrid.Rows.Add(usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion),"Activo", nombreEmpleado);
+                if (usuario.Estado == '0')
+                {
+                    estado = "Desactivado";
+                }
+                else if (usuario.Estado == '1')
+                {
+                    estado = "Activado";
+                }
+                else
+                {
+                    estado = "-";
+                }
+
+                dataGrid.Rows.Add(false, usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion), estado, nombreEmpleado);
             }
 
             dataGrid.ClearSelection();
@@ -37,7 +52,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void DgvListaUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -100,17 +115,51 @@ namespace WindowsFormsUI.Formularios
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                switch (e.ColumnIndex)
+                int userId = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
+
+                if (e.ColumnIndex == 7)
                 {
-                    case 6:
-                        int userId = int.Parse(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
+                    detallesUsuario.ShowDialog();
+                    if (detallesUsuario.DialogResult == DialogResult.OK)
+                    {
+                        detallesUsuario.Close();
+                    }
+                }
+                else if (e.ColumnIndex == 8)
+                {
+                    Usuario usuario = _usuarioLogic.Find(userId);
+                    FrmEditarUsuario editarUsuario = new FrmEditarUsuario(usuario);
+                    editarUsuario.ShowDialog();
+                    if (editarUsuario.DialogResult == DialogResult.OK)
+                    {
+                        RefrescarDataGridView(ref DgvListaUsuarios);
+                    }
+                    else
+                    {
+                        editarUsuario.Close();
+                    }
+                }
+                else if (e.ColumnIndex == 9)
+                {
+                    if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminación de usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        _usuarioLogic.Delete(userId);
+                        RefrescarDataGridView(ref DgvListaUsuarios);
+                    }
+                }
+            }
+            else if (dataGridView.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            {
+                bool value = (bool)dataGridView.Rows[e.RowIndex].Cells[0].Value;
 
-                        FrmDetallesUsuario frmDetallesUsuario = new FrmDetallesUsuario(userId);
-                        frmDetallesUsuario.Show();
-
-                        break;
-                    default:
-                        break;
+                if (value)
+                {
+                    dataGridView.Rows[e.RowIndex].Cells[0].Value = false;
+                }
+                else
+                {
+                    dataGridView.Rows[e.RowIndex].Cells[0].Value = true;
                 }
             }
         }

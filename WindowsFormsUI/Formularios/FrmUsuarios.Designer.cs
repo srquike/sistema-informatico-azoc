@@ -33,6 +33,11 @@ namespace WindowsFormsUI.Formularios
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
+            this.PnlBarraSuperior = new System.Windows.Forms.Panel();
+            this.BtnMaximizar = new System.Windows.Forms.PictureBox();
+            this.BtnCerrar = new System.Windows.Forms.PictureBox();
+            this.BtnCrearNuevo = new System.Windows.Forms.Button();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UltimoAcceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,10 +47,6 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.PnlBarraSuperior = new System.Windows.Forms.Panel();
-            this.BtnMaximizar = new System.Windows.Forms.PictureBox();
-            this.BtnCerrar = new System.Windows.Forms.PictureBox();
-            this.BtnCrearNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
@@ -75,6 +76,7 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccion,
             this.Id,
             this.Usuario,
             this.UltimoAcceso,
@@ -99,10 +101,74 @@ namespace WindowsFormsUI.Formularios
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
             this.DgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListaUsuarios.RowTemplate.Height = 25;
+            this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaUsuarios.Size = new System.Drawing.Size(1075, 361);
             this.DgvListaUsuarios.TabIndex = 1;
             this.DgvListaUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellContentClick);
             this.DgvListaUsuarios.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvListaUsuarios_RowPostPaint);
+            // 
+            // PnlBarraSuperior
+            // 
+            this.PnlBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.PnlBarraSuperior.Controls.Add(this.BtnMaximizar);
+            this.PnlBarraSuperior.Controls.Add(this.BtnCerrar);
+            this.PnlBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlBarraSuperior.Location = new System.Drawing.Point(0, 0);
+            this.PnlBarraSuperior.Name = "PnlBarraSuperior";
+            this.PnlBarraSuperior.Size = new System.Drawing.Size(1099, 38);
+            this.PnlBarraSuperior.TabIndex = 2;
+            // 
+            // BtnMaximizar
+            // 
+            this.BtnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnMaximizar.Image = global::WindowsFormsUI.Properties.Resources.maximize;
+            this.BtnMaximizar.Location = new System.Drawing.Point(1017, 3);
+            this.BtnMaximizar.Name = "BtnMaximizar";
+            this.BtnMaximizar.Size = new System.Drawing.Size(32, 32);
+            this.BtnMaximizar.TabIndex = 4;
+            this.BtnMaximizar.TabStop = false;
+            this.BtnMaximizar.Click += new System.EventHandler(this.BtnMaximizar_Click);
+            // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.x_button;
+            this.BtnCerrar.Location = new System.Drawing.Point(1055, 3);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(32, 32);
+            this.BtnCerrar.TabIndex = 3;
+            this.BtnCerrar.TabStop = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
+            // 
+            // BtnCrearNuevo
+            // 
+            this.BtnCrearNuevo.BackColor = System.Drawing.Color.White;
+            this.BtnCrearNuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCrearNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCrearNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCrearNuevo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCrearNuevo.ForeColor = System.Drawing.Color.Black;
+            this.BtnCrearNuevo.Image = global::WindowsFormsUI.Properties.Resources.settings;
+            this.BtnCrearNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCrearNuevo.Location = new System.Drawing.Point(12, 44);
+            this.BtnCrearNuevo.Name = "BtnCrearNuevo";
+            this.BtnCrearNuevo.Size = new System.Drawing.Size(149, 35);
+            this.BtnCrearNuevo.TabIndex = 3;
+            this.BtnCrearNuevo.Text = "Crear nuevo";
+            this.BtnCrearNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCrearNuevo.UseVisualStyleBackColor = false;
+            this.BtnCrearNuevo.Click += new System.EventHandler(this.BtnCrearNuevo_Click);
+            // 
+            // Seleccion
+            // 
+            this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Seleccion.FalseValue = "false";
+            this.Seleccion.HeaderText = "";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.ReadOnly = true;
+            this.Seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Seleccion.TrueValue = "true";
+            this.Seleccion.Width = 5;
             // 
             // Id
             // 
@@ -119,7 +185,7 @@ namespace WindowsFormsUI.Formularios
             this.Usuario.HeaderText = "Nombre de usuario";
             this.Usuario.Name = "Usuario";
             this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 98;
+            this.Usuario.Width = 107;
             // 
             // UltimoAcceso
             // 
@@ -190,58 +256,6 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
             // 
-            // PnlBarraSuperior
-            // 
-            this.PnlBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
-            this.PnlBarraSuperior.Controls.Add(this.BtnMaximizar);
-            this.PnlBarraSuperior.Controls.Add(this.BtnCerrar);
-            this.PnlBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlBarraSuperior.Location = new System.Drawing.Point(0, 0);
-            this.PnlBarraSuperior.Name = "PnlBarraSuperior";
-            this.PnlBarraSuperior.Size = new System.Drawing.Size(1099, 38);
-            this.PnlBarraSuperior.TabIndex = 2;
-            // 
-            // BtnMaximizar
-            // 
-            this.BtnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMaximizar.Image = global::WindowsFormsUI.Properties.Resources.maximize;
-            this.BtnMaximizar.Location = new System.Drawing.Point(1017, 3);
-            this.BtnMaximizar.Name = "BtnMaximizar";
-            this.BtnMaximizar.Size = new System.Drawing.Size(32, 32);
-            this.BtnMaximizar.TabIndex = 4;
-            this.BtnMaximizar.TabStop = false;
-            this.BtnMaximizar.Click += new System.EventHandler(this.BtnMaximizar_Click);
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.x_button;
-            this.BtnCerrar.Location = new System.Drawing.Point(1055, 3);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(32, 32);
-            this.BtnCerrar.TabIndex = 3;
-            this.BtnCerrar.TabStop = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
-            // BtnCrearNuevo
-            // 
-            this.BtnCrearNuevo.BackColor = System.Drawing.Color.White;
-            this.BtnCrearNuevo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnCrearNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnCrearNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCrearNuevo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCrearNuevo.ForeColor = System.Drawing.Color.Black;
-            this.BtnCrearNuevo.Image = global::WindowsFormsUI.Properties.Resources.settings;
-            this.BtnCrearNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearNuevo.Location = new System.Drawing.Point(12, 44);
-            this.BtnCrearNuevo.Name = "BtnCrearNuevo";
-            this.BtnCrearNuevo.Size = new System.Drawing.Size(149, 35);
-            this.BtnCrearNuevo.TabIndex = 3;
-            this.BtnCrearNuevo.Text = "Crear nuevo";
-            this.BtnCrearNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCrearNuevo.UseVisualStyleBackColor = false;
-            this.BtnCrearNuevo.Click += new System.EventHandler(this.BtnCrearNuevo_Click);
-            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -266,6 +280,11 @@ namespace WindowsFormsUI.Formularios
 
         #endregion
         private System.Windows.Forms.DataGridView DgvListaUsuarios;
+        private System.Windows.Forms.Panel PnlBarraSuperior;
+        private System.Windows.Forms.PictureBox BtnMaximizar;
+        private System.Windows.Forms.PictureBox BtnCerrar;
+        private System.Windows.Forms.Button BtnCrearNuevo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn UltimoAcceso;
@@ -275,9 +294,5 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.Panel PnlBarraSuperior;
-        private System.Windows.Forms.PictureBox BtnMaximizar;
-        private System.Windows.Forms.PictureBox BtnCerrar;
-        private System.Windows.Forms.Button BtnCrearNuevo;
     }
 }

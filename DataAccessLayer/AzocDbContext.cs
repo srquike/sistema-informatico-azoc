@@ -572,6 +572,12 @@ namespace DataAccessLayer
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("date");
 
+                entity.Property(e => e.Estado)
+                    .IsRequired()
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(9)

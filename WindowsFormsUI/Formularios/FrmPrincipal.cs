@@ -33,10 +33,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("¿Esta seguro de querer salir del sistema?", "Cerrar sesión: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-            {
-                Close();
-            }
+            Close();
         }
 
         private void FrmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
