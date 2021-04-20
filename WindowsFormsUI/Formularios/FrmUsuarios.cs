@@ -246,5 +246,29 @@ namespace WindowsFormsUI.Formularios
 
             RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
         }
+
+        private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
+            {
+                if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Usuarios: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
+                    {
+                        if ((bool)fila.Cells["Seleccion"].Value == true)
+                        {
+                            int userId = Convert.ToInt32(fila.Cells["Id"].Value);
+                            _usuarioLogic.Delete(userId);
+                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            CmbAcciones.SelectedIndex = 0;
+                        }
+                    }
+                }
+                else
+                {
+                    CmbAcciones.SelectedIndex = 0;
+                }
+            }
+        }
     }
 }
