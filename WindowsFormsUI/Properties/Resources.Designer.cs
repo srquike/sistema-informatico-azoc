@@ -63,6 +63,16 @@ namespace WindowsFormsUI.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_friend {
+            get {
+                object obj = ResourceManager.GetObject("add_friend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap administrator {
             get {
                 object obj = ResourceManager.GetObject("administrator", resourceCulture);
@@ -86,6 +96,16 @@ namespace WindowsFormsUI.Properties {
         internal static System.Drawing.Bitmap eye {
             get {
                 object obj = ResourceManager.GetObject("eye", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap filter {
+            get {
+                object obj = ResourceManager.GetObject("filter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +146,16 @@ namespace WindowsFormsUI.Properties {
         internal static System.Drawing.Bitmap logout {
             get {
                 object obj = ResourceManager.GetObject("logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap magnifying_glass {
+            get {
+                object obj = ResourceManager.GetObject("magnifying_glass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

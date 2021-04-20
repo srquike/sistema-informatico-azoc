@@ -7,23 +7,27 @@ using System.Text;
 using System.Windows.Forms;
 using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
+using System.Linq;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmUsuarios : Form
     {
         private UsuarioBLL _usuarioLogic;
+        private EmpleadoBLL _empleadoLogic;
+        private int _filasMarcadas;
 
         public FrmUsuarios()
         {
             InitializeComponent();
 
             _usuarioLogic = new UsuarioBLL();
+            _empleadoLogic = new EmpleadoBLL();
+            _filasMarcadas = 0;
         }
-        private void RefrescarDataGridView(ref DataGridView dataGrid)
-        {
-            var usuarios = _usuarioLogic.List();
 
+        private void RefrescarDataGridView(ref DataGridView dataGrid, IEnumerable<Usuario> usuarios)
+        {
             dataGrid.Rows.Clear();
 
             foreach (Usuario usuario in usuarios)
@@ -50,6 +54,11 @@ namespace WindowsFormsUI.Formularios
             dataGrid.ClearSelection();
         }
 
+        private IEnumerable<Usuario> ObtenerLista()
+        {
+            return _usuarioLogic.List();
+        }
+
         private void BtnAgregarUsuario_Click(object sender, EventArgs e)
         {
 
@@ -72,7 +81,9 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            RefrescarDataGridView(ref DgvListaUsuarios);
+            var usuarios = ObtenerLista();
+
+            RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
         }
 
         private void BtnMinimizar_Click(object sender, EventArgs e)
@@ -105,7 +116,7 @@ namespace WindowsFormsUI.Formularios
 
             if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
             {
-                RefrescarDataGridView(ref DgvListaUsuarios);
+                RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
             }
         }
 
@@ -133,7 +144,7 @@ namespace WindowsFormsUI.Formularios
                     editarUsuario.ShowDialog();
                     if (editarUsuario.DialogResult == DialogResult.OK)
                     {
-                        RefrescarDataGridView(ref DgvListaUsuarios);
+                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
                     }
                     else
                     {
@@ -145,7 +156,7 @@ namespace WindowsFormsUI.Formularios
                     if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminación de usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
                         _usuarioLogic.Delete(userId);
-                        RefrescarDataGridView(ref DgvListaUsuarios);
+                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
                     }
                 }
             }
@@ -156,12 +167,84 @@ namespace WindowsFormsUI.Formularios
                 if (value)
                 {
                     dataGridView.Rows[e.RowIndex].Cells[0].Value = false;
+                    _filasMarcadas--;
                 }
                 else
                 {
                     dataGridView.Rows[e.RowIndex].Cells[0].Value = true;
+                    _filasMarcadas++;
                 }
+
+                LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
             }
+        }
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtBusqueda.Text))
+            {
+                string busqueda = TxtBusqueda.Text;
+                var listaUsuario = _usuarioLogic.List();
+
+                var resultado = from usuario in listaUsuario where usuario.Nombre.Contains(busqueda) || usuario.Empleado.PrimerNombre.Contains(busqueda) || usuario.Empleado.PrimerApellido.Contains(busqueda) select usuario;
+
+                RefrescarDataGridView(ref DgvListaUsuarios, resultado);
+                LLblQuitarBusqueda.Enabled = true;
+            }
+        }
+
+        private void LblQuitarBusqueda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LLblQuitarBusqueda.Enabled = false;
+            TxtBusqueda.Text = string.Empty;
+            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+        }
+
+        private void CmbTipoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbTipoFiltro.SelectedItem.ToString() == "Empleado")
+            {
+                CmbFiltro.Enabled = true;
+
+                var empleados = _empleadoLogic.List();
+                var nombres = (from empleado in empleados
+                               select new
+                               {
+                                   Nombre = $"{empleado.PrimerNombre} {empleado.SegundoNombre} {empleado.TercerNombre} {empleado.PrimerApellido} {empleado.SegundoApellido} {empleado.TercerApellido} ",
+                                   Id = empleado.EmpleadoId
+                               }).ToList();
+
+                CmbFiltro.DisplayMember = "Nombre";
+                CmbFiltro.DataSource = nombres;
+                CmbFiltro.ValueMember = "Id";
+            }
+            else
+            {
+                CmbFiltro.DataSource = null;
+                CmbFiltro.Enabled = false;
+            }
+        }
+
+        private void BtnAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            LLblQuitarFiltro.Enabled = true;
+
+            if (CmbTipoFiltro.SelectedItem.ToString() == "Empleado")
+            {
+                var usuarios = ObtenerLista();
+                var empleadoId = Convert.ToInt32(CmbFiltro.SelectedValue);
+                var usuariosFiltrados = from usuario in usuarios where usuario.EmpleadoId == empleadoId select usuario;
+
+                RefrescarDataGridView(ref DgvListaUsuarios, usuariosFiltrados);
+            }
+        }
+
+        private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LLblQuitarFiltro.Enabled = false;
+            CmbTipoFiltro.SelectedIndex = 0;
+
+            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
         }
     }
 }
