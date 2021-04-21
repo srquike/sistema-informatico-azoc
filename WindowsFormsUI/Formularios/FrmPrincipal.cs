@@ -29,16 +29,25 @@ namespace WindowsFormsUI.Formularios
             {
                 PctAvatar.Image = Image.FromFile(archivo);
             }
+            else
+            {
+                if (_usuario.Empleado.Genero == "M")
+                {
+                    PctAvatar.Image = Properties.Resources.male_avatar_default;
+                }
+                else if (_usuario.Empleado.Genero == "F")
+                {
+                    PctAvatar.Image = Properties.Resources.female_avatar_default;
+                }
+            }
 
             if (_usuario.Empleado.Genero == "M")
             {
                 LblSaludo.Text = "BIENVENIDO";
-                PctAvatar.Image = Properties.Resources.male_avatar_default;
             }
             else if (_usuario.Empleado.Genero == "F")
             {
                 LblSaludo.Text = "BIENVENIDA";
-                PctAvatar.Image = Properties.Resources.female_avatar_default;
             }
 
             TxtNombreEmpleado.Text = nombreEmpleado;

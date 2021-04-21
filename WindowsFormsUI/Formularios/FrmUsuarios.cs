@@ -137,17 +137,8 @@ namespace WindowsFormsUI.Formularios
                 else if (e.ColumnIndex == 8)
                 {
                     Usuario usuario = _usuarioLogic.Find(userId);
-                    FrmEditarUsuario editarUsuario = new FrmEditarUsuario(usuario);
-                    editarUsuario.StartPosition = FormStartPosition.CenterParent;
-                    editarUsuario.ShowDialog();
-                    if (editarUsuario.DialogResult == DialogResult.OK)
-                    {
-                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                    }
-                    else
-                    {
-                        editarUsuario.Close();
-                    }
+                    
+                    
                 }
                 else if (e.ColumnIndex == 9)
                 {

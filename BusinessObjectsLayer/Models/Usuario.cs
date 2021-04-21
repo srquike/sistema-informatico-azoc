@@ -18,6 +18,7 @@ namespace BusinessObjectsLayer.Models
         public string Clave { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime? UltimoAcceso { get; set; }
+        public DateTime? FechaModificacion { get; set; }
         public int EmpleadoId { get; set; }
         public char Estado { get; set; }
 

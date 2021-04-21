@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -154,9 +155,9 @@ namespace WindowsFormsUI.Formularios
 
                     _usuarioLogic.Create(usuario);
 
-                    GuardarAvatar(nombreUsuario);
-
                     AgregarPermisos(usuario.UsuarioId);
+
+                    GuardarAvatar(nombreUsuario);                   
 
                     DialogResult = DialogResult.OK;
                 }

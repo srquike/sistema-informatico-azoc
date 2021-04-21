@@ -586,6 +586,8 @@ namespace DataAccessLayer
 
                 entity.Property(e => e.UltimoAcceso).HasColumnType("datetime");
 
+                entity.Property(e => e.FechaModificacion).HasColumnType("datetime");
+
                 entity.HasOne(d => d.Empleado)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.EmpleadoId)
