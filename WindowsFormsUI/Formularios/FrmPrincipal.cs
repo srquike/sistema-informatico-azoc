@@ -1,6 +1,8 @@
 ﻿using BusinessObjectsLayer.Models;
 using System;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -19,13 +21,24 @@ namespace WindowsFormsUI.Formularios
         {
             string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
+            string nombreAvatar = _usuario.Nombre + ".jpg";
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string archivo = string.Concat(ruta, nombreAvatar);
+
+            if (File.Exists(archivo))
+            {
+                PctAvatar.Image = Image.FromFile(archivo);
+            }
+
             if (_usuario.Empleado.Genero == "M")
             {
                 LblSaludo.Text = "BIENVENIDO";
+                PctAvatar.Image = Properties.Resources.male_avatar_default;
             }
             else if (_usuario.Empleado.Genero == "F")
             {
                 LblSaludo.Text = "BIENVENIDA";
+                PctAvatar.Image = Properties.Resources.female_avatar_default;
             }
 
             TxtNombreEmpleado.Text = nombreEmpleado;

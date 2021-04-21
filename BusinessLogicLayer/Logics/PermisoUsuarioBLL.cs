@@ -40,11 +40,10 @@ namespace BusinessLogicLayer.Logics
             return _permisoUsuarioRepository.GetPermisoUsuarioById(id);
         }
 
-        public bool Create(PermisoUsuario permisoUsuario)
+        public void Create(PermisoUsuario permisoUsuario)
         {
             _permisoUsuarioRepository.InsertPermisoUsuario(permisoUsuario);
             _permisoUsuarioRepository.Save();
-            return true;
         }
 
         public bool Edit(PermisoUsuario permisoUsuario)

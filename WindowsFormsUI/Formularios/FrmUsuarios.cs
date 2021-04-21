@@ -59,11 +59,6 @@ namespace WindowsFormsUI.Formularios
             return _usuarioLogic.List();
         }
 
-        private void BtnAgregarUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DgvListaUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var grid = sender as DataGridView;
@@ -258,11 +253,14 @@ namespace WindowsFormsUI.Formularios
                         if ((bool)fila.Cells["Seleccion"].Value == true)
                         {
                             int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-                            _usuarioLogic.Delete(userId);
-                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                            CmbAcciones.SelectedIndex = 0;
+                            _usuarioLogic.Delete(userId);                            
                         }
                     }
+
+                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                    _filasMarcadas = 0;
+                    LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                    CmbAcciones.SelectedIndex = 0;
                 }
                 else
                 {
