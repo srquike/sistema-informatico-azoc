@@ -2,6 +2,7 @@
 using BusinessObjectsLayer.Models;
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -176,6 +177,21 @@ namespace WindowsFormsUI.Formularios
             {
                 PctAvatar.ImageLocation = OfdElegirAvatar.FileName;
             }
+        }
+
+        private void BtnLimpiarControles_Click(object sender, EventArgs e)
+        {
+            MTxtUsuario.Clear();
+            TxtClave.Clear();
+            TxtRepetirClave.Clear();
+            ChkVerClaves.Checked = false;
+            ChkActivarUsuario.Checked = false;
+            chkPuedeAgregar.Checked = false;
+            chkPuedeEditar.Checked = false;
+            chkPuedeEliminar.Checked = false;
+            chkPuedeVer.Checked = false;
+            PctAvatar.Image = null;
+            CmbEmpleados.Focus();
         }
     }
 }

@@ -108,6 +108,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
             FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
+            frmCrearUsuario.StartPosition = FormStartPosition.CenterParent;
 
             if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
             {
@@ -126,6 +127,7 @@ namespace WindowsFormsUI.Formularios
                 if (e.ColumnIndex == 7)
                 {
                     FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
+                    detallesUsuario.StartPosition = FormStartPosition.CenterParent;
                     detallesUsuario.ShowDialog();
                     if (detallesUsuario.DialogResult == DialogResult.OK)
                     {
@@ -136,6 +138,7 @@ namespace WindowsFormsUI.Formularios
                 {
                     Usuario usuario = _usuarioLogic.Find(userId);
                     FrmEditarUsuario editarUsuario = new FrmEditarUsuario(usuario);
+                    editarUsuario.StartPosition = FormStartPosition.CenterParent;
                     editarUsuario.ShowDialog();
                     if (editarUsuario.DialogResult == DialogResult.OK)
                     {
