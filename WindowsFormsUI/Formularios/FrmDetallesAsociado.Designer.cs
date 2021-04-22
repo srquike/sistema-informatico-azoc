@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgregarAsociado
+    partial class FrmDetallesAsociado
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,11 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
@@ -78,11 +75,6 @@ namespace WindowsFormsUI.Formularios
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -90,14 +82,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.comboBox5);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.textBox12);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.textBox11);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.comboBox4);
@@ -133,18 +122,9 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(899, 378);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos :";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(115, 309);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(133, 32);
-            this.button4.TabIndex = 39;
-            this.button4.Text = "Agregar Beneficiario";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // comboBox5
             // 
@@ -181,30 +161,12 @@ namespace WindowsFormsUI.Formularios
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(780, 319);
+            this.button3.Location = new System.Drawing.Point(759, 319);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(89, 32);
             this.button3.TabIndex = 34;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(681, 319);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 32);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(564, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 32);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox11
             // 
@@ -469,20 +431,17 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(13, 406);
+            this.groupBox2.Location = new System.Drawing.Point(12, 399);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(773, 271);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.Size = new System.Drawing.Size(663, 254);
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Beneficiarios";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -490,12 +449,11 @@ namespace WindowsFormsUI.Formularios
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6,
-            this.Column7});
+            this.Column6});
             this.dataGridView1.Location = new System.Drawing.Point(6, 22);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 168);
+            this.dataGridView1.Size = new System.Drawing.Size(644, 226);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -525,62 +483,22 @@ namespace WindowsFormsUI.Formularios
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "Tipo";
+            this.Column6.HeaderText = "";
             this.Column6.Name = "Column6";
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Porcentaje";
-            this.Column7.Name = "Column7";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 208);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(99, 15);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Numero de Filas :";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(416, 208);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(61, 15);
-            this.label20.TabIndex = 2;
-            this.label20.Text = "Acciones :";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(647, 202);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 32);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Aplicar";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(483, 205);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(158, 23);
-            this.comboBox6.TabIndex = 41;
-            // 
-            // FrmAgregarAsociado
+            // FrmDetallesAsociado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 710);
+            this.ClientSize = new System.Drawing.Size(922, 665);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FrmAgregarAsociado";
-            this.Text = "AZOC de R. L - Agregar Nuevo Asociado";
+            this.Name = "FrmDetallesAsociado";
+            this.Text = "AZOC de R. L - Ventana Principal ";
+            this.Load += new System.EventHandler(this.FrmDetallesAsociado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -589,11 +507,11 @@ namespace WindowsFormsUI.Formularios
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox comboBox4;
@@ -626,14 +544,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -641,6 +552,5 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
     }
 }

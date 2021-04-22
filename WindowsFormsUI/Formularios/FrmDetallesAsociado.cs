@@ -8,14 +8,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
-    public partial class FrmAgregarAsociado : Form
+    public partial class FrmDetallesAsociado : Form
     {
-        public FrmAgregarAsociado()
+        public FrmDetallesAsociado()
         {
             InitializeComponent();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void FrmDetallesAsociado_Load(object sender, EventArgs e)
         {
 
         }

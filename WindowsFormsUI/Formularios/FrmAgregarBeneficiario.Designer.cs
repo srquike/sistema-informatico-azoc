@@ -30,6 +30,8 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -65,8 +67,6 @@ namespace WindowsFormsUI.Formularios
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -116,6 +116,22 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos :";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(119, 263);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(165, 23);
+            this.numericUpDown1.TabIndex = 36;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(47, 265);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 15);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "Porcentaje :";
             // 
             // button3
             // 
@@ -405,27 +421,11 @@ namespace WindowsFormsUI.Formularios
             this.label1.TabIndex = 0;
             this.label1.Text = "Primer Nombre :";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(47, 265);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 15);
-            this.label17.TabIndex = 35;
-            this.label17.Text = "Porcentaje :";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(119, 263);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(165, 23);
-            this.numericUpDown1.TabIndex = 36;
-            // 
             // FrmAgregarBeneficiario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 344);
+            this.ClientSize = new System.Drawing.Size(941, 349);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAgregarBeneficiario";
             this.Text = "AZOC de R. L - Agregar Nuev(a) Beneficiario(a)";
