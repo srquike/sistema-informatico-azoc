@@ -248,6 +248,7 @@ namespace WindowsFormsUI.Formularios
             this.MaximizeBox = false;
             this.Name = "FrmDetallesUsuario";
             this.Text = "Cooperativa AZOC de R. L. - Detalles de usuario";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDetallesUsuario_FormClosing);
             this.Load += new System.EventHandler(this.FrmDetallesUsuario_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
