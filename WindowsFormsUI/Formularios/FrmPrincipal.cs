@@ -50,7 +50,7 @@ namespace WindowsFormsUI.Formularios
                 LblSaludo.Text = "BIENVENIDA";
             }
 
-            TxtNombreEmpleado.Text = nombreEmpleado;
+            //TxtNombreEmpleado.Text = nombreEmpleado;
         }
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
