@@ -16,6 +16,7 @@ namespace DataAccessLayer
         public AzocDbContext(DbContextOptions<AzocDbContext> options)
             : base(options)
         {
+
         }
 
         public virtual DbSet<Aportacion> Aportacions { get; set; }
@@ -40,6 +41,7 @@ namespace DataAccessLayer
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=localhost; Database=AzocDb; User Id=sa; Password=_Mi@Sqlserver$Jevc&27!");
+                optionsBuilder.EnableSensitiveDataLogging();
             }
         }
 
@@ -536,8 +538,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.PermisoUsuarios)
                     .HasForeignKey(d => d.UsuarioId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PermisoUs__Permi__33D4B598");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_PermisoUsuario_Usuario");
             });
 
             modelBuilder.Entity<TipoCuota>(entity =>

@@ -33,7 +33,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ChkCambiarDatos = new System.Windows.Forms.CheckBox();
+            this.ChkCambiarClave = new System.Windows.Forms.CheckBox();
             this.ChkActivarUsuario = new System.Windows.Forms.CheckBox();
             this.MTxtUsuario = new System.Windows.Forms.MaskedTextBox();
             this.ChkVerClaves = new System.Windows.Forms.CheckBox();
@@ -101,7 +101,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.ChkCambiarDatos);
+            this.groupBox3.Controls.Add(this.ChkCambiarClave);
             this.groupBox3.Controls.Add(this.ChkActivarUsuario);
             this.groupBox3.Controls.Add(this.MTxtUsuario);
             this.groupBox3.Controls.Add(this.ChkVerClaves);
@@ -120,17 +120,17 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
             // 
-            // ChkCambiarDatos
+            // ChkCambiarClave
             // 
-            this.ChkCambiarDatos.AutoSize = true;
-            this.ChkCambiarDatos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkCambiarDatos.Location = new System.Drawing.Point(152, 60);
-            this.ChkCambiarDatos.Name = "ChkCambiarDatos";
-            this.ChkCambiarDatos.Size = new System.Drawing.Size(223, 24);
-            this.ChkCambiarDatos.TabIndex = 19;
-            this.ChkCambiarDatos.Text = "Cambiar usuario y contraseña";
-            this.ChkCambiarDatos.UseVisualStyleBackColor = true;
-            this.ChkCambiarDatos.CheckedChanged += new System.EventHandler(this.ChkCambiarClave_CheckedChanged);
+            this.ChkCambiarClave.AutoSize = true;
+            this.ChkCambiarClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkCambiarClave.Location = new System.Drawing.Point(152, 110);
+            this.ChkCambiarClave.Name = "ChkCambiarClave";
+            this.ChkCambiarClave.Size = new System.Drawing.Size(122, 24);
+            this.ChkCambiarClave.TabIndex = 19;
+            this.ChkCambiarClave.Text = "Cambiar clave";
+            this.ChkCambiarClave.UseVisualStyleBackColor = true;
+            this.ChkCambiarClave.CheckedChanged += new System.EventHandler(this.ChkCambiarClave_CheckedChanged);
             // 
             // ChkActivarUsuario
             // 
@@ -145,9 +145,8 @@ namespace WindowsFormsUI.Formularios
             // 
             // MTxtUsuario
             // 
-            this.MTxtUsuario.Enabled = false;
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MTxtUsuario.Location = new System.Drawing.Point(152, 96);
+            this.MTxtUsuario.Location = new System.Drawing.Point(152, 57);
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
@@ -213,7 +212,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 99);
+            this.label1.Location = new System.Drawing.Point(6, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 20);
             this.label1.TabIndex = 16;
@@ -403,7 +402,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.CheckBox chkPuedeAgregar;
         private System.Windows.Forms.CheckBox chkPuedeVer;
         private System.Windows.Forms.ErrorProvider ErrPControles;
-        private System.Windows.Forms.CheckBox ChkCambiarDatos;
+        private System.Windows.Forms.CheckBox ChkCambiarClave;
         private System.Windows.Forms.OpenFileDialog OfdElegirAvatar;
     }
 }

@@ -139,7 +139,8 @@ namespace WindowsFormsUI.Formularios
                         Clave = TxtClave.Text,
                         FechaCreacion = DateTime.Today,
                         UltimoAcceso = DateTime.Now,
-                        EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue)
+                        EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue),
+                        FechaModificacion = DateTime.Now
                     };
 
                     if (ChkActivarUsuario.Checked)

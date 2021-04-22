@@ -29,20 +29,10 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
-            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UltimoAcceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.BtnMaximizar = new System.Windows.Forms.PictureBox();
             this.BtnCerrar = new System.Windows.Forms.PictureBox();
@@ -58,6 +48,17 @@ namespace WindowsFormsUI.Formularios
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UltimoAcceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaModificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
@@ -77,14 +78,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListaUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvListaUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListaUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -92,128 +93,32 @@ namespace WindowsFormsUI.Formularios
             this.Usuario,
             this.UltimoAcceso,
             this.FechaCreacion,
+            this.FechaModificacion,
             this.Estado,
             this.Empleado,
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvListaUsuarios.Location = new System.Drawing.Point(12, 158);
             this.DgvListaUsuarios.Name = "DgvListaUsuarios";
             this.DgvListaUsuarios.ReadOnly = true;
             this.DgvListaUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListaUsuarios.RowTemplate.Height = 25;
             this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaUsuarios.Size = new System.Drawing.Size(1214, 385);
             this.DgvListaUsuarios.TabIndex = 1;
             this.DgvListaUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellContentClick);
             this.DgvListaUsuarios.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvListaUsuarios_RowPostPaint);
-            // 
-            // Seleccion
-            // 
-            this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Seleccion.FalseValue = "false";
-            this.Seleccion.HeaderText = "";
-            this.Seleccion.Name = "Seleccion";
-            this.Seleccion.ReadOnly = true;
-            this.Seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Seleccion.TrueValue = "true";
-            this.Seleccion.Width = 5;
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Id.HeaderText = "Código";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Id.Width = 83;
-            // 
-            // Usuario
-            // 
-            this.Usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Usuario.HeaderText = "Nombre de usuario";
-            this.Usuario.Name = "Usuario";
-            this.Usuario.ReadOnly = true;
-            this.Usuario.Width = 98;
-            // 
-            // UltimoAcceso
-            // 
-            this.UltimoAcceso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.UltimoAcceso.HeaderText = "Ultimo acceso";
-            this.UltimoAcceso.Name = "UltimoAcceso";
-            this.UltimoAcceso.ReadOnly = true;
-            this.UltimoAcceso.Width = 121;
-            // 
-            // FechaCreacion
-            // 
-            this.FechaCreacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.FechaCreacion.HeaderText = "Fecha de creación";
-            this.FechaCreacion.Name = "FechaCreacion";
-            this.FechaCreacion.ReadOnly = true;
-            this.FechaCreacion.Width = 143;
-            // 
-            // Estado
-            // 
-            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 81;
-            // 
-            // Empleado
-            // 
-            this.Empleado.HeaderText = "Pertenece a";
-            this.Empleado.Name = "Empleado";
-            this.Empleado.ReadOnly = true;
-            // 
-            // Detalles
-            // 
-            this.Detalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Detalles.HeaderText = "";
-            this.Detalles.Name = "Detalles";
-            this.Detalles.ReadOnly = true;
-            this.Detalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Detalles.Text = "Ver detalles";
-            this.Detalles.ToolTipText = "Ver detalles del usuario";
-            this.Detalles.UseColumnTextForButtonValue = true;
-            this.Detalles.Width = 5;
-            // 
-            // Editar
-            // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Editar.Text = "Editar";
-            this.Editar.ToolTipText = "Editar datos del usuario";
-            this.Editar.UseColumnTextForButtonValue = true;
-            this.Editar.Width = 5;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.ToolTipText = "Eliminar usuario del sistema";
-            this.Eliminar.UseColumnTextForButtonValue = true;
-            this.Eliminar.Width = 5;
             // 
             // PnlBarraSuperior
             // 
@@ -421,6 +326,111 @@ namespace WindowsFormsUI.Formularios
             this.BtnAplicarFiltro.UseVisualStyleBackColor = false;
             this.BtnAplicarFiltro.Click += new System.EventHandler(this.BtnAplicarFiltro_Click);
             // 
+            // Seleccion
+            // 
+            this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Seleccion.FalseValue = "false";
+            this.Seleccion.HeaderText = "";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.ReadOnly = true;
+            this.Seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Seleccion.TrueValue = "true";
+            this.Seleccion.Width = 5;
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Id.HeaderText = "Código";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id.Width = 83;
+            // 
+            // Usuario
+            // 
+            this.Usuario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Usuario.HeaderText = "Nombre de usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            this.Usuario.Width = 107;
+            // 
+            // UltimoAcceso
+            // 
+            this.UltimoAcceso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UltimoAcceso.HeaderText = "Ultimo acceso";
+            this.UltimoAcceso.Name = "UltimoAcceso";
+            this.UltimoAcceso.ReadOnly = true;
+            this.UltimoAcceso.Width = 121;
+            // 
+            // FechaCreacion
+            // 
+            this.FechaCreacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.FechaCreacion.HeaderText = "Fecha de creación";
+            this.FechaCreacion.Name = "FechaCreacion";
+            this.FechaCreacion.ReadOnly = true;
+            this.FechaCreacion.Width = 143;
+            // 
+            // FechaModificacion
+            // 
+            this.FechaModificacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.FechaModificacion.HeaderText = "Fecha de modificación";
+            this.FechaModificacion.Name = "FechaModificacion";
+            this.FechaModificacion.ReadOnly = true;
+            this.FechaModificacion.Width = 172;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 81;
+            // 
+            // Empleado
+            // 
+            this.Empleado.HeaderText = "Pertenece a";
+            this.Empleado.Name = "Empleado";
+            this.Empleado.ReadOnly = true;
+            // 
+            // Detalles
+            // 
+            this.Detalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Detalles.HeaderText = "";
+            this.Detalles.Name = "Detalles";
+            this.Detalles.ReadOnly = true;
+            this.Detalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Detalles.Text = "Ver detalles";
+            this.Detalles.ToolTipText = "Ver detalles del usuario";
+            this.Detalles.UseColumnTextForButtonValue = true;
+            this.Detalles.Width = 5;
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Editar.Text = "Editar";
+            this.Editar.ToolTipText = "Editar datos del usuario";
+            this.Editar.UseColumnTextForButtonValue = true;
+            this.Editar.Width = 5;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.ToolTipText = "Eliminar usuario del sistema";
+            this.Eliminar.UseColumnTextForButtonValue = true;
+            this.Eliminar.Width = 5;
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -461,16 +471,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.PictureBox BtnMaximizar;
         private System.Windows.Forms.PictureBox BtnCerrar;
         private System.Windows.Forms.Button BtnCrearNuevo;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UltimoAcceso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
-        private System.Windows.Forms.DataGridViewButtonColumn Detalles;
-        private System.Windows.Forms.DataGridViewButtonColumn Editar;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.Button BtnBuscar;
         private System.Windows.Forms.LinkLabel LLblQuitarBusqueda;
@@ -482,5 +482,16 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label LblFilasMarcadas;
         private System.Windows.Forms.LinkLabel LLblQuitarFiltro;
         private System.Windows.Forms.Button BtnAplicarFiltro;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UltimoAcceso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaModificacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewButtonColumn Detalles;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

@@ -1,20 +1,19 @@
-﻿using System;
+﻿using BusinessLogicLayer.Logics;
+using BusinessObjectsLayer.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Linq;
-using BusinessObjectsLayer.Models;
-using BusinessLogicLayer.Logics;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmEditarUsuario : Form
     {
-        private Usuario _usuario;
+        private Usuario _usuarioEdit;
         private UsuarioBLL _usuarioLogic;
         private EmpleadoBLL _empleadoLogic;
         private PermisoUsuarioBLL _permisoUsuarioLogic;
@@ -23,7 +22,7 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
 
-            _usuario = usuario;
+            _usuarioEdit = usuario;
             _usuarioLogic = new UsuarioBLL();
             _empleadoLogic = new EmpleadoBLL();
             _permisoUsuarioLogic = new PermisoUsuarioBLL();
@@ -42,20 +41,20 @@ namespace WindowsFormsUI.Formularios
             CmbEmpleados.DataSource = nombres;
             CmbEmpleados.DisplayMember = "Nombre";
             CmbEmpleados.ValueMember = "Id";
-            CmbEmpleados.SelectedItem = _usuario.EmpleadoId;
+            CmbEmpleados.SelectedItem = _usuarioEdit.EmpleadoId;
         }
 
         private void LlenarControles()
         {
-            MTxtUsuario.Text = _usuario.Nombre;
+            MTxtUsuario.Text = _usuarioEdit.Nombre;
 
-            if (_usuario.Estado == '1')
+            if (_usuarioEdit.Estado == '1')
             {
                 ChkActivarUsuario.Checked = true;
             }
 
-            ObtenerPermisos(_usuario.PermisoUsuarios);
-            ObtenerAvatar(_usuario.Nombre);
+            ObtenerPermisos(_usuarioEdit.PermisoUsuarios);
+            ObtenerAvatar(_usuarioEdit.Nombre);
         }
 
         private void ObtenerPermisos(IEnumerable<PermisoUsuario> permisos)
@@ -84,12 +83,19 @@ namespace WindowsFormsUI.Formularios
         private void ObtenerAvatar(string userName)
         {
             string avatar = string.Concat(userName, ".jpg");
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string archivo = string.Concat(ruta, avatar);
+            string path = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string file = string.Concat(path, avatar);
 
-            if (File.Exists(archivo))
+            if (!File.Exists(file))
             {
-                PctAvatar.Image = Image.FromFile(archivo);
+                PctAvatar.Image = Properties.Resources.image_nofound;
+            }
+            else
+            {
+                using (FileStream stream = new FileStream(file, FileMode.Open, FileAccess.Read))
+                {
+                    PctAvatar.Image = Image.FromStream(stream);
+                }
             }
         }
 
@@ -108,27 +114,32 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 ErrPControles.Clear();
+                return true;
+            }
 
-                if (string.IsNullOrEmpty(TxtClave.Text))
+            return false;
+        }
+
+        private bool ValidarClaves()
+        {
+            if (string.IsNullOrEmpty(TxtClave.Text))
+            {
+                ErrPControles.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
+            }
+            else
+            {
+                ErrPControles.Clear();
+
+                if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
                 {
-                    ErrPControles.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
+                    ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese la misma contraseña!");
                 }
                 else
                 {
                     ErrPControles.Clear();
-
-                    if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
-                    {
-                        ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese la misma contraseña!");
-                    }
-                    else
-                    {
-                        ErrPControles.Clear();
-                        return true;
-                    }
+                    return true;
                 }
             }
-
             return false;
         }
 
@@ -175,24 +186,86 @@ namespace WindowsFormsUI.Formularios
             AgregarPermisos(userId);
         }
 
-        private void GuardarAvatar(string userId)
+        private void GuardarAvatar(string userName)
         {
-            if (File.Exists(PctAvatar.ImageLocation))
+            string fileName = $"{userName}.jpg";
+            string path = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string file = string.Concat(path, fileName);
+
+            using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
             {
-                File.Copy(PctAvatar.ImageLocation, Path.Combine(@"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes", userId + Path.GetExtension(PctAvatar.ImageLocation)), true);
-            }
+                bitmap.Save(file);
+            };
         }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
+            if (ValidarControles())
+            {
+                string userName = MTxtUsuario.Text.Replace("-", "");
+                bool continuar = true;
+                bool cambiarClave = false;
 
+                if (userName != _usuarioEdit.Nombre)
+                {
+                    if (VerificarExistencia(userName))
+                    {
+                        _usuarioEdit.Nombre = userName;
+                    }
+                    else
+                    {
+                        continuar = false;
+                    }
+                }
+
+                if (continuar)
+                {
+                    if (ChkCambiarClave.Checked)
+                    {
+                        if (ValidarClaves())
+                        {
+                            _usuarioEdit.Clave = TxtClave.Text;
+                        }
+                        else
+                        {
+                            cambiarClave = false;
+                        }
+                    }
+
+                    if (continuar)
+                    {
+                        _usuarioEdit.EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);  
+                        _usuarioEdit.FechaModificacion = DateTime.Now;
+
+                        if (ChkActivarUsuario.Checked)
+                        {
+                            _usuarioEdit.Estado = '1';
+                        }
+                        else
+                        {
+                            _usuarioEdit.Estado = '0';
+                        }
+
+                        _usuarioLogic.Edit(_usuarioEdit, cambiarClave);
+                        ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
+                        GuardarAvatar(_usuarioEdit.Nombre);
+
+                        DialogResult = DialogResult.OK;
+                    }
+                }
+            }
         }
 
         private void BtnElegirImagen_Click(object sender, EventArgs e)
         {
             if (OfdElegirAvatar.ShowDialog() == DialogResult.OK)
             {
-                PctAvatar.ImageLocation = OfdElegirAvatar.FileName;
+                string path = OfdElegirAvatar.FileName;
+
+                using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                {
+                    PctAvatar.Image = Image.FromStream(stream);
+                }
             }
         }
 
@@ -229,19 +302,17 @@ namespace WindowsFormsUI.Formularios
 
         private void ChkCambiarClave_CheckedChanged(object sender, EventArgs e)
         {
-            if (ChkCambiarDatos.Checked)
+            if (ChkCambiarClave.Checked)
             {
                 TxtClave.Enabled = true;
                 TxtRepetirClave.Enabled = true;
                 ChkVerClaves.Enabled = true;
-                MTxtUsuario.Enabled = true;
             }
             else
             {
                 TxtClave.Enabled = false;
                 TxtRepetirClave.Enabled = false;
                 ChkVerClaves.Enabled = false;
-                MTxtUsuario.Enabled = false;
             }
         }
     }

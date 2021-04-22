@@ -43,12 +43,12 @@ namespace DataAccessLayer
 
         public IEnumerable<Usuario> GetUsuarios()
         {
-            return _context.Usuarios.Include(u => u.Empleado).ToList();
+            return _context.Usuarios.Include(u => u.Empleado).AsNoTracking().ToList();
         }
 
         public Usuario GetUsuarioById(int id)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.UsuarioId == id).Include(u => u.Empleado).Include(u => u.PermisoUsuarios).FirstOrDefault();
+            Usuario usuario = _context.Usuarios.Where(u => u.UsuarioId == id).Include(u => u.Empleado).Include(u => u.PermisoUsuarios).AsNoTracking().FirstOrDefault();
 
             return usuario;
         }

@@ -48,7 +48,10 @@ namespace WindowsFormsUI.Formularios
                     estado = "-";
                 }
 
-                dataGrid.Rows.Add(false, usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion), estado, nombreEmpleado);
+                string fechaCreacion = string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion);
+                string fechaModificacion = string.Format("{0:dd/MM/yyyy}", usuario.FechaModificacion);
+
+                dataGrid.Rows.Add(false, usuario.UsuarioId, usuario.Nombre, usuario.UltimoAcceso, fechaCreacion, fechaModificacion, estado, nombreEmpleado);
             }
 
             dataGrid.ClearSelection();
@@ -124,7 +127,7 @@ namespace WindowsFormsUI.Formularios
             {
                 int userId = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
 
-                if (e.ColumnIndex == 7)
+                if (e.ColumnIndex == 8)
                 {
                     FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
                     detallesUsuario.StartPosition = FormStartPosition.CenterParent;
@@ -134,7 +137,7 @@ namespace WindowsFormsUI.Formularios
                         detallesUsuario.Close();
                     }
                 }
-                else if (e.ColumnIndex == 8)
+                else if (e.ColumnIndex == 9)
                 {
                     Usuario usuario = _usuarioLogic.Find(userId);
 
@@ -147,7 +150,7 @@ namespace WindowsFormsUI.Formularios
                         RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
                     }
                 }
-                else if (e.ColumnIndex == 9)
+                else if (e.ColumnIndex == 10)
                 {
                     if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminación de usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
@@ -254,7 +257,7 @@ namespace WindowsFormsUI.Formularios
                         if ((bool)fila.Cells["Seleccion"].Value == true)
                         {
                             int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-                            _usuarioLogic.Delete(userId);                            
+                            _usuarioLogic.Delete(userId);
                         }
                     }
 

@@ -63,11 +63,9 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(Usuario usuario, bool cambiarClave)
         {
-            string hashPassword;
-
             if (cambiarClave)
             {
-                hashPassword = CryptoService.EncodePassword(usuario.Clave);
+                string hashPassword = CryptoService.EncodePassword(usuario.Clave);
                 usuario.Clave = hashPassword;
             }
 
