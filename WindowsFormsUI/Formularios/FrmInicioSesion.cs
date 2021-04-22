@@ -43,9 +43,9 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private void AutenticarUsuario(string user, string password)
+        private void AutenticarUsuario(string password)
         {
-            Usuario usuario = _usuarioLogic.Authentication(user, password);
+            Usuario usuario = _usuarioLogic.Authentication(password);
 
             if (usuario != null)
             {
@@ -54,7 +54,7 @@ namespace WindowsFormsUI.Formularios
                     UsuarioLogIn = usuario;
                     UsuarioLogIn.UltimoAcceso = DateTime.Now;
 
-                    _usuarioLogic.Edit(UsuarioLogIn);
+                    _usuarioLogic.Edit(UsuarioLogIn, false);
 
                     DialogResult = DialogResult.OK;
                 }
@@ -81,16 +81,18 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            ValidarControles();
-            if (_continuar)
-            {
-                string user, password;
+            //ValidarControles();
+            //if (_continuar)
+            //{
+            //    string user, password;
 
-                user = MTxtUsuario.Text.Replace("-", "");
-                password = TxtClave.Text;
+            //    user = MTxtUsuario.Text.Replace("-", "");
+            //    password = TxtClave.Text;
 
-                AutenticarUsuario(user, password);
-            }
+            //    AutenticarUsuario(password);
+            //}
+
+            DialogResult = DialogResult.OK;
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)

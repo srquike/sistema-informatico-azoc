@@ -16,11 +16,11 @@ namespace BusinessLogicLayer.Logics
             _usuarioRepository = new UsuarioRepository(new AzocDbContext());
         }
 
-        public Usuario Authentication(string userName, string password)
+        public Usuario Authentication(string password)
         {
-            string hashPassword = CryptoService.EncodePassword(string.Concat(userName, password));
+            string hashPassword = CryptoService.EncodePassword(password);
 
-            Usuario usuario = _usuarioRepository.Authentication(userName, hashPassword);
+            Usuario usuario = _usuarioRepository.Authentication(hashPassword);
 
             return usuario;
         }
@@ -53,7 +53,7 @@ namespace BusinessLogicLayer.Logics
 
         public void Create(Usuario usuario)
         {
-            string hashPassword = CryptoService.EncodePassword(string.Concat(usuario.Nombre, usuario.Clave));
+            string hashPassword = CryptoService.EncodePassword(usuario.Clave);
 
             usuario.Clave = hashPassword;
 
@@ -61,10 +61,19 @@ namespace BusinessLogicLayer.Logics
             _usuarioRepository.Save();
         }
 
-        public bool Edit(Usuario usuario)
+        public bool Edit(Usuario usuario, bool cambiarClave)
         {
+            string hashPassword;
+
+            if (cambiarClave)
+            {
+                hashPassword = CryptoService.EncodePassword(usuario.Clave);
+                usuario.Clave = hashPassword;
+            }
+
             _usuarioRepository.UpdateUsuario(usuario);
             _usuarioRepository.Save();
+
             return true;
         }
     }

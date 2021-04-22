@@ -82,5 +82,10 @@ namespace WindowsFormsUI.Formularios
             ObtenerPermisos(usuario.PermisoUsuarios);
             ObtenerAvatar(usuario.Nombre);
         }
+
+        private void FrmDetallesUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
     }
 }

@@ -19,38 +19,38 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
+            //string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
-            string nombreAvatar = _usuario.Nombre + ".jpg";
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string archivo = string.Concat(ruta, nombreAvatar);
+            //string nombreAvatar = _usuario.Nombre + ".jpg";
+            //string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            //string archivo = string.Concat(ruta, nombreAvatar);
 
-            if (File.Exists(archivo))
-            {
-                PctAvatar.Image = Image.FromFile(archivo);
-            }
-            else
-            {
-                if (_usuario.Empleado.Genero == "M")
-                {
-                    PctAvatar.Image = Properties.Resources.male_avatar_default;
-                }
-                else if (_usuario.Empleado.Genero == "F")
-                {
-                    PctAvatar.Image = Properties.Resources.female_avatar_default;
-                }
-            }
+            //if (File.Exists(archivo))
+            //{
+            //    PctAvatar.Image = Image.FromFile(archivo);
+            //}
+            //else
+            //{
+            //    if (_usuario.Empleado.Genero == "M")
+            //    {
+            //        PctAvatar.Image = Properties.Resources.male_avatar_default;
+            //    }
+            //    else if (_usuario.Empleado.Genero == "F")
+            //    {
+            //        PctAvatar.Image = Properties.Resources.female_avatar_default;
+            //    }
+            //}
 
-            if (_usuario.Empleado.Genero == "M")
-            {
-                LblSaludo.Text = "BIENVENIDO";
-            }
-            else if (_usuario.Empleado.Genero == "F")
-            {
-                LblSaludo.Text = "BIENVENIDA";
-            }
+            //if (_usuario.Empleado.Genero == "M")
+            //{
+            //    LblSaludo.Text = "BIENVENIDO";
+            //}
+            //else if (_usuario.Empleado.Genero == "F")
+            //{
+            //    LblSaludo.Text = "BIENVENIDA";
+            //}
 
-            TxtNombreEmpleado.Text = nombreEmpleado;
+            //TxtNombreEmpleado.Text = nombreEmpleado;
         }
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
