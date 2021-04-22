@@ -59,11 +59,6 @@ namespace WindowsFormsUI.Formularios
             return _usuarioLogic.List();
         }
 
-        private void BtnAgregarUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DgvListaUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var grid = sender as DataGridView;
@@ -113,6 +108,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
             FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
+            frmCrearUsuario.StartPosition = FormStartPosition.CenterParent;
 
             if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
             {
@@ -131,6 +127,7 @@ namespace WindowsFormsUI.Formularios
                 if (e.ColumnIndex == 7)
                 {
                     FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
+                    detallesUsuario.StartPosition = FormStartPosition.CenterParent;
                     detallesUsuario.ShowDialog();
                     if (detallesUsuario.DialogResult == DialogResult.OK)
                     {
@@ -140,16 +137,8 @@ namespace WindowsFormsUI.Formularios
                 else if (e.ColumnIndex == 8)
                 {
                     Usuario usuario = _usuarioLogic.Find(userId);
-                    FrmEditarUsuario editarUsuario = new FrmEditarUsuario(usuario);
-                    editarUsuario.ShowDialog();
-                    if (editarUsuario.DialogResult == DialogResult.OK)
-                    {
-                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                    }
-                    else
-                    {
-                        editarUsuario.Close();
-                    }
+                    
+                    
                 }
                 else if (e.ColumnIndex == 9)
                 {
@@ -245,6 +234,33 @@ namespace WindowsFormsUI.Formularios
             CmbTipoFiltro.SelectedIndex = 0;
 
             RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+        }
+
+        private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
+            {
+                if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Usuarios: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
+                    {
+                        if ((bool)fila.Cells["Seleccion"].Value == true)
+                        {
+                            int userId = Convert.ToInt32(fila.Cells["Id"].Value);
+                            _usuarioLogic.Delete(userId);                            
+                        }
+                    }
+
+                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                    _filasMarcadas = 0;
+                    LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                    CmbAcciones.SelectedIndex = 0;
+                }
+                else
+                {
+                    CmbAcciones.SelectedIndex = 0;
+                }
+            }
         }
     }
 }

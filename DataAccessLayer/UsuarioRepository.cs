@@ -48,7 +48,7 @@ namespace DataAccessLayer
 
         public Usuario GetUsuarioById(int id)
         {
-            Usuario usuario = _context.Usuarios.Find(id);
+            Usuario usuario = _context.Usuarios.Where(u => u.UsuarioId == id).Include(u => u.Empleado).Include(u => u.PermisoUsuarios).FirstOrDefault();
 
             return usuario;
         }

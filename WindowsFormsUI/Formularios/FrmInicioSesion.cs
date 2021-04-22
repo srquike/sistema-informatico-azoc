@@ -53,6 +53,9 @@ namespace WindowsFormsUI.Formularios
                 {
                     UsuarioLogIn = usuario;
                     UsuarioLogIn.UltimoAcceso = DateTime.Now;
+
+                    _usuarioLogic.Edit(UsuarioLogIn);
+
                     DialogResult = DialogResult.OK;
                 }
                 else

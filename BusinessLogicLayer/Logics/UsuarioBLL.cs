@@ -51,7 +51,7 @@ namespace BusinessLogicLayer.Logics
             return usuario;
         }
 
-        public bool Create(Usuario usuario)
+        public void Create(Usuario usuario)
         {
             string hashPassword = CryptoService.EncodePassword(string.Concat(usuario.Nombre, usuario.Clave));
 
@@ -59,7 +59,6 @@ namespace BusinessLogicLayer.Logics
 
             _usuarioRepository.InsertUsuario(usuario);
             _usuarioRepository.Save();
-            return true;
         }
 
         public bool Edit(Usuario usuario)
