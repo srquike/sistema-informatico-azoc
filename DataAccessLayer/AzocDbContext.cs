@@ -35,6 +35,8 @@ namespace DataAccessLayer
         public virtual DbSet<PermisoUsuario> PermisoUsuarios { get; set; }
         public virtual DbSet<TipoCuota> TipoCuota { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Registro> Registros { get; set; }
+        public virtual DbSet<RegistroUsuario> RegistroUsuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -595,6 +597,47 @@ namespace DataAccessLayer
                     .HasForeignKey(d => d.EmpleadoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Usuario__Emplead__30F848ED");
+            });
+
+            modelBuilder.Entity<RegistroUsuario>(entity =>
+            {
+                entity.ToTable("RegistroUsuario");
+
+                entity.Property(e => e.Fecha).HasColumnType("datetime");
+
+                entity.Property(e => e.Informacion)
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Registro)
+                    .WithMany(p => p.RegistroUsuarios)
+                    .HasForeignKey(d => d.RegistroId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__RegistroU__Regis__19DFD96B");
+
+                entity.HasOne(d => d.Usuario)
+                    .WithMany(p => p.RegistroUsuarios)
+                    .HasForeignKey(d => d.UsuarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__RegistroU__Regis__18EBB532");
+            });
+
+            modelBuilder.Entity<Registro>(entity =>
+            {
+                entity.ToTable("Registro");
+
+                entity.HasIndex(e => e.Nombre, "UQ__Registro__75E3EFCF5790DEAC")
+                    .IsUnique();
+
+                entity.Property(e => e.Descripcion)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Nombre)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);
