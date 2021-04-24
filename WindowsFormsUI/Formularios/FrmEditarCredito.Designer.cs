@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgregarCredito
+    partial class FrmEditarCredito
     {
         /// <summary>
         /// Required designer variable.
@@ -37,9 +37,6 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -93,10 +90,10 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(677, 90);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asociado";
             // 
@@ -106,7 +103,6 @@ namespace WindowsFormsUI.Formularios
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(146, 23);
             this.textBox2.TabIndex = 3;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label2
             // 
@@ -116,7 +112,6 @@ namespace WindowsFormsUI.Formularios
             this.label2.Size = new System.Drawing.Size(52, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Codigo :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox1
             // 
@@ -124,7 +119,6 @@ namespace WindowsFormsUI.Formularios
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(146, 23);
             this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -139,9 +133,6 @@ namespace WindowsFormsUI.Formularios
             // 
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.textBox15);
-            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.textBox14);
@@ -159,66 +150,39 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(3, 108);
+            this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(677, 478);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Credito";
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(581, 446);
+            this.button3.Location = new System.Drawing.Point(545, 410);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 22;
-            this.button3.Text = "Cancelar";
+            this.button3.Text = "Cerrar";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(500, 446);
+            this.button2.Location = new System.Drawing.Point(418, 410);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(121, 23);
             this.button2.TabIndex = 21;
-            this.button2.Text = "Limpiar";
+            this.button2.Text = "Guardar Cambios";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(419, 446);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(507, 396);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(146, 23);
-            this.textBox15.TabIndex = 19;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(448, 399);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(47, 15);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Deuda :";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(395, 369);
+            this.label13.Location = new System.Drawing.Point(389, 343);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 30);
+            this.label13.Size = new System.Drawing.Size(100, 15);
             this.label13.TabIndex = 9;
-            this.label13.Text = "Liquido y Resibir :\r\n\r\n";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label13.Text = "Liquido y Resibir :";
             // 
             // groupBox4
             // 
@@ -285,7 +249,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(507, 365);
+            this.textBox14.Location = new System.Drawing.Point(495, 338);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(146, 23);
             this.textBox14.TabIndex = 8;
@@ -529,7 +493,6 @@ namespace WindowsFormsUI.Formularios
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(146, 23);
             this.textBox3.TabIndex = 3;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label3
             // 
@@ -539,17 +502,16 @@ namespace WindowsFormsUI.Formularios
             this.label3.Size = new System.Drawing.Size(27, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "ID : ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // FrmAgregarCredito
+            // FrmEditarCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 598);
+            this.ClientSize = new System.Drawing.Size(711, 605);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FrmAgregarCredito";
-            this.Text = "AZOC de R. L - Agregar Nuevo Credito";
+            this.Name = "FrmEditarCredito";
+            this.Text = "AZOC de R. L - Editar Datos de Credito";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -574,8 +536,8 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
@@ -611,10 +573,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label3;
     }
 }

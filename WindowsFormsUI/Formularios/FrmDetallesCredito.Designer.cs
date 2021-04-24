@@ -35,13 +35,12 @@ namespace WindowsFormsUI.Formularios
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox16 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -77,8 +76,13 @@ namespace WindowsFormsUI.Formularios
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox19 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -136,6 +140,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox19);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.textBox18);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.textBox15);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label13);
@@ -157,49 +166,22 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 108);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(680, 478);
+            this.groupBox2.Size = new System.Drawing.Size(680, 528);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Credito";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(439, 609);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(350, 609);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(269, 609);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(507, 396);
+            this.textBox15.Location = new System.Drawing.Point(429, 421);
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(146, 23);
+            this.textBox15.Size = new System.Drawing.Size(130, 23);
             this.textBox15.TabIndex = 19;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(448, 399);
+            this.label14.Location = new System.Drawing.Point(379, 392);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 15);
             this.label14.TabIndex = 18;
@@ -208,14 +190,16 @@ namespace WindowsFormsUI.Formularios
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(395, 369);
+            this.label13.Location = new System.Drawing.Point(322, 421);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(100, 30);
+            this.label13.Size = new System.Drawing.Size(104, 15);
             this.label13.TabIndex = 9;
-            this.label13.Text = "Liquido y Resibir :\r\n\r\n";
+            this.label13.Text = "Liquido Resibido  :";
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.textBox17);
+            this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.textBox16);
             this.groupBox4.Controls.Add(this.label12);
@@ -224,12 +208,28 @@ namespace WindowsFormsUI.Formularios
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.textBox11);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Location = new System.Drawing.Point(395, 191);
+            this.groupBox4.Location = new System.Drawing.Point(347, 169);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(279, 167);
+            this.groupBox4.Size = new System.Drawing.Size(279, 199);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cuota";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(14, 135);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(73, 15);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Canceladas :";
+            // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(94, 132);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(146, 23);
+            this.textBox16.TabIndex = 8;
             // 
             // label12
             // 
@@ -281,9 +281,9 @@ namespace WindowsFormsUI.Formularios
             // 
             // textBox14
             // 
-            this.textBox14.Location = new System.Drawing.Point(507, 365);
+            this.textBox14.Location = new System.Drawing.Point(429, 389);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(146, 23);
+            this.textBox14.Size = new System.Drawing.Size(130, 23);
             this.textBox14.TabIndex = 8;
             // 
             // groupBox3
@@ -302,9 +302,9 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.Controls.Add(this.checkBox3);
             this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Location = new System.Drawing.Point(49, 181);
+            this.groupBox3.Location = new System.Drawing.Point(6, 169);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(333, 270);
+            this.groupBox3.Size = new System.Drawing.Size(310, 270);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Deducciones";
@@ -313,47 +313,47 @@ namespace WindowsFormsUI.Formularios
             // 
             this.textBox10.Location = new System.Drawing.Point(172, 31);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(146, 23);
+            this.textBox10.Size = new System.Drawing.Size(126, 23);
             this.textBox10.TabIndex = 22;
             // 
             // textBox9
             // 
             this.textBox9.Location = new System.Drawing.Point(172, 67);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(146, 23);
+            this.textBox9.Size = new System.Drawing.Size(126, 23);
             this.textBox9.TabIndex = 21;
             // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(172, 96);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(146, 23);
+            this.textBox8.Size = new System.Drawing.Size(126, 23);
             this.textBox8.TabIndex = 17;
             // 
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(172, 125);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(146, 23);
+            this.textBox7.Size = new System.Drawing.Size(126, 23);
             this.textBox7.TabIndex = 20;
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(172, 154);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(146, 23);
+            this.textBox6.Size = new System.Drawing.Size(126, 23);
             this.textBox6.TabIndex = 19;
             // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(172, 186);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(146, 23);
+            this.textBox5.Size = new System.Drawing.Size(126, 23);
             this.textBox5.TabIndex = 18;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(172, 234);
+            this.textBox4.Location = new System.Drawing.Point(140, 239);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(146, 23);
             this.textBox4.TabIndex = 4;
@@ -361,7 +361,7 @@ namespace WindowsFormsUI.Formularios
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 237);
+            this.label9.Location = new System.Drawing.Point(6, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(128, 15);
             this.label9.TabIndex = 17;
@@ -535,34 +535,73 @@ namespace WindowsFormsUI.Formularios
             this.label3.TabIndex = 2;
             this.label3.Text = "ID : ";
             // 
-            // label15
+            // button3
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 135);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(74, 15);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Cancelados :";
+            this.button3.Location = new System.Drawing.Point(585, 389);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(89, 23);
+            this.button3.TabIndex = 22;
+            this.button3.Text = "Cerrar";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // textBox16
+            // label16
             // 
-            this.textBox16.Location = new System.Drawing.Point(94, 132);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(146, 23);
-            this.textBox16.TabIndex = 8;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 169);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(68, 15);
+            this.label16.TabIndex = 10;
+            this.label16.Text = "Pendientes:";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(94, 166);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(146, 23);
+            this.textBox17.TabIndex = 11;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(314, 457);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(110, 15);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Interes Acumulado:";
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(429, 457);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(130, 23);
+            this.textBox18.TabIndex = 21;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(377, 492);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(47, 15);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Deuda :";
+            // 
+            // textBox19
+            // 
+            this.textBox19.Location = new System.Drawing.Point(429, 492);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(130, 23);
+            this.textBox19.TabIndex = 23;
             // 
             // FrmDetallesCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 675);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(704, 648);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
             this.Name = "FrmDetallesCredito";
-            this.Text = "FrmDetallesCredito";
+            this.Text = "AZOC de R. L - Detalles del Credito";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -629,7 +668,11 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Label label17;
     }
 }

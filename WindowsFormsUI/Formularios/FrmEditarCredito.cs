@@ -8,16 +8,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
-    public partial class FrmDetallesCredito : Form
+    public partial class FrmEditarCredito : Form
     {
-        public FrmDetallesCredito()
+        public FrmEditarCredito()
         {
             InitializeComponent();
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
