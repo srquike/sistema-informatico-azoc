@@ -1,4 +1,5 @@
 ﻿using BusinessObjectsLayer.Models;
+using BusinessLogicLayer.Logics;
 using System;
 using System.Windows.Forms;
 using System.IO;
@@ -9,12 +10,15 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmPrincipal : Form
     {
         private Usuario _usuario;
+        private RegistroUsuarioBLL _registroUsuarioLogic;
 
         public FrmPrincipal(Usuario usuario)
         {
             _usuario = usuario;
 
             InitializeComponent();
+
+            _registroUsuarioLogic = new RegistroUsuarioBLL();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -63,6 +67,18 @@ namespace WindowsFormsUI.Formularios
             if (MessageBox.Show("¿Esta seguro de querer salir del sistema?", "Cerrar sesión: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+            else
+            {
+                RegistroUsuario registro = new RegistroUsuario
+                {
+                    UsuarioId = _usuario.UsuarioId,
+                    RegistroId = 2,
+                    Fecha = DateTime.Now,
+                    Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
+                };
+
+                _registroUsuarioLogic.Create(registro);
             }
         }
 

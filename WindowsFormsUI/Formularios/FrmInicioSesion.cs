@@ -10,6 +10,7 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmInicioSesion : Form
     {
         private UsuarioBLL _usuarioLogic;
+        private readonly RegistroUsuarioBLL _registroUsuarioLogic;
         private bool _continuar = false;
         public Usuario UsuarioLogIn;
         
@@ -19,6 +20,7 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
 
             _usuarioLogic = new UsuarioBLL();
+            _registroUsuarioLogic = new RegistroUsuarioBLL();
         }
 
         private void ValidarControles()
@@ -55,6 +57,16 @@ namespace WindowsFormsUI.Formularios
                     UsuarioLogIn.UltimoAcceso = DateTime.Now;
 
                     _usuarioLogic.Edit(UsuarioLogIn, false);
+
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = UsuarioLogIn.UsuarioId,
+                        RegistroId = 1,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Inicio de sesión del usuario {UsuarioLogIn.Nombre}"
+                    };
+
+                    _registroUsuarioLogic.Create(registro);
 
                     DialogResult = DialogResult.OK;
                 }

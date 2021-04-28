@@ -47,18 +47,10 @@ namespace BusinessLogicLayer.Logics
             return _registroUsuarioRepository.GetRegistroUsuarioById(id);
         }
 
-        public bool Create(RegistroUsuario registroUsuario)
+        public void Create(RegistroUsuario registroUsuario)
         {
-            try
-            {
-                _registroUsuarioRepository.InsertRegistroUsuario(registroUsuario);
-                _registroUsuarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            _registroUsuarioRepository.InsertRegistroUsuario(registroUsuario);
+            _registroUsuarioRepository.Save();
         }
 
         public bool Edit(RegistroUsuario registroUsuario)

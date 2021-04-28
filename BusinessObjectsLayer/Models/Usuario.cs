@@ -24,5 +24,6 @@ namespace BusinessObjectsLayer.Models
 
         public virtual Empleado Empleado { get; set; }
         public virtual ICollection<PermisoUsuario> PermisoUsuarios { get; set; }
+        public virtual ICollection<RegistroUsuario> RegistroUsuarios { get; set; }
     }
 }
