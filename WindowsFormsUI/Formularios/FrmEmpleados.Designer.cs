@@ -330,6 +330,8 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaEmpleados.Size = new System.Drawing.Size(1214, 385);
             this.DgvListaEmpleados.TabIndex = 15;
+            this.DgvListaEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmpleados_CellContentClick);
+            this.DgvListaEmpleados.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvListaEmpleados_RowPostPaint);
             // 
             // Seleccion
             // 
@@ -459,6 +461,7 @@ namespace WindowsFormsUI.Formularios
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEmpleados";
             this.Text = "FrmEmpleados";
+            this.Load += new System.EventHandler(this.FrmEmpleados_Load);
             this.PnlBarraSuperior.ResumeLayout(false);
             this.PnlBarraSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).EndInit();

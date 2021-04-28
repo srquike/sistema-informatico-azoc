@@ -49,7 +49,7 @@ namespace DataAccessLayer
 
         public IEnumerable<Empleado> GetEmpleados()
         {
-            return _context.Empleados.ToList();
+            return _context.Empleados.Include(e => e.Cargo).ToList();
         }
 
         public void InsertEmpleado(Empleado empleado)

@@ -29,14 +29,19 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MTxtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.MTxtDui = new System.Windows.Forms.MaskedTextBox();
             this.MTxtNit = new System.Windows.Forms.MaskedTextBox();
             this.CmbDepartamentos = new System.Windows.Forms.ComboBox();
+            this.CmbCargos = new System.Windows.Forms.ComboBox();
             this.TxtDireccion = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.CmbMunicipios = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.CmbGeneros = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -47,8 +52,6 @@ namespace WindowsFormsUI.Formularios
             this.DtpFNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.CmbCargos = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.TxtTApellido = new System.Windows.Forms.TextBox();
             this.TxtTNombre = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,18 +68,24 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear = new System.Windows.Forms.Button();
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.MTxtTelefono);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.MTxtDui);
             this.groupBox1.Controls.Add(this.MTxtNit);
             this.groupBox1.Controls.Add(this.CmbDepartamentos);
+            this.groupBox1.Controls.Add(this.CmbCargos);
             this.groupBox1.Controls.Add(this.TxtDireccion);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.TxtEmail);
-            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.CmbMunicipios);
+            this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.CmbGeneros);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label15);
@@ -87,8 +96,6 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Controls.Add(this.DtpFNacimiento);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.CmbCargos);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.TxtTApellido);
             this.groupBox1.Controls.Add(this.TxtTNombre);
             this.groupBox1.Controls.Add(this.label7);
@@ -105,31 +112,55 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1024, 247);
+            this.groupBox1.Size = new System.Drawing.Size(1118, 297);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // MTxtTelefono
+            // 
+            this.MTxtTelefono.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtTelefono.HidePromptOnLeave = true;
+            this.MTxtTelefono.Location = new System.Drawing.Point(168, 209);
+            this.MTxtTelefono.Mask = "0000-0000";
+            this.MTxtTelefono.Name = "MTxtTelefono";
+            this.MTxtTelefono.PromptChar = '-';
+            this.MTxtTelefono.Size = new System.Drawing.Size(200, 27);
+            this.MTxtTelefono.TabIndex = 13;
+            this.MTxtTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(88, 212);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 20);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Teléfono :";
+            // 
             // MTxtDui
             // 
+            this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtDui.HidePromptOnLeave = true;
-            this.MTxtDui.Location = new System.Drawing.Point(492, 212);
+            this.MTxtDui.Location = new System.Drawing.Point(534, 209);
             this.MTxtDui.Mask = "00000000-0";
             this.MTxtDui.Name = "MTxtDui";
             this.MTxtDui.PromptChar = '-';
-            this.MTxtDui.Size = new System.Drawing.Size(197, 27);
+            this.MTxtDui.Size = new System.Drawing.Size(200, 27);
             this.MTxtDui.TabIndex = 14;
             this.MTxtDui.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // MTxtNit
             // 
+            this.MTxtNit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtNit.HidePromptOnLeave = true;
-            this.MTxtNit.Location = new System.Drawing.Point(130, 212);
+            this.MTxtNit.Location = new System.Drawing.Point(886, 209);
             this.MTxtNit.Mask = "0000-000000-000-0";
             this.MTxtNit.Name = "MTxtNit";
             this.MTxtNit.PromptChar = '-';
-            this.MTxtNit.Size = new System.Drawing.Size(194, 27);
-            this.MTxtNit.TabIndex = 13;
+            this.MTxtNit.Size = new System.Drawing.Size(202, 27);
+            this.MTxtNit.TabIndex = 15;
             this.MTxtNit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // CmbDepartamentos
@@ -138,6 +169,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbDepartamentos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbDepartamentos.FormattingEnabled = true;
             this.CmbDepartamentos.Items.AddRange(new object[] {
+            "-- Seleccionar --",
             "Ahuachapán",
             "Santa Ana",
             "Sonsonate",
@@ -152,48 +184,83 @@ namespace WindowsFormsUI.Formularios
             "Chalatenango",
             "Cuscatlán",
             "San Salvador"});
-            this.CmbDepartamentos.Location = new System.Drawing.Point(492, 164);
+            this.CmbDepartamentos.Location = new System.Drawing.Point(168, 164);
             this.CmbDepartamentos.Name = "CmbDepartamentos";
-            this.CmbDepartamentos.Size = new System.Drawing.Size(197, 28);
-            this.CmbDepartamentos.TabIndex = 11;
+            this.CmbDepartamentos.Size = new System.Drawing.Size(200, 28);
+            this.CmbDepartamentos.TabIndex = 10;
+            // 
+            // CmbCargos
+            // 
+            this.CmbCargos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbCargos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbCargos.FormattingEnabled = true;
+            this.CmbCargos.Location = new System.Drawing.Point(886, 258);
+            this.CmbCargos.Name = "CmbCargos";
+            this.CmbCargos.Size = new System.Drawing.Size(202, 28);
+            this.CmbCargos.TabIndex = 16;
             // 
             // TxtDireccion
             // 
             this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDireccion.Location = new System.Drawing.Point(130, 164);
+            this.TxtDireccion.Location = new System.Drawing.Point(886, 116);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.PlaceholderText = "Escriba la dirección";
-            this.TxtDireccion.Size = new System.Drawing.Size(194, 27);
-            this.TxtDireccion.TabIndex = 10;
+            this.TxtDireccion.Size = new System.Drawing.Size(202, 27);
+            this.TxtDireccion.TabIndex = 9;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(824, 261);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 20);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Cargo :";
             // 
             // TxtEmail
             // 
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.Location = new System.Drawing.Point(822, 212);
+            this.TxtEmail.Location = new System.Drawing.Point(886, 164);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.PlaceholderText = "Escriba el email";
-            this.TxtEmail.Size = new System.Drawing.Size(190, 27);
-            this.TxtEmail.TabIndex = 15;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(751, 215);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 20);
-            this.label16.TabIndex = 30;
-            this.label16.Text = " Correo :";
+            this.TxtEmail.Size = new System.Drawing.Size(202, 27);
+            this.TxtEmail.TabIndex = 12;
             // 
             // CmbMunicipios
             // 
             this.CmbMunicipios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbMunicipios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbMunicipios.FormattingEnabled = true;
-            this.CmbMunicipios.Location = new System.Drawing.Point(822, 164);
+            this.CmbMunicipios.Items.AddRange(new object[] {
+            "-- Seleccionar --",
+            "Candelaria de la Frontera",
+            "Chalchuapa",
+            "Coatepeque",
+            "El Congo",
+            "El Porvenir",
+            "Masahuat",
+            "Metapán",
+            "San Antonio Pajonal",
+            "San Sebastián Salitrillo",
+            "Santa Ana",
+            "Santa Rosa Guachipilín",
+            "Santiago de la Frontera",
+            "Texistepeque"});
+            this.CmbMunicipios.Location = new System.Drawing.Point(534, 161);
             this.CmbMunicipios.Name = "CmbMunicipios";
-            this.CmbMunicipios.Size = new System.Drawing.Size(190, 28);
-            this.CmbMunicipios.TabIndex = 12;
+            this.CmbMunicipios.Size = new System.Drawing.Size(200, 28);
+            this.CmbMunicipios.TabIndex = 11;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(821, 167);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 20);
+            this.label16.TabIndex = 30;
+            this.label16.Text = "E-mail :";
             // 
             // CmbGeneros
             // 
@@ -201,19 +268,19 @@ namespace WindowsFormsUI.Formularios
             this.CmbGeneros.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbGeneros.FormattingEnabled = true;
             this.CmbGeneros.Items.AddRange(new object[] {
-            "-- Seleccione --",
+            "-- Seleccionar --",
             "Femenino",
             "Masculino"});
-            this.CmbGeneros.Location = new System.Drawing.Point(822, 116);
+            this.CmbGeneros.Location = new System.Drawing.Point(534, 113);
             this.CmbGeneros.Name = "CmbGeneros";
-            this.CmbGeneros.Size = new System.Drawing.Size(190, 28);
-            this.CmbGeneros.TabIndex = 9;
+            this.CmbGeneros.Size = new System.Drawing.Size(200, 28);
+            this.CmbGeneros.TabIndex = 8;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(728, 167);
+            this.label11.Location = new System.Drawing.Point(442, 167);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 20;
@@ -223,7 +290,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(746, 119);
+            this.label15.Location = new System.Drawing.Point(460, 116);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 28;
@@ -233,7 +300,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(81, 215);
+            this.label14.Location = new System.Drawing.Point(837, 212);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 20);
             this.label14.TabIndex = 26;
@@ -243,7 +310,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(441, 215);
+            this.label13.Location = new System.Drawing.Point(483, 212);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 20);
             this.label13.TabIndex = 24;
@@ -253,7 +320,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(41, 167);
+            this.label12.Location = new System.Drawing.Point(797, 119);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 22;
@@ -262,10 +329,10 @@ namespace WindowsFormsUI.Formularios
             // TxtSNombre
             // 
             this.TxtSNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSNombre.Location = new System.Drawing.Point(492, 20);
+            this.TxtSNombre.Location = new System.Drawing.Point(534, 20);
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.PlaceholderText = "Escriba el segundo nombre";
-            this.TxtSNombre.Size = new System.Drawing.Size(197, 27);
+            this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 2;
             // 
             // DtpFNacimiento
@@ -273,18 +340,18 @@ namespace WindowsFormsUI.Formularios
             this.DtpFNacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.DtpFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DtpFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFNacimiento.Location = new System.Drawing.Point(492, 114);
+            this.DtpFNacimiento.Location = new System.Drawing.Point(168, 114);
             this.DtpFNacimiento.MaxDate = new System.DateTime(2021, 4, 27, 0, 0, 0, 0);
             this.DtpFNacimiento.Name = "DtpFNacimiento";
-            this.DtpFNacimiento.Size = new System.Drawing.Size(197, 27);
-            this.DtpFNacimiento.TabIndex = 8;
+            this.DtpFNacimiento.Size = new System.Drawing.Size(200, 27);
+            this.DtpFNacimiento.TabIndex = 7;
             this.DtpFNacimiento.Value = new System.DateTime(2021, 4, 19, 12, 32, 5, 0);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(330, 119);
+            this.label10.Location = new System.Drawing.Point(6, 119);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 20);
             this.label10.TabIndex = 17;
@@ -294,55 +361,35 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(369, 167);
+            this.label9.Location = new System.Drawing.Point(45, 167);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 15;
             this.label9.Text = " Departamento :";
             // 
-            // CmbCargos
-            // 
-            this.CmbCargos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbCargos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbCargos.FormattingEnabled = true;
-            this.CmbCargos.Location = new System.Drawing.Point(130, 116);
-            this.CmbCargos.Name = "CmbCargos";
-            this.CmbCargos.Size = new System.Drawing.Size(194, 28);
-            this.CmbCargos.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(68, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 20);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Cargo :";
-            // 
             // TxtTApellido
             // 
             this.TxtTApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTApellido.Location = new System.Drawing.Point(822, 68);
+            this.TxtTApellido.Location = new System.Drawing.Point(886, 68);
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.PlaceholderText = "Escriba el tercer apellido";
-            this.TxtTApellido.Size = new System.Drawing.Size(190, 27);
+            this.TxtTApellido.Size = new System.Drawing.Size(202, 27);
             this.TxtTApellido.TabIndex = 6;
             // 
             // TxtTNombre
             // 
             this.TxtTNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTNombre.Location = new System.Drawing.Point(822, 20);
+            this.TxtTNombre.Location = new System.Drawing.Point(886, 20);
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.PlaceholderText = "Escriba el tercer nombre";
-            this.TxtTNombre.Size = new System.Drawing.Size(190, 27);
+            this.TxtTNombre.Size = new System.Drawing.Size(202, 27);
             this.TxtTNombre.TabIndex = 3;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(697, 71);
+            this.label7.Location = new System.Drawing.Point(763, 71);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 10;
@@ -352,7 +399,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(701, 23);
+            this.label6.Location = new System.Drawing.Point(767, 23);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 9;
@@ -361,17 +408,17 @@ namespace WindowsFormsUI.Formularios
             // TxtSApellido
             // 
             this.TxtSApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSApellido.Location = new System.Drawing.Point(492, 68);
+            this.TxtSApellido.Location = new System.Drawing.Point(534, 68);
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.PlaceholderText = "Escriba el segundo apellido";
-            this.TxtSApellido.Size = new System.Drawing.Size(197, 27);
+            this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(350, 71);
+            this.label5.Location = new System.Drawing.Point(392, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 7;
@@ -389,7 +436,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(197, 161);
+            this.label4.Location = new System.Drawing.Point(235, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 5;
@@ -398,7 +445,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(4, 71);
+            this.label3.Location = new System.Drawing.Point(42, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 4;
@@ -407,17 +454,17 @@ namespace WindowsFormsUI.Formularios
             // TxtPApellido
             // 
             this.TxtPApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPApellido.Location = new System.Drawing.Point(130, 68);
+            this.TxtPApellido.Location = new System.Drawing.Point(168, 68);
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.PlaceholderText = "Escriba el primer apellido";
-            this.TxtPApellido.Size = new System.Drawing.Size(194, 27);
+            this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(352, 23);
+            this.label2.Location = new System.Drawing.Point(394, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 2;
@@ -426,17 +473,17 @@ namespace WindowsFormsUI.Formularios
             // TxtPNombre
             // 
             this.TxtPNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPNombre.Location = new System.Drawing.Point(130, 20);
+            this.TxtPNombre.Location = new System.Drawing.Point(168, 20);
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.PlaceholderText = "Escriba el primer nombre";
-            this.TxtPNombre.Size = new System.Drawing.Size(194, 27);
+            this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(44, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
@@ -452,13 +499,14 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.ForeColor = System.Drawing.Color.Black;
             this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrear.Location = new System.Drawing.Point(756, 265);
+            this.BtnCrear.Location = new System.Drawing.Point(850, 315);
             this.BtnCrear.Name = "BtnCrear";
             this.BtnCrear.Size = new System.Drawing.Size(160, 35);
-            this.BtnCrear.TabIndex = 16;
+            this.BtnCrear.TabIndex = 17;
             this.BtnCrear.Text = "Crear empleado";
             this.BtnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrear.UseVisualStyleBackColor = false;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // BtnLimpiarControles
             // 
@@ -470,10 +518,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(922, 265);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(1016, 315);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
-            this.BtnLimpiarControles.TabIndex = 17;
+            this.BtnLimpiarControles.TabIndex = 18;
             this.BtnLimpiarControles.Text = "Limpiar";
             this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiarControles.UseVisualStyleBackColor = false;
@@ -488,12 +536,16 @@ namespace WindowsFormsUI.Formularios
             this.comboBox1.Size = new System.Drawing.Size(190, 28);
             this.comboBox1.TabIndex = 33;
             // 
+            // ErrPControles
+            // 
+            this.ErrPControles.ContainerControl = this;
+            // 
             // FrmAgregarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1049, 312);
+            this.ClientSize = new System.Drawing.Size(1142, 363);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox1);
@@ -504,6 +556,7 @@ namespace WindowsFormsUI.Formularios
             this.Load += new System.EventHandler(this.FrmAgregarEmpleado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -546,5 +599,8 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.MaskedTextBox MTxtDui;
         private System.Windows.Forms.MaskedTextBox MTxtNit;
+        private System.Windows.Forms.ErrorProvider ErrPControles;
+        private System.Windows.Forms.MaskedTextBox MTxtTelefono;
+        private System.Windows.Forms.Label label17;
     }
 }

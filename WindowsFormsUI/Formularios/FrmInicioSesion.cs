@@ -93,18 +93,18 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            ValidarControles();
-            if (_continuar)
-            {
-                string user, password;
+            //ValidarControles();
+            //if (_continuar)
+            //{
+            //    string user, password;
 
-                user = MTxtUsuario.Text.Replace("-", "");
-                password = TxtClave.Text;
+            //    user = MTxtUsuario.Text.Replace("-", "");
+            //    password = TxtClave.Text;
 
-                AutenticarUsuario(password);
-            }
+            //    AutenticarUsuario(password);
+            //}
 
-            //DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)
