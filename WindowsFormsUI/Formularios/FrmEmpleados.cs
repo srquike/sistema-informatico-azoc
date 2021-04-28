@@ -14,5 +14,21 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
         }
+
+        private void BtnCrearNuevo_Click(object sender, EventArgs e)
+        {
+            FrmAgregarEmpleado frmAgregar = new FrmAgregarEmpleado();
+            frmAgregar.StartPosition = FormStartPosition.CenterParent;
+            frmAgregar.ShowDialog();
+
+            if (frmAgregar.DialogResult == DialogResult.OK)
+            {
+                // Actualizar DataGridView
+            }
+            else
+            {
+                frmAgregar.Close();
+            }
+        }
     }
 }
