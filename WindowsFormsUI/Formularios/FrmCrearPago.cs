@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
-    public partial class FrmAgragarPago : Form
+    public partial class FrmCrearPago : Form
     {
-        public FrmAgragarPago()
+        public FrmCrearPago()
         {
             InitializeComponent();
         }

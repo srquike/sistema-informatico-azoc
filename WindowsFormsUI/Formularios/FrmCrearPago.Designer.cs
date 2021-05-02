@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgragarPago
+    partial class FrmCrearPago
     {
         /// <summary>
         /// Required designer variable.
