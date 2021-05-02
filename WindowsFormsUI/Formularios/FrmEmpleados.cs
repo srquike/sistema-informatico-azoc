@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using BusinessObjectsLayer.Models;
 using BusinessLogicLayer.Logics;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace WindowsFormsUI.Formularios
 { 
@@ -67,7 +68,9 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
+            CmbTipoFiltro.SelectedIndex = 0;
             ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+            CmbAcciones.SelectedIndex = 0;
         }
 
         private void DgvListaEmpleados_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -176,5 +179,98 @@ namespace WindowsFormsUI.Formularios
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
         #endregion
+
+        private void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxtBusqueda.Text))
+            {
+                string busqueda = TxtBusqueda.Text;
+                var empleados = _empleadoLogic.List();
+
+                var resultados = from empleado in empleados where empleado.PrimerNombre.Contains(busqueda) || empleado.PrimerApellido.Contains(busqueda) || empleado.Dui == busqueda || empleado.Nit == busqueda || empleado.Telefono == busqueda select empleado;
+
+                ActualizarDataGridView(ref DgvListaEmpleados, resultados);
+                LLblQuitarBusqueda.Enabled = true;
+            }
+        }
+
+        private void LLblQuitarBusqueda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LLblQuitarBusqueda.Enabled = false;
+            TxtBusqueda.Text = string.Empty;
+            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+        }
+
+        private void CmbTipoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
+            {
+                CmbFiltro.Enabled = true;
+                CmbFiltro.Items.Add("Masculino");
+                CmbFiltro.Items.Add("Femenino");
+                CmbFiltro.SelectedIndex = 0;
+            }
+            else
+            {
+                CmbFiltro.Items.Clear();
+                CmbFiltro.Enabled = false;
+            }
+        }
+
+        private void BtnAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
+            {
+                LLblQuitarFiltro.Enabled = true;
+                string genero;
+                if (CmbFiltro.SelectedItem.ToString() == "Femenino")
+                {
+                    genero = "F";
+                }
+                else
+                {
+                    genero = "M";
+                }
+
+                var empleados = _empleadoLogic.List();
+                var resultados = from empleado in empleados where empleado.Genero == genero select empleado;
+
+                ActualizarDataGridView(ref DgvListaEmpleados, resultados);
+            }
+        }
+
+        private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LLblQuitarFiltro.Enabled = false;
+            CmbTipoFiltro.SelectedIndex = 0;
+            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+        }
+
+        private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
+            {
+                if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
+                    {
+                        if ((bool)fila.Cells["Seleccion"].Value == true)
+                        {
+                            int id = Convert.ToInt32(fila.Cells["Id"].Value);
+                            _empleadoLogic.Delete(id);
+                        }
+                    }
+
+                    ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+                    _filasMarcadas = 0;
+                    LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                    CmbAcciones.SelectedIndex = 0;
+                }
+                else
+                {
+                    CmbAcciones.SelectedIndex = 0;
+                }
+            }
+        }
     }
 }
