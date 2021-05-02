@@ -52,7 +52,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
-            FrmAgregarEmpleado frmAgregar = new FrmAgregarEmpleado();
+            FrmCrearEmpleado frmAgregar = new FrmCrearEmpleado();
             frmAgregar.StartPosition = FormStartPosition.CenterParent;
             frmAgregar.ShowDialog();
 

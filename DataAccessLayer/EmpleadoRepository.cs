@@ -44,12 +44,12 @@ namespace DataAccessLayer
 
         public Empleado GetEmpleadoById(int id)
         {
-            return _context.Empleados.Find(id);
+            return _context.Empleados.Where(e => e.EmpleadoId == id).Include(e => e.Cargo).AsNoTracking().FirstOrDefault();
         }
 
         public IEnumerable<Empleado> GetEmpleados()
         {
-            return _context.Empleados.Include(e => e.Cargo).ToList();
+            return _context.Empleados.Include(e => e.Cargo).AsNoTracking().ToList();
         }
 
         public void InsertEmpleado(Empleado empleado)

@@ -11,13 +11,13 @@ using BusinessLogicLayer.Logics;
 
 namespace WindowsFormsUI.Formularios
 {
-    public partial class FrmAgregarEmpleado : Form
+    public partial class FrmCrearEmpleado : Form
     {
         private readonly CargoBLL _cargoLogic;
         private readonly EmpleadoBLL _empleadoLogic;
         private bool _continuar;
 
-        public FrmAgregarEmpleado()
+        public FrmCrearEmpleado()
         {
             InitializeComponent();
 

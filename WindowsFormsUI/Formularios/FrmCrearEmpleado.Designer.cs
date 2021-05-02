@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgregarEmpleado
+    partial class FrmCrearEmpleado
     {
         /// <summary>
         /// Required designer variable.
@@ -540,7 +540,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ErrPControles.ContainerControl = this;
             // 
-            // FrmAgregarEmpleado
+            // FrmCrearEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -550,7 +550,7 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.Name = "FrmAgregarEmpleado";
+            this.Name = "FrmCrearEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cooperativa AZOC de R. L. - Creación de empleado";
             this.Load += new System.EventHandler(this.FrmAgregarEmpleado_Load);
