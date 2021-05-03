@@ -109,7 +109,7 @@ namespace WindowsFormsUI.Formularios
                 }
                 else if (e.ColumnIndex == 9)
                 {
-                    FrmEditarEmpleado frmEditar = new FrmEditarEmpleado();
+                    FrmEditarEmpleado frmEditar = new FrmEditarEmpleado(empleadoId);
                     frmEditar.StartPosition = FormStartPosition.CenterParent;
                     frmEditar.ShowDialog();
 
