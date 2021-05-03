@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -84,29 +85,6 @@ namespace WindowsFormsUI.Formularios
             RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
         }
 
-        private void BtnMinimizar_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-
-        private void BtnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                BtnMaximizar.Image = Properties.Resources.normal;
-            }
-            else if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                BtnMaximizar.Image = Properties.Resources.maximize;
-            }
-        }
-
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
@@ -272,5 +250,37 @@ namespace WindowsFormsUI.Formularios
                 }
             }
         }
+
+        #region Codigo para la barra superior del formulario
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void BtnMaximizar_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+                BtnMaximizar.Image = Properties.Resources.normal;
+            }
+            else if (WindowState == FormWindowState.Maximized)
+            {
+                WindowState = FormWindowState.Normal;
+                BtnMaximizar.Image = Properties.Resources.maximize;
+            }
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void PnlBarraSuperior_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+        #endregion
     }
 }
