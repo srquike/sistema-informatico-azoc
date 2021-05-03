@@ -44,12 +44,17 @@ namespace DataAccessLayer
 
         public Credito GetCreditoById(int id)
         {
-            return _context.Creditos.Find(id);
+            return _context.Creditos.Where(c => c.CreditoId == id)
+                .Include(c => c.Asociado)
+                .AsNoTracking()
+                .FirstOrDefault();
         }
 
         public IEnumerable<Credito> GetCreditos()
         {
-            return _context.Creditos.ToList();
+            return _context.Creditos.AsNoTracking()
+                .Include(c => c.Asociado)
+                .ToList();
         }
 
         public void InsertCredito(Credito credito)
