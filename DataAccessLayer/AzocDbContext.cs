@@ -328,7 +328,7 @@ namespace DataAccessLayer
                 entity.Property(e => e.Monto).HasColumnType("money");
 
                 entity.HasOne(d => d.Credito)
-                    .WithMany(p => p.Cuota)
+                    .WithMany(p => p.Cuotas)
                     .HasForeignKey(d => d.CreditoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Cuota__CreditoId__5441852A");
@@ -369,7 +369,7 @@ namespace DataAccessLayer
                 entity.ToTable("DeduccionCredito");
 
                 entity.HasOne(d => d.Credito)
-                    .WithMany(p => p.DeduccionCreditos)
+                    .WithMany(p => p.DeduccionesCredito)
                     .HasForeignKey(d => d.CreditoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Deduccion__Credi__5AEE82B9");

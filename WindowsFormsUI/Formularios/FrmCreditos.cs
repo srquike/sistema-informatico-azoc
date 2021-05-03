@@ -27,11 +27,11 @@ namespace WindowsFormsUI.Formularios
 
             foreach (Credito credito in creditos)
             {
+                string fechaInicio = string.Format("{0:dd/MM/yyyy}", credito.FechaInicio);
                 string monto = string.Format("{0:C}", credito.Monto);
-                string interes = string.Format("0:P", credito.TasaInteres);
                 string nombreAsociado = string.Concat(credito.Asociado.PrimerNombre, " ", credito.Asociado.SegundoNombre, " ", credito.Asociado.TercerNombre, " ", credito.Asociado.PrimerApellido, " ", credito.Asociado.SegundoApellido, " ", credito.Asociado.TercerNombre);
 
-                data.Rows.Add(false, credito.CreditoId, monto, interes, credito.CantidadCuotas, credito.FechaInicio, credito.EstadoCredito, nombreAsociado);
+                data.Rows.Add(false, credito.CreditoId, monto, credito.TasaInteres, credito.Cuotas.Count, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
             }
 
             data.ClearSelection();
@@ -40,6 +40,13 @@ namespace WindowsFormsUI.Formularios
         private void FrmCreditos_Load(object sender, EventArgs e)
         {
             ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+        }
+
+        private void BtnCrearNuevo_Click(object sender, EventArgs e)
+        {
+            FrmCrearCredito frmCrear = new FrmCrearCredito();
+            frmCrear.StartPosition = FormStartPosition.CenterParent;
+            frmCrear.ShowDialog();
         }
     }
 }

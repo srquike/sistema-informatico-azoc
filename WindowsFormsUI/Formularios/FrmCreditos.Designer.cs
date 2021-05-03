@@ -29,9 +29,9 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@ namespace WindowsFormsUI.Formularios
             this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Asociado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -231,6 +231,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearNuevo.Text = "Crear nuevo";
             this.BtnCrearNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrearNuevo.UseVisualStyleBackColor = false;
+            this.BtnCrearNuevo.Click += new System.EventHandler(this.BtnCrearNuevo_Click);
             // 
             // LblTitulo
             // 
@@ -289,14 +290,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -306,24 +307,24 @@ namespace WindowsFormsUI.Formularios
             this.Cuotas,
             this.Fecha,
             this.Estado,
-            this.Empleado,
+            this.Asociado,
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvLista.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvLista.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvLista.Location = new System.Drawing.Point(12, 163);
             this.DgvLista.Name = "DgvLista";
             this.DgvLista.ReadOnly = true;
             this.DgvLista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvLista.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvLista.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvLista.RowTemplate.Height = 25;
             this.DgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvLista.Size = new System.Drawing.Size(1214, 385);
@@ -388,11 +389,11 @@ namespace WindowsFormsUI.Formularios
             this.Estado.ReadOnly = true;
             this.Estado.Width = 81;
             // 
-            // Empleado
+            // Asociado
             // 
-            this.Empleado.HeaderText = "Pertenece a";
-            this.Empleado.Name = "Empleado";
-            this.Empleado.ReadOnly = true;
+            this.Asociado.HeaderText = "Nombre de asociado";
+            this.Asociado.Name = "Asociado";
+            this.Asociado.ReadOnly = true;
             // 
             // Detalles
             // 
@@ -493,7 +494,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuotas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Asociado;
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;

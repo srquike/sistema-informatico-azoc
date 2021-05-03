@@ -54,6 +54,8 @@ namespace DataAccessLayer
         {
             return _context.Creditos.AsNoTracking()
                 .Include(c => c.Asociado)
+                .Include(c => c.EstadoCredito)
+                .Include(c => c.Cuotas)
                 .ToList();
         }
 

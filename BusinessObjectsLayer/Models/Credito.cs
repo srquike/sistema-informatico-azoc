@@ -9,8 +9,8 @@ namespace BusinessObjectsLayer.Models
     {
         public Credito()
         {
-            Cuota = new HashSet<Cuota>();
-            DeduccionCreditos = new HashSet<DeduccionCredito>();
+            Cuotas = new HashSet<Cuota>();
+            DeduccionesCredito = new HashSet<DeduccionCredito>();
         }
 
         public int CreditoId { get; set; }
@@ -24,7 +24,7 @@ namespace BusinessObjectsLayer.Models
 
         public virtual Asociado Asociado { get; set; }
         public virtual EstadoCredito EstadoCredito { get; set; }
-        public virtual ICollection<Cuota> Cuota { get; set; }
-        public virtual ICollection<DeduccionCredito> DeduccionCreditos { get; set; }
+        public virtual ICollection<Cuota> Cuotas { get; set; }
+        public virtual ICollection<DeduccionCredito> DeduccionesCredito { get; set; }
     }
 }
