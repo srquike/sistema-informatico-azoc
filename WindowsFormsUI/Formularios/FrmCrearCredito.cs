@@ -15,6 +15,7 @@ namespace WindowsFormsUI.Formularios
     {
         private readonly AsociadoBLL _asociadoLogic;
         private readonly CreditoBLL _creditoLogic;
+        private readonly DeduccionBLL _deduccionLogic;
 
         public FrmCrearCredito()
         {
@@ -22,6 +23,7 @@ namespace WindowsFormsUI.Formularios
 
             _asociadoLogic = new AsociadoBLL();
             _creditoLogic = new CreditoBLL();
+            _deduccionLogic = new DeduccionBLL();
         }
 
         private void ActualizarAsociados(ref ComboBox comboBox)

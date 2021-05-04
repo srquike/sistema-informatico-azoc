@@ -85,7 +85,6 @@ namespace WindowsFormsUI.Formularios
             RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
         }
 
-
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
             FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();

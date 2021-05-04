@@ -35,8 +35,6 @@ namespace WindowsFormsUI.Formularios
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,9 +72,10 @@ namespace WindowsFormsUI.Formularios
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnCrear = new System.Windows.Forms.Button();
+            this.BtnLimpiarControles = new System.Windows.Forms.Button();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -84,6 +83,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -95,7 +95,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(781, 58);
+            this.groupBox1.Size = new System.Drawing.Size(750, 58);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asociado";
@@ -121,7 +121,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtCodigo.Location = new System.Drawing.Point(513, 20);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.ReadOnly = true;
-            this.TxtCodigo.Size = new System.Drawing.Size(262, 27);
+            this.TxtCodigo.Size = new System.Drawing.Size(228, 27);
             this.TxtCodigo.TabIndex = 3;
             // 
             // label2
@@ -146,8 +146,8 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox15);
-            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.numericUpDown2);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.textBox14);
@@ -164,34 +164,16 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(12, 76);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(781, 510);
+            this.groupBox2.Size = new System.Drawing.Size(750, 510);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Crédito";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox15.Location = new System.Drawing.Point(629, 273);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(146, 27);
-            this.textBox15.TabIndex = 19;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(561, 276);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 20);
-            this.label14.TabIndex = 18;
-            this.label14.Text = "Deuda :";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(497, 243);
+            this.label13.Location = new System.Drawing.Point(468, 276);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(124, 20);
             this.label13.TabIndex = 9;
@@ -208,7 +190,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(388, 96);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(387, 138);
+            this.groupBox4.Size = new System.Drawing.Size(353, 138);
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cuota";
@@ -228,7 +210,7 @@ namespace WindowsFormsUI.Formularios
             this.textBox13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox13.Location = new System.Drawing.Point(92, 97);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(289, 27);
+            this.textBox13.Size = new System.Drawing.Size(251, 27);
             this.textBox13.TabIndex = 6;
             // 
             // textBox12
@@ -236,7 +218,7 @@ namespace WindowsFormsUI.Formularios
             this.textBox12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox12.Location = new System.Drawing.Point(92, 56);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(289, 27);
+            this.textBox12.Size = new System.Drawing.Size(251, 27);
             this.textBox12.TabIndex = 5;
             // 
             // label11
@@ -254,7 +236,7 @@ namespace WindowsFormsUI.Formularios
             this.textBox11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox11.Location = new System.Drawing.Point(92, 20);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(289, 27);
+            this.textBox11.Size = new System.Drawing.Size(251, 27);
             this.textBox11.TabIndex = 3;
             // 
             // label10
@@ -270,9 +252,9 @@ namespace WindowsFormsUI.Formularios
             // textBox14
             // 
             this.textBox14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox14.Location = new System.Drawing.Point(629, 240);
+            this.textBox14.Location = new System.Drawing.Point(598, 273);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(146, 27);
+            this.textBox14.Size = new System.Drawing.Size(143, 27);
             this.textBox14.TabIndex = 8;
             // 
             // groupBox3
@@ -480,16 +462,16 @@ namespace WindowsFormsUI.Formularios
             this.comboBox1.Items.AddRange(new object[] {
             "Quinsena(s)",
             "Mes(es)"});
-            this.comboBox1.Location = new System.Drawing.Point(654, 20);
+            this.comboBox1.Location = new System.Drawing.Point(610, 20);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.Size = new System.Drawing.Size(131, 28);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.Text = "Quincena(s)";
             // 
             // numericUpDown4
             // 
             this.numericUpDown4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown4.Location = new System.Drawing.Point(524, 21);
+            this.numericUpDown4.Location = new System.Drawing.Point(480, 21);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(124, 27);
             this.numericUpDown4.TabIndex = 13;
@@ -498,7 +480,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(466, 23);
+            this.label8.Location = new System.Drawing.Point(422, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 20);
             this.label8.TabIndex = 12;
@@ -508,7 +490,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown3.Location = new System.Drawing.Point(162, 63);
+            this.numericUpDown3.Location = new System.Drawing.Point(145, 21);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(146, 27);
             this.numericUpDown3.TabIndex = 11;
@@ -517,17 +499,17 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(75, 65);
+            this.label7.Location = new System.Drawing.Point(6, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(64, 20);
+            this.label7.Size = new System.Drawing.Size(133, 20);
             this.label7.TabIndex = 10;
-            this.label7.Text = "Monto : ";
+            this.label7.Text = "Monto solicitado : ";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(163, 18);
+            this.dateTimePicker1.Location = new System.Drawing.Point(145, 60);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(145, 27);
             this.dateTimePicker1.TabIndex = 7;
@@ -536,7 +518,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(20, 23);
+            this.label5.Location = new System.Drawing.Point(20, 65);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 6;
@@ -545,61 +527,85 @@ namespace WindowsFormsUI.Formularios
             // numericUpDown1
             // 
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDown1.Location = new System.Drawing.Point(524, 63);
+            this.numericUpDown1.Location = new System.Drawing.Point(480, 63);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(251, 27);
+            this.numericUpDown1.Size = new System.Drawing.Size(124, 27);
             this.numericUpDown1.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(389, 65);
+            this.label4.Location = new System.Drawing.Point(345, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "% Tasa de Interes :";
             // 
-            // button3
+            // BtnCrear
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(718, 592);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.BtnCrear.BackColor = System.Drawing.Color.White;
+            this.BtnCrear.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCrear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCrear.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCrear.ForeColor = System.Drawing.Color.Black;
+            this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.salary24px;
+            this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCrear.Location = new System.Drawing.Point(509, 592);
+            this.BtnCrear.Name = "BtnCrear";
+            this.BtnCrear.Size = new System.Drawing.Size(133, 35);
+            this.BtnCrear.TabIndex = 16;
+            this.BtnCrear.Text = "Crear crédito";
+            this.BtnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCrear.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // BtnLimpiarControles
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(637, 592);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnLimpiarControles.BackColor = System.Drawing.Color.White;
+            this.BtnLimpiarControles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnLimpiarControles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnLimpiarControles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLimpiarControles.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
+            this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
+            this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(648, 592);
+            this.BtnLimpiarControles.Name = "BtnLimpiarControles";
+            this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
+            this.BtnLimpiarControles.TabIndex = 17;
+            this.BtnLimpiarControles.Text = "Limpiar";
+            this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnLimpiarControles.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // numericUpDown2
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(556, 592);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Guardar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.numericUpDown2.DecimalPlaces = 2;
+            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericUpDown2.Location = new System.Drawing.Point(598, 240);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(143, 27);
+            this.numericUpDown2.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(465, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(127, 20);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Monto otorgado :";
             // 
             // FrmCrearCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(805, 624);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(776, 638);
+            this.Controls.Add(this.BtnCrear);
+            this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmCrearCredito";
             this.Text = "Coopertativa AZOC de R. L. - Crear nuevo crédito";
@@ -615,6 +621,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -659,15 +666,14 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.ComboBox CmbAsociados;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.CheckBox checkBox8;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.Button BtnCrear;
+        private System.Windows.Forms.Button BtnLimpiarControles;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label label3;
     }
 }

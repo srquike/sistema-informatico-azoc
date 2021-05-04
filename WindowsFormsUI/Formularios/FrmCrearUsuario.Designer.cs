@@ -351,7 +351,7 @@ namespace WindowsFormsUI.Formularios
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmCrearUsuario";
-            this.Text = "Cooperativa AZOC de R. L. - Creación de usuario";
+            this.Text = "Cooperativa AZOC de R. L. - Crear nuevo usuario";
             this.Load += new System.EventHandler(this.FrmCrearUsuario_Load);
             this.GrpPermisos.ResumeLayout(false);
             this.GrpPermisos.PerformLayout();

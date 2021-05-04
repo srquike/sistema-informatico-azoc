@@ -10,7 +10,7 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmEditarCredito : Form
     {
-        public FrmEditarCredito()
+        public FrmEditarCredito(int creditoId)
         {
             InitializeComponent();
         }

@@ -29,9 +29,9 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
@@ -137,6 +137,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbAcciones.Name = "CmbAcciones";
             this.CmbAcciones.Size = new System.Drawing.Size(179, 28);
             this.CmbAcciones.TabIndex = 24;
+            this.CmbAcciones.SelectionChangeCommitted += new System.EventHandler(this.CmbAcciones_SelectionChangeCommitted);
             // 
             // label2
             // 
@@ -183,6 +184,7 @@ namespace WindowsFormsUI.Formularios
             this.LLblQuitarBusqueda.TabIndex = 20;
             this.LLblQuitarBusqueda.TabStop = true;
             this.LLblQuitarBusqueda.Text = "Quitar busqueda";
+            this.LLblQuitarBusqueda.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarBusqueda_LinkClicked);
             // 
             // BtnBuscar
             // 
@@ -201,6 +203,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnBuscar.UseVisualStyleBackColor = false;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
             // 
             // TxtBusqueda
             // 
@@ -209,7 +212,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtBusqueda.MaxLength = 50;
             this.TxtBusqueda.Multiline = true;
             this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Escriba su busqueda";
+            this.TxtBusqueda.PlaceholderText = "Buscar por código o asociado";
             this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
             this.TxtBusqueda.TabIndex = 18;
             this.TxtBusqueda.UseSystemPasswordChar = true;
@@ -222,7 +225,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCrearNuevo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnCrearNuevo.ForeColor = System.Drawing.Color.Black;
-            this.BtnCrearNuevo.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
+            this.BtnCrearNuevo.Image = global::WindowsFormsUI.Properties.Resources.salary24px;
             this.BtnCrearNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCrearNuevo.Location = new System.Drawing.Point(12, 49);
             this.BtnCrearNuevo.Name = "BtnCrearNuevo";
@@ -290,14 +293,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -311,24 +314,25 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvLista.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvLista.DefaultCellStyle = dataGridViewCellStyle5;
             this.DgvLista.Location = new System.Drawing.Point(12, 163);
             this.DgvLista.Name = "DgvLista";
             this.DgvLista.ReadOnly = true;
             this.DgvLista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvLista.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvLista.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvLista.RowTemplate.Height = 25;
             this.DgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvLista.Size = new System.Drawing.Size(1214, 385);
             this.DgvLista.TabIndex = 15;
+            this.DgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvLista_CellContentClick);
             // 
             // Seleccion
             // 
