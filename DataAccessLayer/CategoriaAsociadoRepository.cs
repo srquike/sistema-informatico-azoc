@@ -41,12 +41,16 @@ namespace DataAccessLayer
 
         public CategoriaAsociado GetCategoriaAsociadoById(int id)
         {
-            return _context.CategoriaAsociados.Find(id);
+            return _context.CategoriaAsociados.Where(ca => ca.CategoriaAsociadoId == id)
+                .AsNoTracking()
+                .FirstOrDefault();
         }
 
         public IEnumerable<CategoriaAsociado> GetCategoriaAsociados()
         {
-            return _context.CategoriaAsociados.ToList();
+            return _context.CategoriaAsociados
+                .AsNoTracking()
+                .ToList();
         }
 
         public void InsertCategoriaAsociado(CategoriaAsociado categoriaasociado)

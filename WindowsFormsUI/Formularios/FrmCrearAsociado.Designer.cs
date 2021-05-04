@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgregarAsociado
+    partial class FrmCrearAsociado
     {
         /// <summary>
         /// Required designer variable.

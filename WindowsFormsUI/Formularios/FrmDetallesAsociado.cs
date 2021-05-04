@@ -10,7 +10,7 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmDetallesAsociado : Form
     {
-        public FrmDetallesAsociado()
+        public FrmDetallesAsociado(int asociadoId)
         {
             InitializeComponent();
         }

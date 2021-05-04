@@ -102,5 +102,12 @@ namespace WindowsFormsUI.Formularios
             frmCreditos.MdiParent = this;
             frmCreditos.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FrmAsociados frmAsociados = new FrmAsociados();
+            frmAsociados.MdiParent = this;
+            frmAsociados.Show();
+        }
     }
 }

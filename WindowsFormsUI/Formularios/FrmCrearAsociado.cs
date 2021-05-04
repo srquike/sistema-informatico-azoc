@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
 {
-    public partial class FrmAgregarAsociado : Form
+    public partial class FrmCrearAsociado : Form
     {
-        public FrmAgregarAsociado()
+        public FrmCrearAsociado()
         {
             InitializeComponent();
         }

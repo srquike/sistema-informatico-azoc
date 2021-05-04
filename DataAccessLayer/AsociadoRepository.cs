@@ -42,12 +42,16 @@ namespace DataAccessLayer
 
         public Asociado GetAsociadoById(int id)
         {
-            return _context.Asociados.Find(id);
+            return _context.Asociados.Where(a => a.AsociadoId == id)
+                .AsNoTracking()
+                .FirstOrDefault();
         }
 
         public IEnumerable<Asociado> GetAsociados()
         {
-            return _context.Asociados.ToList();
+            return _context.Asociados.Include(a => a.CategoriaAsociado)
+                .AsNoTracking()
+                .ToList();
         }
 
         public void InsertAsociado(Asociado asociado)
