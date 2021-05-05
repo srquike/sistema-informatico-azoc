@@ -43,6 +43,7 @@ namespace DataAccessLayer
         public Asociado GetAsociadoById(int id)
         {
             return _context.Asociados.Where(a => a.AsociadoId == id)
+                .Include(a => a.CategoriaAsociado)
                 .AsNoTracking()
                 .FirstOrDefault();
         }

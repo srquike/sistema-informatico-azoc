@@ -188,7 +188,7 @@ namespace WindowsFormsUI.Formularios
                     }
                     else if (e.ColumnIndex == 9)
                     {
-                        FrmEditarAsociado frmEditar = new FrmEditarAsociado();
+                        FrmEditarAsociado frmEditar = new FrmEditarAsociado(asociadoId);
                         frmEditar.StartPosition = FormStartPosition.CenterParent;
                         frmEditar.ShowDialog();
 
