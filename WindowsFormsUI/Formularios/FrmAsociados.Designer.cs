@@ -48,6 +48,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar = new System.Windows.Forms.PictureBox();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.DgvListado = new System.Windows.Forms.DataGridView();
+            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +57,10 @@ namespace WindowsFormsUI.Formularios
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
@@ -303,6 +304,7 @@ namespace WindowsFormsUI.Formularios
             this.Genero,
             this.Telefono,
             this.Categoria,
+            this.Estado,
             this.Detalles,
             this.Editar,
             this.Eliminar});
@@ -326,6 +328,18 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.TabIndex = 29;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             // 
+            // TxtBusqueda
+            // 
+            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
+            this.TxtBusqueda.MaxLength = 50;
+            this.TxtBusqueda.Multiline = true;
+            this.TxtBusqueda.Name = "TxtBusqueda";
+            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
+            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
+            this.TxtBusqueda.TabIndex = 30;
+            this.TxtBusqueda.UseSystemPasswordChar = true;
+            // 
             // Seleccion
             // 
             this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -348,11 +362,10 @@ namespace WindowsFormsUI.Formularios
             // 
             // Nombre
             // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 92;
             // 
             // Dui
             // 
@@ -388,9 +401,19 @@ namespace WindowsFormsUI.Formularios
             // 
             // Categoria
             // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Categoria.HeaderText = "Categoría";
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 101;
+            // 
+            // Estado
+            // 
+            this.Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 81;
             // 
             // Detalles
             // 
@@ -430,18 +453,6 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.ToolTipText = "Eliminar usuario del sistema";
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
-            // 
-            // TxtBusqueda
-            // 
-            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
-            this.TxtBusqueda.MaxLength = 50;
-            this.TxtBusqueda.Multiline = true;
-            this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
-            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
-            this.TxtBusqueda.TabIndex = 30;
-            this.TxtBusqueda.UseSystemPasswordChar = true;
             // 
             // FrmAsociados
             // 
@@ -495,6 +506,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.PictureBox BtnCerrar;
         private System.Windows.Forms.Panel PnlBarraSuperior;
         private System.Windows.Forms.DataGridView DgvListado;
+        private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -503,9 +515,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.TextBox TxtBusqueda;
     }
 }

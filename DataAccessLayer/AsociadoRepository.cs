@@ -44,6 +44,7 @@ namespace DataAccessLayer
         {
             return _context.Asociados.Where(a => a.AsociadoId == id)
                 .Include(a => a.CategoriaAsociado)
+                .Include(a => a.Beneficiarios)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
@@ -51,6 +52,7 @@ namespace DataAccessLayer
         public IEnumerable<Asociado> GetAsociados()
         {
             return _context.Asociados.Include(a => a.CategoriaAsociado)
+                .Include(a => a.Beneficiarios)
                 .AsNoTracking()
                 .ToList();
         }

@@ -65,7 +65,7 @@ namespace DataAccessLayer
                 entity.Property(e => e.Monto).HasColumnType("money");
 
                 entity.HasOne(d => d.Asociado)
-                    .WithMany(p => p.Aportacions)
+                    .WithMany(p => p.Aportaciones)
                     .HasForeignKey(d => d.AsociadoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Aportacio__Asoci__5DCAEF64");
@@ -90,6 +90,16 @@ namespace DataAccessLayer
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Estado)
+                    .IsRequired()
+                    .HasMaxLength(1)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Ingreso).HasColumnType("date");
+
+                entity.Property(e => e.Retiro).HasColumnType("date");
 
                 entity.Property(e => e.Direccion)
                     .IsRequired()
