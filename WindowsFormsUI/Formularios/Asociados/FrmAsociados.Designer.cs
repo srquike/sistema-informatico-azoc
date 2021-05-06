@@ -29,9 +29,9 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar = new System.Windows.Forms.PictureBox();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.DgvListado = new System.Windows.Forms.DataGridView();
-            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,6 +60,7 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
@@ -114,7 +114,6 @@ namespace WindowsFormsUI.Formularios
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbFiltro.Enabled = false;
             this.CmbFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbFiltro.FormattingEnabled = true;
             this.CmbFiltro.ItemHeight = 20;
@@ -250,6 +249,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnMaximizar.Size = new System.Drawing.Size(32, 32);
             this.BtnMaximizar.TabIndex = 4;
             this.BtnMaximizar.TabStop = false;
+            this.BtnMaximizar.Click += new System.EventHandler(this.BtnMaximizar_Click);
             // 
             // BtnCerrar
             // 
@@ -260,6 +260,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar.Size = new System.Drawing.Size(32, 32);
             this.BtnCerrar.TabIndex = 3;
             this.BtnCerrar.TabStop = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // PnlBarraSuperior
             // 
@@ -272,6 +273,7 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraSuperior.Name = "PnlBarraSuperior";
             this.PnlBarraSuperior.Size = new System.Drawing.Size(1238, 38);
             this.PnlBarraSuperior.TabIndex = 16;
+            this.PnlBarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBarraSuperior_MouseDown);
             // 
             // DgvListado
             // 
@@ -286,14 +288,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvListado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -308,37 +310,25 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle5;
             this.DgvListado.Location = new System.Drawing.Point(12, 163);
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1214, 385);
             this.DgvListado.TabIndex = 29;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
-            // 
-            // TxtBusqueda
-            // 
-            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
-            this.TxtBusqueda.MaxLength = 50;
-            this.TxtBusqueda.Multiline = true;
-            this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
-            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
-            this.TxtBusqueda.TabIndex = 30;
-            this.TxtBusqueda.UseSystemPasswordChar = true;
             // 
             // Seleccion
             // 
@@ -453,6 +443,18 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.ToolTipText = "Eliminar usuario del sistema";
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
+            // 
+            // TxtBusqueda
+            // 
+            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
+            this.TxtBusqueda.MaxLength = 50;
+            this.TxtBusqueda.Multiline = true;
+            this.TxtBusqueda.Name = "TxtBusqueda";
+            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
+            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
+            this.TxtBusqueda.TabIndex = 30;
+            this.TxtBusqueda.UseSystemPasswordChar = true;
             // 
             // FrmAsociados
             // 

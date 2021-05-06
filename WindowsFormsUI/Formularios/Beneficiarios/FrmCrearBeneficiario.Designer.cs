@@ -1,7 +1,7 @@
 ﻿
 namespace WindowsFormsUI.Formularios
 {
-    partial class FrmAgregarBeneficiario
+    partial class FrmCrearBeneficiario
     {
         /// <summary>
         /// Required designer variable.

@@ -29,363 +29,621 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.CmbCategoria = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.TxtEmail = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.CmbGenero = new System.Windows.Forms.ComboBox();
+            this.BtnLimpiarControles = new System.Windows.Forms.Button();
+            this.CmbMunicipios = new System.Windows.Forms.ComboBox();
+            this.MTxtNit = new System.Windows.Forms.MaskedTextBox();
+            this.MTxtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.MTxtDui = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LblFilasMarcadas = new System.Windows.Forms.Label();
+            this.CmbAcciones = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.BtnAgregar = new System.Windows.Forms.Button();
+            this.DgvListado = new System.Windows.Forms.DataGridView();
+            this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dui = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.TxtDireccion = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.TxtSNombre = new System.Windows.Forms.TextBox();
+            this.DtpFNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CmbDepartamentos = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.TxtTApellido = new System.Windows.Forms.TextBox();
+            this.TxtPApellido = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TxtSApellido = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TxtTNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtPNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            this.BtnGuardarCambios = new System.Windows.Forms.Button();
+            this.TxtCodigo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // Detalles
             // 
-            this.groupBox1.Controls.Add(this.comboBox5);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.textBox12);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(899, 378);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos :";
+            this.Detalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Detalles.HeaderText = "";
+            this.Detalles.Name = "Detalles";
+            this.Detalles.ReadOnly = true;
+            this.Detalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Detalles.Text = "Ver detalles";
+            this.Detalles.ToolTipText = "Ver detalles del usuario";
+            this.Detalles.UseColumnTextForButtonValue = true;
+            this.Detalles.Width = 5;
             // 
-            // comboBox5
+            // Eliminar
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(430, 29);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(165, 23);
-            this.comboBox5.TabIndex = 38;
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Width = 5;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(357, 32);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(795, 305);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(67, 15);
-            this.label18.TabIndex = 37;
-            this.label18.Text = " Categoria :";
+            this.label18.Size = new System.Drawing.Size(74, 20);
+            this.label18.TabIndex = 39;
+            this.label18.Text = "Teléfono :";
             // 
-            // textBox12
+            // CmbCategoria
             // 
-            this.textBox12.Location = new System.Drawing.Point(115, 32);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(165, 23);
-            this.textBox12.TabIndex = 36;
+            this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbCategoria.FormattingEnabled = true;
+            this.CmbCategoria.Location = new System.Drawing.Point(525, 20);
+            this.CmbCategoria.Name = "CmbCategoria";
+            this.CmbCategoria.Size = new System.Drawing.Size(200, 28);
+            this.CmbCategoria.TabIndex = 38;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(85, 32);
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(433, 23);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(24, 15);
-            this.label17.TabIndex = 35;
-            this.label17.Text = "ID :";
+            this.label17.Size = new System.Drawing.Size(85, 20);
+            this.label17.TabIndex = 37;
+            this.label17.Text = " Categoria :";
             // 
-            // button3
+            // TxtEmail
             // 
-            this.button3.Location = new System.Drawing.Point(780, 319);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(89, 32);
-            this.button3.TabIndex = 34;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(627, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 32);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Guardar Cambios";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(724, 269);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(165, 23);
-            this.textBox11.TabIndex = 31;
+            this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtEmail.Location = new System.Drawing.Point(134, 188);
+            this.TxtEmail.Name = "TxtEmail";
+            this.TxtEmail.Size = new System.Drawing.Size(200, 27);
+            this.TxtEmail.TabIndex = 31;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(664, 274);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(63, 191);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(52, 15);
+            this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 30;
             this.label16.Text = " Correo :";
             // 
-            // comboBox4
+            // CmbGenero
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(724, 218);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(165, 23);
-            this.comboBox4.TabIndex = 29;
+            this.CmbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbGenero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbGenero.FormattingEnabled = true;
+            this.CmbGenero.Items.AddRange(new object[] {
+            "-- Seleccionar -- ",
+            "Femenino",
+            "Masculino"});
+            this.CmbGenero.Location = new System.Drawing.Point(875, 188);
+            this.CmbGenero.Name = "CmbGenero";
+            this.CmbGenero.Size = new System.Drawing.Size(200, 28);
+            this.CmbGenero.TabIndex = 29;
+            // 
+            // BtnLimpiarControles
+            // 
+            this.BtnLimpiarControles.BackColor = System.Drawing.Color.White;
+            this.BtnLimpiarControles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnLimpiarControles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnLimpiarControles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnLimpiarControles.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
+            this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
+            this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(1000, 702);
+            this.BtnLimpiarControles.Name = "BtnLimpiarControles";
+            this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
+            this.BtnLimpiarControles.TabIndex = 25;
+            this.BtnLimpiarControles.Text = "Limpiar";
+            this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnLimpiarControles.UseVisualStyleBackColor = false;
+            // 
+            // CmbMunicipios
+            // 
+            this.CmbMunicipios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbMunicipios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbMunicipios.FormattingEnabled = true;
+            this.CmbMunicipios.Items.AddRange(new object[] {
+            "-- Seleccionar --",
+            "Candelaria de la Frontera",
+            "Chalchuapa",
+            "Coatepeque",
+            "El Congo",
+            "El Porvenir",
+            "Masahuat",
+            "Metapán",
+            "San Antonio Pajonal",
+            "San Sebastián Salitrillo",
+            "Santa Ana",
+            "Santa Rosa Guachipilín",
+            "Santiago de la Frontera",
+            "Texistepeque"});
+            this.CmbMunicipios.Location = new System.Drawing.Point(875, 245);
+            this.CmbMunicipios.Name = "CmbMunicipios";
+            this.CmbMunicipios.Size = new System.Drawing.Size(200, 28);
+            this.CmbMunicipios.TabIndex = 46;
+            // 
+            // MTxtNit
+            // 
+            this.MTxtNit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtNit.HidePromptOnLeave = true;
+            this.MTxtNit.Location = new System.Drawing.Point(524, 302);
+            this.MTxtNit.Mask = "00000000-0";
+            this.MTxtNit.Name = "MTxtNit";
+            this.MTxtNit.PromptChar = '-';
+            this.MTxtNit.Size = new System.Drawing.Size(200, 27);
+            this.MTxtNit.TabIndex = 45;
+            this.MTxtNit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // MTxtTelefono
+            // 
+            this.MTxtTelefono.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtTelefono.HidePromptOnLeave = true;
+            this.MTxtTelefono.Location = new System.Drawing.Point(875, 303);
+            this.MTxtTelefono.Mask = "00000000-0";
+            this.MTxtTelefono.Name = "MTxtTelefono";
+            this.MTxtTelefono.PromptChar = '-';
+            this.MTxtTelefono.Size = new System.Drawing.Size(200, 27);
+            this.MTxtTelefono.TabIndex = 44;
+            this.MTxtTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // MTxtDui
+            // 
+            this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtDui.HidePromptOnLeave = true;
+            this.MTxtDui.Location = new System.Drawing.Point(134, 302);
+            this.MTxtDui.Mask = "00000000-0";
+            this.MTxtDui.Name = "MTxtDui";
+            this.MTxtDui.PromptChar = '-';
+            this.MTxtDui.Size = new System.Drawing.Size(200, 27);
+            this.MTxtDui.TabIndex = 43;
+            this.MTxtDui.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.LblFilasMarcadas);
+            this.groupBox2.Controls.Add(this.CmbAcciones);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.BtnAgregar);
+            this.groupBox2.Controls.Add(this.DgvListado);
+            this.groupBox2.Location = new System.Drawing.Point(6, 335);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1090, 345);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Beneficiarios";
+            // 
+            // LblFilasMarcadas
+            // 
+            this.LblFilasMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LblFilasMarcadas.AutoSize = true;
+            this.LblFilasMarcadas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblFilasMarcadas.Location = new System.Drawing.Point(6, 314);
+            this.LblFilasMarcadas.Name = "LblFilasMarcadas";
+            this.LblFilasMarcadas.Size = new System.Drawing.Size(121, 20);
+            this.LblFilasMarcadas.TabIndex = 29;
+            this.LblFilasMarcadas.Text = "Filas marcadas: 0";
+            // 
+            // CmbAcciones
+            // 
+            this.CmbAcciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbAcciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbAcciones.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbAcciones.FormattingEnabled = true;
+            this.CmbAcciones.ItemHeight = 20;
+            this.CmbAcciones.Items.AddRange(new object[] {
+            "-- Seleccionar acción -- ",
+            "Eliminar",
+            "Imprimir"});
+            this.CmbAcciones.Location = new System.Drawing.Point(905, 311);
+            this.CmbAcciones.Name = "CmbAcciones";
+            this.CmbAcciones.Size = new System.Drawing.Size(179, 28);
+            this.CmbAcciones.TabIndex = 28;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(828, 314);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(71, 20);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Acciones:";
+            // 
+            // BtnAgregar
+            // 
+            this.BtnAgregar.BackColor = System.Drawing.Color.White;
+            this.BtnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnAgregar.ForeColor = System.Drawing.Color.Black;
+            this.BtnAgregar.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
+            this.BtnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAgregar.Location = new System.Drawing.Point(6, 26);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(102, 35);
+            this.BtnAgregar.TabIndex = 16;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnAgregar.UseVisualStyleBackColor = false;
+            // 
+            // DgvListado
+            // 
+            this.DgvListado.AllowUserToAddRows = false;
+            this.DgvListado.AllowUserToDeleteRows = false;
+            this.DgvListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvListado.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.DgvListado.BackgroundColor = System.Drawing.Color.White;
+            this.DgvListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvListado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.DgvListado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccion,
+            this.Id,
+            this.Nombre,
+            this.Dui,
+            this.Nit,
+            this.Telefono,
+            this.Genero,
+            this.Porcentaje,
+            this.Detalles,
+            this.Editar,
+            this.Eliminar});
+            this.DgvListado.Location = new System.Drawing.Point(6, 67);
+            this.DgvListado.MultiSelect = false;
+            this.DgvListado.Name = "DgvListado";
+            this.DgvListado.ReadOnly = true;
+            this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvListado.RowTemplate.Height = 25;
+            this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListado.Size = new System.Drawing.Size(1078, 238);
+            this.DgvListado.TabIndex = 15;
+            // 
+            // Seleccion
+            // 
+            this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Seleccion.HeaderText = "";
+            this.Seleccion.Name = "Seleccion";
+            this.Seleccion.ReadOnly = true;
+            this.Seleccion.Width = 5;
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Id.HeaderText = "Código";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Id.Width = 83;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dui
+            // 
+            this.Dui.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Dui.HeaderText = "# DUI";
+            this.Dui.Name = "Dui";
+            this.Dui.ReadOnly = true;
+            this.Dui.Width = 69;
+            // 
+            // Nit
+            // 
+            this.Nit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nit.HeaderText = "# NIT";
+            this.Nit.Name = "Nit";
+            this.Nit.ReadOnly = true;
+            this.Nit.Width = 68;
+            // 
+            // Telefono
+            // 
+            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Telefono.HeaderText = "# Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 99;
+            // 
+            // Genero
+            // 
+            this.Genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Genero.HeaderText = "Genero";
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            this.Genero.Width = 85;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Porcentaje.HeaderText = "% de crédito";
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.ReadOnly = true;
+            this.Porcentaje.Width = 111;
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Width = 5;
+            // 
+            // ErrPControles
+            // 
+            this.ErrPControles.ContainerControl = this;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(664, 221);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(801, 191);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(54, 15);
+            this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 28;
             this.label15.Text = " Genero :";
             // 
-            // textBox10
+            // groupBox1
             // 
-            this.textBox10.Location = new System.Drawing.Point(429, 266);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(165, 23);
-            this.textBox10.TabIndex = 27;
+            this.groupBox1.Controls.Add(this.TxtCodigo);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.CmbMunicipios);
+            this.groupBox1.Controls.Add(this.CmbCategoria);
+            this.groupBox1.Controls.Add(this.MTxtNit);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.MTxtTelefono);
+            this.groupBox1.Controls.Add(this.MTxtDui);
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.TxtEmail);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.CmbGenero);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.TxtDireccion);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.TxtSNombre);
+            this.groupBox1.Controls.Add(this.DtpFNacimiento);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.CmbDepartamentos);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.TxtTApellido);
+            this.groupBox1.Controls.Add(this.TxtPApellido);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.TxtSApellido);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.TxtTNombre);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.TxtPNombre);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(12, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1102, 686);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(389, 269);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(475, 305);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(34, 15);
+            this.label14.Size = new System.Drawing.Size(43, 20);
             this.label14.TabIndex = 26;
             this.label14.Text = " NIT :";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(430, 218);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(165, 23);
-            this.textBox9.TabIndex = 25;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(389, 218);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(83, 305);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 15);
+            this.label13.Size = new System.Drawing.Size(45, 20);
             this.label13.TabIndex = 24;
             this.label13.Text = " DUI :";
             // 
-            // textBox8
+            // TxtDireccion
             // 
-            this.textBox8.Location = new System.Drawing.Point(115, 261);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(165, 23);
-            this.textBox8.TabIndex = 23;
+            this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDireccion.Location = new System.Drawing.Point(134, 245);
+            this.TxtDireccion.Name = "TxtDireccion";
+            this.TxtDireccion.Size = new System.Drawing.Size(200, 27);
+            this.TxtDireccion.TabIndex = 23;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(43, 264);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(45, 248);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 15);
+            this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 22;
-            this.label12.Text = " Direccion :";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(724, 169);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(165, 23);
-            this.comboBox3.TabIndex = 21;
+            this.label12.Text = " Dirección :";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(648, 172);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(783, 248);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 15);
+            this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 20;
             this.label11.Text = " Municipio :";
             // 
-            // textBox7
+            // TxtSNombre
             // 
-            this.textBox7.Location = new System.Drawing.Point(430, 64);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(165, 23);
-            this.textBox7.TabIndex = 19;
+            this.TxtSNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSNombre.Location = new System.Drawing.Point(524, 74);
+            this.TxtSNombre.Name = "TxtSNombre";
+            this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
+            this.TxtSNombre.TabIndex = 19;
             // 
-            // dateTimePicker1
+            // DtpFNacimiento
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(430, 166);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(165, 23);
-            this.dateTimePicker1.TabIndex = 18;
-            this.dateTimePicker1.Value = new System.DateTime(2021, 4, 19, 12, 32, 5, 0);
+            this.DtpFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DtpFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpFNacimiento.Location = new System.Drawing.Point(524, 186);
+            this.DtpFNacimiento.Name = "DtpFNacimiento";
+            this.DtpFNacimiento.Size = new System.Drawing.Size(200, 27);
+            this.DtpFNacimiento.TabIndex = 18;
+            this.DtpFNacimiento.Value = new System.DateTime(2021, 4, 19, 12, 32, 5, 0);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(299, 166);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(362, 191);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 15);
+            this.label10.Size = new System.Drawing.Size(156, 20);
             this.label10.TabIndex = 17;
             this.label10.Text = "Fecha de Nacimiento :";
             // 
-            // comboBox2
+            // CmbDepartamentos
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(115, 210);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(165, 23);
-            this.comboBox2.TabIndex = 16;
+            this.CmbDepartamentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbDepartamentos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbDepartamentos.FormattingEnabled = true;
+            this.CmbDepartamentos.Items.AddRange(new object[] {
+            "-- Seleccionar --",
+            "Santa Ana"});
+            this.CmbDepartamentos.Location = new System.Drawing.Point(524, 245);
+            this.CmbDepartamentos.Name = "CmbDepartamentos";
+            this.CmbDepartamentos.Size = new System.Drawing.Size(200, 28);
+            this.CmbDepartamentos.TabIndex = 16;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 213);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(401, 248);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 15);
+            this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 15;
             this.label9.Text = " Departamento :";
             // 
-            // comboBox1
+            // TxtTApellido
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(115, 163);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(165, 23);
-            this.comboBox1.TabIndex = 14;
+            this.TxtTApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtTApellido.Location = new System.Drawing.Point(875, 131);
+            this.TxtTApellido.Name = "TxtTApellido";
+            this.TxtTApellido.Size = new System.Drawing.Size(200, 27);
+            this.TxtTApellido.TabIndex = 12;
             // 
-            // label8
+            // TxtPApellido
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(64, 163);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 15);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Cargo :";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(724, 116);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(165, 23);
-            this.textBox6.TabIndex = 12;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(116, 119);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(165, 23);
-            this.textBox5.TabIndex = 11;
+            this.TxtPApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPApellido.Location = new System.Drawing.Point(134, 131);
+            this.TxtPApellido.Name = "TxtPApellido";
+            this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
+            this.TxtPApellido.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(627, 119);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(752, 134);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 15);
+            this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 10;
             this.label7.Text = "Tercer Apellido :";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(627, 69);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(754, 77);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 9;
             this.label6.Text = "Tercer Nombre :";
             // 
-            // textBox4
+            // TxtSApellido
             // 
-            this.textBox4.Location = new System.Drawing.Point(430, 119);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(165, 23);
-            this.textBox4.TabIndex = 8;
+            this.TxtSApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtSApellido.Location = new System.Drawing.Point(524, 131);
+            this.TxtSApellido.Name = "TxtSApellido";
+            this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
+            this.TxtSApellido.TabIndex = 8;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(317, 122);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(382, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 15);
+            this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 7;
             this.label5.Text = "Segundo Apellido :";
             // 
@@ -393,230 +651,181 @@ namespace WindowsFormsUI.Formularios
             // 
             this.textBox3.Location = new System.Drawing.Point(434, -206);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(165, 23);
+            this.textBox3.Size = new System.Drawing.Size(165, 27);
             this.textBox3.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(205, 210);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(209, 264);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 15);
+            this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 122);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(8, 134);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(95, 15);
+            this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Primer Apellido :";
             // 
-            // textBox2
+            // TxtTNombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(724, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 23);
-            this.textBox2.TabIndex = 3;
+            this.TxtTNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtTNombre.Location = new System.Drawing.Point(875, 74);
+            this.TxtTNombre.Name = "TxtTNombre";
+            this.TxtTNombre.Size = new System.Drawing.Size(200, 27);
+            this.TxtTNombre.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(317, 67);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(384, 77);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 15);
+            this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Segundo Nombre :";
             // 
-            // textBox1
+            // TxtPNombre
             // 
-            this.textBox1.Location = new System.Drawing.Point(115, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 23);
-            this.textBox1.TabIndex = 1;
+            this.TxtPNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPNombre.Location = new System.Drawing.Point(134, 74);
+            this.TxtPNombre.Name = "TxtPNombre";
+            this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
+            this.TxtPNombre.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 72);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(10, 77);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Primer Nombre :";
             // 
-            // groupBox2
+            // BtnGuardarCambios
             // 
-            this.groupBox2.Controls.Add(this.comboBox6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 396);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(773, 271);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Beneficiarios";
+            this.BtnGuardarCambios.BackColor = System.Drawing.Color.White;
+            this.BtnGuardarCambios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardarCambios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardarCambios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardarCambios.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardarCambios.ForeColor = System.Drawing.Color.Black;
+            this.BtnGuardarCambios.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
+            this.BtnGuardarCambios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(882, 702);
+            this.BtnGuardarCambios.Name = "BtnGuardarCambios";
+            this.BtnGuardarCambios.Size = new System.Drawing.Size(112, 35);
+            this.BtnGuardarCambios.TabIndex = 39;
+            this.BtnGuardarCambios.Text = "Guardar";
+            this.BtnGuardarCambios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGuardarCambios.UseVisualStyleBackColor = false;
             // 
-            // comboBox6
+            // TxtCodigo
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(483, 205);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(158, 23);
-            this.comboBox6.TabIndex = 41;
+            this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCodigo.Location = new System.Drawing.Point(134, 20);
+            this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
+            this.TxtCodigo.TabIndex = 48;
             // 
-            // button5
+            // label8
             // 
-            this.button5.Location = new System.Drawing.Point(647, 202);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(99, 32);
-            this.button5.TabIndex = 40;
-            this.button5.Text = "Aplicar";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(416, 208);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(61, 15);
-            this.label20.TabIndex = 2;
-            this.label20.Text = "Acciones :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(13, 208);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(99, 15);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "Numero de Filas :";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(744, 168);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Apellido";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Genero";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "DUI";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Tipo";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Porcentaje";
-            this.Column7.Name = "Column7";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(63, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 20);
+            this.label8.TabIndex = 47;
+            this.label8.Text = "Código :";
             // 
             // FrmEditarAsociado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 682);
-            this.Controls.Add(this.groupBox2);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1126, 747);
+            this.Controls.Add(this.BtnGuardarCambios);
+            this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmEditarAsociado";
-            this.Text = "AZOC de R. L - Editar datos de asociado";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Text = "Cooperativa AZOC de R. L. - Editar datos de asociado";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.DataGridViewButtonColumn Detalles;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.ComboBox CmbCategoria;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox TxtEmail;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox CmbGenero;
+        private System.Windows.Forms.Button BtnLimpiarControles;
+        private System.Windows.Forms.ComboBox CmbMunicipios;
+        private System.Windows.Forms.MaskedTextBox MTxtNit;
+        private System.Windows.Forms.MaskedTextBox MTxtTelefono;
+        private System.Windows.Forms.MaskedTextBox MTxtDui;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label LblFilasMarcadas;
+        private System.Windows.Forms.ComboBox CmbAcciones;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button BtnAgregar;
+        private System.Windows.Forms.DataGridView DgvListado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dui;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.ErrorProvider ErrPControles;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox TxtDireccion;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
-        public System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox TxtSNombre;
+        public System.Windows.Forms.DateTimePicker DtpFNacimiento;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CmbDepartamentos;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox TxtTApellido;
+        private System.Windows.Forms.TextBox TxtPApellido;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TxtSApellido;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtTNombre;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtPNombre;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Button BtnGuardarCambios;
+        private System.Windows.Forms.TextBox TxtCodigo;
+        private System.Windows.Forms.Label label8;
     }
 }
