@@ -112,18 +112,8 @@ namespace WindowsFormsUI.Formularios
 
             if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
             {
-                string genero;
+                string genero = CmbFiltro.SelectedItem.ToString() == "Femenino" ? "F" : "M";
 
-                if (CmbFiltro.SelectedItem.ToString() == "Femenino")
-                {
-                    genero = "F";
-                }
-                else
-                {
-                    genero = "M";
-                }
-
-                
                 var resultados = from asociado in asociados where asociado.Genero == genero select asociado;
 
                 ActualizarListado(ref DgvListado, resultados);

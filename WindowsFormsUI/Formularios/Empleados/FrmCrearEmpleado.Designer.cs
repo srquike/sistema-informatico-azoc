@@ -194,9 +194,9 @@ namespace WindowsFormsUI.Formularios
             this.CmbCargos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCargos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbCargos.FormattingEnabled = true;
-            this.CmbCargos.Location = new System.Drawing.Point(886, 258);
+            this.CmbCargos.Location = new System.Drawing.Point(168, 258);
             this.CmbCargos.Name = "CmbCargos";
-            this.CmbCargos.Size = new System.Drawing.Size(202, 28);
+            this.CmbCargos.Size = new System.Drawing.Size(200, 28);
             this.CmbCargos.TabIndex = 16;
             // 
             // TxtDireccion
@@ -212,7 +212,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(824, 261);
+            this.label8.Location = new System.Drawing.Point(106, 261);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
             this.label8.TabIndex = 13;
