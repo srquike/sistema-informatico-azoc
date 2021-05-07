@@ -43,7 +43,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnAgregar = new System.Windows.Forms.Button();
             this.DgvListado = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dui = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +57,7 @@ namespace WindowsFormsUI.Formularios
             this.label17 = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.CmbGenero = new System.Windows.Forms.ComboBox();
+            this.CmbGeneros = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -88,6 +87,8 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear = new System.Windows.Forms.Button();
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
+            this.TxtCodigo = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
@@ -96,6 +97,8 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.TxtCodigo);
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.CmbMunicipios);
             this.groupBox1.Controls.Add(this.MTxtNit);
             this.groupBox1.Controls.Add(this.MTxtTelefono);
@@ -106,7 +109,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.TxtEmail);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.CmbGenero);
+            this.groupBox1.Controls.Add(this.CmbGeneros);
             this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
@@ -159,7 +162,7 @@ namespace WindowsFormsUI.Formularios
             "Santa Rosa Guachipilín",
             "Santiago de la Frontera",
             "Texistepeque"});
-            this.CmbMunicipios.Location = new System.Drawing.Point(871, 191);
+            this.CmbMunicipios.Location = new System.Drawing.Point(879, 248);
             this.CmbMunicipios.Name = "CmbMunicipios";
             this.CmbMunicipios.Size = new System.Drawing.Size(200, 28);
             this.CmbMunicipios.TabIndex = 46;
@@ -168,8 +171,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtNit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtNit.HidePromptOnLeave = true;
-            this.MTxtNit.Location = new System.Drawing.Point(520, 248);
-            this.MTxtNit.Mask = "00000000-0";
+            this.MTxtNit.Location = new System.Drawing.Point(519, 305);
+            this.MTxtNit.Mask = "0000-000000-000-0";
             this.MTxtNit.Name = "MTxtNit";
             this.MTxtNit.PromptChar = '-';
             this.MTxtNit.Size = new System.Drawing.Size(200, 27);
@@ -180,8 +183,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtTelefono.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtTelefono.HidePromptOnLeave = true;
-            this.MTxtTelefono.Location = new System.Drawing.Point(871, 249);
-            this.MTxtTelefono.Mask = "00000000-0";
+            this.MTxtTelefono.Location = new System.Drawing.Point(879, 306);
+            this.MTxtTelefono.Mask = "0000-0000";
             this.MTxtTelefono.Name = "MTxtTelefono";
             this.MTxtTelefono.PromptChar = '-';
             this.MTxtTelefono.Size = new System.Drawing.Size(200, 27);
@@ -192,7 +195,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtDui.HidePromptOnLeave = true;
-            this.MTxtDui.Location = new System.Drawing.Point(130, 248);
+            this.MTxtDui.Location = new System.Drawing.Point(132, 305);
             this.MTxtDui.Mask = "00000000-0";
             this.MTxtDui.Name = "MTxtDui";
             this.MTxtDui.PromptChar = '-';
@@ -240,6 +243,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbAcciones.Name = "CmbAcciones";
             this.CmbAcciones.Size = new System.Drawing.Size(179, 28);
             this.CmbAcciones.TabIndex = 28;
+            this.CmbAcciones.SelectionChangeCommitted += new System.EventHandler(this.CmbAcciones_SelectionChangeCommitted);
             // 
             // label19
             // 
@@ -269,6 +273,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnAgregar.UseVisualStyleBackColor = false;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // DgvListado
             // 
@@ -283,7 +288,6 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
-            this.Id,
             this.Nombre,
             this.Dui,
             this.Nit,
@@ -304,6 +308,7 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1078, 238);
             this.DgvListado.TabIndex = 15;
+            this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             // 
             // Seleccion
             // 
@@ -312,15 +317,6 @@ namespace WindowsFormsUI.Formularios
             this.Seleccion.Name = "Seleccion";
             this.Seleccion.ReadOnly = true;
             this.Seleccion.Width = 5;
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Id.HeaderText = "Código";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Id.Width = 83;
             // 
             // Nombre
             // 
@@ -385,24 +381,33 @@ namespace WindowsFormsUI.Formularios
             // Editar
             // 
             this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Editar.HeaderText = "";
             this.Editar.Name = "Editar";
             this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Editar.Text = "Editar";
+            this.Editar.ToolTipText = "Editar datos de beneficiario";
+            this.Editar.UseColumnTextForButtonValue = true;
             this.Editar.Width = 5;
             // 
             // Eliminar
             // 
             this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Eliminar.HeaderText = "";
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(791, 251);
+            this.label18.Location = new System.Drawing.Point(799, 308);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 20);
             this.label18.TabIndex = 39;
@@ -413,7 +418,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbCategoria.FormattingEnabled = true;
-            this.CmbCategoria.Location = new System.Drawing.Point(871, 301);
+            this.CmbCategoria.Location = new System.Drawing.Point(520, 20);
             this.CmbCategoria.Name = "CmbCategoria";
             this.CmbCategoria.Size = new System.Drawing.Size(200, 28);
             this.CmbCategoria.TabIndex = 38;
@@ -422,7 +427,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(779, 304);
+            this.label17.Location = new System.Drawing.Point(428, 23);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(85, 20);
             this.label17.TabIndex = 37;
@@ -431,7 +436,7 @@ namespace WindowsFormsUI.Formularios
             // TxtEmail
             // 
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.Location = new System.Drawing.Point(130, 134);
+            this.TxtEmail.Location = new System.Drawing.Point(132, 191);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(200, 27);
             this.TxtEmail.TabIndex = 31;
@@ -440,31 +445,31 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(59, 137);
+            this.label16.Location = new System.Drawing.Point(61, 194);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 30;
             this.label16.Text = " Correo :";
             // 
-            // CmbGenero
+            // CmbGeneros
             // 
-            this.CmbGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbGenero.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbGenero.FormattingEnabled = true;
-            this.CmbGenero.Items.AddRange(new object[] {
+            this.CmbGeneros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbGeneros.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbGeneros.FormattingEnabled = true;
+            this.CmbGeneros.Items.AddRange(new object[] {
             "-- Seleccionar -- ",
             "Femenino",
             "Masculino"});
-            this.CmbGenero.Location = new System.Drawing.Point(871, 134);
-            this.CmbGenero.Name = "CmbGenero";
-            this.CmbGenero.Size = new System.Drawing.Size(200, 28);
-            this.CmbGenero.TabIndex = 29;
+            this.CmbGeneros.Location = new System.Drawing.Point(879, 191);
+            this.CmbGeneros.Name = "CmbGeneros";
+            this.CmbGeneros.Size = new System.Drawing.Size(200, 28);
+            this.CmbGeneros.TabIndex = 29;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(797, 137);
+            this.label15.Location = new System.Drawing.Point(805, 194);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 28;
@@ -474,7 +479,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(471, 251);
+            this.label14.Location = new System.Drawing.Point(470, 308);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 20);
             this.label14.TabIndex = 26;
@@ -484,7 +489,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(79, 251);
+            this.label13.Location = new System.Drawing.Point(81, 308);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 20);
             this.label13.TabIndex = 24;
@@ -493,7 +498,7 @@ namespace WindowsFormsUI.Formularios
             // TxtDireccion
             // 
             this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDireccion.Location = new System.Drawing.Point(130, 191);
+            this.TxtDireccion.Location = new System.Drawing.Point(132, 248);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(200, 27);
             this.TxtDireccion.TabIndex = 23;
@@ -502,7 +507,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(41, 194);
+            this.label12.Location = new System.Drawing.Point(43, 251);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 22;
@@ -512,7 +517,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(779, 194);
+            this.label11.Location = new System.Drawing.Point(787, 251);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 20;
@@ -521,7 +526,7 @@ namespace WindowsFormsUI.Formularios
             // TxtSNombre
             // 
             this.TxtSNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSNombre.Location = new System.Drawing.Point(520, 20);
+            this.TxtSNombre.Location = new System.Drawing.Point(519, 77);
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 19;
@@ -530,7 +535,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.DtpFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DtpFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFNacimiento.Location = new System.Drawing.Point(520, 132);
+            this.DtpFNacimiento.Location = new System.Drawing.Point(519, 189);
             this.DtpFNacimiento.Name = "DtpFNacimiento";
             this.DtpFNacimiento.Size = new System.Drawing.Size(200, 27);
             this.DtpFNacimiento.TabIndex = 18;
@@ -540,7 +545,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(358, 137);
+            this.label10.Location = new System.Drawing.Point(357, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 20);
             this.label10.TabIndex = 17;
@@ -554,7 +559,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbDepartamentos.Items.AddRange(new object[] {
             "-- Seleccionar --",
             "Santa Ana"});
-            this.CmbDepartamentos.Location = new System.Drawing.Point(520, 191);
+            this.CmbDepartamentos.Location = new System.Drawing.Point(519, 248);
             this.CmbDepartamentos.Name = "CmbDepartamentos";
             this.CmbDepartamentos.Size = new System.Drawing.Size(200, 28);
             this.CmbDepartamentos.TabIndex = 16;
@@ -563,7 +568,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(397, 194);
+            this.label9.Location = new System.Drawing.Point(396, 251);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 15;
@@ -572,7 +577,7 @@ namespace WindowsFormsUI.Formularios
             // TxtTApellido
             // 
             this.TxtTApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTApellido.Location = new System.Drawing.Point(871, 77);
+            this.TxtTApellido.Location = new System.Drawing.Point(879, 134);
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtTApellido.TabIndex = 12;
@@ -580,7 +585,7 @@ namespace WindowsFormsUI.Formularios
             // TxtPApellido
             // 
             this.TxtPApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPApellido.Location = new System.Drawing.Point(130, 77);
+            this.TxtPApellido.Location = new System.Drawing.Point(132, 134);
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 11;
@@ -589,7 +594,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(748, 80);
+            this.label7.Location = new System.Drawing.Point(756, 137);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 10;
@@ -599,7 +604,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(750, 23);
+            this.label6.Location = new System.Drawing.Point(758, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 9;
@@ -608,7 +613,7 @@ namespace WindowsFormsUI.Formularios
             // TxtSApellido
             // 
             this.TxtSApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSApellido.Location = new System.Drawing.Point(520, 77);
+            this.TxtSApellido.Location = new System.Drawing.Point(519, 134);
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 8;
@@ -617,7 +622,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(378, 80);
+            this.label5.Location = new System.Drawing.Point(377, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 7;
@@ -634,7 +639,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(205, 210);
+            this.label4.Location = new System.Drawing.Point(207, 267);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 5;
@@ -643,7 +648,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(4, 80);
+            this.label3.Location = new System.Drawing.Point(6, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 4;
@@ -652,7 +657,7 @@ namespace WindowsFormsUI.Formularios
             // TxtTNombre
             // 
             this.TxtTNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTNombre.Location = new System.Drawing.Point(871, 20);
+            this.TxtTNombre.Location = new System.Drawing.Point(879, 77);
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtTNombre.TabIndex = 3;
@@ -661,7 +666,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(380, 23);
+            this.label2.Location = new System.Drawing.Point(379, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 2;
@@ -670,7 +675,7 @@ namespace WindowsFormsUI.Formularios
             // TxtPNombre
             // 
             this.TxtPNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPNombre.Location = new System.Drawing.Point(130, 20);
+            this.TxtPNombre.Location = new System.Drawing.Point(132, 77);
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 1;
@@ -679,7 +684,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Location = new System.Drawing.Point(8, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
@@ -721,6 +726,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.Text = "Crear asociado";
             this.BtnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrear.UseVisualStyleBackColor = false;
+            this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
             // 
             // BtnLimpiarControles
             // 
@@ -743,6 +749,24 @@ namespace WindowsFormsUI.Formularios
             // ErrPControles
             // 
             this.ErrPControles.ContainerControl = this;
+            // 
+            // TxtCodigo
+            // 
+            this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCodigo.Location = new System.Drawing.Point(132, 20);
+            this.TxtCodigo.Name = "TxtCodigo";
+            this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
+            this.TxtCodigo.TabIndex = 48;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(61, 23);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 20);
+            this.label20.TabIndex = 47;
+            this.label20.Text = "Código :";
             // 
             // FrmCrearAsociado
             // 
@@ -772,7 +796,7 @@ namespace WindowsFormsUI.Formularios
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtEmail;
-        private System.Windows.Forms.ComboBox CmbGenero;
+        private System.Windows.Forms.ComboBox CmbGeneros;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -808,8 +832,15 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView DgvListado;
+        private System.Windows.Forms.Button BtnAgregar;
+        private System.Windows.Forms.Label LblFilasMarcadas;
+        private System.Windows.Forms.ComboBox CmbAcciones;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button BtnCrear;
+        private System.Windows.Forms.Button BtnLimpiarControles;
+        private System.Windows.Forms.ComboBox CmbMunicipios;
+        private System.Windows.Forms.ErrorProvider ErrPControles;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dui;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nit;
@@ -819,13 +850,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.Button BtnAgregar;
-        private System.Windows.Forms.Label LblFilasMarcadas;
-        private System.Windows.Forms.ComboBox CmbAcciones;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button BtnCrear;
-        private System.Windows.Forms.Button BtnLimpiarControles;
-        private System.Windows.Forms.ComboBox CmbMunicipios;
-        private System.Windows.Forms.ErrorProvider ErrPControles;
+        private System.Windows.Forms.TextBox TxtCodigo;
+        private System.Windows.Forms.Label label20;
     }
 }

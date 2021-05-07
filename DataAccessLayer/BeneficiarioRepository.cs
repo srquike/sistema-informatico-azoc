@@ -42,12 +42,16 @@ namespace DataAccessLayer
 
         public Beneficiario GetBeneficiarioById(int id)
         {
-            return _context.Beneficiarios.Find(id);
+            return _context.Beneficiarios.Where(b => b.BeneficiarioId == id)
+                .Include(b => b.Asociado)
+                .AsNoTracking()
+                .FirstOrDefault();
         }
 
         public IEnumerable<Beneficiario> GetBeneficiarios()
         {
-            return _context.Beneficiarios.ToList();
+            return _context.Beneficiarios.Include(b => b.Asociado)
+                .AsNoTracking();
         }
 
         public void InsertBeneficiario(Beneficiario beneficiario)
