@@ -45,6 +45,10 @@ namespace WindowsFormsUI.Formularios
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -53,6 +57,10 @@ namespace WindowsFormsUI.Formularios
             // PnlBarraLateral
             // 
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
+            this.PnlBarraLateral.Controls.Add(this.panel4);
+            this.PnlBarraLateral.Controls.Add(this.panel3);
+            this.PnlBarraLateral.Controls.Add(this.button7);
+            this.PnlBarraLateral.Controls.Add(this.button6);
             this.PnlBarraLateral.Controls.Add(this.panel2);
             this.PnlBarraLateral.Controls.Add(this.BtnCreditos);
             this.PnlBarraLateral.Controls.Add(this.panel1);
@@ -66,7 +74,7 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlBarraLateral.Location = new System.Drawing.Point(0, 0);
             this.PnlBarraLateral.Name = "PnlBarraLateral";
-            this.PnlBarraLateral.Size = new System.Drawing.Size(230, 683);
+            this.PnlBarraLateral.Size = new System.Drawing.Size(230, 739);
             this.PnlBarraLateral.TabIndex = 1;
             // 
             // panel2
@@ -241,11 +249,67 @@ namespace WindowsFormsUI.Formularios
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel3.Enabled = false;
+            this.panel3.Location = new System.Drawing.Point(12, 552);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(23, 58);
+            this.panel3.TabIndex = 12;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Enabled = false;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.Image = global::WindowsFormsUI.Properties.Resources.shop;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(41, 552);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(177, 58);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Despensa";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(12, 616);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(23, 58);
+            this.panel4.TabIndex = 12;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Enabled = false;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button7.ForeColor = System.Drawing.Color.Black;
+            this.button7.Image = global::WindowsFormsUI.Properties.Resources.cross;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(41, 616);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(177, 58);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Funeraría";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 683);
+            this.ClientSize = new System.Drawing.Size(1090, 739);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -282,5 +346,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
     }
 }
