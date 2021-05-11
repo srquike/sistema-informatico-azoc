@@ -17,6 +17,7 @@ namespace WindowsFormsUI.Formularios
         private UsuarioBLL _usuarioLogic;
         private EmpleadoBLL _empleadoLogic;
         private PermisoUsuarioBLL _permisoUsuarioLogic;
+        private bool _continuar;
 
         public FrmEditarUsuario(Usuario usuario)
         {
@@ -26,6 +27,7 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogic = new UsuarioBLL();
             _empleadoLogic = new EmpleadoBLL();
             _permisoUsuarioLogic = new PermisoUsuarioBLL();
+            _continuar = false;
         }
 
         private void LlenarComboBoxEmpleados()
@@ -47,12 +49,7 @@ namespace WindowsFormsUI.Formularios
         private void LlenarControles()
         {
             MTxtUsuario.Text = _usuarioEdit.Nombre;
-
-            if (_usuarioEdit.Estado == '1')
-            {
-                ChkActivarUsuario.Checked = true;
-            }
-
+            ChkActivarUsuario.Checked = _usuarioEdit.Estado == '1';
             ObtenerPermisos(_usuarioEdit.PermisoUsuarios);
             ObtenerAvatar(_usuarioEdit.Nombre);
         }
@@ -105,19 +102,19 @@ namespace WindowsFormsUI.Formularios
             LlenarControles();
         }
 
-        private bool ValidarControles()
+        private void ValidarControles()
         {
             if (MTxtUsuario.MaskFull != true)
             {
                 ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese el nombre de usuario para continuar!");
+                _continuar = false;
             }
             else
             {
                 ErrPControles.Clear();
-                return true;
+                _continuar = true;
             }
 
-            return false;
         }
 
         private bool ValidarClaves()
@@ -143,18 +140,17 @@ namespace WindowsFormsUI.Formularios
             return false;
         }
 
-        private bool VerificarExistencia(string nombreUsuario)
+        private bool ValidarUsuario(string nombre)
         {
             var usuarios = _usuarioLogic.List();
-            var usuario = (from user in usuarios where user.Nombre == nombreUsuario select user).FirstOrDefault();
+            var resultado = (from usuario in usuarios where usuario.Nombre == nombre select usuario).FirstOrDefault();
 
-            if (usuario != null)
+            if (resultado == null)
             {
-                MessageBox.Show("El nombre de usuario ya existe. Ingrese otro nombre de usuario, por favor!", "Editar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         private void AgregarPermisos(int userId)
@@ -198,61 +194,79 @@ namespace WindowsFormsUI.Formularios
             };
         }
 
-        private void BtnGuardarCambios_Click(object sender, EventArgs e)
+        private void ValidarCambios()
         {
-            if (ValidarControles())
+            if (!string.IsNullOrEmpty(MTxtUsuario.Text))
             {
-                string userName = MTxtUsuario.Text.Replace("-", "");
-                bool continuar = true;
-                bool cambiarClave = false;
-
-                if (userName != _usuarioEdit.Nombre)
+                if (!MTxtUsuario.MaskFull)
                 {
-                    if (VerificarExistencia(userName))
+                    ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese un nombre correcto!");
+                    _continuar = false;
+                }
+                else
+                {
+                    ErrPControles.Clear();
+
+                    string nombre = MTxtUsuario.Text;
+
+                    if (ValidarUsuario(nombre))
                     {
-                        _usuarioEdit.Nombre = userName;
+                        _usuarioEdit.Nombre = nombre;
+                        _continuar = true;
                     }
                     else
                     {
-                        continuar = false;
+                        ErrPControles.SetError(MTxtUsuario, "El nombre de usuario ya existe, por favor ingrese otro!");
                     }
                 }
+            }
 
-                if (continuar)
+            if (!string.IsNullOrEmpty(TxtClave.Text))
+            {
+                if (string.IsNullOrEmpty(TxtRepetirClave.Text))
                 {
-                    if (ChkCambiarClave.Checked)
-                    {
-                        if (ValidarClaves())
-                        {
-                            _usuarioEdit.Clave = TxtClave.Text;
-                        }
-                        else
-                        {
-                            cambiarClave = false;
-                        }
-                    }
-
-                    if (continuar)
-                    {
-                        _usuarioEdit.EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);  
-                        _usuarioEdit.FechaModificacion = DateTime.Now;
-
-                        if (ChkActivarUsuario.Checked)
-                        {
-                            _usuarioEdit.Estado = '1';
-                        }
-                        else
-                        {
-                            _usuarioEdit.Estado = '0';
-                        }
-
-                        _usuarioLogic.Edit(_usuarioEdit, cambiarClave);
-                        ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
-                        GuardarAvatar(_usuarioEdit.Nombre);
-
-                        DialogResult = DialogResult.OK;
-                    }
+                    ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese nuevamente la contraseña");
+                    _continuar = false;
                 }
+                else
+                {
+                    ErrPControles.Clear();
+
+                    string clave = TxtClave.Text;
+
+                    _usuarioEdit.Clave = clave;
+                    _continuar = true;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(TxtPregunta1.Text))
+            {
+                _usuarioEdit.Respuesta1 = TxtPregunta1.Text;
+            }
+
+            if (!string.IsNullOrEmpty(TxtPregunta2.Text))
+            {
+                _usuarioEdit.Respuesta2 = TxtPregunta2.Text;
+            }
+            
+            if (!string.IsNullOrEmpty(TxtPregunta3.Text))
+            {
+                _usuarioEdit.Respuesta2 = TxtPregunta3.Text;
+            }
+
+            _usuarioEdit.Estado = ChkActivarUsuario.Checked ? '1' : '0';
+        }
+
+        private void BtnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            ValidarCambios();
+
+            if (_continuar)
+            {
+                _usuarioLogic.Edit(_usuarioEdit);
+                AgregarPermisos(_usuarioEdit.UsuarioId);
+                GuardarAvatar(_usuarioEdit.Nombre);
+                DialogResult = DialogResult.OK;
             }
         }
 
@@ -297,22 +311,6 @@ namespace WindowsFormsUI.Formularios
             {
                 TxtClave.UseSystemPasswordChar = true;
                 TxtRepetirClave.UseSystemPasswordChar = true;
-            }
-        }
-
-        private void ChkCambiarClave_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ChkCambiarClave.Checked)
-            {
-                TxtClave.Enabled = true;
-                TxtRepetirClave.Enabled = true;
-                ChkVerClaves.Enabled = true;
-            }
-            else
-            {
-                TxtClave.Enabled = false;
-                TxtRepetirClave.Enabled = false;
-                ChkVerClaves.Enabled = false;
             }
         }
     }

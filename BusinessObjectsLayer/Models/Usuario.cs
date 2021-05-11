@@ -16,6 +16,9 @@ namespace BusinessObjectsLayer.Models
         public int UsuarioId { get; set; }
         public string Nombre { get; set; }
         public string Clave { get; set; }
+        public string Respuesta1 { get; set; }
+        public string Respuesta2 { get; set; }
+        public string Respuesta3 { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime? UltimoAcceso { get; set; }
         public DateTime? FechaModificacion { get; set; }

@@ -583,6 +583,18 @@ namespace DataAccessLayer
                 entity.Property(e => e.Clave)
                     .IsRequired()
                     .IsUnicode(false);
+                
+                entity.Property(e => e.Respuesta1)
+                    .IsRequired()
+                    .IsUnicode(false);
+                
+                entity.Property(e => e.Respuesta2)
+                    .IsRequired()
+                    .IsUnicode(false);
+                
+                entity.Property(e => e.Respuesta3)
+                    .IsRequired()
+                    .IsUnicode(false);
 
                 entity.Property(e => e.FechaCreacion).HasColumnType("date");
 

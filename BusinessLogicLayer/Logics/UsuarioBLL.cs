@@ -18,7 +18,7 @@ namespace BusinessLogicLayer.Logics
 
         public Usuario Authentication(string password)
         {
-            string hashPassword = CryptoService.EncodePassword(password);
+            string hashPassword = CryptoService.Encode(password);
 
             Usuario usuario = _usuarioRepository.Authentication(hashPassword);
 
@@ -53,7 +53,7 @@ namespace BusinessLogicLayer.Logics
 
         public void Create(Usuario usuario)
         {
-            string hashPassword = CryptoService.EncodePassword(usuario.Clave);
+            string hashPassword = CryptoService.Encode(usuario.Clave);
 
             usuario.Clave = hashPassword;
 
@@ -61,14 +61,8 @@ namespace BusinessLogicLayer.Logics
             _usuarioRepository.Save();
         }
 
-        public bool Edit(Usuario usuario, bool cambiarClave)
+        public bool Edit(Usuario usuario)
         {
-            if (cambiarClave)
-            {
-                string hashPassword = CryptoService.EncodePassword(usuario.Clave);
-                usuario.Clave = hashPassword;
-            }
-
             _usuarioRepository.UpdateUsuario(usuario);
             _usuarioRepository.Save();
 

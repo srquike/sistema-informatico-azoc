@@ -84,7 +84,34 @@ namespace WindowsFormsUI.Formularios
                     else
                     {
                         ErrPControles.Clear();
-                        return true;
+
+                        if (string.IsNullOrEmpty(TxtPregunta1.Text))
+                        {
+                            ErrPControles.SetError(TxtPregunta1, "Por favor, ingrese la respuesta");
+                        }
+                        else
+                        {
+                            ErrPControles.Clear();
+
+                            if (string.IsNullOrEmpty(TxtPregunta3.Text))
+                            {
+                                ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
+                            }
+                            else
+                            {
+                                ErrPControles.Clear();
+
+                                if (string.IsNullOrEmpty(TxtPregunta1.Text))
+                                {
+                                    ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
+                                }
+                                else
+                                {
+                                    ErrPControles.Clear();
+                                    return true;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -140,7 +167,10 @@ namespace WindowsFormsUI.Formularios
                         FechaCreacion = DateTime.Today,
                         UltimoAcceso = DateTime.Now,
                         EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue),
-                        FechaModificacion = DateTime.Now
+                        FechaModificacion = DateTime.Now,
+                        Respuesta1 = TxtPregunta1.Text,
+                        Respuesta2 = TxtPregunta2.Text,
+                        Respuesta3 = TxtPregunta3.Text
                     };
 
                     if (ChkActivarUsuario.Checked)

@@ -56,7 +56,7 @@ namespace WindowsFormsUI.Formularios
                     UsuarioLogIn = usuario;
                     UsuarioLogIn.UltimoAcceso = DateTime.Now;
 
-                    _usuarioLogic.Edit(UsuarioLogIn, false);
+                    _usuarioLogic.Edit(UsuarioLogIn);
 
                     RegistroUsuario registro = new RegistroUsuario
                     {
@@ -93,18 +93,16 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            //ValidarControles();
-            //if (_continuar)
-            //{
-            //    string user, password;
+            ValidarControles();
+            if (_continuar)
+            {
+                string user, password;
 
-            //    user = MTxtUsuario.Text.Replace("-", "");
-            //    password = TxtClave.Text;
+                user = MTxtUsuario.Text.Replace("-", "");
+                password = TxtClave.Text;
 
-            //    AutenticarUsuario(password);
-            //}
-
-            DialogResult = DialogResult.OK;
+                AutenticarUsuario(password);
+            }
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)

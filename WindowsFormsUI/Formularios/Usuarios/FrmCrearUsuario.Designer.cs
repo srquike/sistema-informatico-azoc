@@ -53,11 +53,19 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.BtnCrearUsuario = new System.Windows.Forms.Button();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtPregunta3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.TxtPregunta2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxtPregunta1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.GrpPermisos.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GrpPermisos
@@ -67,10 +75,10 @@ namespace WindowsFormsUI.Formularios
             this.GrpPermisos.Controls.Add(this.chkPuedeAgregar);
             this.GrpPermisos.Controls.Add(this.chkPuedeVer);
             this.GrpPermisos.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.GrpPermisos.Location = new System.Drawing.Point(456, 6);
+            this.GrpPermisos.Location = new System.Drawing.Point(697, 270);
             this.GrpPermisos.Name = "GrpPermisos";
             this.GrpPermisos.Size = new System.Drawing.Size(165, 165);
-            this.GrpPermisos.TabIndex = 12;
+            this.GrpPermisos.TabIndex = 13;
             this.GrpPermisos.TabStop = false;
             this.GrpPermisos.Text = "Permisos";
             // 
@@ -81,7 +89,7 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeEliminar.Location = new System.Drawing.Point(6, 136);
             this.chkPuedeEliminar.Name = "chkPuedeEliminar";
             this.chkPuedeEliminar.Size = new System.Drawing.Size(127, 24);
-            this.chkPuedeEliminar.TabIndex = 9;
+            this.chkPuedeEliminar.TabIndex = 17;
             this.chkPuedeEliminar.Tag = "4";
             this.chkPuedeEliminar.Text = "Puede eliminar";
             this.chkPuedeEliminar.UseVisualStyleBackColor = true;
@@ -93,7 +101,7 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeEditar.Location = new System.Drawing.Point(6, 98);
             this.chkPuedeEditar.Name = "chkPuedeEditar";
             this.chkPuedeEditar.Size = new System.Drawing.Size(112, 24);
-            this.chkPuedeEditar.TabIndex = 8;
+            this.chkPuedeEditar.TabIndex = 16;
             this.chkPuedeEditar.Tag = "3";
             this.chkPuedeEditar.Text = "Puede editar";
             this.chkPuedeEditar.UseVisualStyleBackColor = true;
@@ -105,7 +113,7 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeAgregar.Location = new System.Drawing.Point(6, 60);
             this.chkPuedeAgregar.Name = "chkPuedeAgregar";
             this.chkPuedeAgregar.Size = new System.Drawing.Size(125, 24);
-            this.chkPuedeAgregar.TabIndex = 7;
+            this.chkPuedeAgregar.TabIndex = 15;
             this.chkPuedeAgregar.Tag = "2";
             this.chkPuedeAgregar.Text = "Puede agregar";
             this.chkPuedeAgregar.UseVisualStyleBackColor = true;
@@ -117,7 +125,7 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeVer.Location = new System.Drawing.Point(6, 22);
             this.chkPuedeVer.Name = "chkPuedeVer";
             this.chkPuedeVer.Size = new System.Drawing.Size(93, 24);
-            this.chkPuedeVer.TabIndex = 6;
+            this.chkPuedeVer.TabIndex = 14;
             this.chkPuedeVer.Tag = "1";
             this.chkPuedeVer.Text = "Puede ver";
             this.chkPuedeVer.UseVisualStyleBackColor = true;
@@ -127,10 +135,10 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.BtnElegirImagen);
             this.groupBox2.Controls.Add(this.PctAvatar);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(627, 6);
+            this.groupBox2.Location = new System.Drawing.Point(566, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(269, 209);
-            this.groupBox2.TabIndex = 13;
+            this.groupBox2.Size = new System.Drawing.Size(296, 258);
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Imagen";
             // 
@@ -144,10 +152,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnElegirImagen.ForeColor = System.Drawing.Color.Black;
             this.BtnElegirImagen.Image = global::WindowsFormsUI.Properties.Resources.folder;
             this.BtnElegirImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnElegirImagen.Location = new System.Drawing.Point(155, 22);
+            this.BtnElegirImagen.Location = new System.Drawing.Point(183, 26);
             this.BtnElegirImagen.Name = "BtnElegirImagen";
             this.BtnElegirImagen.Size = new System.Drawing.Size(105, 35);
-            this.BtnElegirImagen.TabIndex = 10;
+            this.BtnElegirImagen.TabIndex = 8;
             this.BtnElegirImagen.Text = "Elegir";
             this.BtnElegirImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnElegirImagen.UseVisualStyleBackColor = false;
@@ -156,9 +164,9 @@ namespace WindowsFormsUI.Formularios
             // PctAvatar
             // 
             this.PctAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PctAvatar.Location = new System.Drawing.Point(6, 22);
+            this.PctAvatar.Location = new System.Drawing.Point(6, 26);
             this.PctAvatar.Name = "PctAvatar";
-            this.PctAvatar.Size = new System.Drawing.Size(143, 181);
+            this.PctAvatar.Size = new System.Drawing.Size(171, 226);
             this.PctAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PctAvatar.TabIndex = 0;
             this.PctAvatar.TabStop = false;
@@ -178,8 +186,8 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.Location = new System.Drawing.Point(12, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(438, 258);
-            this.groupBox3.TabIndex = 11;
+            this.groupBox3.Size = new System.Drawing.Size(548, 258);
+            this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos";
             // 
@@ -190,20 +198,22 @@ namespace WindowsFormsUI.Formularios
             this.ChkActivarUsuario.Location = new System.Drawing.Point(152, 228);
             this.ChkActivarUsuario.Name = "ChkActivarUsuario";
             this.ChkActivarUsuario.Size = new System.Drawing.Size(126, 24);
-            this.ChkActivarUsuario.TabIndex = 5;
+            this.ChkActivarUsuario.TabIndex = 6;
             this.ChkActivarUsuario.Text = "Activar usuario";
             this.ChkActivarUsuario.UseVisualStyleBackColor = true;
             // 
             // MTxtUsuario
             // 
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtUsuario.HidePromptOnLeave = true;
             this.ErrPControles.SetIconPadding(this.MTxtUsuario, 5);
             this.MTxtUsuario.Location = new System.Drawing.Point(152, 66);
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
-            this.MTxtUsuario.Size = new System.Drawing.Size(254, 27);
-            this.MTxtUsuario.TabIndex = 1;
+            this.MTxtUsuario.Size = new System.Drawing.Size(369, 27);
+            this.MTxtUsuario.TabIndex = 2;
+            this.MTxtUsuario.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // ChkVerClaves
             // 
@@ -212,7 +222,7 @@ namespace WindowsFormsUI.Formularios
             this.ChkVerClaves.Location = new System.Drawing.Point(152, 198);
             this.ChkVerClaves.Name = "ChkVerClaves";
             this.ChkVerClaves.Size = new System.Drawing.Size(131, 24);
-            this.ChkVerClaves.TabIndex = 4;
+            this.ChkVerClaves.TabIndex = 5;
             this.ChkVerClaves.Text = "Ver contraseñas";
             this.ChkVerClaves.UseVisualStyleBackColor = true;
             this.ChkVerClaves.CheckedChanged += new System.EventHandler(this.ChkVerClaves_CheckedChanged);
@@ -224,8 +234,8 @@ namespace WindowsFormsUI.Formularios
             this.TxtClave.Location = new System.Drawing.Point(152, 115);
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña";
-            this.TxtClave.Size = new System.Drawing.Size(254, 27);
-            this.TxtClave.TabIndex = 2;
+            this.TxtClave.Size = new System.Drawing.Size(369, 27);
+            this.TxtClave.TabIndex = 3;
             this.TxtClave.UseSystemPasswordChar = true;
             // 
             // TxtRepetirClave
@@ -235,8 +245,8 @@ namespace WindowsFormsUI.Formularios
             this.TxtRepetirClave.Location = new System.Drawing.Point(152, 164);
             this.TxtRepetirClave.Name = "TxtRepetirClave";
             this.TxtRepetirClave.PlaceholderText = "Escriba nuevamente la contraseña";
-            this.TxtRepetirClave.Size = new System.Drawing.Size(254, 27);
-            this.TxtRepetirClave.TabIndex = 3;
+            this.TxtRepetirClave.Size = new System.Drawing.Size(369, 27);
+            this.TxtRepetirClave.TabIndex = 4;
             this.TxtRepetirClave.UseSystemPasswordChar = true;
             // 
             // label3
@@ -275,16 +285,16 @@ namespace WindowsFormsUI.Formularios
             this.CmbEmpleados.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbEmpleados.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbEmpleados.FormattingEnabled = true;
-            this.CmbEmpleados.Location = new System.Drawing.Point(152, 16);
+            this.CmbEmpleados.Location = new System.Drawing.Point(152, 20);
             this.CmbEmpleados.Name = "CmbEmpleados";
-            this.CmbEmpleados.Size = new System.Drawing.Size(254, 28);
-            this.CmbEmpleados.TabIndex = 0;
+            this.CmbEmpleados.Size = new System.Drawing.Size(369, 28);
+            this.CmbEmpleados.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(41, 19);
+            this.label4.Location = new System.Drawing.Point(41, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 20);
             this.label4.TabIndex = 12;
@@ -305,10 +315,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(782, 229);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(748, 441);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
-            this.BtnLimpiarControles.TabIndex = 15;
+            this.BtnLimpiarControles.TabIndex = 18;
             this.BtnLimpiarControles.Text = "Limpiar";
             this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiarControles.UseVisualStyleBackColor = false;
@@ -324,10 +334,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearUsuario.ForeColor = System.Drawing.Color.Black;
             this.BtnCrearUsuario.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrearUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearUsuario.Location = new System.Drawing.Point(627, 229);
+            this.BtnCrearUsuario.Location = new System.Drawing.Point(594, 441);
             this.BtnCrearUsuario.Name = "BtnCrearUsuario";
             this.BtnCrearUsuario.Size = new System.Drawing.Size(149, 35);
-            this.BtnCrearUsuario.TabIndex = 14;
+            this.BtnCrearUsuario.TabIndex = 19;
             this.BtnCrearUsuario.Text = "Crear usuario";
             this.BtnCrearUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrearUsuario.UseVisualStyleBackColor = false;
@@ -337,12 +347,86 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ErrPControles.ContainerControl = this;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.TxtPregunta3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.TxtPregunta2);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.TxtPregunta1);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(12, 270);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(679, 165);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Preguntas";
+            // 
+            // TxtPregunta3
+            // 
+            this.TxtPregunta3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPregunta3.Location = new System.Drawing.Point(352, 118);
+            this.TxtPregunta3.Name = "TxtPregunta3";
+            this.TxtPregunta3.PlaceholderText = "Escribe la respuesta";
+            this.TxtPregunta3.Size = new System.Drawing.Size(303, 27);
+            this.TxtPregunta3.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(6, 121);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(234, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "3. ¿Cuál era tu apodo de infancia?";
+            // 
+            // TxtPregunta2
+            // 
+            this.TxtPregunta2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPregunta2.Location = new System.Drawing.Point(352, 69);
+            this.TxtPregunta2.Name = "TxtPregunta2";
+            this.TxtPregunta2.PlaceholderText = "Escribe la respuesta";
+            this.TxtPregunta2.Size = new System.Drawing.Size(303, 27);
+            this.TxtPregunta2.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(6, 72);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(340, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "2. ¿Cuál es el nombre de la ciudad donde naciste?";
+            // 
+            // TxtPregunta1
+            // 
+            this.TxtPregunta1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPregunta1.Location = new System.Drawing.Point(352, 20);
+            this.TxtPregunta1.Name = "TxtPregunta1";
+            this.TxtPregunta1.PlaceholderText = "Escribe la respuesta";
+            this.TxtPregunta1.Size = new System.Drawing.Size(303, 27);
+            this.TxtPregunta1.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(6, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(318, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "1. ¿Cuál fue el nombre de tu primera mascota?";
+            // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(907, 275);
+            this.ClientSize = new System.Drawing.Size(875, 486);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnCrearUsuario);
             this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox3);
@@ -360,6 +444,8 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +475,12 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnCrearUsuario;
         private System.Windows.Forms.ErrorProvider ErrPControles;
         private System.Windows.Forms.Button BtnElegirImagen;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox TxtPregunta3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox TxtPregunta2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox TxtPregunta1;
+        private System.Windows.Forms.Label label7;
     }
 }
