@@ -108,12 +108,13 @@ namespace WindowsFormsUI.Formularios
             // 
             this.LLblRecuperarClave.AutoSize = true;
             this.LLblRecuperarClave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LLblRecuperarClave.Location = new System.Drawing.Point(553, 75);
+            this.LLblRecuperarClave.Location = new System.Drawing.Point(553, 80);
             this.LLblRecuperarClave.Name = "LLblRecuperarClave";
             this.LLblRecuperarClave.Size = new System.Drawing.Size(121, 15);
             this.LLblRecuperarClave.TabIndex = 3;
             this.LLblRecuperarClave.TabStop = true;
             this.LLblRecuperarClave.Text = "Recuperar contraseña";
+            this.LLblRecuperarClave.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblRecuperarClave_LinkClicked);
             // 
             // BtnCancelar
             // 

@@ -81,8 +81,8 @@ namespace WindowsFormsUI.Formularios
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
             var usuarios = ObtenerLista();
-
             RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
+            WindowState = FormWindowState.Maximized;
         }
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
@@ -249,37 +249,5 @@ namespace WindowsFormsUI.Formularios
                 }
             }
         }
-
-        #region Codigo para la barra superior del formulario
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-        private void BtnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                BtnMaximizar.Image = Properties.Resources.normal;
-            }
-            else if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                BtnMaximizar.Image = Properties.Resources.maximize;
-            }
-        }
-
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void PnlBarraSuperior_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xf012, 0);
-        }
-        #endregion
     }
 }

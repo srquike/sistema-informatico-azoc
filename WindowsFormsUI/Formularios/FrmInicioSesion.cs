@@ -142,5 +142,17 @@ namespace WindowsFormsUI.Formularios
             Button button = (Button)sender;
             button.ForeColor = Color.Black;
         }
+
+        private void LLblRecuperarClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmRecuperararClave frmRecuperararClave = new FrmRecuperararClave();
+            frmRecuperararClave.StartPosition = FormStartPosition.CenterParent;
+            frmRecuperararClave.ShowDialog();
+
+            if (frmRecuperararClave.DialogResult == DialogResult.OK)
+            {
+                frmRecuperararClave.Close();
+            }
+        }
     }
 }

@@ -31,6 +31,10 @@ namespace WindowsFormsUI.Formularios
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.PnlBarraLateral = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnCreditos = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -45,13 +49,16 @@ namespace WindowsFormsUI.Formularios
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIVentana = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAyuda = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlBarraLateral
@@ -76,6 +83,62 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Name = "PnlBarraLateral";
             this.PnlBarraLateral.Size = new System.Drawing.Size(230, 739);
             this.PnlBarraLateral.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel4.Enabled = false;
+            this.panel4.Location = new System.Drawing.Point(12, 616);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(23, 58);
+            this.panel4.TabIndex = 12;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.panel3.Enabled = false;
+            this.panel3.Location = new System.Drawing.Point(12, 552);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(23, 58);
+            this.panel3.TabIndex = 12;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.Enabled = false;
+            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button7.ForeColor = System.Drawing.Color.Black;
+            this.button7.Image = global::WindowsFormsUI.Properties.Resources.cross;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(41, 616);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(177, 58);
+            this.button7.TabIndex = 11;
+            this.button7.Text = "Funeraria";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.Enabled = false;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button6.ForeColor = System.Drawing.Color.Black;
+            this.button6.Image = global::WindowsFormsUI.Properties.Resources.shop;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(41, 552);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(177, 58);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Despensa";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -249,73 +312,64 @@ namespace WindowsFormsUI.Formularios
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // panel3
+            // menuStrip1
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
-            this.panel3.Enabled = false;
-            this.panel3.Location = new System.Drawing.Point(12, 552);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(23, 58);
-            this.panel3.TabIndex = 12;
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSMIVentana,
+            this.TSMIAyuda});
+            this.menuStrip1.Location = new System.Drawing.Point(230, 0);
+            this.menuStrip1.MdiWindowListItem = this.TSMIVentana;
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1050, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // button6
+            // customizeToolStripMenuItem
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.Enabled = false;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Image = global::WindowsFormsUI.Properties.Resources.shop;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(41, 552);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(177, 58);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Despensa";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.UseVisualStyleBackColor = false;
+            this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.customizeToolStripMenuItem.Text = "&Customize";
             // 
-            // panel4
+            // optionsToolStripMenuItem
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
-            this.panel4.Enabled = false;
-            this.panel4.Location = new System.Drawing.Point(12, 616);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(23, 58);
-            this.panel4.TabIndex = 12;
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.optionsToolStripMenuItem.Text = "&Options";
             // 
-            // button7
+            // TSMIVentana
             // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.Enabled = false;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button7.ForeColor = System.Drawing.Color.Black;
-            this.button7.Image = global::WindowsFormsUI.Properties.Resources.cross;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(41, 616);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(177, 58);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Funeraría";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = false;
+            this.TSMIVentana.Name = "TSMIVentana";
+            this.TSMIVentana.Size = new System.Drawing.Size(61, 20);
+            this.TSMIVentana.Text = "&Ventana";
+            // 
+            // TSMIAyuda
+            // 
+            this.TSMIAyuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3});
+            this.TSMIAyuda.Name = "TSMIAyuda";
+            this.TSMIAyuda.Size = new System.Drawing.Size(53, 20);
+            this.TSMIAyuda.Text = "&Ayuda";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 22);
+            this.toolStripMenuItem3.Text = "Acerca del sistema";
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 739);
+            this.ClientSize = new System.Drawing.Size(1280, 739);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.PnlBarraLateral);
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmPrincipal";
             this.Text = "Cooperativa AZOC de R. L.";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -325,7 +379,10 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -350,5 +407,11 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem TSMIVentana;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAyuda;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
     }
 }

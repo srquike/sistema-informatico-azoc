@@ -46,8 +46,6 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.BtnMaximizar = new System.Windows.Forms.PictureBox();
-            this.BtnCerrar = new System.Windows.Forms.PictureBox();
             this.BtnCrearNuevo = new System.Windows.Forms.Button();
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.BtnBuscar = new System.Windows.Forms.Button();
@@ -62,8 +60,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // DgvListaUsuarios
@@ -230,14 +226,11 @@ namespace WindowsFormsUI.Formularios
             // 
             this.PnlBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
             this.PnlBarraSuperior.Controls.Add(this.label3);
-            this.PnlBarraSuperior.Controls.Add(this.BtnMaximizar);
-            this.PnlBarraSuperior.Controls.Add(this.BtnCerrar);
             this.PnlBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlBarraSuperior.Location = new System.Drawing.Point(0, 0);
             this.PnlBarraSuperior.Name = "PnlBarraSuperior";
             this.PnlBarraSuperior.Size = new System.Drawing.Size(1238, 38);
             this.PnlBarraSuperior.TabIndex = 2;
-            this.PnlBarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBarraSuperior_MouseDown);
             // 
             // label3
             // 
@@ -250,28 +243,6 @@ namespace WindowsFormsUI.Formularios
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 15;
             this.label3.Text = "Usuarios";
-            // 
-            // BtnMaximizar
-            // 
-            this.BtnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMaximizar.Image = global::WindowsFormsUI.Properties.Resources.maximize;
-            this.BtnMaximizar.Location = new System.Drawing.Point(1156, 3);
-            this.BtnMaximizar.Name = "BtnMaximizar";
-            this.BtnMaximizar.Size = new System.Drawing.Size(32, 32);
-            this.BtnMaximizar.TabIndex = 4;
-            this.BtnMaximizar.TabStop = false;
-            this.BtnMaximizar.Click += new System.EventHandler(this.BtnMaximizar_Click);
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.x_button;
-            this.BtnCerrar.Location = new System.Drawing.Point(1194, 3);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(32, 32);
-            this.BtnCerrar.TabIndex = 3;
-            this.BtnCerrar.TabStop = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // BtnCrearNuevo
             // 
@@ -467,15 +438,12 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.BtnCrearNuevo);
             this.Controls.Add(this.PnlBarraSuperior);
             this.Controls.Add(this.DgvListaUsuarios);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmUsuarios";
             this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.FrmUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).EndInit();
             this.PnlBarraSuperior.ResumeLayout(false);
             this.PnlBarraSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,8 +452,6 @@ namespace WindowsFormsUI.Formularios
         #endregion
         private System.Windows.Forms.DataGridView DgvListaUsuarios;
         private System.Windows.Forms.Panel PnlBarraSuperior;
-        private System.Windows.Forms.PictureBox BtnMaximizar;
-        private System.Windows.Forms.PictureBox BtnCerrar;
         private System.Windows.Forms.Button BtnCrearNuevo;
         private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.Button BtnBuscar;
