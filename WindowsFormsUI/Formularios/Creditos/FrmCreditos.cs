@@ -45,6 +45,7 @@ namespace WindowsFormsUI.Formularios
             CmbTipoFiltro.SelectedIndex = 0;
             ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
             CmbAcciones.SelectedIndex = 0;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
@@ -179,16 +180,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnMaximizar_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                BtnMaximizar.Image = Properties.Resources.normal;
-            }
-            else if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                BtnMaximizar.Image = Properties.Resources.maximize;
-            }
+
         }
 
         private void BtnCerrar_Click(object sender, EventArgs e)

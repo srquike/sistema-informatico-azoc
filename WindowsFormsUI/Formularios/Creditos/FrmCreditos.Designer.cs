@@ -45,8 +45,6 @@ namespace WindowsFormsUI.Formularios
             this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.BtnCrearNuevo = new System.Windows.Forms.Button();
             this.LblTitulo = new System.Windows.Forms.Label();
-            this.BtnMaximizar = new System.Windows.Forms.PictureBox();
-            this.BtnCerrar = new System.Windows.Forms.PictureBox();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.DgvLista = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -60,8 +58,6 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
             this.SuspendLayout();
@@ -248,40 +244,15 @@ namespace WindowsFormsUI.Formularios
             this.LblTitulo.TabIndex = 15;
             this.LblTitulo.Text = "Créditos";
             // 
-            // BtnMaximizar
-            // 
-            this.BtnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMaximizar.Image = global::WindowsFormsUI.Properties.Resources.maximize;
-            this.BtnMaximizar.Location = new System.Drawing.Point(1156, 3);
-            this.BtnMaximizar.Name = "BtnMaximizar";
-            this.BtnMaximizar.Size = new System.Drawing.Size(32, 32);
-            this.BtnMaximizar.TabIndex = 4;
-            this.BtnMaximizar.TabStop = false;
-            this.BtnMaximizar.Click += new System.EventHandler(this.BtnMaximizar_Click);
-            // 
-            // BtnCerrar
-            // 
-            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.x_button;
-            this.BtnCerrar.Location = new System.Drawing.Point(1194, 3);
-            this.BtnCerrar.Name = "BtnCerrar";
-            this.BtnCerrar.Size = new System.Drawing.Size(32, 32);
-            this.BtnCerrar.TabIndex = 3;
-            this.BtnCerrar.TabStop = false;
-            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
-            // 
             // PnlBarraSuperior
             // 
             this.PnlBarraSuperior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
             this.PnlBarraSuperior.Controls.Add(this.LblTitulo);
-            this.PnlBarraSuperior.Controls.Add(this.BtnMaximizar);
-            this.PnlBarraSuperior.Controls.Add(this.BtnCerrar);
             this.PnlBarraSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlBarraSuperior.Location = new System.Drawing.Point(0, 0);
             this.PnlBarraSuperior.Name = "PnlBarraSuperior";
             this.PnlBarraSuperior.Size = new System.Drawing.Size(1238, 38);
             this.PnlBarraSuperior.TabIndex = 16;
-            this.PnlBarraSuperior.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlBarraSuperior_MouseDown);
             // 
             // DgvLista
             // 
@@ -461,12 +432,11 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.BtnCrearNuevo);
             this.Controls.Add(this.PnlBarraSuperior);
             this.Controls.Add(this.DgvLista);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmCreditos";
             this.Text = "FrmCreditos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmCreditos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnCerrar)).EndInit();
             this.PnlBarraSuperior.ResumeLayout(false);
             this.PnlBarraSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).EndInit();
@@ -490,8 +460,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.Button BtnCrearNuevo;
         private System.Windows.Forms.Label LblTitulo;
-        private System.Windows.Forms.PictureBox BtnMaximizar;
-        private System.Windows.Forms.PictureBox BtnCerrar;
         private System.Windows.Forms.Panel PnlBarraSuperior;
         private System.Windows.Forms.DataGridView DgvLista;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;

@@ -48,6 +48,7 @@ namespace WindowsFormsUI.Formularios
             CmbAcciones.SelectedIndex = 0;
             CmbTipoFiltro.SelectedIndex = 0;
             ActualizarListado(ref DgvListado, _asociadoLogic.List());
+            WindowState = FormWindowState.Maximized;
         }
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
@@ -252,16 +253,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnMaximizar_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                BtnMaximizar.Image = Properties.Resources.normal;
-            }
-            else if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                BtnMaximizar.Image = Properties.Resources.maximize;
-            }
+
         }
 
         private void BtnCerrar_Click(object sender, EventArgs e)

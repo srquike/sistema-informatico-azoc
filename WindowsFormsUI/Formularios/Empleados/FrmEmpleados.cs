@@ -71,6 +71,7 @@ namespace WindowsFormsUI.Formularios
             CmbTipoFiltro.SelectedIndex = 0;
             ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
             CmbAcciones.SelectedIndex = 0;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void DgvListaEmpleados_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -145,40 +146,6 @@ namespace WindowsFormsUI.Formularios
                 LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
             }
         }
-
-        #region Codigo para la barra superior del formulario
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void BtnMaximizar_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Normal)
-            {
-                WindowState = FormWindowState.Maximized;
-                BtnMaximizar.Image = Properties.Resources.normal;
-            }
-            else if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-                BtnMaximizar.Image = Properties.Resources.maximize;
-            }
-        }
-
-        private void BtnCerrar_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void PnlBarraSuperior_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xf012, 0);
-        }
-        #endregion
 
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
