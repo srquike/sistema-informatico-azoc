@@ -42,7 +42,18 @@ namespace DataAccessLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server = DESKTOP-9NPOF6R\\SQLEXPRESS; Database = AzocDb; Trusted_Connection = True; ");
+                // Conexion de Hamilton
+                // optionsBuilder.UseSqlServer("Server = DESKTOP-9NPOF6R\\SQLEXPRESS; Database = AzocDb; Trusted_Connection = True; ");
+
+                // Conexion de Jonathan
+                // optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+
+                // Conexion de Walter
+                // optionsBuilder.UseSqlServer("Server=WALTER\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+
+                // Conexion de David
+                // optionsBuilder.UseSqlServer("Server=MELGAR\\MSSQLSERVER19; Database=AzocDb; Trusted_Connection=True;");
+
                 optionsBuilder.EnableSensitiveDataLogging();
             }
         }
