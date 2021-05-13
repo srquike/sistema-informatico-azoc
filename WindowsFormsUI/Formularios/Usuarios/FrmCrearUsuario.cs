@@ -93,15 +93,15 @@ namespace WindowsFormsUI.Formularios
                         {
                             ErrPControles.Clear();
 
-                            if (string.IsNullOrEmpty(TxtPregunta3.Text))
+                            if (string.IsNullOrEmpty(TxtPregunta2.Text))
                             {
-                                ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
+                                ErrPControles.SetError(TxtPregunta2, "Por favor, ingrese la respuesta");
                             }
                             else
                             {
                                 ErrPControles.Clear();
 
-                                if (string.IsNullOrEmpty(TxtPregunta1.Text))
+                                if (string.IsNullOrEmpty(TxtPregunta3.Text))
                                 {
                                     ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
                                 }
