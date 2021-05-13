@@ -42,7 +42,7 @@ namespace DataAccessLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=localhost; Database=AzocDb; User Id=sa; Password=_Mi@Sqlserver$Jevc&27!");
+                optionsBuilder.UseSqlServer("Server = DESKTOP-9NPOF6R\\SQLEXPRESS; Database = AzocDb; Trusted_Connection = True; ");
                 optionsBuilder.EnableSensitiveDataLogging();
             }
         }
