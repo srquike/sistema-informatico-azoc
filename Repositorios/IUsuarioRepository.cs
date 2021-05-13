@@ -9,6 +9,7 @@ namespace RepositoryLayer
     {
         IEnumerable<Usuario> GetUsuarios();
         Usuario GetUsuarioById(int id);
+        Usuario GetUsuarioByName(string name);
         void InsertUsuario(Usuario usuario);
         void DeleteUsuario(Usuario usuario);
         void UpdateUsuario(Usuario usuario);

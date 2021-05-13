@@ -14,47 +14,37 @@ namespace WindowsFormsUI.Formularios
 
         public FrmPrincipal(Usuario usuario)
         {
-            _usuario = usuario;
-
             InitializeComponent();
 
+            _usuario = usuario;
             _registroUsuarioLogic = new RegistroUsuarioBLL();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
-
-            string nombreAvatar = _usuario.Nombre + ".jpg";
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string archivo = string.Concat(ruta, nombreAvatar);
-
-            if (File.Exists(archivo))
+            if (_usuario != null)
             {
-                PctAvatar.Image = Image.FromFile(archivo);
-            }
-            else
-            {
-                if (_usuario.Empleado.Genero == "M")
+                string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
+
+                string nombreAvatar = _usuario.Nombre + ".jpg";
+                string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+                string archivo = string.Concat(ruta, nombreAvatar);
+
+                if (File.Exists(archivo))
                 {
-                    PctAvatar.Image = Properties.Resources.male_avatar_default;
+                    PctAvatar.Image = Image.FromFile(archivo);
                 }
-                else if (_usuario.Empleado.Genero == "F")
+                else
                 {
-                    PctAvatar.Image = Properties.Resources.female_avatar_default;
+                    PctAvatar.Image = _usuario.Empleado.Genero == "F" 
+                        ? Properties.Resources.female_avatar_default
+                        : Properties.Resources.male_avatar_default;
                 }
-            }
 
-            if (_usuario.Empleado.Genero == "M")
-            {
-                LblSaludo.Text = "BIENVENIDO";
-            }
-            else if (_usuario.Empleado.Genero == "F")
-            {
-                LblSaludo.Text = "BIENVENIDA";
-            }
+                LblSaludo.Text = _usuario.Empleado.Genero == "F" ? "BIENVENIDA" : "BIENVENIDO";
 
-            TxtNombreEmpleado.Text = nombreEmpleado;
+                TxtNombreEmpleado.Text = nombreEmpleado;
+            }
         }
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
@@ -68,18 +58,18 @@ namespace WindowsFormsUI.Formularios
             {
                 e.Cancel = true;
             }
-            //else
-            //{
-            //    RegistroUsuario registro = new RegistroUsuario
-            //    {
-            //        UsuarioId = _usuario.UsuarioId,
-            //        RegistroId = 2,
-            //        Fecha = DateTime.Now,
-            //        Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
-            //    };
+            else
+            {
+                RegistroUsuario registro = new RegistroUsuario
+                {
+                    UsuarioId = _usuario.UsuarioId,
+                    RegistroId = 2,
+                    Fecha = DateTime.Now,
+                    Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
+                };
 
-            //    _registroUsuarioLogic.Create(registro);
-            //}
+                _registroUsuarioLogic.Create(registro);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

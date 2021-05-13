@@ -18,6 +18,7 @@ namespace WindowsFormsUI.Formularios
         private EmpleadoBLL _empleadoLogic;
         private PermisoUsuarioBLL _permisoUsuarioLogic;
         private bool _continuar;
+        private bool _cambiarAvatar;
 
         public FrmEditarUsuario(Usuario usuario)
         {
@@ -28,6 +29,7 @@ namespace WindowsFormsUI.Formularios
             _empleadoLogic = new EmpleadoBLL();
             _permisoUsuarioLogic = new PermisoUsuarioBLL();
             _continuar = false;
+            _cambiarAvatar = false;
         }
 
         private void LlenarComboBoxEmpleados()
@@ -48,7 +50,7 @@ namespace WindowsFormsUI.Formularios
 
         private void LlenarControles()
         {
-            MTxtUsuario.Text = _usuarioEdit.Nombre;
+            MTxtNombre.Text = _usuarioEdit.Nombre;
             ChkActivarUsuario.Checked = _usuarioEdit.Estado == '1';
             ObtenerPermisos(_usuarioEdit.PermisoUsuarios);
             ObtenerAvatar(_usuarioEdit.Nombre);
@@ -102,57 +104,6 @@ namespace WindowsFormsUI.Formularios
             LlenarControles();
         }
 
-        private void ValidarControles()
-        {
-            if (MTxtUsuario.MaskFull != true)
-            {
-                ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese el nombre de usuario para continuar!");
-                _continuar = false;
-            }
-            else
-            {
-                ErrPControles.Clear();
-                _continuar = true;
-            }
-
-        }
-
-        private bool ValidarClaves()
-        {
-            if (string.IsNullOrEmpty(TxtClave.Text))
-            {
-                ErrPControles.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
-            }
-            else
-            {
-                ErrPControles.Clear();
-
-                if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
-                {
-                    ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese la misma contraseña!");
-                }
-                else
-                {
-                    ErrPControles.Clear();
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private bool ValidarUsuario(string nombre)
-        {
-            var usuarios = _usuarioLogic.List();
-            var resultado = (from usuario in usuarios where usuario.Nombre == nombre select usuario).FirstOrDefault();
-
-            if (resultado == null)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         private void AgregarPermisos(int userId)
         {
             PermisoUsuario permiso;
@@ -194,51 +145,39 @@ namespace WindowsFormsUI.Formularios
             };
         }
 
-        private void ValidarCambios()
+        private void ValidarRequeridos()
         {
-            if (!string.IsNullOrEmpty(MTxtUsuario.Text))
+            if (!MTxtNombre.MaskFull)
             {
-                if (!MTxtUsuario.MaskFull)
-                {
-                    ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese un nombre correcto!");
-                    _continuar = false;
-                }
-                else
-                {
-                    ErrPControles.Clear();
-
-                    string nombre = MTxtUsuario.Text;
-
-                    if (ValidarUsuario(nombre))
-                    {
-                        _usuarioEdit.Nombre = nombre;
-                        _continuar = true;
-                    }
-                    else
-                    {
-                        ErrPControles.SetError(MTxtUsuario, "El nombre de usuario ya existe, por favor ingrese otro!");
-                    }
-                }
+                ErrPControles.SetError(MTxtNombre, "El nombre ingresado es incorrecto!");
             }
+            else
+            {
+                ErrPControles.Clear();
+                _continuar = true;                
+            }
+        }
 
+        private void VerificarClaves()
+        {
             if (!string.IsNullOrEmpty(TxtClave.Text))
             {
-                if (string.IsNullOrEmpty(TxtRepetirClave.Text))
+                if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtClave.Text != TxtRepetirClave.Text)
                 {
-                    ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese nuevamente la contraseña");
+                    ErrPControles.SetError(TxtRepetirClave, "Las contraseñas deben ser iguales!");
                     _continuar = false;
                 }
                 else
                 {
                     ErrPControles.Clear();
-
-                    string clave = TxtClave.Text;
-
-                    _usuarioEdit.Clave = clave;
+                    _usuarioEdit.Clave = TxtClave.Text;
                     _continuar = true;
                 }
             }
+        }
 
+        private void VerificarRespuestas()
+        {
             if (!string.IsNullOrEmpty(TxtPregunta1.Text))
             {
                 _usuarioEdit.Respuesta1 = TxtPregunta1.Text;
@@ -248,25 +187,63 @@ namespace WindowsFormsUI.Formularios
             {
                 _usuarioEdit.Respuesta2 = TxtPregunta2.Text;
             }
-            
+
             if (!string.IsNullOrEmpty(TxtPregunta3.Text))
             {
-                _usuarioEdit.Respuesta2 = TxtPregunta3.Text;
+                _usuarioEdit.Respuesta3 = TxtPregunta3.Text;
+            }
+        }
+
+        private bool VerificarUnicos(string nombre)
+        {
+            if (!_usuarioEdit.Nombre.Equals(nombre))
+            {
+                Usuario usuario = _usuarioLogic.FindByName(nombre);
+
+                if (usuario == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
-            _usuarioEdit.Estado = ChkActivarUsuario.Checked ? '1' : '0';
+            return true;
         }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
-            ValidarCambios();
+            ValidarRequeridos();
+            VerificarClaves();
+            VerificarRespuestas();
 
             if (_continuar)
             {
-                _usuarioLogic.Edit(_usuarioEdit);
-                AgregarPermisos(_usuarioEdit.UsuarioId);
-                GuardarAvatar(_usuarioEdit.Nombre);
-                DialogResult = DialogResult.OK;
+                string nombre = MTxtNombre.Text;
+
+                if (VerificarUnicos(nombre))
+                {
+                    _usuarioEdit.EmpleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);
+                    _usuarioEdit.FechaModificacion = DateTime.Today;
+                    _usuarioEdit.Nombre = MTxtNombre.Text;
+                    _usuarioEdit.Estado = ChkActivarUsuario.Checked ? '1' : '0';
+
+                    _usuarioLogic.Edit(_usuarioEdit);
+                    ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
+
+                    if (_cambiarAvatar)
+                    {
+                        GuardarAvatar(_usuarioEdit.Nombre);
+                    }
+
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Ya exite un usuario con el mismo nombre!", "Editar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -279,13 +256,14 @@ namespace WindowsFormsUI.Formularios
                 using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
                 {
                     PctAvatar.Image = Image.FromStream(stream);
+                    _cambiarAvatar = true;
                 }
             }
         }
 
         private void BtnLimpiarControles_Click(object sender, EventArgs e)
         {
-            MTxtUsuario.Clear();
+            MTxtNombre.Clear();
             TxtClave.Clear();
             TxtRepetirClave.Clear();
             ChkVerClaves.Checked = false;

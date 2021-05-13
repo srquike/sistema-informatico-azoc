@@ -48,9 +48,18 @@ namespace DataAccessLayer
 
         public Usuario GetUsuarioById(int id)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.UsuarioId == id).Include(u => u.Empleado).Include(u => u.PermisoUsuarios).AsNoTracking().FirstOrDefault();
+            return _context.Usuarios.Where(u => u.UsuarioId == id)
+                .Include(u => u.Empleado)
+                .Include(u => u.PermisoUsuarios)
+                .AsNoTracking()
+                .FirstOrDefault();
+        }
 
-            return usuario;
+        public Usuario GetUsuarioByName(string name)
+        {
+            return _context.Usuarios.Where(u => u.Nombre == name)
+                .AsNoTracking()
+                .FirstOrDefault();
         }
 
         public void InsertUsuario(Usuario usuario)

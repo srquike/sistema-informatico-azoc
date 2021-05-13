@@ -144,6 +144,7 @@ namespace WindowsFormsUI.Formularios
             // MTxtUsuario
             // 
             this.MTxtUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MTxtUsuario.HidePromptOnLeave = true;
             this.ErrPNombreUsuario.SetIconPadding(this.MTxtUsuario, 5);
             this.MTxtUsuario.Location = new System.Drawing.Point(394, 12);
             this.MTxtUsuario.Mask = "00000000-0";
@@ -151,6 +152,7 @@ namespace WindowsFormsUI.Formularios
             this.MTxtUsuario.PromptChar = '-';
             this.MTxtUsuario.Size = new System.Drawing.Size(280, 27);
             this.MTxtUsuario.TabIndex = 0;
+            this.MTxtUsuario.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // ErrPClave
             // 

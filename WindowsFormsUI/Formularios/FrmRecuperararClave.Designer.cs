@@ -29,6 +29,7 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtPregunta3 = new System.Windows.Forms.TextBox();
@@ -37,17 +38,19 @@ namespace WindowsFormsUI.Formularios
             this.label3 = new System.Windows.Forms.Label();
             this.TxtPregunta1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.BtnVerificar = new System.Windows.Forms.Button();
             this.MTxtNombre = new System.Windows.Forms.MaskedTextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GbNuevaClave = new System.Windows.Forms.GroupBox();
             this.ChkVerClaves = new System.Windows.Forms.CheckBox();
             this.TxtClave = new System.Windows.Forms.TextBox();
             this.TxtRepetirClave = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.GbNuevaClave.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -81,7 +84,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPregunta3.Location = new System.Drawing.Point(352, 118);
             this.TxtPregunta3.Name = "TxtPregunta3";
             this.TxtPregunta3.PlaceholderText = "Escribe la respuesta";
-            this.TxtPregunta3.Size = new System.Drawing.Size(321, 27);
+            this.TxtPregunta3.Size = new System.Drawing.Size(302, 27);
             this.TxtPregunta3.TabIndex = 3;
             // 
             // label4
@@ -100,7 +103,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPregunta2.Location = new System.Drawing.Point(352, 69);
             this.TxtPregunta2.Name = "TxtPregunta2";
             this.TxtPregunta2.PlaceholderText = "Escribe la respuesta";
-            this.TxtPregunta2.Size = new System.Drawing.Size(321, 27);
+            this.TxtPregunta2.Size = new System.Drawing.Size(302, 27);
             this.TxtPregunta2.TabIndex = 2;
             // 
             // label3
@@ -119,7 +122,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPregunta1.Location = new System.Drawing.Point(352, 20);
             this.TxtPregunta1.Name = "TxtPregunta1";
             this.TxtPregunta1.PlaceholderText = "Escribe la respuesta";
-            this.TxtPregunta1.Size = new System.Drawing.Size(321, 27);
+            this.TxtPregunta1.Size = new System.Drawing.Size(302, 27);
             this.TxtPregunta1.TabIndex = 1;
             // 
             // label2
@@ -132,23 +135,24 @@ namespace WindowsFormsUI.Formularios
             this.label2.TabIndex = 0;
             this.label2.Text = "1. ¿Cuál fue el nombre de tu primera mascota?";
             // 
-            // BtnIngresar
+            // BtnVerificar
             // 
-            this.BtnIngresar.BackColor = System.Drawing.Color.White;
-            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
-            this.BtnIngresar.Image = global::WindowsFormsUI.Properties.Resources.verify;
-            this.BtnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIngresar.Location = new System.Drawing.Point(520, 202);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(171, 35);
-            this.BtnIngresar.TabIndex = 4;
-            this.BtnIngresar.Text = "Verificar preguntas";
-            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnIngresar.UseVisualStyleBackColor = false;
+            this.BtnVerificar.BackColor = System.Drawing.Color.White;
+            this.BtnVerificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnVerificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnVerificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVerificar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnVerificar.ForeColor = System.Drawing.Color.Black;
+            this.BtnVerificar.Image = global::WindowsFormsUI.Properties.Resources.verify;
+            this.BtnVerificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnVerificar.Location = new System.Drawing.Point(520, 202);
+            this.BtnVerificar.Name = "BtnVerificar";
+            this.BtnVerificar.Size = new System.Drawing.Size(171, 35);
+            this.BtnVerificar.TabIndex = 4;
+            this.BtnVerificar.Text = "Verificar preguntas";
+            this.BtnVerificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnVerificar.UseVisualStyleBackColor = false;
+            this.BtnVerificar.Click += new System.EventHandler(this.BtnVerificar_Click);
             // 
             // MTxtNombre
             // 
@@ -161,21 +165,21 @@ namespace WindowsFormsUI.Formularios
             this.MTxtNombre.TabIndex = 0;
             this.MTxtNombre.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // groupBox2
+            // GbNuevaClave
             // 
-            this.groupBox2.Controls.Add(this.ChkVerClaves);
-            this.groupBox2.Controls.Add(this.TxtClave);
-            this.groupBox2.Controls.Add(this.TxtRepetirClave);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Enabled = false;
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 243);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(679, 138);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Nueva contraseña";
+            this.GbNuevaClave.Controls.Add(this.ChkVerClaves);
+            this.GbNuevaClave.Controls.Add(this.TxtClave);
+            this.GbNuevaClave.Controls.Add(this.TxtRepetirClave);
+            this.GbNuevaClave.Controls.Add(this.label5);
+            this.GbNuevaClave.Controls.Add(this.label6);
+            this.GbNuevaClave.Enabled = false;
+            this.GbNuevaClave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.GbNuevaClave.Location = new System.Drawing.Point(12, 243);
+            this.GbNuevaClave.Name = "GbNuevaClave";
+            this.GbNuevaClave.Size = new System.Drawing.Size(679, 138);
+            this.GbNuevaClave.TabIndex = 7;
+            this.GbNuevaClave.TabStop = false;
+            this.GbNuevaClave.Text = "Nueva contraseña";
             // 
             // ChkVerClaves
             // 
@@ -194,7 +198,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtClave.Location = new System.Drawing.Point(152, 25);
             this.TxtClave.Name = "TxtClave";
             this.TxtClave.PlaceholderText = "Escriba la contraseña";
-            this.TxtClave.Size = new System.Drawing.Size(521, 27);
+            this.TxtClave.Size = new System.Drawing.Size(502, 27);
             this.TxtClave.TabIndex = 5;
             this.TxtClave.UseSystemPasswordChar = true;
             // 
@@ -204,7 +208,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtRepetirClave.Location = new System.Drawing.Point(152, 74);
             this.TxtRepetirClave.Name = "TxtRepetirClave";
             this.TxtRepetirClave.PlaceholderText = "Escriba nuevamente la contraseña";
-            this.TxtRepetirClave.Size = new System.Drawing.Size(521, 27);
+            this.TxtRepetirClave.Size = new System.Drawing.Size(502, 27);
             this.TxtRepetirClave.TabIndex = 6;
             this.TxtRepetirClave.UseSystemPasswordChar = true;
             // 
@@ -228,24 +232,28 @@ namespace WindowsFormsUI.Formularios
             this.label6.TabIndex = 21;
             this.label6.Text = "Contraseña :";
             // 
-            // button1
+            // BtnGuardar
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(520, 387);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 35);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Guardar cambios";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
+            this.BtnGuardar.BackColor = System.Drawing.Color.White;
+            this.BtnGuardar.Enabled = false;
+            this.BtnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
+            this.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGuardar.Location = new System.Drawing.Point(520, 387);
+            this.BtnGuardar.Name = "BtnGuardar";
+            this.BtnGuardar.Size = new System.Drawing.Size(171, 35);
+            this.BtnGuardar.TabIndex = 8;
+            this.BtnGuardar.Text = "Guardar cambios";
+            this.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // ErrPControles
+            // 
+            this.ErrPControles.ContainerControl = this;
             // 
             // FrmRecuperararClave
             // 
@@ -253,10 +261,10 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(703, 434);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.BtnGuardar);
+            this.Controls.Add(this.GbNuevaClave);
             this.Controls.Add(this.MTxtNombre);
-            this.Controls.Add(this.BtnIngresar);
+            this.Controls.Add(this.BtnVerificar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -265,8 +273,9 @@ namespace WindowsFormsUI.Formularios
             this.Text = "Cooperativa AZOC de R. L.  - Recuperación de contraseña";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.GbNuevaClave.ResumeLayout(false);
+            this.GbNuevaClave.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,14 +291,15 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox TxtPregunta1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button BtnIngresar;
-        private System.Windows.Forms.MaskedTextBox MTxtNombre;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button BtnVerificar;
+        private System.Windows.Forms.GroupBox GbNuevaClave;
         private System.Windows.Forms.TextBox TxtClave;
         private System.Windows.Forms.TextBox TxtRepetirClave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox ChkVerClaves;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnGuardar;
+        public System.Windows.Forms.MaskedTextBox MTxtNombre;
+        private System.Windows.Forms.ErrorProvider ErrPControles;
     }
 }

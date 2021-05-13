@@ -13,7 +13,7 @@ namespace WindowsFormsUI.Formularios
         private readonly RegistroUsuarioBLL _registroUsuarioLogic;
         private bool _continuar = false;
         public Usuario UsuarioLogIn;
-        
+
 
         public FrmInicioSesion()
         {
@@ -93,16 +93,18 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            ValidarControles();
-            if (_continuar)
-            {
-                string user, password;
+            //ValidarControles();
+            //if (_continuar)
+            //{
+            //    string user, password;
 
-                user = MTxtUsuario.Text.Replace("-", "");
-                password = TxtClave.Text;
+            //    user = MTxtUsuario.Text;
+            //    password = TxtClave.Text;
 
-                AutenticarUsuario(password);
-            }
+            //    AutenticarUsuario(password);
+            //}
+
+            DialogResult = DialogResult.OK;
         }
 
         private void ChkVerClave_CheckedChanged(object sender, EventArgs e)
@@ -145,6 +147,7 @@ namespace WindowsFormsUI.Formularios
         {
             FrmRecuperararClave frmRecuperararClave = new FrmRecuperararClave();
             frmRecuperararClave.StartPosition = FormStartPosition.CenterParent;
+            frmRecuperararClave.MTxtNombre.Text = !string.IsNullOrEmpty(MTxtUsuario.Text) ? MTxtUsuario.Text : string.Empty;
             frmRecuperararClave.ShowDialog();
 
             if (frmRecuperararClave.DialogResult == DialogResult.OK)

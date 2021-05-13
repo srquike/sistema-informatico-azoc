@@ -51,6 +51,11 @@ namespace BusinessLogicLayer.Logics
             return usuario;
         }
 
+        public Usuario FindByName(string name)
+        {
+            return _usuarioRepository.GetUsuarioByName(name);
+        }
+
         public void Create(Usuario usuario)
         {
             string hashPassword = CryptoService.Encode(usuario.Clave);
@@ -63,6 +68,10 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(Usuario usuario)
         {
+            string hashPassword = CryptoService.Encode(usuario.Clave);
+
+            usuario.Clave = hashPassword;
+
             _usuarioRepository.UpdateUsuario(usuario);
             _usuarioRepository.Save();
 

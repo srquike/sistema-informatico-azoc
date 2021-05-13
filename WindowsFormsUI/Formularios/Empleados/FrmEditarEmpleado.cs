@@ -209,15 +209,7 @@ namespace WindowsFormsUI.Formularios
                     _empleado.Direccion = TxtDireccion.Text;
                     _empleado.Telefono = MTxtTelefono.Text;
                     _empleado.CargoId = Convert.ToInt32(CmbCargos.SelectedValue);
-
-                    if (CmbGeneros.SelectedItem.ToString() == "Femenino")
-                    {
-                        _empleado.Genero = "F";
-                    }
-                    else if (CmbGeneros.SelectedItem.ToString() == "Masculino")
-                    {
-                        _empleado.Genero = "M";
-                    }
+                    _empleado.Genero = CmbCargos.SelectedItem.ToString() == "Femenino" ? "F" : "M";
 
                     _empleadoLogic.Edit(_empleado);
 
@@ -225,7 +217,7 @@ namespace WindowsFormsUI.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Ya exite un empleado con el mismo número de DUI, NIT o Teléfono!", "Crear empleado: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ya exite un empleado con el mismo número de DUI, NIT o Teléfono!", "Editar empleado: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
