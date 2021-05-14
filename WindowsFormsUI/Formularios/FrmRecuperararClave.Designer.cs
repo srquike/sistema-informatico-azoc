@@ -161,7 +161,7 @@ namespace WindowsFormsUI.Formularios
             this.MTxtNombre.Mask = "00000000-0";
             this.MTxtNombre.Name = "MTxtNombre";
             this.MTxtNombre.PromptChar = '-';
-            this.MTxtNombre.Size = new System.Drawing.Size(529, 27);
+            this.MTxtNombre.Size = new System.Drawing.Size(504, 27);
             this.MTxtNombre.TabIndex = 0;
             this.MTxtNombre.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -191,6 +191,7 @@ namespace WindowsFormsUI.Formularios
             this.ChkVerClaves.TabIndex = 7;
             this.ChkVerClaves.Text = "Ver contraseñas";
             this.ChkVerClaves.UseVisualStyleBackColor = true;
+            this.ChkVerClaves.CheckedChanged += new System.EventHandler(this.ChkVerClaves_CheckedChanged);
             // 
             // TxtClave
             // 
@@ -250,6 +251,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardar.Text = "Guardar cambios";
             this.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // ErrPControles
             // 

@@ -75,17 +75,12 @@ namespace WindowsFormsUI.Formularios
                 ActualizarListado(ref DgvListado, resultados);
                 LLblQuitarBusqueda.Enabled = true;
             }
-            else
-            {
-                MessageBox.Show("Por favor, escriba la busqueda que desea realizar!", "Busqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         private void CmbTipoFiltro_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
             {
-                CmbFiltro.Enabled = true;
                 CmbFiltro.Items.Add("Masculino");
                 CmbFiltro.Items.Add("Femenino");
                 CmbFiltro.SelectedIndex = 0;
@@ -104,7 +99,6 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 CmbFiltro.Items.Clear();
-                CmbFiltro.Enabled = false;
             }
         }
 
@@ -130,7 +124,6 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 CmbFiltro.Items.Clear();
-                CmbFiltro.Enabled = false;
             }
         }
 
@@ -145,6 +138,7 @@ namespace WindowsFormsUI.Formularios
         {
             LLblQuitarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
+            BtnAplicarFiltro.Enabled = false;
             ActualizarListado(ref DgvListado, _asociadoLogic.List());
         }
 
@@ -203,6 +197,7 @@ namespace WindowsFormsUI.Formularios
                         _filasMarcadas++;
                     }
 
+                    LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
                     LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
                 }
             }
@@ -236,11 +231,6 @@ namespace WindowsFormsUI.Formularios
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione una o mas filas!", "Acciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CmbAcciones.SelectedIndex = 0;
-            }
         }
 
         #region Codigo para la barra superior del formulario
@@ -267,5 +257,31 @@ namespace WindowsFormsUI.Formularios
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
         #endregion
+
+        private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            BtnAplicarFiltro.Enabled = true;
+        }
+
+        private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_filasMarcadas > 0)
+            {
+                bool marcada;
+
+                foreach (DataGridViewRow fila in DgvListado.Rows)
+                {
+                    marcada = (bool)fila.Cells["Seleccion"].Value;
+
+                    if (marcada)
+                    {
+                        fila.Cells["Seleccion"].Value = false;
+                        _filasMarcadas = 0;
+                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                        LLblQuitarMarcadas.Enabled = false;
+                    }
+                }
+            }
+        }
     }
 }

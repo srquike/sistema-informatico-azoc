@@ -81,7 +81,7 @@ namespace WindowsFormsUI.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FrmUsuarios frmUsuarios = new FrmUsuarios();
+            FrmUsuarios frmUsuarios = new FrmUsuarios(_usuario);
             frmUsuarios.MdiParent = this;
             frmUsuarios.Show();
         }

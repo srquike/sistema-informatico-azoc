@@ -4,6 +4,7 @@ using RepositoryLayer;
 using System;
 using System.Collections.Generic;
 using BusinessLogicLayer.Services;
+using System.Windows.Forms;
 
 namespace BusinessLogicLayer.Logics
 {
@@ -63,17 +64,27 @@ namespace BusinessLogicLayer.Logics
             usuario.Clave = hashPassword;
 
             _usuarioRepository.InsertUsuario(usuario);
-            _usuarioRepository.Save();
+
+            if (_usuarioRepository.Save() == 0)
+            {
+                MessageBox.Show("El usuario no pudo ser creado. Intente nuevamente", "Crear usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        public bool Edit(Usuario usuario)
+        public bool Edit(Usuario usuario, bool cambiarClave)
         {
-            string hashPassword = CryptoService.Encode(usuario.Clave);
-
-            usuario.Clave = hashPassword;
+            if (cambiarClave)
+            {
+                string hashPassword = CryptoService.Encode(usuario.Clave);
+                usuario.Clave = hashPassword;
+            }
 
             _usuarioRepository.UpdateUsuario(usuario);
-            _usuarioRepository.Save();
+
+            if (_usuarioRepository.Save() == 0)
+            {
+                return false;
+            }
 
             return true;
         }

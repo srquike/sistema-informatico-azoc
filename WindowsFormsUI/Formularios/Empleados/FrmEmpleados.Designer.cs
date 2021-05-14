@@ -29,9 +29,9 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnCrearNuevo = new System.Windows.Forms.Button();
@@ -58,6 +58,7 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -139,7 +140,7 @@ namespace WindowsFormsUI.Formularios
             this.LblFilasMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblFilasMarcadas.AutoSize = true;
             this.LblFilasMarcadas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblFilasMarcadas.Location = new System.Drawing.Point(12, 557);
+            this.LblFilasMarcadas.Location = new System.Drawing.Point(112, 557);
             this.LblFilasMarcadas.Name = "LblFilasMarcadas";
             this.LblFilasMarcadas.Size = new System.Drawing.Size(121, 20);
             this.LblFilasMarcadas.TabIndex = 24;
@@ -150,7 +151,6 @@ namespace WindowsFormsUI.Formularios
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbFiltro.Enabled = false;
             this.CmbFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbFiltro.FormattingEnabled = true;
             this.CmbFiltro.ItemHeight = 20;
@@ -161,6 +161,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbFiltro.Name = "CmbFiltro";
             this.CmbFiltro.Size = new System.Drawing.Size(321, 28);
             this.CmbFiltro.TabIndex = 23;
+            this.CmbFiltro.SelectionChangeCommitted += new System.EventHandler(this.CmbFiltro_SelectionChangeCommitted);
             // 
             // CmbAcciones
             // 
@@ -272,14 +273,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListaEmpleados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvListaEmpleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.DgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -293,20 +294,20 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle11;
             this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 163);
             this.DgvListaEmpleados.Name = "DgvListaEmpleados";
             this.DgvListaEmpleados.ReadOnly = true;
             this.DgvListaEmpleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.DgvListaEmpleados.RowTemplate.Height = 25;
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaEmpleados.Size = new System.Drawing.Size(1214, 385);
@@ -419,12 +420,26 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
             // 
+            // LLblQuitarMarcadas
+            // 
+            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LLblQuitarMarcadas.AutoSize = true;
+            this.LLblQuitarMarcadas.Enabled = false;
+            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
+            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
+            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
+            this.LLblQuitarMarcadas.TabIndex = 27;
+            this.LLblQuitarMarcadas.TabStop = true;
+            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
+            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
+            // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 586);
+            this.Controls.Add(this.LLblQuitarMarcadas);
             this.Controls.Add(this.BtnAplicarFiltro);
             this.Controls.Add(this.LLblQuitarFiltro);
             this.Controls.Add(this.LblFilasMarcadas);
@@ -480,5 +495,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.LinkLabel LLblQuitarMarcadas;
     }
 }

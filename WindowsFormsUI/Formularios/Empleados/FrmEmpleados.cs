@@ -30,20 +30,7 @@ namespace WindowsFormsUI.Formularios
             foreach (Empleado empleado in empleados)
             {
                 string nombreCompleto = $"{empleado.PrimerNombre} {empleado.SegundoNombre} {empleado.TercerNombre} {empleado.PrimerApellido} {empleado.SegundoApellido} {empleado.TercerApellido}";
-                string genero;
-
-                if (empleado.Genero == "F")
-                {
-                    genero = "Femenino";
-                }
-                else if (empleado.Genero == "M")
-                {
-                    genero = "Masculino";
-                }
-                else
-                {
-                    genero = string.Empty;
-                }
+                string genero = empleado.Genero == "F" ? "Femenino" : "Masculino";
 
                 dataGrid.Rows.Add(false, empleado.EmpleadoId, nombreCompleto, empleado.Dui, empleado.Nit, genero, empleado.Telefono, empleado.Cargo.Nombre);
             }
@@ -143,6 +130,7 @@ namespace WindowsFormsUI.Formularios
                     _filasMarcadas++;
                 }
 
+                LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
                 LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
             }
         }
@@ -189,16 +177,8 @@ namespace WindowsFormsUI.Formularios
             if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
             {
                 LLblQuitarFiltro.Enabled = true;
-                string genero;
-                if (CmbFiltro.SelectedItem.ToString() == "Femenino")
-                {
-                    genero = "F";
-                }
-                else
-                {
-                    genero = "M";
-                }
 
+                string genero = CmbFiltro.SelectedItem.ToString() == "Femenino" ? "F" : "M";
                 var empleados = _empleadoLogic.List();
                 var resultados = from empleado in empleados where empleado.Genero == genero select empleado;
 
@@ -210,32 +190,62 @@ namespace WindowsFormsUI.Formularios
         {
             LLblQuitarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
+            BtnAplicarFiltro.Enabled = false;
             ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
         }
 
         private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
+            if (_filasMarcadas > 0)
             {
-                if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
+                    if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        if ((bool)fila.Cells["Seleccion"].Value == true)
+                        foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
                         {
-                            int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                            _empleadoLogic.Delete(id);
+                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            {
+                                int id = Convert.ToInt32(fila.Cells["Id"].Value);
+                                _empleadoLogic.Delete(id);
+                            }
                         }
-                    }
 
-                    ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-                    _filasMarcadas = 0;
-                    LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                    CmbAcciones.SelectedIndex = 0;
+                        ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+                        _filasMarcadas = 0;
+                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                        CmbAcciones.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        CmbAcciones.SelectedIndex = 0;
+                    }
                 }
-                else
+            }
+        }
+
+        private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            BtnAplicarFiltro.Enabled = true;
+        }
+
+        private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_filasMarcadas > 0)
+            {
+                bool marcada;
+
+                foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
                 {
-                    CmbAcciones.SelectedIndex = 0;
+                    marcada = (bool)fila.Cells["Seleccion"].Value;
+
+                    if (marcada)
+                    {
+                        fila.Cells["Seleccion"].Value = false;
+                        _filasMarcadas = 0;
+                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                        LLblQuitarMarcadas.Enabled = false;
+                    }
                 }
             }
         }

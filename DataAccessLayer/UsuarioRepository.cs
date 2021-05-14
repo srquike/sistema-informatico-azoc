@@ -43,7 +43,9 @@ namespace DataAccessLayer
 
         public IEnumerable<Usuario> GetUsuarios()
         {
-            return _context.Usuarios.Include(u => u.Empleado).AsNoTracking().ToList();
+            return _context.Usuarios.Include(u => u.Empleado)
+                .AsNoTracking()
+                .ToList();
         }
 
         public Usuario GetUsuarioById(int id)
@@ -67,9 +69,9 @@ namespace DataAccessLayer
             _context.Usuarios.Add(usuario);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateUsuario(Usuario usuario)

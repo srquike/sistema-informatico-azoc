@@ -58,6 +58,7 @@ namespace WindowsFormsUI.Formularios
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.BtnAplicarFiltro = new System.Windows.Forms.Button();
+            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +106,7 @@ namespace WindowsFormsUI.Formularios
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvListaUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvListaUsuarios.Location = new System.Drawing.Point(12, 158);
+            this.DgvListaUsuarios.MultiSelect = false;
             this.DgvListaUsuarios.Name = "DgvListaUsuarios";
             this.DgvListaUsuarios.ReadOnly = true;
             this.DgvListaUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -112,7 +114,7 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListaUsuarios.RowTemplate.Height = 25;
             this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaUsuarios.Size = new System.Drawing.Size(1214, 385);
+            this.DgvListaUsuarios.Size = new System.Drawing.Size(1214, 368);
             this.DgvListaUsuarios.TabIndex = 1;
             this.DgvListaUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellContentClick);
             this.DgvListaUsuarios.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvListaUsuarios_RowPostPaint);
@@ -336,7 +338,7 @@ namespace WindowsFormsUI.Formularios
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(970, 552);
+            this.label2.Location = new System.Drawing.Point(970, 535);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 20);
             this.label2.TabIndex = 9;
@@ -350,10 +352,10 @@ namespace WindowsFormsUI.Formularios
             this.CmbAcciones.FormattingEnabled = true;
             this.CmbAcciones.ItemHeight = 20;
             this.CmbAcciones.Items.AddRange(new object[] {
-            "-- Seleccionar filtro -- ",
+            "-- Seleccionar acción -- ",
             "Eliminar",
             "Imprimir"});
-            this.CmbAcciones.Location = new System.Drawing.Point(1047, 549);
+            this.CmbAcciones.Location = new System.Drawing.Point(1047, 532);
             this.CmbAcciones.Name = "CmbAcciones";
             this.CmbAcciones.Size = new System.Drawing.Size(179, 28);
             this.CmbAcciones.TabIndex = 10;
@@ -363,24 +365,22 @@ namespace WindowsFormsUI.Formularios
             // 
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CmbFiltro.Enabled = false;
+            this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbFiltro.FormattingEnabled = true;
             this.CmbFiltro.ItemHeight = 20;
-            this.CmbFiltro.Items.AddRange(new object[] {
-            "-- Seleccionar filtro -- ",
-            "Empleado"});
             this.CmbFiltro.Location = new System.Drawing.Point(770, 124);
             this.CmbFiltro.Name = "CmbFiltro";
             this.CmbFiltro.Size = new System.Drawing.Size(321, 28);
             this.CmbFiltro.TabIndex = 11;
+            this.CmbFiltro.SelectionChangeCommitted += new System.EventHandler(this.CmbFiltro_SelectionChangeCommitted);
             // 
             // LblFilasMarcadas
             // 
             this.LblFilasMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LblFilasMarcadas.AutoSize = true;
             this.LblFilasMarcadas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblFilasMarcadas.Location = new System.Drawing.Point(12, 552);
+            this.LblFilasMarcadas.Location = new System.Drawing.Point(113, 535);
             this.LblFilasMarcadas.Name = "LblFilasMarcadas";
             this.LblFilasMarcadas.Size = new System.Drawing.Size(121, 20);
             this.LblFilasMarcadas.TabIndex = 12;
@@ -401,6 +401,7 @@ namespace WindowsFormsUI.Formularios
             // BtnAplicarFiltro
             // 
             this.BtnAplicarFiltro.BackColor = System.Drawing.Color.White;
+            this.BtnAplicarFiltro.Enabled = false;
             this.BtnAplicarFiltro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
             this.BtnAplicarFiltro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
             this.BtnAplicarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -417,13 +418,27 @@ namespace WindowsFormsUI.Formularios
             this.BtnAplicarFiltro.UseVisualStyleBackColor = false;
             this.BtnAplicarFiltro.Click += new System.EventHandler(this.BtnAplicarFiltro_Click);
             // 
+            // LLblQuitarMarcadas
+            // 
+            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LLblQuitarMarcadas.AutoSize = true;
+            this.LLblQuitarMarcadas.Enabled = false;
+            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 539);
+            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
+            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
+            this.LLblQuitarMarcadas.TabIndex = 15;
+            this.LLblQuitarMarcadas.TabStop = true;
+            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
+            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1238, 586);
+            this.ClientSize = new System.Drawing.Size(1238, 572);
+            this.Controls.Add(this.LLblQuitarMarcadas);
             this.Controls.Add(this.BtnAplicarFiltro);
             this.Controls.Add(this.LLblQuitarFiltro);
             this.Controls.Add(this.LblFilasMarcadas);
@@ -476,5 +491,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.LinkLabel LLblQuitarMarcadas;
     }
 }

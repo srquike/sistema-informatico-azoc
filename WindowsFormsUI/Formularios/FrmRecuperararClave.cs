@@ -13,6 +13,7 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmRecuperararClave : Form
     {
         private readonly UsuarioBLL _usuarioLogic;
+        private Usuario _usuario;
 
         public FrmRecuperararClave()
         {
@@ -54,13 +55,13 @@ namespace WindowsFormsUI.Formularios
             return false;
         }
 
-        private bool VerificarPreguntas(Usuario usuario)
+        private bool VerificarPreguntas()
         {
             string respuesta1 = TxtPregunta1.Text;
             string respuesta2 = TxtPregunta2.Text;
             string respuesta3 = TxtPregunta3.Text;
 
-            if (respuesta1 != usuario.Respuesta1)
+            if (respuesta1 != _usuario.Respuesta1)
             {
                 ErrPControles.SetError(TxtPregunta1, "La respuesta es incorrecta!");
             }
@@ -68,7 +69,7 @@ namespace WindowsFormsUI.Formularios
             {
                 ErrPControles.Clear();
 
-                if (respuesta2 != usuario.Respuesta2)
+                if (respuesta2 != _usuario.Respuesta2)
                 {
                     ErrPControles.SetError(TxtPregunta2, "La respuesta es incorrecta!");
                 }
@@ -76,7 +77,7 @@ namespace WindowsFormsUI.Formularios
                 {
                     ErrPControles.Clear();
 
-                    if (respuesta3 != usuario.Respuesta3)
+                    if (respuesta3 != _usuario.Respuesta3)
                     {
                         ErrPControles.SetError(TxtPregunta3, "La respuesta es incorrecta!");
                     }
@@ -108,17 +109,81 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnVerificar_Click(object sender, EventArgs e)
         {
-            if (ValidarPreguntas() && ValidarNombre())
+            if (ValidarNombre() && ValidarPreguntas())
             {
                 string nombre = MTxtNombre.Text;               
 
-                Usuario usuario = _usuarioLogic.FindByName(nombre);
+                _usuario = _usuarioLogic.FindByName(nombre);
 
-                if (VerificarPreguntas(usuario))
+                if (_usuario != null)
                 {
-                    GbNuevaClave.Enabled = true;
-                    BtnGuardar.Enabled = true;
+                    if (VerificarPreguntas())
+                    {
+                        GbNuevaClave.Enabled = true;
+                        BtnGuardar.Enabled = true;
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("El usuario ingresado no existe!", "Recuperación de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private bool ValidarClaves()
+        {
+            if (string.IsNullOrEmpty(TxtClave.Text))
+            {
+                ErrPControles.SetError(TxtClave, "Por favor ingrese una clave correcta!");
+            }
+            else
+            {
+                ErrPControles.Clear();
+
+                if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
+                {
+                    ErrPControles.SetError(TxtRepetirClave, "Las claves deben ser iguales!");
+                }
+                else
+                {
+                    ErrPControles.Clear();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+            if (ValidarClaves())
+            {
+                _usuario.Clave = TxtClave.Text;
+
+                if (_usuarioLogic.Edit(_usuario, true))
+                {
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Error al intentar recuperar la contraseña", "Recuperación de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ChkVerClaves_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox check = (CheckBox)sender;
+
+            if (check.Checked)
+            {
+                TxtClave.UseSystemPasswordChar = false;
+                TxtRepetirClave.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                TxtClave.UseSystemPasswordChar = true;
+                TxtRepetirClave.UseSystemPasswordChar = true;
             }
         }
     }
