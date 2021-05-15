@@ -287,6 +287,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 2;
+            this.TxtSNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ErrPControles
             // 
@@ -375,6 +376,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(202, 27);
             this.TxtTApellido.TabIndex = 6;
+            this.TxtTApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // TxtTNombre
             // 
@@ -383,6 +385,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(202, 27);
             this.TxtTNombre.TabIndex = 3;
+            this.TxtTNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label7
             // 
@@ -411,6 +414,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 5;
+            this.TxtSApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -456,6 +460,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 4;
+            this.TxtPApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -474,6 +479,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 1;
+            this.TxtPNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label1
             // 

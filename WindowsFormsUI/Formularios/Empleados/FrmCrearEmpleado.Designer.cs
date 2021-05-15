@@ -335,6 +335,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSNombre.PlaceholderText = "Escriba el segundo nombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 2;
+            this.TxtSNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // DtpFNacimiento
             // 
@@ -376,6 +377,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTApellido.PlaceholderText = "Escriba el tercer apellido";
             this.TxtTApellido.Size = new System.Drawing.Size(202, 27);
             this.TxtTApellido.TabIndex = 6;
+            this.TxtTApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // TxtTNombre
             // 
@@ -385,6 +387,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTNombre.PlaceholderText = "Escriba el tercer nombre";
             this.TxtTNombre.Size = new System.Drawing.Size(202, 27);
             this.TxtTNombre.TabIndex = 3;
+            this.TxtTNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label7
             // 
@@ -414,6 +417,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSApellido.PlaceholderText = "Escriba el segundo apellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 5;
+            this.TxtSApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -460,6 +464,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPApellido.PlaceholderText = "Escriba el primer apellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 4;
+            this.TxtPApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -479,6 +484,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPNombre.PlaceholderText = "Escriba el primer nombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 1;
+            this.TxtPNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label1
             // 
