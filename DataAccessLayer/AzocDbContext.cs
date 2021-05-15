@@ -46,7 +46,10 @@ namespace DataAccessLayer
                 // optionsBuilder.UseSqlServer("Server = DESKTOP-9NPOF6R\\SQLEXPRESS; Database = AzocDb; Trusted_Connection = True; ");
 
                 // Conexion de Jonathan
-                optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+                // optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+
+                // Conexion de Jonathan 2
+                optionsBuilder.UseSqlServer("Server=DESKTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
                 // Conexion de Walter
                 // optionsBuilder.UseSqlServer("Server=WALTER\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");

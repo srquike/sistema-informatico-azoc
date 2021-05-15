@@ -195,10 +195,13 @@ namespace WindowsFormsUI.Formularios
             string extension = ".jpg";
             string archivo = string.Concat(ruta, nombreUsuario, extension);
 
-            using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+            if (PctAvatar.Image != null)
             {
-                PctAvatar.Image.Dispose();
-                bitmap.Save(archivo);
+                using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                {
+                    PctAvatar.Image.Dispose();
+                    bitmap.Save(archivo);
+                }
             }
         }
 

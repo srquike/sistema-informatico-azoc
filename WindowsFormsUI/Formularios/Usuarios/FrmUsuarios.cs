@@ -246,7 +246,16 @@ namespace WindowsFormsUI.Formularios
                             if ((bool)fila.Cells["Seleccion"].Value == true)
                             {
                                 int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-                                _usuarioLogic.Delete(userId);
+
+                                if (_usuarioLogeado.UsuarioId == userId)
+                                {
+                                    MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                                else
+                                {
+                                    _usuarioLogic.Delete(userId);
+                                }
                             }
                         }
 
