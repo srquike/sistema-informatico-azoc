@@ -69,6 +69,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.SuspendLayout();
@@ -499,7 +500,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.ForeColor = System.Drawing.Color.Black;
             this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrear.Location = new System.Drawing.Point(850, 315);
+            this.BtnCrear.Location = new System.Drawing.Point(730, 315);
             this.BtnCrear.Name = "BtnCrear";
             this.BtnCrear.Size = new System.Drawing.Size(160, 35);
             this.BtnCrear.TabIndex = 17;
@@ -518,7 +519,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(1016, 315);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(896, 315);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
             this.BtnLimpiarControles.TabIndex = 18;
@@ -540,12 +541,32 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ErrPControles.ContainerControl = this;
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
+            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelar.Location = new System.Drawing.Point(1016, 315);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
+            this.BtnCancelar.TabIndex = 23;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmCrearEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1142, 363);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox1);
@@ -602,5 +623,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.ErrorProvider ErrPControles;
         private System.Windows.Forms.MaskedTextBox MTxtTelefono;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

@@ -26,13 +26,16 @@ namespace WindowsFormsUI.Formularios
             {
                 string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
-                string nombreAvatar = _usuario.Nombre + ".jpg";
+                string extension = ".jpg";
                 string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-                string archivo = string.Concat(ruta, nombreAvatar);
+                string archivo = string.Concat(ruta, _usuario.Nombre, extension);
 
                 if (File.Exists(archivo))
                 {
-                    PctAvatar.Image = Image.FromFile(archivo);
+                    using (FileStream fileStream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
+                    {
+                        PctAvatar.Image = Image.FromStream(fileStream);
+                    }
                 }
                 else
                 {

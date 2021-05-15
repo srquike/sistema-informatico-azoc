@@ -105,6 +105,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnAplicarFiltro_Click(object sender, EventArgs e)
         {
             var asociados = _asociadoLogic.List();
+            LLblQuitarFiltro.Enabled = true;
 
             if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
             {
@@ -139,6 +140,7 @@ namespace WindowsFormsUI.Formularios
             LLblQuitarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
             BtnAplicarFiltro.Enabled = false;
+            CmbFiltro.Items.Clear();
             ActualizarListado(ref DgvListado, _asociadoLogic.List());
         }
 

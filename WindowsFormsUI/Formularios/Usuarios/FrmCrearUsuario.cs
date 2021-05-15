@@ -2,6 +2,7 @@
 using BusinessObjectsLayer.Models;
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -190,9 +191,14 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string nombreUsuario)
         {
-            if (PctAvatar.Image != null)
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpg";
+            string archivo = string.Concat(ruta, nombreUsuario, extension);
+
+            using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
             {
-                PctAvatar.Image.Save(nombreUsuario);
+                PctAvatar.Image.Dispose();
+                bitmap.Save(archivo);
             }
         }
 
@@ -217,6 +223,11 @@ namespace WindowsFormsUI.Formularios
             chkPuedeVer.Checked = false;
             PctAvatar.Image = null;
             CmbEmpleados.Focus();
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

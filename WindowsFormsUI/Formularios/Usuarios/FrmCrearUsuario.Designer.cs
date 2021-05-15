@@ -60,6 +60,7 @@ namespace WindowsFormsUI.Formularios
             this.label6 = new System.Windows.Forms.Label();
             this.TxtPregunta1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.GrpPermisos.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
@@ -315,7 +316,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(748, 441);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(628, 441);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
             this.BtnLimpiarControles.TabIndex = 18;
@@ -334,7 +335,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearUsuario.ForeColor = System.Drawing.Color.Black;
             this.BtnCrearUsuario.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrearUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrearUsuario.Location = new System.Drawing.Point(594, 441);
+            this.BtnCrearUsuario.Location = new System.Drawing.Point(474, 441);
             this.BtnCrearUsuario.Name = "BtnCrearUsuario";
             this.BtnCrearUsuario.Size = new System.Drawing.Size(149, 35);
             this.BtnCrearUsuario.TabIndex = 19;
@@ -420,12 +421,32 @@ namespace WindowsFormsUI.Formularios
             this.label7.TabIndex = 0;
             this.label7.Text = "1. ¿Cuál fue el nombre de tu primera mascota?";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
+            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelar.Location = new System.Drawing.Point(748, 441);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
+            this.BtnCancelar.TabIndex = 22;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(875, 486);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnCrearUsuario);
             this.Controls.Add(this.BtnLimpiarControles);
@@ -482,5 +503,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox TxtPregunta1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

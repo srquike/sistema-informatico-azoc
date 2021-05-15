@@ -14,6 +14,6 @@ namespace RepositoryLayer
         void DeleteUsuario(Usuario usuario);
         void UpdateUsuario(Usuario usuario);
         int Save();
-        Usuario Authentication(string password);
+        Usuario Authentication(string password, string userName);
     }
 }

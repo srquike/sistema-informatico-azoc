@@ -67,5 +67,35 @@ namespace WindowsFormsUI.Formularios
         {
             RellenarControles();
         }
+
+        private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dataGrid = (DataGridView)sender;
+
+            if (e.RowIndex >= 0)
+            {
+                int beneficiarioId = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells["Id"].Value);
+
+                if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+                {
+                    if (e.ColumnIndex == 7)
+                    {
+                        FrmDetallesBeneficiario frmDetalles = new FrmDetallesBeneficiario(beneficiarioId);
+                        frmDetalles.StartPosition = FormStartPosition.CenterScreen;
+                        frmDetalles.ShowDialog();
+
+                        if (frmDetalles.DialogResult == DialogResult.OK)
+                        {
+                            frmDetalles.Close();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

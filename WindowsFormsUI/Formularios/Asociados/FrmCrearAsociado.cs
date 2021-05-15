@@ -62,7 +62,6 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmCrearAsociado_Load(object sender, EventArgs e)
         {
-            CmbAcciones.SelectedIndex = 0;
             CmbMunicipios.SelectedIndex = 0;
             CmbDepartamentos.SelectedIndex = 0;
             CmbGeneros.SelectedIndex = 0;
@@ -148,43 +147,7 @@ namespace WindowsFormsUI.Formularios
                         dataGrid.Rows[e.RowIndex].Cells["Seleccion"].Value = true;
                         _filasMarcadas++;
                     }
-
-                    LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
                 }
-            }
-        }
-
-        private void CmbAcciones_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (_filasMarcadas > 0)
-            {
-                if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
-                {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar a los beneficiarios selecionados?", "Beneficiarios: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                    {
-                        foreach (DataGridViewRow fila in DgvListado.Rows)
-                        {
-                            if ((bool)fila.Cells["Seleccion"].Value == true)
-                            {
-                                _beneficiarios.RemoveAt(fila.Index);
-                            }
-                        }
-
-                        ActualizarListado(ref DgvListado);
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        CmbAcciones.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        CmbAcciones.SelectedIndex = 0;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, seleccione una o mas filas!", "Acciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CmbAcciones.SelectedIndex = 0;
             }
         }
 
@@ -355,6 +318,11 @@ namespace WindowsFormsUI.Formularios
                     DialogResult = DialogResult.OK;
                 }
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

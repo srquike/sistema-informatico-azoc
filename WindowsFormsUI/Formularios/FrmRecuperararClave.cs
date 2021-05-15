@@ -186,5 +186,10 @@ namespace WindowsFormsUI.Formularios
                 TxtRepetirClave.UseSystemPasswordChar = true;
             }
         }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -48,6 +48,7 @@ namespace WindowsFormsUI.Formularios
             this.label6 = new System.Windows.Forms.Label();
             this.BtnGuardar = new System.Windows.Forms.Button();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.GbNuevaClave.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
@@ -244,7 +245,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardar.ForeColor = System.Drawing.Color.Black;
             this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
             this.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardar.Location = new System.Drawing.Point(520, 387);
+            this.BtnGuardar.Location = new System.Drawing.Point(400, 387);
             this.BtnGuardar.Name = "BtnGuardar";
             this.BtnGuardar.Size = new System.Drawing.Size(171, 35);
             this.BtnGuardar.TabIndex = 8;
@@ -257,12 +258,32 @@ namespace WindowsFormsUI.Formularios
             // 
             this.ErrPControles.ContainerControl = this;
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
+            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelar.Location = new System.Drawing.Point(577, 387);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
+            this.BtnCancelar.TabIndex = 22;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmRecuperararClave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(703, 434);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.GbNuevaClave);
             this.Controls.Add(this.MTxtNombre);
@@ -303,5 +324,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnGuardar;
         public System.Windows.Forms.MaskedTextBox MTxtNombre;
         private System.Windows.Forms.ErrorProvider ErrPControles;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

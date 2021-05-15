@@ -137,14 +137,15 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string userName)
         {
-            string fileName = $"{userName}.jpg";
-            string path = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string file = string.Concat(path, fileName);
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpg";
+            string archivo = string.Concat(ruta, userName, extension);
 
             using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
             {
-                bitmap.Save(file);
-            };
+                PctAvatar.Image.Dispose();
+                bitmap.Save(archivo);
+            }
         }
 
         private void ValidarRequeridos()

@@ -272,8 +272,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Beneficiarios)
                     .HasForeignKey(d => d.AsociadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Beneficia__Asoci__4316F928");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Beneficiario_Asociado");
             });
 
             modelBuilder.Entity<Cargo>(entity =>

@@ -17,11 +17,11 @@ namespace BusinessLogicLayer.Logics
             _usuarioRepository = new UsuarioRepository(new AzocDbContext());
         }
 
-        public Usuario Authentication(string password)
+        public Usuario Authentication(string password, string nombre)
         {
             string hashPassword = CryptoService.Encode(password);
 
-            Usuario usuario = _usuarioRepository.Authentication(hashPassword);
+            Usuario usuario = _usuarioRepository.Authentication(hashPassword, nombre);
 
             return usuario;
         }

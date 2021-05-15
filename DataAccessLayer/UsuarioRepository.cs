@@ -79,9 +79,9 @@ namespace DataAccessLayer
             _context.Entry(usuario).State = EntityState.Modified;
         }
 
-        public Usuario Authentication(string passwordHash)
+        public Usuario Authentication(string passwordHash, string nombre)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash).Include(u => u.Empleado).FirstOrDefault();
+            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash && u.Nombre == nombre).Include(u => u.Empleado).FirstOrDefault();
 
             return usuario;
         }

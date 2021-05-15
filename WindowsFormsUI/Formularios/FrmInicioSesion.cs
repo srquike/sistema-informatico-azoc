@@ -45,9 +45,9 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private bool AutenticarUsuario(string password)
+        private bool AutenticarUsuario(string password, string nombre)
         {
-            Usuario usuario = _usuarioLogic.Authentication(password);
+            Usuario usuario = _usuarioLogic.Authentication(password, nombre);
 
             if (usuario != null)
             {
@@ -115,8 +115,9 @@ namespace WindowsFormsUI.Formularios
                 if (_continuar)
                 {
                     string password = TxtClave.Text;
+                    string nombre = MTxtUsuario.Text;
 
-                    if (AutenticarUsuario(password))
+                    if (AutenticarUsuario(password, nombre))
                     {
                         DialogResult = DialogResult.OK;
                     }
