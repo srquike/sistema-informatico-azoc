@@ -63,15 +63,18 @@ namespace WindowsFormsUI.Formularios
             }
             else
             {
-                RegistroUsuario registro = new RegistroUsuario
+                if (_usuario != null)
                 {
-                    UsuarioId = _usuario.UsuarioId,
-                    RegistroId = 2,
-                    Fecha = DateTime.Now,
-                    Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
-                };
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuario.UsuarioId,
+                        RegistroId = 2,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
+                    };
 
-                _registroUsuarioLogic.Create(registro);
+                    _registroUsuarioLogic.Create(registro);
+                }
             }
         }
 
