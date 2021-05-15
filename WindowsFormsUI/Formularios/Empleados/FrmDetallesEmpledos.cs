@@ -55,7 +55,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

@@ -19,6 +19,7 @@ namespace WindowsFormsUI.Formularios
         private PermisoUsuarioBLL _permisoUsuarioLogic;
         private bool _continuar;
         private bool _cambiarAvatar;
+        private bool _cambiarClave;
 
         public FrmEditarUsuario(Usuario usuario)
         {
@@ -30,6 +31,7 @@ namespace WindowsFormsUI.Formularios
             _permisoUsuarioLogic = new PermisoUsuarioBLL();
             _continuar = false;
             _cambiarAvatar = false;
+            _cambiarClave = false;
         }
 
         private void LlenarComboBoxEmpleados()
@@ -135,14 +137,15 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string userName)
         {
-            string fileName = $"{userName}.jpg";
-            string path = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string file = string.Concat(path, fileName);
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpg";
+            string archivo = string.Concat(ruta, userName, extension);
 
             using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
             {
-                bitmap.Save(file);
-            };
+                PctAvatar.Image.Dispose();
+                bitmap.Save(archivo);
+            }
         }
 
         private void ValidarRequeridos()
@@ -171,6 +174,7 @@ namespace WindowsFormsUI.Formularios
                 {
                     ErrPControles.Clear();
                     _usuarioEdit.Clave = TxtClave.Text;
+                    _cambiarClave = true;
                     _continuar = true;
                 }
             }
@@ -230,7 +234,7 @@ namespace WindowsFormsUI.Formularios
                     _usuarioEdit.Nombre = MTxtNombre.Text;
                     _usuarioEdit.Estado = ChkActivarUsuario.Checked ? '1' : '0';
 
-                    _usuarioLogic.Edit(_usuarioEdit);
+                    _usuarioLogic.Edit(_usuarioEdit, _cambiarClave);
                     ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
 
                     if (_cambiarAvatar)

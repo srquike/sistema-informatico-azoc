@@ -26,13 +26,16 @@ namespace WindowsFormsUI.Formularios
             {
                 string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
-                string nombreAvatar = _usuario.Nombre + ".jpg";
+                string extension = ".jpg";
                 string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-                string archivo = string.Concat(ruta, nombreAvatar);
+                string archivo = string.Concat(ruta, _usuario.Nombre, extension);
 
                 if (File.Exists(archivo))
                 {
-                    PctAvatar.Image = Image.FromFile(archivo);
+                    using (FileStream fileStream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
+                    {
+                        PctAvatar.Image = Image.FromStream(fileStream);
+                    }
                 }
                 else
                 {
@@ -60,15 +63,18 @@ namespace WindowsFormsUI.Formularios
             }
             else
             {
-                RegistroUsuario registro = new RegistroUsuario
+                if (_usuario != null)
                 {
-                    UsuarioId = _usuario.UsuarioId,
-                    RegistroId = 2,
-                    Fecha = DateTime.Now,
-                    Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
-                };
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuario.UsuarioId,
+                        RegistroId = 2,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
+                    };
 
-                _registroUsuarioLogic.Create(registro);
+                    _registroUsuarioLogic.Create(registro);
+                }
             }
         }
 
@@ -81,7 +87,7 @@ namespace WindowsFormsUI.Formularios
 
         private void button3_Click(object sender, EventArgs e)
         {
-            FrmUsuarios frmUsuarios = new FrmUsuarios();
+            FrmUsuarios frmUsuarios = new FrmUsuarios(_usuario);
             frmUsuarios.MdiParent = this;
             frmUsuarios.Show();
         }

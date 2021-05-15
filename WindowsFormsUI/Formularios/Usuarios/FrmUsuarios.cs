@@ -17,14 +17,16 @@ namespace WindowsFormsUI.Formularios
         private UsuarioBLL _usuarioLogic;
         private EmpleadoBLL _empleadoLogic;
         private int _filasMarcadas;
+        private readonly Usuario _usuarioLogeado;
 
-        public FrmUsuarios()
+        public FrmUsuarios(Usuario usuarioLogeado)
         {
             InitializeComponent();
 
             _usuarioLogic = new UsuarioBLL();
             _empleadoLogic = new EmpleadoBLL();
             _filasMarcadas = 0;
+            _usuarioLogeado = usuarioLogeado;
         }
 
         private void RefrescarDataGridView(ref DataGridView dataGrid, IEnumerable<Usuario> usuarios)
@@ -82,6 +84,8 @@ namespace WindowsFormsUI.Formularios
         {
             var usuarios = ObtenerLista();
             RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
+            CmbTipoFiltro.SelectedIndex = 0;
+            CmbAcciones.SelectedIndex = 0;
             WindowState = FormWindowState.Maximized;
         }
 
@@ -129,10 +133,17 @@ namespace WindowsFormsUI.Formularios
                 }
                 else if (e.ColumnIndex == 10)
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminación de usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (userId == _usuarioLogeado.UsuarioId)
                     {
-                        _usuarioLogic.Delete(userId);
-                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                        MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        {
+                            _usuarioLogic.Delete(userId);
+                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                        }
                     }
                 }
             }
@@ -151,6 +162,7 @@ namespace WindowsFormsUI.Formularios
                     _filasMarcadas++;
                 }
 
+                LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
                 LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
             }
         }
@@ -180,8 +192,6 @@ namespace WindowsFormsUI.Formularios
         {
             if (CmbTipoFiltro.SelectedItem.ToString() == "Empleado")
             {
-                CmbFiltro.Enabled = true;
-
                 var empleados = _empleadoLogic.List();
                 var nombres = (from empleado in empleados
                                select new
@@ -197,7 +207,6 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 CmbFiltro.DataSource = null;
-                CmbFiltro.Enabled = false;
             }
         }
 
@@ -218,6 +227,7 @@ namespace WindowsFormsUI.Formularios
         private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LLblQuitarFiltro.Enabled = false;
+            BtnAplicarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
 
             RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
@@ -225,27 +235,65 @@ namespace WindowsFormsUI.Formularios
 
         private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
+            if (_filasMarcadas > 0)
             {
-                if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Usuarios: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
+                    if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Eliminar usuarios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        if ((bool)fila.Cells["Seleccion"].Value == true)
+                        foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
                         {
-                            int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-                            _usuarioLogic.Delete(userId);
-                        }
-                    }
+                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            {
+                                int userId = Convert.ToInt32(fila.Cells["Id"].Value);
 
-                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                    _filasMarcadas = 0;
-                    LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                    CmbAcciones.SelectedIndex = 0;
+                                if (_usuarioLogeado.UsuarioId == userId)
+                                {
+                                    MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+                                else
+                                {
+                                    _usuarioLogic.Delete(userId);
+                                }
+                            }
+                        }
+
+                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                        _filasMarcadas = 0;
+                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                        CmbAcciones.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        CmbAcciones.SelectedIndex = 0;
+                    }
                 }
-                else
+            }
+        }
+
+        private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            BtnAplicarFiltro.Enabled = true;
+        }
+
+        private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_filasMarcadas > 0)
+            {
+                bool marcada;
+
+                foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
                 {
-                    CmbAcciones.SelectedIndex = 0;
+                    marcada = (bool)fila.Cells["Seleccion"].Value;
+
+                    if (marcada)
+                    {
+                        fila.Cells["Seleccion"].Value = false;
+                        _filasMarcadas = 0;
+                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                        LLblQuitarMarcadas.Enabled = false;
+                    }
                 }
             }
         }

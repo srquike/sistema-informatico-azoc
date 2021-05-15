@@ -43,7 +43,9 @@ namespace DataAccessLayer
 
         public IEnumerable<Usuario> GetUsuarios()
         {
-            return _context.Usuarios.Include(u => u.Empleado).AsNoTracking().ToList();
+            return _context.Usuarios.Include(u => u.Empleado)
+                .AsNoTracking()
+                .ToList();
         }
 
         public Usuario GetUsuarioById(int id)
@@ -67,9 +69,9 @@ namespace DataAccessLayer
             _context.Usuarios.Add(usuario);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateUsuario(Usuario usuario)
@@ -77,9 +79,9 @@ namespace DataAccessLayer
             _context.Entry(usuario).State = EntityState.Modified;
         }
 
-        public Usuario Authentication(string passwordHash)
+        public Usuario Authentication(string passwordHash, string nombre)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash).Include(u => u.Empleado).FirstOrDefault();
+            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash && u.Nombre == nombre).Include(u => u.Empleado).FirstOrDefault();
 
             return usuario;
         }

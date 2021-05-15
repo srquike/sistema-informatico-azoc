@@ -48,7 +48,6 @@ namespace WindowsFormsUI.Formularios
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.TxtSNombre = new System.Windows.Forms.TextBox();
-            this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.DtpFNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -69,6 +68,7 @@ namespace WindowsFormsUI.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -287,24 +287,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 2;
-            // 
-            // BtnLimpiarControles
-            // 
-            this.BtnLimpiarControles.BackColor = System.Drawing.Color.White;
-            this.BtnLimpiarControles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnLimpiarControles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnLimpiarControles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiarControles.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
-            this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
-            this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(1016, 315);
-            this.BtnLimpiarControles.Name = "BtnLimpiarControles";
-            this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
-            this.BtnLimpiarControles.TabIndex = 36;
-            this.BtnLimpiarControles.Text = "Limpiar";
-            this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnLimpiarControles.UseVisualStyleBackColor = false;
+            this.TxtSNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // ErrPControles
             // 
@@ -393,6 +376,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(202, 27);
             this.TxtTApellido.TabIndex = 6;
+            this.TxtTApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // TxtTNombre
             // 
@@ -401,6 +385,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(202, 27);
             this.TxtTNombre.TabIndex = 3;
+            this.TxtTNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label7
             // 
@@ -429,6 +414,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 5;
+            this.TxtSApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -474,6 +460,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 4;
+            this.TxtPApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -492,6 +479,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 1;
+            this.TxtPNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label1
             // 
@@ -532,14 +520,33 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardarCambios.UseVisualStyleBackColor = false;
             this.BtnGuardarCambios.Click += new System.EventHandler(this.BtnGuardarCambios_Click);
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
+            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelar.Location = new System.Drawing.Point(1016, 315);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
+            this.BtnCancelar.TabIndex = 39;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
             // FrmEditarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1142, 363);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnGuardarCambios);
-            this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.MaximizeBox = false;
@@ -572,7 +579,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox TxtSNombre;
-        private System.Windows.Forms.Button BtnLimpiarControles;
         private System.Windows.Forms.ErrorProvider ErrPControles;
         private System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.DateTimePicker DtpFNacimiento;
@@ -593,5 +599,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button BtnGuardarCambios;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

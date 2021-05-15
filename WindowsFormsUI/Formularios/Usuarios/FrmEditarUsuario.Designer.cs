@@ -31,7 +31,6 @@ namespace WindowsFormsUI.Formularios
         {
             this.components = new System.ComponentModel.Container();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
-            this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ChkVerClaves = new System.Windows.Forms.CheckBox();
@@ -61,6 +60,7 @@ namespace WindowsFormsUI.Formularios
             this.label6 = new System.Windows.Forms.Label();
             this.TxtPregunta1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.BtnCancelar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,7 +80,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.Black;
             this.BtnGuardarCambios.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
             this.BtnGuardarCambios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(584, 428);
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(568, 428);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
             this.BtnGuardarCambios.Size = new System.Drawing.Size(100, 35);
             this.BtnGuardarCambios.TabIndex = 19;
@@ -88,25 +88,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardarCambios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnGuardarCambios.UseVisualStyleBackColor = false;
             this.BtnGuardarCambios.Click += new System.EventHandler(this.BtnGuardarCambios_Click);
-            // 
-            // BtnLimpiarControles
-            // 
-            this.BtnLimpiarControles.BackColor = System.Drawing.Color.White;
-            this.BtnLimpiarControles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnLimpiarControles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnLimpiarControles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnLimpiarControles.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
-            this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
-            this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(690, 428);
-            this.BtnLimpiarControles.Name = "BtnLimpiarControles";
-            this.BtnLimpiarControles.Size = new System.Drawing.Size(98, 35);
-            this.BtnLimpiarControles.TabIndex = 20;
-            this.BtnLimpiarControles.Text = "Limpiar";
-            this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnLimpiarControles.UseVisualStyleBackColor = false;
-            this.BtnLimpiarControles.Click += new System.EventHandler(this.BtnLimpiarControles_Click);
             // 
             // groupBox3
             // 
@@ -432,15 +413,33 @@ namespace WindowsFormsUI.Formularios
             this.label7.TabIndex = 0;
             this.label7.Text = "1. ¿Cuál fue el nombre de tu primera mascota?";
             // 
+            // BtnCancelar
+            // 
+            this.BtnCancelar.BackColor = System.Drawing.Color.White;
+            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
+            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCancelar.Location = new System.Drawing.Point(674, 428);
+            this.BtnCancelar.Name = "BtnCancelar";
+            this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
+            this.BtnCancelar.TabIndex = 22;
+            this.BtnCancelar.Text = "Cancelar";
+            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCancelar.UseVisualStyleBackColor = false;
+            // 
             // FrmEditarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(802, 479);
+            this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnGuardarCambios);
-            this.Controls.Add(this.BtnLimpiarControles);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GrpPermisos);
@@ -467,7 +466,6 @@ namespace WindowsFormsUI.Formularios
         #endregion
 
         private System.Windows.Forms.Button BtnGuardarCambios;
-        private System.Windows.Forms.Button BtnLimpiarControles;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox ChkActivarUsuario;
         private System.Windows.Forms.MaskedTextBox MTxtNombre;
@@ -497,5 +495,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtRepetirClave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button BtnCancelar;
     }
 }

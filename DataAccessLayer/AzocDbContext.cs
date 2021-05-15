@@ -48,6 +48,9 @@ namespace DataAccessLayer
                 // Conexion de Jonathan
                 // optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
+                // Conexion de Jonathan 2
+                optionsBuilder.UseSqlServer("Server=DESKTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+
                 // Conexion de Walter
                  optionsBuilder.UseSqlServer("Server=WALTER\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
@@ -272,8 +275,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Beneficiarios)
                     .HasForeignKey(d => d.AsociadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Beneficia__Asoci__4316F928");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Beneficiario_Asociado");
             });
 
             modelBuilder.Entity<Cargo>(entity =>

@@ -62,13 +62,13 @@ namespace WindowsFormsUI.Formularios
             this.label17 = new System.Windows.Forms.Label();
             this.MTxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TxtFNacimiento = new System.Windows.Forms.TextBox();
             this.TxtCargo = new System.Windows.Forms.TextBox();
             this.TxtGenero = new System.Windows.Forms.TextBox();
             this.TxtMunicipio = new System.Windows.Forms.TextBox();
             this.TxtDepartamento = new System.Windows.Forms.TextBox();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.TxtFNacimiento = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -87,11 +87,11 @@ namespace WindowsFormsUI.Formularios
             this.BtnSalir.ForeColor = System.Drawing.Color.Black;
             this.BtnSalir.Image = global::WindowsFormsUI.Properties.Resources.log_in;
             this.BtnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnSalir.Location = new System.Drawing.Point(1016, 315);
+            this.BtnSalir.Location = new System.Drawing.Point(1036, 315);
             this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(107, 35);
+            this.BtnSalir.Size = new System.Drawing.Size(87, 35);
             this.BtnSalir.TabIndex = 19;
-            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.Text = "Cerrar";
             this.BtnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnSalir.UseVisualStyleBackColor = false;
             this.BtnSalir.Click += new System.EventHandler(this.BtnSalir_Click);
@@ -430,6 +430,15 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // TxtFNacimiento
+            // 
+            this.TxtFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtFNacimiento.Location = new System.Drawing.Point(168, 161);
+            this.TxtFNacimiento.Name = "TxtFNacimiento";
+            this.TxtFNacimiento.ReadOnly = true;
+            this.TxtFNacimiento.Size = new System.Drawing.Size(200, 27);
+            this.TxtFNacimiento.TabIndex = 34;
+            // 
             // TxtCargo
             // 
             this.TxtCargo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -484,15 +493,6 @@ namespace WindowsFormsUI.Formularios
             this.label18.Size = new System.Drawing.Size(65, 20);
             this.label18.TabIndex = 33;
             this.label18.Text = "Código :";
-            // 
-            // TxtFNacimiento
-            // 
-            this.TxtFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtFNacimiento.Location = new System.Drawing.Point(168, 161);
-            this.TxtFNacimiento.Name = "TxtFNacimiento";
-            this.TxtFNacimiento.ReadOnly = true;
-            this.TxtFNacimiento.Size = new System.Drawing.Size(200, 27);
-            this.TxtFNacimiento.TabIndex = 34;
             // 
             // FrmDetallesEmpledos
             // 

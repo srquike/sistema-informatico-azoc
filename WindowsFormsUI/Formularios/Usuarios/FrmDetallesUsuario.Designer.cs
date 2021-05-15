@@ -45,6 +45,7 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeEditar = new System.Windows.Forms.CheckBox();
             this.chkPuedeAgregar = new System.Windows.Forms.CheckBox();
             this.chkPuedeVer = new System.Windows.Forms.CheckBox();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
@@ -235,12 +236,31 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeVer.Text = "Puede ver";
             this.chkPuedeVer.UseVisualStyleBackColor = true;
             // 
+            // BtnCerrar
+            // 
+            this.BtnCerrar.BackColor = System.Drawing.Color.White;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCerrar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.logout;
+            this.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCerrar.Location = new System.Drawing.Point(628, 183);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(89, 35);
+            this.BtnCerrar.TabIndex = 40;
+            this.BtnCerrar.Text = "Cerrar";
+            this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            // 
             // FrmDetallesUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(728, 184);
+            this.ClientSize = new System.Drawing.Size(727, 227);
+            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.GrpPermisos);
@@ -278,5 +298,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtEmpleado;
         private System.Windows.Forms.TextBox TxtCodigoUsuario;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button BtnCerrar;
     }
 }

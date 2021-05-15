@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsUI.Formularios;
 
@@ -19,17 +16,14 @@ namespace WindowsFormsUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FrmInicioSesion inicioSesion = new FrmInicioSesion();
-            inicioSesion.ShowDialog();
+            FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
+            frmInicioSesion.StartPosition = FormStartPosition.CenterScreen;
+            frmInicioSesion.ShowDialog();
 
-            if (inicioSesion.DialogResult == DialogResult.OK)
+            if (frmInicioSesion.DialogResult == DialogResult.OK)
             {
-                Application.Run(new FrmPrincipal(inicioSesion.UsuarioLogIn));
+                Application.Run(new FrmPrincipal(frmInicioSesion.UsuarioLogIn));
             }
-            else
-            {
-                inicioSesion.Close();
-            }            
         }
     }
 }

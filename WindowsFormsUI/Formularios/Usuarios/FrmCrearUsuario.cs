@@ -2,6 +2,7 @@
 using BusinessObjectsLayer.Models;
 using System;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -126,7 +127,6 @@ namespace WindowsFormsUI.Formularios
 
             if (usuario != null)
             {
-                MessageBox.Show("El nombre de usuario ya existe. Ingrese otro nombre de usuario, por favor!", "Crear usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -156,7 +156,7 @@ namespace WindowsFormsUI.Formularios
         {
             if (ValidarControles())
             {
-                string nombreUsuario = MTxtUsuario.Text.Replace("-", "");
+                string nombreUsuario = MTxtUsuario.Text;
 
                 if (VerificarExistencia(nombreUsuario))
                 {
@@ -170,17 +170,9 @@ namespace WindowsFormsUI.Formularios
                         FechaModificacion = DateTime.Now,
                         Respuesta1 = TxtPregunta1.Text,
                         Respuesta2 = TxtPregunta2.Text,
-                        Respuesta3 = TxtPregunta3.Text
+                        Respuesta3 = TxtPregunta3.Text,
+                        Estado = ChkActivarUsuario.Checked ? '1' : '0'                        
                     };
-
-                    if (ChkActivarUsuario.Checked)
-                    {
-                        usuario.Estado = '1';
-                    }
-                    else
-                    {
-                        usuario.Estado = '0';
-                    }
 
                     _usuarioLogic.Create(usuario);
 
@@ -190,14 +182,26 @@ namespace WindowsFormsUI.Formularios
 
                     DialogResult = DialogResult.OK;
                 }
+                else
+                {
+                    MessageBox.Show("El nombre de usuario ya existe. Ingrese otro nombre de usuario, por favor!", "Crear usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void GuardarAvatar(string userId)
+        private void GuardarAvatar(string nombreUsuario)
         {
-            if (File.Exists(PctAvatar.ImageLocation))
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpg";
+            string archivo = string.Concat(ruta, nombreUsuario, extension);
+
+            if (PctAvatar.Image != null)
             {
-                File.Copy(PctAvatar.ImageLocation, Path.Combine(@"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes", userId + Path.GetExtension(PctAvatar.ImageLocation)), true);
+                using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                {
+                    PctAvatar.Image.Dispose();
+                    bitmap.Save(archivo);
+                }
             }
         }
 
@@ -222,6 +226,11 @@ namespace WindowsFormsUI.Formularios
             chkPuedeVer.Checked = false;
             PctAvatar.Image = null;
             CmbEmpleados.Focus();
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
