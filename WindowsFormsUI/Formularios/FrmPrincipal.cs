@@ -1,5 +1,6 @@
 ﻿using BusinessObjectsLayer.Models;
 using BusinessLogicLayer.Logics;
+using CustomControls;
 using System;
 using System.Windows.Forms;
 using System.IO;
@@ -11,10 +12,13 @@ namespace WindowsFormsUI.Formularios
     {
         private Usuario _usuario;
         private RegistroUsuarioBLL _registroUsuarioLogic;
+        private AdministracionCustomMenuStrip administracionCustomMenuStrip;
+        private CreditosCustomMenuStrip creditosCustomMenuStrip;
 
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
+            CargarControlesPersonalizados();
 
             _usuario = usuario;
             _registroUsuarioLogic = new RegistroUsuarioBLL();
@@ -78,32 +82,131 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void CargarControlesPersonalizados()
         {
-            FrmEmpleados frmEmpleados = new FrmEmpleados();
-            frmEmpleados.MdiParent = this;
-            frmEmpleados.Show();
+            administracionCustomMenuStrip = new AdministracionCustomMenuStrip();
+            administracionCustomMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            administracionCustomMenuStrip.Location = new System.Drawing.Point(236, 424);
+            administracionCustomMenuStrip.Name = "administracionCustomMenuStrip";
+            administracionCustomMenuStrip.Size = new System.Drawing.Size(225, 151);
+            administracionCustomMenuStrip.TabIndex = 15;
+            administracionCustomMenuStrip.Visible = false;
+            administracionCustomMenuStrip.BtnUsuarios.Click += new EventHandler(BtnUsuarios_Click);
+            administracionCustomMenuStrip.BtnEmpleados.Click += new EventHandler(BtnEmpleados_Click);
+            administracionCustomMenuStrip.Leave += new EventHandler(AdministracionCustomMenuStrip_Leave);
+
+            creditosCustomMenuStrip = new CreditosCustomMenuStrip();
+            creditosCustomMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            creditosCustomMenuStrip.Location = new System.Drawing.Point(236, 488);
+            creditosCustomMenuStrip.Name = "creditosCustomMenuStrip";
+            creditosCustomMenuStrip.Size = new System.Drawing.Size(225, 151);
+            creditosCustomMenuStrip.TabIndex = 17;
+            creditosCustomMenuStrip.Visible = false;
+            creditosCustomMenuStrip.BtnCreditos.Click += new EventHandler(BtnCreditos_Click);
+            creditosCustomMenuStrip.BtnAsociados.Click += new EventHandler(BtnAsociados_Click);
+            creditosCustomMenuStrip.Leave += new EventHandler(CreditosCustomMenuStrip_Leave);
+
+
+            Controls.Add(administracionCustomMenuStrip);
+            Controls.Add(creditosCustomMenuStrip);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        #region Eventos de los controles personalizados
+
+        private void BtnUsuarios_Click(object sender, EventArgs e)
         {
+            administracionCustomMenuStrip.Visible = false;
+
             FrmUsuarios frmUsuarios = new FrmUsuarios(_usuario);
             frmUsuarios.MdiParent = this;
             frmUsuarios.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void BtnEmpleados_Click(object sender, EventArgs e)
         {
+            administracionCustomMenuStrip.Visible = false;
+
+            FrmEmpleados frmEmpleados = new FrmEmpleados();
+            frmEmpleados.MdiParent = this;
+            frmEmpleados.Show();
+        }
+
+        private void BtnCreditos_Click(object sender, EventArgs e)
+        {
+            creditosCustomMenuStrip.Visible = false;
+
             FrmCreditos frmCreditos = new FrmCreditos();
             frmCreditos.MdiParent = this;
             frmCreditos.Show();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void BtnAsociados_Click(object sender, EventArgs e)
         {
+            creditosCustomMenuStrip.Visible = false;
+
             FrmAsociados frmAsociados = new FrmAsociados();
             frmAsociados.MdiParent = this;
             frmAsociados.Show();
+        }
+
+        private void AdministracionCustomMenuStrip_Leave(object sender, EventArgs e)
+        {
+            administracionCustomMenuStrip.Visible = false;
+        }
+
+        private void CreditosCustomMenuStrip_Leave(object sender, EventArgs e)
+        {
+            creditosCustomMenuStrip.Visible = false;
+        }
+
+        #endregion
+
+        private void BtnAdministracion_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.White;
+        }
+
+        private void BtnAdministracion_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.Black;
+        }
+
+        private void BtnCreditos_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.White;           
+        }
+
+        private void BtnCreditos_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.Black;
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.Black;
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.ForeColor = Color.White;
+        }
+
+        private void BtnAdministracion_Click(object sender, EventArgs e)
+        {
+            administracionCustomMenuStrip.Visible = true;
+            administracionCustomMenuStrip.Focus();
+        }
+
+        private void BtnCreditos_Click_1(object sender, EventArgs e)
+        {
+            creditosCustomMenuStrip.Visible = true;
+            creditosCustomMenuStrip.Focus();
         }
     }
 }

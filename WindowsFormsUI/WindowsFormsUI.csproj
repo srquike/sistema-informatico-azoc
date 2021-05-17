@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj" />
     <ProjectReference Include="..\BusinessObjectsLayer\BusinessObjectsLayer.csproj" />
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="Controles\" />
+    <Folder Include="Resources\Imagenes\" />
   </ItemGroup>
 
 </Project>

@@ -83,17 +83,13 @@ namespace WindowsFormsUI.Formularios
 
         private void ObtenerAvatar(string userName)
         {
-            string avatar = string.Concat(userName, ".jpg");
-            string path = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string file = string.Concat(path, avatar);
+            string extension = ".jpg";
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string archivo = string.Concat(ruta, userName, extension);
 
-            if (!File.Exists(file))
+            if (File.Exists(archivo))
             {
-                PctAvatar.Image = Properties.Resources.image_nofound;
-            }
-            else
-            {
-                using (FileStream stream = new FileStream(file, FileMode.Open, FileAccess.Read))
+                using (FileStream stream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
                 {
                     PctAvatar.Image = Image.FromStream(stream);
                 }
@@ -141,10 +137,15 @@ namespace WindowsFormsUI.Formularios
             string extension = ".jpg";
             string archivo = string.Concat(ruta, userName, extension);
 
-            using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+            if (PctAvatar.Image != null)
             {
-                PctAvatar.Image.Dispose();
-                bitmap.Save(archivo);
+                using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
+                {
+                    using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                    {
+                        bitmap.Save(fileStream, ImageFormat.Jpeg);
+                    }
+                }
             }
         }
 
@@ -294,6 +295,11 @@ namespace WindowsFormsUI.Formularios
                 TxtClave.UseSystemPasswordChar = true;
                 TxtRepetirClave.UseSystemPasswordChar = true;
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
