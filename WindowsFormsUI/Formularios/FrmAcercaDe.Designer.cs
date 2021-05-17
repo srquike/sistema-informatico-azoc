@@ -50,6 +50,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.richTextBox1.Location = new System.Drawing.Point(224, 12);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(238, 93);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "Sistema Informático AZOC de R. L.\nVersion 1.0.0.0\n©2021 Agencia Digital 503Soft\nT" +

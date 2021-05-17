@@ -40,7 +40,7 @@ namespace WindowsFormsUI.Formularios
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnAdministracion = new System.Windows.Forms.Button();
             this.BtnCerrarSesion = new System.Windows.Forms.Button();
-            this.BtnIngresar = new System.Windows.Forms.Button();
+            this.BtnConfiguracion = new System.Windows.Forms.Button();
             this.TxtNombreEmpleado = new System.Windows.Forms.TextBox();
             this.LblSaludo = new System.Windows.Forms.Label();
             this.PctAvatar = new System.Windows.Forms.PictureBox();
@@ -49,9 +49,9 @@ namespace WindowsFormsUI.Formularios
             this.TSMIVentana = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIVerAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSMIVerAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -70,7 +70,7 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraLateral.Controls.Add(this.panel1);
             this.PnlBarraLateral.Controls.Add(this.BtnAdministracion);
             this.PnlBarraLateral.Controls.Add(this.BtnCerrarSesion);
-            this.PnlBarraLateral.Controls.Add(this.BtnIngresar);
+            this.PnlBarraLateral.Controls.Add(this.BtnConfiguracion);
             this.PnlBarraLateral.Controls.Add(this.TxtNombreEmpleado);
             this.PnlBarraLateral.Controls.Add(this.LblSaludo);
             this.PnlBarraLateral.Controls.Add(this.PctAvatar);
@@ -216,26 +216,26 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrarSesion.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.BtnCerrarSesion.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
-            // BtnIngresar
+            // BtnConfiguracion
             // 
-            this.BtnIngresar.BackColor = System.Drawing.Color.White;
-            this.BtnIngresar.Enabled = false;
-            this.BtnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnIngresar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIngresar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnIngresar.ForeColor = System.Drawing.Color.Black;
-            this.BtnIngresar.Image = global::WindowsFormsUI.Properties.Resources.settings;
-            this.BtnIngresar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnIngresar.Location = new System.Drawing.Point(41, 301);
-            this.BtnIngresar.Name = "BtnIngresar";
-            this.BtnIngresar.Size = new System.Drawing.Size(149, 35);
-            this.BtnIngresar.TabIndex = 1;
-            this.BtnIngresar.Text = "Configuración";
-            this.BtnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnIngresar.UseVisualStyleBackColor = false;
-            this.BtnIngresar.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.BtnIngresar.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            this.BtnConfiguracion.BackColor = System.Drawing.Color.White;
+            this.BtnConfiguracion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnConfiguracion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnConfiguracion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfiguracion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnConfiguracion.ForeColor = System.Drawing.Color.Black;
+            this.BtnConfiguracion.Image = global::WindowsFormsUI.Properties.Resources.settings;
+            this.BtnConfiguracion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnConfiguracion.Location = new System.Drawing.Point(41, 301);
+            this.BtnConfiguracion.Name = "BtnConfiguracion";
+            this.BtnConfiguracion.Size = new System.Drawing.Size(149, 35);
+            this.BtnConfiguracion.TabIndex = 1;
+            this.BtnConfiguracion.Text = "Configuración";
+            this.BtnConfiguracion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnConfiguracion.UseVisualStyleBackColor = false;
+            this.BtnConfiguracion.Click += new System.EventHandler(this.BtnConfiguracion_Click);
+            this.BtnConfiguracion.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.BtnConfiguracion.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // TxtNombreEmpleado
             // 
@@ -315,6 +315,12 @@ namespace WindowsFormsUI.Formularios
             this.TSMIAcercaDe.Text = "Acerca del sistema";
             this.TSMIAcercaDe.Click += new System.EventHandler(this.TSMIAcercaDe_Click);
             // 
+            // TSMIVerAyuda
+            // 
+            this.TSMIVerAyuda.Name = "TSMIVerAyuda";
+            this.TSMIVerAyuda.Size = new System.Drawing.Size(172, 22);
+            this.TSMIVerAyuda.Text = "Ver la ayuda";
+            // 
             // customizeToolStripMenuItem
             // 
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
@@ -326,12 +332,6 @@ namespace WindowsFormsUI.Formularios
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
-            // 
-            // TSMIVerAyuda
-            // 
-            this.TSMIVerAyuda.Name = "TSMIVerAyuda";
-            this.TSMIVerAyuda.Size = new System.Drawing.Size(172, 22);
-            this.TSMIVerAyuda.Text = "Ver la ayuda";
             // 
             // FrmPrincipal
             // 
@@ -366,7 +366,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label LblSaludo;
         private System.Windows.Forms.TextBox TxtNombreEmpleado;
         private System.Windows.Forms.Button BtnCerrarSesion;
-        private System.Windows.Forms.Button BtnIngresar;
+        private System.Windows.Forms.Button BtnConfiguracion;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button BtnCreditos;
         private System.Windows.Forms.Panel panel1;

@@ -210,24 +210,9 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private void BtnAplicarFiltro_Click(object sender, EventArgs e)
-        {
-            LLblQuitarFiltro.Enabled = true;
-
-            if (CmbTipoFiltro.SelectedItem.ToString() == "Empleado")
-            {
-                var usuarios = ObtenerLista();
-                var empleadoId = Convert.ToInt32(CmbFiltro.SelectedValue);
-                var usuariosFiltrados = from usuario in usuarios where usuario.EmpleadoId == empleadoId select usuario;
-
-                RefrescarDataGridView(ref DgvListaUsuarios, usuariosFiltrados);
-            }
-        }
-
         private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LLblQuitarFiltro.Enabled = false;
-            BtnAplicarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
 
             RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
@@ -274,7 +259,7 @@ namespace WindowsFormsUI.Formularios
 
         private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            BtnAplicarFiltro.Enabled = true;
+
         }
 
         private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

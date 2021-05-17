@@ -57,7 +57,6 @@ namespace WindowsFormsUI.Formularios
             this.CmbFiltro = new System.Windows.Forms.ComboBox();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
-            this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
             this.PnlBarraSuperior.SuspendLayout();
@@ -326,7 +325,8 @@ namespace WindowsFormsUI.Formularios
             this.CmbTipoFiltro.ItemHeight = 20;
             this.CmbTipoFiltro.Items.AddRange(new object[] {
             "-- Seleccionar filtro -- ",
-            "Empleado"});
+            "Empleado",
+            "Estado"});
             this.CmbTipoFiltro.Location = new System.Drawing.Point(540, 124);
             this.CmbTipoFiltro.Name = "CmbTipoFiltro";
             this.CmbTipoFiltro.Size = new System.Drawing.Size(224, 28);
@@ -363,6 +363,8 @@ namespace WindowsFormsUI.Formularios
             // 
             // CmbFiltro
             // 
+            this.CmbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -371,7 +373,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbFiltro.ItemHeight = 20;
             this.CmbFiltro.Location = new System.Drawing.Point(770, 124);
             this.CmbFiltro.Name = "CmbFiltro";
-            this.CmbFiltro.Size = new System.Drawing.Size(321, 28);
+            this.CmbFiltro.Size = new System.Drawing.Size(456, 28);
             this.CmbFiltro.TabIndex = 11;
             this.CmbFiltro.SelectionChangeCommitted += new System.EventHandler(this.CmbFiltro_SelectionChangeCommitted);
             // 
@@ -398,26 +400,6 @@ namespace WindowsFormsUI.Formularios
             this.LLblQuitarFiltro.Text = "Quitar filtro";
             this.LLblQuitarFiltro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarFiltro_LinkClicked);
             // 
-            // BtnAplicarFiltro
-            // 
-            this.BtnAplicarFiltro.BackColor = System.Drawing.Color.White;
-            this.BtnAplicarFiltro.Enabled = false;
-            this.BtnAplicarFiltro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAplicarFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAplicarFiltro.ForeColor = System.Drawing.Color.Black;
-            this.BtnAplicarFiltro.Image = global::WindowsFormsUI.Properties.Resources.filter;
-            this.BtnAplicarFiltro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAplicarFiltro.Location = new System.Drawing.Point(1097, 117);
-            this.BtnAplicarFiltro.Name = "BtnAplicarFiltro";
-            this.BtnAplicarFiltro.Size = new System.Drawing.Size(129, 35);
-            this.BtnAplicarFiltro.TabIndex = 14;
-            this.BtnAplicarFiltro.Text = "Aplicar filtro";
-            this.BtnAplicarFiltro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAplicarFiltro.UseVisualStyleBackColor = false;
-            this.BtnAplicarFiltro.Click += new System.EventHandler(this.BtnAplicarFiltro_Click);
-            // 
             // LLblQuitarMarcadas
             // 
             this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -439,7 +421,6 @@ namespace WindowsFormsUI.Formularios
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 572);
             this.Controls.Add(this.LLblQuitarMarcadas);
-            this.Controls.Add(this.BtnAplicarFiltro);
             this.Controls.Add(this.LLblQuitarFiltro);
             this.Controls.Add(this.LblFilasMarcadas);
             this.Controls.Add(this.CmbFiltro);
@@ -478,7 +459,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.ComboBox CmbFiltro;
         private System.Windows.Forms.Label LblFilasMarcadas;
         private System.Windows.Forms.LinkLabel LLblQuitarFiltro;
-        private System.Windows.Forms.Button BtnAplicarFiltro;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;

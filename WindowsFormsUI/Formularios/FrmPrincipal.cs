@@ -220,5 +220,17 @@ namespace WindowsFormsUI.Formularios
                 frmAcercaDe.Close();
             }
         }
+
+        private void BtnConfiguracion_Click(object sender, EventArgs e)
+        {
+            FrmConfiguracion frmConfiguracion = new FrmConfiguracion();
+            frmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
+            frmConfiguracion.ShowDialog();
+
+            if (frmConfiguracion.DialogResult == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }
