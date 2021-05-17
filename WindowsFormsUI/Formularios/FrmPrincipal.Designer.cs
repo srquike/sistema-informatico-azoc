@@ -48,9 +48,10 @@ namespace WindowsFormsUI.Formularios
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.TSMIVentana = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIAyuda = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSMIVerAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -301,16 +302,18 @@ namespace WindowsFormsUI.Formularios
             // TSMIAyuda
             // 
             this.TSMIAyuda.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem3});
+            this.TSMIAcercaDe,
+            this.TSMIVerAyuda});
             this.TSMIAyuda.Name = "TSMIAyuda";
             this.TSMIAyuda.Size = new System.Drawing.Size(53, 20);
             this.TSMIAyuda.Text = "&Ayuda";
             // 
-            // toolStripMenuItem3
+            // TSMIAcercaDe
             // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 22);
-            this.toolStripMenuItem3.Text = "Acerca del sistema";
+            this.TSMIAcercaDe.Name = "TSMIAcercaDe";
+            this.TSMIAcercaDe.Size = new System.Drawing.Size(172, 22);
+            this.TSMIAcercaDe.Text = "Acerca del sistema";
+            this.TSMIAcercaDe.Click += new System.EventHandler(this.TSMIAcercaDe_Click);
             // 
             // customizeToolStripMenuItem
             // 
@@ -323,6 +326,12 @@ namespace WindowsFormsUI.Formularios
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // TSMIVerAyuda
+            // 
+            this.TSMIVerAyuda.Name = "TSMIVerAyuda";
+            this.TSMIVerAyuda.Size = new System.Drawing.Size(172, 22);
+            this.TSMIVerAyuda.Text = "Ver la ayuda";
             // 
             // FrmPrincipal
             // 
@@ -369,8 +378,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem TSMIVentana;
         private System.Windows.Forms.ToolStripMenuItem TSMIAyuda;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem TSMIAcercaDe;
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSMIVerAyuda;
     }
 }

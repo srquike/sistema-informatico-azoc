@@ -208,5 +208,17 @@ namespace WindowsFormsUI.Formularios
             creditosCustomMenuStrip.Visible = true;
             creditosCustomMenuStrip.Focus();
         }
+
+        private void TSMIAcercaDe_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe frmAcercaDe = new FrmAcercaDe();
+            frmAcercaDe.StartPosition = FormStartPosition.CenterScreen;
+            frmAcercaDe.ShowDialog();
+
+            if (frmAcercaDe.DialogResult == DialogResult.OK)
+            {
+                frmAcercaDe.Close();
+            }
+        }
     }
 }
