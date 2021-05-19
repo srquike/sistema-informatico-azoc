@@ -133,16 +133,19 @@ namespace WindowsFormsUI.Formularios
                 }
                 else if (e.ColumnIndex == 10)
                 {
-                    if (userId == _usuarioLogeado.UsuarioId)
+                    if (_usuarioLogeado != null)
                     {
-                        MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        if (userId == _usuarioLogeado.UsuarioId)
                         {
-                            _usuarioLogic.Delete(userId);
-                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            {
+                                _usuarioLogic.Delete(userId);
+                                RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            }
                         }
                     }
                 }
