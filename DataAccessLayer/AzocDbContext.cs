@@ -19,7 +19,7 @@ namespace DataAccessLayer
 
         }
 
-        public virtual DbSet<Aportacion> Aportacions { get; set; }
+        public virtual DbSet<Aportacion> Aportaciones { get; set; }
         public virtual DbSet<Asociado> Asociados { get; set; }
         public virtual DbSet<Beneficiario> Beneficiarios { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }

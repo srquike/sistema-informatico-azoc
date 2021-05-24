@@ -49,13 +49,20 @@ namespace WindowsFormsUI.Formularios
 
         private void ObtenerAvatar(string userName)
         {
-            string avatar = string.Concat(userName, ".jpg");
+            string extension = ".jpg";
             string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string archivo = string.Concat(ruta, avatar);
+            string archivo = string.Concat(ruta, userName, extension);
 
             if (File.Exists(archivo))
             {
-                PctAvatar.Image = Image.FromFile(archivo);
+                using (FileStream fileStream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
+                {
+                    PctAvatar.Image = Image.FromStream(fileStream);
+                }
+            }
+            else
+            {
+                PctAvatar.Image = Properties.Resources.image_nofound;
             }
         }
 
@@ -84,6 +91,11 @@ namespace WindowsFormsUI.Formularios
         }
 
         private void FrmDetallesUsuario_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
         }

@@ -31,7 +31,7 @@ namespace DataAccessLayer
 
         public void DeleteAportacion(Aportacion aportacion)
         {
-            _context.Aportacions.Remove(aportacion);
+            _context.Aportaciones.Remove(aportacion);
         }
 
         public void Dispose()
@@ -42,17 +42,17 @@ namespace DataAccessLayer
 
         public Aportacion GetAportacionById(int id)
         {
-            return _context.Aportacions.Find(id);
+            return _context.Aportaciones.Find(id);
         }
 
         public IEnumerable<Aportacion> GetAportacions()
         {
-            return _context.Aportacions.ToList();
+            return _context.Aportaciones.ToList();
         }
 
         public void InsertAportacion(Aportacion aportacion)
         {
-            _context.Aportacions.Add(aportacion);
+            _context.Aportaciones.Add(aportacion);
         }
 
         public void Save()

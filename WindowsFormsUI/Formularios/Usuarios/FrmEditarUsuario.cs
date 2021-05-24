@@ -94,6 +94,10 @@ namespace WindowsFormsUI.Formularios
                     PctAvatar.Image = Image.FromStream(stream);
                 }
             }
+            else
+            {
+                PctAvatar.Image = Properties.Resources.image_nofound;
+            }
         }
 
         private void FrmEditarUsuario_Load(object sender, EventArgs e)

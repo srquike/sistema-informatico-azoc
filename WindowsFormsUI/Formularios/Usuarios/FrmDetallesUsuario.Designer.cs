@@ -253,6 +253,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar.Text = "Cerrar";
             this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // FrmDetallesUsuario
             // 

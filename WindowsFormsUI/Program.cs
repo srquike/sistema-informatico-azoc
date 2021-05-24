@@ -15,15 +15,16 @@ namespace WindowsFormsUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FrmInicioSesion());
 
-            FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
-            frmInicioSesion.StartPosition = FormStartPosition.CenterScreen;
-            frmInicioSesion.ShowDialog();
+            //FrmInicioSesion frmInicioSesion = new FrmInicioSesion();
+            //frmInicioSesion.StartPosition = FormStartPosition.CenterScreen;
+            //frmInicioSesion.ShowDialog();
 
-            if (frmInicioSesion.DialogResult == DialogResult.OK)
-            {
-                Application.Run(new FrmPrincipal(frmInicioSesion.UsuarioLogIn));
-            }
+            //if (frmInicioSesion.DialogResult == DialogResult.OK)
+            //{
+            //    Application.Run(new FrmPrincipal(frmInicioSesion.UsuarioLogIn));
+            //}
         }
     }
 }

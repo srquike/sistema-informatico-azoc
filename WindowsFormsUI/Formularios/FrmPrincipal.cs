@@ -78,6 +78,8 @@ namespace WindowsFormsUI.Formularios
                     };
 
                     _registroUsuarioLogic.Create(registro);
+
+                    DialogResult = DialogResult.Abort;
                 }
             }
         }

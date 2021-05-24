@@ -12,7 +12,7 @@ namespace WindowsFormsUI.Formularios
         private UsuarioBLL _usuarioLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioLogic;
         private bool _continuar = false;
-        public Usuario UsuarioLogIn;
+        private Usuario _usuarioLogin;
 
 
         public FrmInicioSesion()
@@ -53,20 +53,11 @@ namespace WindowsFormsUI.Formularios
             {
                 if (usuario.Estado != '0')
                 {
-                    UsuarioLogIn = usuario;
-                    UsuarioLogIn.UltimoAcceso = DateTime.Now;
+                    _usuarioLogin = usuario;
+                    _usuarioLogin.UltimoAcceso = DateTime.Now;
 
-                    _usuarioLogic.Edit(UsuarioLogIn, false);
-
-                    RegistroUsuario registro = new RegistroUsuario
-                    {
-                        UsuarioId = UsuarioLogIn.UsuarioId,
-                        RegistroId = 1,
-                        Fecha = DateTime.Now,
-                        Informacion = $"Inicio de sesión del usuario {UsuarioLogIn.Nombre}"
-                    };
-
-                    _registroUsuarioLogic.Create(registro);
+                    _usuarioLogic.Edit(_usuarioLogin, false);
+                    
                     return true;
                 }
                 else
@@ -119,7 +110,25 @@ namespace WindowsFormsUI.Formularios
 
                     if (AutenticarUsuario(password, nombre))
                     {
-                        DialogResult = DialogResult.OK;
+                        RegistroUsuario registro = new RegistroUsuario
+                        {
+                            UsuarioId = _usuarioLogin.UsuarioId,
+                            RegistroId = 1,
+                            Fecha = DateTime.Now,
+                            Informacion = $"Inicio de sesión del usuario {_usuarioLogin.Nombre}"
+                        };
+
+                        _registroUsuarioLogic.Create(registro);
+
+                        FrmPrincipal frmPrincipal = new FrmPrincipal(_usuarioLogin);
+                        Hide();
+                        frmPrincipal.ShowDialog();
+
+                        if (frmPrincipal.DialogResult == DialogResult.Abort)
+                        {
+                            Show();
+                            LimpiarControles();
+                        }
                     }
                 }
             }
