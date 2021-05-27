@@ -303,7 +303,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // OfdElegirAvatar
             // 
-            this.OfdElegirAvatar.Filter = "Imagenes |*.JPG";
+            this.OfdElegirAvatar.Filter = "Imagene |*.JPEG";
             this.OfdElegirAvatar.Title = "Seleccionar imagen para el avatar";
             // 
             // BtnLimpiarControles

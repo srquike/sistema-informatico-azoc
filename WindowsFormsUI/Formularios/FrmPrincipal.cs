@@ -30,8 +30,8 @@ namespace WindowsFormsUI.Formularios
             {
                 string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
 
-                string extension = ".jpg";
-                string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+                string extension = ".jpeg";
+                string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
                 string archivo = string.Concat(ruta, _usuario.Nombre, extension);
 
                 if (File.Exists(archivo))

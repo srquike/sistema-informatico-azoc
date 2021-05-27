@@ -49,8 +49,8 @@ namespace WindowsFormsUI.Formularios
 
         private void ObtenerAvatar(string userName)
         {
-            string extension = ".jpg";
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpeg";
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
             string archivo = string.Concat(ruta, userName, extension);
 
             if (File.Exists(archivo))

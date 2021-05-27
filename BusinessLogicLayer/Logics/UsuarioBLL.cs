@@ -57,7 +57,7 @@ namespace BusinessLogicLayer.Logics
             return _usuarioRepository.GetUsuarioByName(name);
         }
 
-        public void Create(Usuario usuario)
+        public bool Create(Usuario usuario)
         {
             string hashPassword = CryptoService.Encode(usuario.Clave);
 
@@ -67,8 +67,10 @@ namespace BusinessLogicLayer.Logics
 
             if (_usuarioRepository.Save() == 0)
             {
-                MessageBox.Show("El usuario no pudo ser creado. Intente nuevamente", "Crear usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
+
+            return true;
         }
 
         public bool Edit(Usuario usuario, bool cambiarClave)

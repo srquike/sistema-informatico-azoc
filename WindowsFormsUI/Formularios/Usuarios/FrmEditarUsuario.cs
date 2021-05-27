@@ -83,8 +83,8 @@ namespace WindowsFormsUI.Formularios
 
         private void ObtenerAvatar(string userName)
         {
-            string extension = ".jpg";
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
+            string extension = ".jpeg";
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
             string archivo = string.Concat(ruta, userName, extension);
 
             if (File.Exists(archivo))
@@ -137,17 +137,20 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string userName)
         {
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\SistemaInformaticoAZOC\WindowsFormsUI\Resources\Imagenes\";
-            string extension = ".jpg";
+            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
+            string extension = ".jpeg";
             string archivo = string.Concat(ruta, userName, extension);
 
-            if (PctAvatar.Image != null)
+            if (File.Exists(archivo))
             {
                 using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
                 {
-                    using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                    if (PctAvatar.Image != null)
                     {
-                        bitmap.Save(fileStream, ImageFormat.Jpeg);
+                        using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                        {
+                            bitmap.Save(fileStream, ImageFormat.Jpeg);
+                        }
                     }
                 }
             }
@@ -162,7 +165,7 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 ErrPControles.Clear();
-                _continuar = true;                
+                _continuar = true;
             }
         }
 
@@ -239,15 +242,21 @@ namespace WindowsFormsUI.Formularios
                     _usuarioEdit.Nombre = MTxtNombre.Text;
                     _usuarioEdit.Estado = ChkActivarUsuario.Checked ? '1' : '0';
 
-                    _usuarioLogic.Edit(_usuarioEdit, _cambiarClave);
-                    ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
-
-                    if (_cambiarAvatar)
+                    if (_usuarioLogic.Edit(_usuarioEdit, _cambiarClave))
                     {
-                        GuardarAvatar(_usuarioEdit.Nombre);
-                    }
+                        ActualizarPermisos(_usuarioEdit.PermisoUsuarios, _usuarioEdit.UsuarioId);
 
-                    DialogResult = DialogResult.OK;
+                        if (_cambiarAvatar)
+                        {
+                            GuardarAvatar(_usuarioEdit.Nombre);
+                        }
+
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo editar los datos del usuario, intente nuevamente, por favor!", "Editar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -260,12 +269,19 @@ namespace WindowsFormsUI.Formularios
         {
             if (OfdElegirAvatar.ShowDialog() == DialogResult.OK)
             {
-                string path = OfdElegirAvatar.FileName;
+                string archivo = OfdElegirAvatar.FileName;
 
-                using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                if (File.Exists(archivo))
                 {
-                    PctAvatar.Image = Image.FromStream(stream);
-                    _cambiarAvatar = true;
+                    using (FileStream fileStream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
+                    {
+                        PctAvatar.Image = Image.FromStream(fileStream);
+                        _cambiarAvatar = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El archivo de la imagen no existe o esta dañado, selecione otra imagen!", "Elegir imagen: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
