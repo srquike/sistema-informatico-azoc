@@ -31,7 +31,7 @@ namespace DataAccessLayer
         }
         public void DeleteDeduccion(Deduccion deduccion)
         {
-            _context.Deduccions.Remove(deduccion);
+            _context.Deducciones.Remove(deduccion);
         }
 
         public void Dispose()
@@ -42,17 +42,17 @@ namespace DataAccessLayer
 
         public Deduccion GetDeduccionById(int id)
         {
-            return _context.Deduccions.Find(id);
+            return _context.Deducciones.Find(id);
         }
 
         public IEnumerable<Deduccion> GetDeduccions()
         {
-            return _context.Deduccions.ToList();
+            return _context.Deducciones.ToList();
         }
 
         public void InsertDeduccion(Deduccion deduccion)
         {
-            _context.Deduccions.Add(deduccion);
+            _context.Deducciones.Add(deduccion);
         }
 
         public void Save()

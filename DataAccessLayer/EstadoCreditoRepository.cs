@@ -32,7 +32,7 @@ namespace DataAccessLayer
         }
         public void DeleteEstadoCredito(EstadoCredito estadocredito)
         {
-            _context.EstadoCreditos.Remove(estadocredito);
+            _context.EstadosCreditos.Remove(estadocredito);
         }
 
         public void Dispose()
@@ -43,17 +43,17 @@ namespace DataAccessLayer
 
         public EstadoCredito GetEstadoCreditoById(int id)
         {
-            return _context.EstadoCreditos.Find(id);
+            return _context.EstadosCreditos.Find(id);
         }
 
         public IEnumerable<EstadoCredito> GetEstadoCreditos()
         {
-            return _context.EstadoCreditos.ToList();
+            return _context.EstadosCreditos.ToList();
         }
 
         public void InsertEstadoCredito(EstadoCredito estadocredito)
         {
-            _context.EstadoCreditos.Add(estadocredito);
+            _context.EstadosCreditos.Add(estadocredito);
         }
 
         public void Save()

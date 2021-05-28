@@ -31,7 +31,7 @@ namespace DataAccessLayer
         }
         public void DeleteDeduccionCredito(DeduccionCredito deduccioncredito)
         {
-            _context.DeduccionCreditos.Remove(deduccioncredito);
+            _context.DeduccionesCreditos.Remove(deduccioncredito);
         }
 
         public void Dispose()
@@ -42,17 +42,17 @@ namespace DataAccessLayer
 
         public DeduccionCredito GetDeduccionCreditoById(int id)
         {
-            return _context.DeduccionCreditos.Find(id);
+            return _context.DeduccionesCreditos.Find(id);
         }
 
         public IEnumerable<DeduccionCredito> GetDeduccionCreditos()
         {
-            return _context.DeduccionCreditos.ToList();
+            return _context.DeduccionesCreditos.ToList();
         }
 
         public void InsertDeduccionCredito(DeduccionCredito deduccioncredito)
         {
-            _context.DeduccionCreditos.Add(deduccioncredito);
+            _context.DeduccionesCreditos.Add(deduccioncredito);
         }
 
         public void Save()

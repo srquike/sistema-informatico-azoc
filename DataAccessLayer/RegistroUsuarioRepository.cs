@@ -33,7 +33,7 @@ namespace DataAccessLayer
 
         public void DeleteRegistroUsuario(RegistroUsuario registroUsuario)
         {
-            _context.RegistroUsuarios.Remove(registroUsuario);
+            _context.RegistrosUsuarios.Remove(registroUsuario);
         }
 
         public void Dispose()
@@ -44,17 +44,17 @@ namespace DataAccessLayer
 
         public RegistroUsuario GetRegistroUsuarioById(int id)
         {
-            return _context.RegistroUsuarios.Where(ru => ru.RegistroUsuarioId == id).AsNoTracking().FirstOrDefault();
+            return _context.RegistrosUsuarios.Where(ru => ru.RegistroUsuarioId == id).AsNoTracking().FirstOrDefault();
         }
 
         public IEnumerable<RegistroUsuario> GetRegistroUsuarios()
         {
-            return _context.RegistroUsuarios.AsNoTracking().ToList();
+            return _context.RegistrosUsuarios.AsNoTracking().ToList();
         }
 
         public void InsertRegistroUsuario(RegistroUsuario registroUsuario)
         {
-            _context.RegistroUsuarios.Add(registroUsuario);
+            _context.RegistrosUsuarios.Add(registroUsuario);
         }
 
         public void Save()

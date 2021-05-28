@@ -33,7 +33,7 @@ namespace DataAccessLayer
         }
         public void DeleteTipoCuota(TipoCuota tipocuota)
         {
-            _context.TipoCuota.Remove(tipocuota);
+            _context.TiposCuotas.Remove(tipocuota);
         }
 
         public void Dispose()
@@ -44,17 +44,17 @@ namespace DataAccessLayer
 
         public TipoCuota GetTipoCuotaById(int id)
         {
-            return _context.TipoCuota.Find(id);
+            return _context.TiposCuotas.Find(id);
         }
 
         public IEnumerable<TipoCuota> GetTipoCuotas()
         {
-            return _context.TipoCuota.ToList();
+            return _context.TiposCuotas.ToList();
         }
 
         public void InsertTipoCuota(TipoCuota tipocuota)
         {
-            _context.TipoCuota.Add(tipocuota);
+            _context.TiposCuotas.Add(tipocuota);
         }
 
         public void Save()

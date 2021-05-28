@@ -23,20 +23,20 @@ namespace DataAccessLayer
         public virtual DbSet<Asociado> Asociados { get; set; }
         public virtual DbSet<Beneficiario> Beneficiarios { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
-        public virtual DbSet<CategoriaAsociado> CategoriaAsociados { get; set; }
+        public virtual DbSet<CategoriaAsociado> CategoriasAsociados { get; set; }
         public virtual DbSet<Credito> Creditos { get; set; }
         public virtual DbSet<Cuota> Cuota { get; set; }
-        public virtual DbSet<Deduccion> Deduccions { get; set; }
-        public virtual DbSet<DeduccionCredito> DeduccionCreditos { get; set; }
+        public virtual DbSet<Deduccion> Deducciones { get; set; }
+        public virtual DbSet<DeduccionCredito> DeduccionesCreditos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
-        public virtual DbSet<EstadoCredito> EstadoCreditos { get; set; }
-        public virtual DbSet<EstadoCuota> EstadoCuota { get; set; }
+        public virtual DbSet<EstadoCredito> EstadosCreditos { get; set; }
+        public virtual DbSet<EstadoCuota> EstadosCuotas { get; set; }
         public virtual DbSet<Permiso> Permisos { get; set; }
         public virtual DbSet<PermisoUsuario> PermisoUsuarios { get; set; }
-        public virtual DbSet<TipoCuota> TipoCuota { get; set; }
+        public virtual DbSet<TipoCuota> TiposCuotas { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
         public virtual DbSet<Registro> Registros { get; set; }
-        public virtual DbSet<RegistroUsuario> RegistroUsuarios { get; set; }
+        public virtual DbSet<RegistroUsuario> RegistrosUsuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -333,7 +333,7 @@ namespace DataAccessLayer
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_Credito_Asociado");
 
-                entity.HasOne(d => d.EstadoCredito)
+                entity.HasOne(d => d.EstadosCreditos)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.EstadoCreditoId)
                     .OnDelete(DeleteBehavior.SetNull)
@@ -393,7 +393,7 @@ namespace DataAccessLayer
                 entity.ToTable("DeduccionCredito");
 
                 entity.HasOne(d => d.Credito)
-                    .WithMany(p => p.DeduccionesCredito)
+                    .WithMany(p => p.DeduccionesCreditos)
                     .HasForeignKey(d => d.CreditoId)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Deduccion__Credi__5AEE82B9");

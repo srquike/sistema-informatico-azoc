@@ -34,7 +34,7 @@ namespace WindowsFormsUI.Formularios
                 string monto = string.Format("{0:C}", credito.Monto);
                 string nombreAsociado = string.Concat(credito.Asociado.PrimerNombre, " ", credito.Asociado.SegundoNombre, " ", credito.Asociado.TercerNombre, " ", credito.Asociado.PrimerApellido, " ", credito.Asociado.SegundoApellido, " ", credito.Asociado.TercerNombre);
 
-                dataGrid.Rows.Add(false, credito.CreditoId, monto, credito.TasaInteres, credito.Cuotas.Count, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
+                dataGrid.Rows.Add(false, credito.CreditoId, monto, credito.TasaInteres, credito.Cuotas.Count, fechaInicio, credito.EstadosCreditos.Nombre, nombreAsociado);
             }
 
             dataGrid.ClearSelection();

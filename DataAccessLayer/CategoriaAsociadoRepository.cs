@@ -30,7 +30,7 @@ namespace DataAccessLayer
         }
         public void DeleteCategoriaAsociado(CategoriaAsociado categoriaasociado)
         {
-            _context.CategoriaAsociados.Remove(categoriaasociado);
+            _context.CategoriasAsociados.Remove(categoriaasociado);
         }
 
         public void Dispose()
@@ -41,21 +41,21 @@ namespace DataAccessLayer
 
         public CategoriaAsociado GetCategoriaAsociadoById(int id)
         {
-            return _context.CategoriaAsociados.Where(ca => ca.CategoriaAsociadoId == id)
+            return _context.CategoriasAsociados.Where(ca => ca.CategoriaAsociadoId == id)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
 
         public IEnumerable<CategoriaAsociado> GetCategoriaAsociados()
         {
-            return _context.CategoriaAsociados
+            return _context.CategoriasAsociados
                 .AsNoTracking()
                 .ToList();
         }
 
         public void InsertCategoriaAsociado(CategoriaAsociado categoriaasociado)
         {
-            _context.CategoriaAsociados.Add(categoriaasociado);
+            _context.CategoriasAsociados.Add(categoriaasociado);
         }
 
         public void Save()
