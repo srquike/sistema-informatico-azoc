@@ -2,12 +2,9 @@
 using BusinessObjectsLayer.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace WindowsFormsUI.Formularios
@@ -139,7 +136,6 @@ namespace WindowsFormsUI.Formularios
         {
             LLblQuitarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
-            BtnAplicarFiltro.Enabled = false;
             CmbFiltro.Items.Clear();
             ActualizarListado(ref DgvListado, _asociadoLogic.List());
         }
@@ -187,7 +183,7 @@ namespace WindowsFormsUI.Formularios
                     }
                 }
                 if (dataGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
-                {        
+                {
                     if (marcada)
                     {
                         dataGrid.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
@@ -262,7 +258,6 @@ namespace WindowsFormsUI.Formularios
 
         private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            BtnAplicarFiltro.Enabled = true;
         }
 
         private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

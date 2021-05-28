@@ -32,7 +32,6 @@ namespace WindowsFormsUI.Formularios
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
             this.CmbFiltro = new System.Windows.Forms.ComboBox();
@@ -62,24 +61,6 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
             this.SuspendLayout();
             // 
-            // BtnAplicarFiltro
-            // 
-            this.BtnAplicarFiltro.BackColor = System.Drawing.Color.White;
-            this.BtnAplicarFiltro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAplicarFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAplicarFiltro.ForeColor = System.Drawing.Color.Black;
-            this.BtnAplicarFiltro.Image = global::WindowsFormsUI.Properties.Resources.filter;
-            this.BtnAplicarFiltro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAplicarFiltro.Location = new System.Drawing.Point(1097, 122);
-            this.BtnAplicarFiltro.Name = "BtnAplicarFiltro";
-            this.BtnAplicarFiltro.Size = new System.Drawing.Size(129, 35);
-            this.BtnAplicarFiltro.TabIndex = 28;
-            this.BtnAplicarFiltro.Text = "Aplicar filtro";
-            this.BtnAplicarFiltro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAplicarFiltro.UseVisualStyleBackColor = false;
-            // 
             // LLblQuitarFiltro
             // 
             this.LLblQuitarFiltro.AutoSize = true;
@@ -104,9 +85,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // CmbFiltro
             // 
+            this.CmbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CmbFiltro.Enabled = false;
+            this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbFiltro.FormattingEnabled = true;
             this.CmbFiltro.ItemHeight = 20;
@@ -115,7 +98,7 @@ namespace WindowsFormsUI.Formularios
             "Empleado"});
             this.CmbFiltro.Location = new System.Drawing.Point(770, 129);
             this.CmbFiltro.Name = "CmbFiltro";
-            this.CmbFiltro.Size = new System.Drawing.Size(321, 28);
+            this.CmbFiltro.Size = new System.Drawing.Size(456, 28);
             this.CmbFiltro.TabIndex = 25;
             // 
             // CmbAcciones
@@ -418,7 +401,6 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 586);
-            this.Controls.Add(this.BtnAplicarFiltro);
             this.Controls.Add(this.LLblQuitarFiltro);
             this.Controls.Add(this.LblFilasMarcadas);
             this.Controls.Add(this.CmbFiltro);
@@ -446,8 +428,6 @@ namespace WindowsFormsUI.Formularios
         }
 
         #endregion
-
-        private System.Windows.Forms.Button BtnAplicarFiltro;
         private System.Windows.Forms.LinkLabel LLblQuitarFiltro;
         private System.Windows.Forms.Label LblFilasMarcadas;
         private System.Windows.Forms.ComboBox CmbFiltro;

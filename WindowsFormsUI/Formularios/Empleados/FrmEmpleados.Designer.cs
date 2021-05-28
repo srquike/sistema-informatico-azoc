@@ -29,13 +29,12 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnCrearNuevo = new System.Windows.Forms.Button();
-            this.BtnAplicarFiltro = new System.Windows.Forms.Button();
             this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
             this.LblFilasMarcadas = new System.Windows.Forms.Label();
             this.CmbFiltro = new System.Windows.Forms.ComboBox();
@@ -104,25 +103,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearNuevo.UseVisualStyleBackColor = false;
             this.BtnCrearNuevo.Click += new System.EventHandler(this.BtnCrearNuevo_Click);
             // 
-            // BtnAplicarFiltro
-            // 
-            this.BtnAplicarFiltro.BackColor = System.Drawing.Color.White;
-            this.BtnAplicarFiltro.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnAplicarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAplicarFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnAplicarFiltro.ForeColor = System.Drawing.Color.Black;
-            this.BtnAplicarFiltro.Image = global::WindowsFormsUI.Properties.Resources.filter;
-            this.BtnAplicarFiltro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAplicarFiltro.Location = new System.Drawing.Point(1097, 122);
-            this.BtnAplicarFiltro.Name = "BtnAplicarFiltro";
-            this.BtnAplicarFiltro.Size = new System.Drawing.Size(129, 35);
-            this.BtnAplicarFiltro.TabIndex = 26;
-            this.BtnAplicarFiltro.Text = "Aplicar filtro";
-            this.BtnAplicarFiltro.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnAplicarFiltro.UseVisualStyleBackColor = false;
-            this.BtnAplicarFiltro.Click += new System.EventHandler(this.BtnAplicarFiltro_Click);
-            // 
             // LLblQuitarFiltro
             // 
             this.LLblQuitarFiltro.AutoSize = true;
@@ -148,6 +128,8 @@ namespace WindowsFormsUI.Formularios
             // 
             // CmbFiltro
             // 
+            this.CmbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -159,7 +141,7 @@ namespace WindowsFormsUI.Formularios
             "Empleado"});
             this.CmbFiltro.Location = new System.Drawing.Point(770, 129);
             this.CmbFiltro.Name = "CmbFiltro";
-            this.CmbFiltro.Size = new System.Drawing.Size(321, 28);
+            this.CmbFiltro.Size = new System.Drawing.Size(456, 28);
             this.CmbFiltro.TabIndex = 23;
             this.CmbFiltro.SelectionChangeCommitted += new System.EventHandler(this.CmbFiltro_SelectionChangeCommitted);
             // 
@@ -273,14 +255,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListaEmpleados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvListaEmpleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -294,20 +276,20 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle5;
             this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 163);
             this.DgvListaEmpleados.Name = "DgvListaEmpleados";
             this.DgvListaEmpleados.ReadOnly = true;
             this.DgvListaEmpleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvListaEmpleados.RowTemplate.Height = 25;
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListaEmpleados.Size = new System.Drawing.Size(1214, 385);
@@ -440,7 +422,6 @@ namespace WindowsFormsUI.Formularios
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 586);
             this.Controls.Add(this.LLblQuitarMarcadas);
-            this.Controls.Add(this.BtnAplicarFiltro);
             this.Controls.Add(this.LLblQuitarFiltro);
             this.Controls.Add(this.LblFilasMarcadas);
             this.Controls.Add(this.CmbFiltro);
@@ -472,7 +453,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Panel PnlBarraSuperior;
         private System.Windows.Forms.Button BtnCrearNuevo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button BtnAplicarFiltro;
         private System.Windows.Forms.LinkLabel LLblQuitarFiltro;
         private System.Windows.Forms.Label LblFilasMarcadas;
         private System.Windows.Forms.ComboBox CmbFiltro;

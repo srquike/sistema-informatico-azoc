@@ -49,7 +49,7 @@ namespace DataAccessLayer
                 // optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
                 // Conexion de Jonathan 2
-                optionsBuilder.UseSqlServer("Server=DESKTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
                 // Conexion de Walter
                 // optionsBuilder.UseSqlServer("Server=WALTER\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
@@ -81,7 +81,7 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Aportaciones)
                     .HasForeignKey(d => d.AsociadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Aportacio__Asoci__5DCAEF64");
             });
 
@@ -184,8 +184,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.CategoriaAsociado)
                     .WithMany(p => p.Asociados)
                     .HasForeignKey(d => d.CategoriaAsociadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Asociado__Catego__3D5E1FD2");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Asociado_CategoriaAsociado");
             });
 
             modelBuilder.Entity<Beneficiario>(entity =>
@@ -330,14 +330,14 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.AsociadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Credito__Asociad__48CFD27E");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Credito_Asociado");
 
                 entity.HasOne(d => d.EstadoCredito)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.EstadoCreditoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Credito__EstadoC__49C3F6B7");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Credito_EstadoCredito");
             });
 
             modelBuilder.Entity<Cuota>(entity =>
@@ -354,20 +354,20 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Credito)
                     .WithMany(p => p.Cuotas)
                     .HasForeignKey(d => d.CreditoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cuota__CreditoId__5441852A");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("FK_Cuota_Credito");
 
                 entity.HasOne(d => d.EstadoCuota)
                     .WithMany(p => p.Cuota)
                     .HasForeignKey(d => d.EstadoCuotaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cuota__EstadoCuo__534D60F1");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Cuota_EstadoCuota");
 
                 entity.HasOne(d => d.TipoCuota)
                     .WithMany(p => p.Cuota)
                     .HasForeignKey(d => d.TipoCuotaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cuota__CreditoId__52593CB8");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Cuota_TipoCuota");
             });
 
             modelBuilder.Entity<Deduccion>(entity =>
@@ -395,14 +395,14 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Credito)
                     .WithMany(p => p.DeduccionesCredito)
                     .HasForeignKey(d => d.CreditoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Deduccion__Credi__5AEE82B9");
 
                 entity.HasOne(d => d.Deduccion)
                     .WithMany(p => p.DeduccionCreditos)
                     .HasForeignKey(d => d.DeduccionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Deduccion__Credi__59FA5E80");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_DeduccionCredito_Deduccion");
             });
 
             modelBuilder.Entity<Empleado>(entity =>
@@ -492,8 +492,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Cargo)
                     .WithMany(p => p.Empleados)
                     .HasForeignKey(d => d.CargoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Empleado__CargoI__2D27B809");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Empleado_Cargo");
             });
 
             modelBuilder.Entity<EstadoCredito>(entity =>
@@ -558,8 +558,8 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Permiso)
                     .WithMany(p => p.PermisoUsuarios)
                     .HasForeignKey(d => d.PermisoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__PermisoUs__Permi__34C8D9D1");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_PermisoUsuario_Permiso");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.PermisoUsuarios)
@@ -631,7 +631,7 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Empleado)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.EmpleadoId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Usuario__Emplead__30F848ED");
             });
 
@@ -649,14 +649,14 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Registro)
                     .WithMany(p => p.RegistroUsuarios)
                     .HasForeignKey(d => d.RegistroId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__RegistroU__Regis__19DFD96B");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_RegistroUsuario_Registro");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.RegistroUsuarios)
                     .HasForeignKey(d => d.UsuarioId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__RegistroU__Regis__18EBB532");
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_RegistroUsuario_Usuario");
             });
 
             modelBuilder.Entity<Registro>(entity =>

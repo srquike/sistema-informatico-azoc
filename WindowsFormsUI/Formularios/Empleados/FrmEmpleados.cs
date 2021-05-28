@@ -190,7 +190,6 @@ namespace WindowsFormsUI.Formularios
         {
             LLblQuitarFiltro.Enabled = false;
             CmbTipoFiltro.SelectedIndex = 0;
-            BtnAplicarFiltro.Enabled = false;
             ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
         }
 
@@ -226,7 +225,7 @@ namespace WindowsFormsUI.Formularios
 
         private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            BtnAplicarFiltro.Enabled = true;
+
         }
 
         private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
