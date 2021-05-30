@@ -64,9 +64,9 @@ namespace DataAccessLayer
             _context.Creditos.Add(credito);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateCredito(Credito credito)

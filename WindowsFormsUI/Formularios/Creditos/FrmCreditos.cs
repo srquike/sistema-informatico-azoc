@@ -34,7 +34,7 @@ namespace WindowsFormsUI.Formularios
                 string monto = string.Format("{0:C}", credito.Monto);
                 string nombreAsociado = string.Concat(credito.Asociado.PrimerNombre, " ", credito.Asociado.SegundoNombre, " ", credito.Asociado.TercerNombre, " ", credito.Asociado.PrimerApellido, " ", credito.Asociado.SegundoApellido, " ", credito.Asociado.TercerNombre);
 
-                dataGrid.Rows.Add(false, credito.CreditoId, monto, credito.TasaInteres, credito.Cuotas.Count, fechaInicio, credito.EstadosCreditos.Nombre, nombreAsociado);
+                dataGrid.Rows.Add(false, credito.CreditoId, monto, credito.Interes, credito.Plazo, fechaInicio, credito.EstadosCreditos.Nombre, nombreAsociado);
             }
 
             dataGrid.ClearSelection();
@@ -53,6 +53,11 @@ namespace WindowsFormsUI.Formularios
             FrmCrearCredito frmCrear = new FrmCrearCredito();
             frmCrear.StartPosition = FormStartPosition.CenterParent;
             frmCrear.ShowDialog();
+
+            if (frmCrear.DialogResult == DialogResult.OK)
+            {
+                ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+            }
         }
 
         private void DgvLista_CellContentClick(object sender, DataGridViewCellEventArgs e)

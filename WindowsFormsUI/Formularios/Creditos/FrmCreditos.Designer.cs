@@ -50,7 +50,7 @@ namespace WindowsFormsUI.Formularios
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cuotas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Asociado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -264,7 +264,7 @@ namespace WindowsFormsUI.Formularios
             this.Id,
             this.Monto,
             this.Interes,
-            this.Cuotas,
+            this.Plazo,
             this.Fecha,
             this.Estado,
             this.Asociado,
@@ -326,13 +326,13 @@ namespace WindowsFormsUI.Formularios
             this.Interes.Name = "Interes";
             this.Interes.ReadOnly = true;
             // 
-            // Cuotas
+            // Plazo
             // 
-            this.Cuotas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Cuotas.HeaderText = "# Cuotas";
-            this.Cuotas.Name = "Cuotas";
-            this.Cuotas.ReadOnly = true;
-            this.Cuotas.Width = 95;
+            this.Plazo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Plazo.HeaderText = "Plazo";
+            this.Plazo.Name = "Plazo";
+            this.Plazo.ReadOnly = true;
+            this.Plazo.Width = 71;
             // 
             // Fecha
             // 
@@ -446,7 +446,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Interes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cuotas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Plazo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Asociado;

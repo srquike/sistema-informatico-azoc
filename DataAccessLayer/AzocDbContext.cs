@@ -327,6 +327,12 @@ namespace DataAccessLayer
 
                 entity.Property(e => e.Monto).HasColumnType("money");
 
+                entity.Property(e => e.Interes).HasColumnType("money");
+
+                entity.Property(e => e.Tramite).HasColumnType("money");
+
+                entity.Property(e => e.Plazo).HasColumnType("int");
+
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.AsociadoId)

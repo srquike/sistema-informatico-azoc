@@ -49,30 +49,26 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(Credito credito)
         {
-            try
-            {
-                _creditoRepository.InsertCredito(credito);
-                _creditoRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _creditoRepository.InsertCredito(credito);
+
+            if (_creditoRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
 
         public bool Edit(Credito credito)
         {
-            try
-            {
-                _creditoRepository.UpdateCredito(credito);
-                _creditoRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _creditoRepository.UpdateCredito(credito);
+
+            if (_creditoRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
     }
 }

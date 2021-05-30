@@ -11,6 +11,6 @@ namespace RepositoryLayer
         void InsertCredito(Credito credito);
         void DeleteCredito(Credito credito);
         void UpdateCredito(Credito credito);
-        void Save();
+        int Save();
     }
 }

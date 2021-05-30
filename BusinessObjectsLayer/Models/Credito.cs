@@ -17,9 +17,11 @@ namespace BusinessObjectsLayer.Models
         public DateTime FechaAprobacion { get; set; }
         public DateTime FechaInicio { get; set; }
         public decimal Monto { get; set; }
-        public int TasaInteres { get; set; }
+        public decimal Interes { get; set; }
+        public decimal Tramite { get; set; }
         public int EstadoCreditoId { get; set; }
         public int AsociadoId { get; set; }
+        public int Plazo { get; set; }
 
         public virtual Asociado Asociado { get; set; }
         public virtual EstadoCredito EstadosCreditos { get; set; }

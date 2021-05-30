@@ -97,7 +97,7 @@ namespace WindowsFormsUI.Formularios
         {
             if (EsAdministrador())
             {
-                DialogResult = DialogResult.OK;
+                MostrarFormularioPrincipal();
             }
             else
             {
@@ -120,17 +120,22 @@ namespace WindowsFormsUI.Formularios
 
                         _registroUsuarioLogic.Create(registro);
 
-                        FrmPrincipal frmPrincipal = new FrmPrincipal(_usuarioLogin);
-                        Hide();
-                        frmPrincipal.ShowDialog();
-
-                        if (frmPrincipal.DialogResult == DialogResult.Abort)
-                        {
-                            Show();
-                            LimpiarControles();
-                        }
+                        MostrarFormularioPrincipal();
                     }
                 }
+            }
+        }
+
+        private void MostrarFormularioPrincipal()
+        {
+            FrmPrincipal frmPrincipal = new FrmPrincipal(_usuarioLogin);
+            Hide();
+            frmPrincipal.ShowDialog();
+
+            if (frmPrincipal.DialogResult == DialogResult.Abort)
+            {
+                Show();
+                LimpiarControles();
             }
         }
 

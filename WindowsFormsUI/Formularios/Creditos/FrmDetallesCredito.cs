@@ -15,9 +15,9 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
         }
 
-        private void label16_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }
