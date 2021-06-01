@@ -398,6 +398,8 @@ namespace DataAccessLayer
             {
                 entity.ToTable("DeduccionCredito");
 
+                entity.Property(e => e.Monto).HasColumnType("money");
+
                 entity.HasOne(d => d.Credito)
                     .WithMany(p => p.DeduccionesCreditos)
                     .HasForeignKey(d => d.CreditoId)

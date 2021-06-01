@@ -42,7 +42,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPendientes = new System.Windows.Forms.TextBox();
             this.TxtCanceladas = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.TxtCantidad = new System.Windows.Forms.TextBox();
+            this.TxtCantidadCuotas = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.TxtLiquidoRecibido = new System.Windows.Forms.TextBox();
             this.TxtPTramite = new System.Windows.Forms.TextBox();
@@ -58,7 +58,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtInteres = new System.Windows.Forms.TextBox();
             this.TxtCapital = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.TxtMonto = new System.Windows.Forms.TextBox();
+            this.TxtMontoCuota = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
@@ -90,6 +90,10 @@ namespace WindowsFormsUI.Formularios
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.BtnCerrar = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.TxtDeudaAdquirida = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.TxtDeudaTotal = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -99,7 +103,13 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.TxtDeudaTotal);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.TxtDeudaAdquirida);
+            this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.TxtPlazo);
+            this.groupBox2.Controls.Add(this.TxtInteresAcumulado);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.label26);
             this.groupBox2.Controls.Add(this.TxtSaldo);
@@ -123,7 +133,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.Location = new System.Drawing.Point(12, 109);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(652, 531);
+            this.groupBox2.Size = new System.Drawing.Size(928, 493);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Crédito";
@@ -131,7 +141,7 @@ namespace WindowsFormsUI.Formularios
             // TxtPlazo
             // 
             this.TxtPlazo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPlazo.Location = new System.Drawing.Point(147, 131);
+            this.TxtPlazo.Location = new System.Drawing.Point(147, 94);
             this.TxtPlazo.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPlazo.Name = "TxtPlazo";
             this.TxtPlazo.ReadOnly = true;
@@ -142,7 +152,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(87, 134);
+            this.label27.Location = new System.Drawing.Point(87, 97);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(52, 20);
             this.label27.TabIndex = 34;
@@ -152,7 +162,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(461, 480);
+            this.label26.Location = new System.Drawing.Point(737, 461);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(54, 20);
             this.label26.TabIndex = 33;
@@ -161,7 +171,8 @@ namespace WindowsFormsUI.Formularios
             // TxtSaldo
             // 
             this.TxtSaldo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSaldo.Location = new System.Drawing.Point(521, 477);
+            this.TxtSaldo.Location = new System.Drawing.Point(797, 458);
+            this.TxtSaldo.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSaldo.Name = "TxtSaldo";
             this.TxtSaldo.ReadOnly = true;
             this.TxtSaldo.Size = new System.Drawing.Size(125, 27);
@@ -171,7 +182,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(390, 447);
+            this.label15.Location = new System.Drawing.Point(697, 274);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(125, 20);
             this.label15.TabIndex = 9;
@@ -179,18 +190,16 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.TxtInteresAcumulado);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.TxtPendientes);
             this.groupBox5.Controls.Add(this.TxtCanceladas);
             this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.TxtCantidad);
+            this.groupBox5.Controls.Add(this.TxtCantidadCuotas);
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(390, 271);
+            this.groupBox5.Location = new System.Drawing.Point(650, 129);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(256, 167);
+            this.groupBox5.Size = new System.Drawing.Size(272, 136);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Cuotas";
@@ -199,7 +208,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(10, 131);
+            this.label17.Location = new System.Drawing.Point(389, 274);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(138, 20);
             this.label17.TabIndex = 9;
@@ -208,7 +217,8 @@ namespace WindowsFormsUI.Formularios
             // TxtInteresAcumulado
             // 
             this.TxtInteresAcumulado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtInteresAcumulado.Location = new System.Drawing.Point(154, 128);
+            this.TxtInteresAcumulado.Location = new System.Drawing.Point(830, 271);
+            this.TxtInteresAcumulado.Margin = new System.Windows.Forms.Padding(5);
             this.TxtInteresAcumulado.Name = "TxtInteresAcumulado";
             this.TxtInteresAcumulado.ReadOnly = true;
             this.TxtInteresAcumulado.Size = new System.Drawing.Size(92, 27);
@@ -218,7 +228,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(61, 95);
+            this.label3.Location = new System.Drawing.Point(10, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 7;
@@ -227,45 +237,45 @@ namespace WindowsFormsUI.Formularios
             // TxtPendientes
             // 
             this.TxtPendientes.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPendientes.Location = new System.Drawing.Point(154, 92);
+            this.TxtPendientes.Location = new System.Drawing.Point(103, 93);
             this.TxtPendientes.Name = "TxtPendientes";
             this.TxtPendientes.ReadOnly = true;
-            this.TxtPendientes.Size = new System.Drawing.Size(92, 27);
+            this.TxtPendientes.Size = new System.Drawing.Size(163, 27);
             this.TxtPendientes.TabIndex = 6;
             // 
             // TxtCanceladas
             // 
             this.TxtCanceladas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCanceladas.Location = new System.Drawing.Point(154, 56);
+            this.TxtCanceladas.Location = new System.Drawing.Point(103, 56);
             this.TxtCanceladas.Name = "TxtCanceladas";
             this.TxtCanceladas.ReadOnly = true;
-            this.TxtCanceladas.Size = new System.Drawing.Size(92, 27);
+            this.TxtCanceladas.Size = new System.Drawing.Size(163, 27);
             this.TxtCanceladas.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(57, 59);
+            this.label6.Location = new System.Drawing.Point(6, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Canceladas :";
             // 
-            // TxtCantidad
+            // TxtCantidadCuotas
             // 
-            this.TxtCantidad.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCantidad.Location = new System.Drawing.Point(154, 20);
-            this.TxtCantidad.Name = "TxtCantidad";
-            this.TxtCantidad.ReadOnly = true;
-            this.TxtCantidad.Size = new System.Drawing.Size(92, 27);
-            this.TxtCantidad.TabIndex = 3;
+            this.TxtCantidadCuotas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtCantidadCuotas.Location = new System.Drawing.Point(103, 20);
+            this.TxtCantidadCuotas.Name = "TxtCantidadCuotas";
+            this.TxtCantidadCuotas.ReadOnly = true;
+            this.TxtCantidadCuotas.Size = new System.Drawing.Size(163, 27);
+            this.TxtCantidadCuotas.TabIndex = 3;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(72, 23);
+            this.label9.Location = new System.Drawing.Point(21, 23);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 20);
             this.label9.TabIndex = 2;
@@ -274,20 +284,21 @@ namespace WindowsFormsUI.Formularios
             // TxtLiquidoRecibido
             // 
             this.TxtLiquidoRecibido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtLiquidoRecibido.Location = new System.Drawing.Point(521, 444);
+            this.TxtLiquidoRecibido.Location = new System.Drawing.Point(535, 271);
+            this.TxtLiquidoRecibido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtLiquidoRecibido.Name = "TxtLiquidoRecibido";
             this.TxtLiquidoRecibido.ReadOnly = true;
-            this.TxtLiquidoRecibido.Size = new System.Drawing.Size(125, 27);
+            this.TxtLiquidoRecibido.Size = new System.Drawing.Size(109, 27);
             this.TxtLiquidoRecibido.TabIndex = 8;
             // 
             // TxtPTramite
             // 
             this.TxtPTramite.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPTramite.Location = new System.Drawing.Point(473, 94);
+            this.TxtPTramite.Location = new System.Drawing.Point(761, 57);
             this.TxtPTramite.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPTramite.Name = "TxtPTramite";
             this.TxtPTramite.ReadOnly = true;
-            this.TxtPTramite.Size = new System.Drawing.Size(171, 27);
+            this.TxtPTramite.Size = new System.Drawing.Size(159, 27);
             this.TxtPTramite.TabIndex = 31;
             // 
             // TxtFechaAprobacion
@@ -313,11 +324,11 @@ namespace WindowsFormsUI.Formularios
             // TxtPInteres
             // 
             this.TxtPInteres.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPInteres.Location = new System.Drawing.Point(147, 94);
+            this.TxtPInteres.Location = new System.Drawing.Point(761, 20);
             this.TxtPInteres.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPInteres.Name = "TxtPInteres";
             this.TxtPInteres.ReadOnly = true;
-            this.TxtPInteres.Size = new System.Drawing.Size(155, 27);
+            this.TxtPInteres.Size = new System.Drawing.Size(159, 27);
             this.TxtPInteres.TabIndex = 28;
             // 
             // TxtFechaInicio
@@ -366,7 +377,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox4.Controls.Add(this.TxtInteres);
             this.groupBox4.Controls.Add(this.TxtCapital);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.TxtMonto);
+            this.groupBox4.Controls.Add(this.TxtMontoCuota);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(389, 129);
@@ -380,7 +391,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(26, 100);
+            this.label12.Location = new System.Drawing.Point(13, 100);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 20);
             this.label12.TabIndex = 7;
@@ -389,45 +400,45 @@ namespace WindowsFormsUI.Formularios
             // TxtInteres
             // 
             this.TxtInteres.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtInteres.Location = new System.Drawing.Point(92, 97);
+            this.TxtInteres.Location = new System.Drawing.Point(79, 97);
             this.TxtInteres.Name = "TxtInteres";
             this.TxtInteres.ReadOnly = true;
-            this.TxtInteres.Size = new System.Drawing.Size(154, 27);
+            this.TxtInteres.Size = new System.Drawing.Size(167, 27);
             this.TxtInteres.TabIndex = 6;
             // 
             // TxtCapital
             // 
             this.TxtCapital.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCapital.Location = new System.Drawing.Point(92, 56);
+            this.TxtCapital.Location = new System.Drawing.Point(79, 56);
             this.TxtCapital.Name = "TxtCapital";
             this.TxtCapital.ReadOnly = true;
-            this.TxtCapital.Size = new System.Drawing.Size(154, 27);
+            this.TxtCapital.Size = new System.Drawing.Size(167, 27);
             this.TxtCapital.TabIndex = 5;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(19, 59);
+            this.label11.Location = new System.Drawing.Point(6, 59);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 20);
             this.label11.TabIndex = 4;
             this.label11.Text = " Capital :";
             // 
-            // TxtMonto
+            // TxtMontoCuota
             // 
-            this.TxtMonto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtMonto.Location = new System.Drawing.Point(92, 20);
-            this.TxtMonto.Name = "TxtMonto";
-            this.TxtMonto.ReadOnly = true;
-            this.TxtMonto.Size = new System.Drawing.Size(154, 27);
-            this.TxtMonto.TabIndex = 3;
+            this.TxtMontoCuota.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtMontoCuota.Location = new System.Drawing.Point(79, 20);
+            this.TxtMontoCuota.Name = "TxtMontoCuota";
+            this.TxtMontoCuota.ReadOnly = true;
+            this.TxtMontoCuota.Size = new System.Drawing.Size(167, 27);
+            this.TxtMontoCuota.TabIndex = 3;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(26, 23);
+            this.label10.Location = new System.Drawing.Point(13, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 20);
             this.label10.TabIndex = 2;
@@ -454,7 +465,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.Controls.Add(this.textBox10);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(6, 167);
+            this.groupBox3.Location = new System.Drawing.Point(6, 129);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(376, 355);
             this.groupBox3.TabIndex = 16;
@@ -645,7 +656,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(364, 97);
+            this.label8.Location = new System.Drawing.Point(652, 60);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 20);
             this.label8.TabIndex = 12;
@@ -675,7 +686,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(42, 97);
+            this.label4.Location = new System.Drawing.Point(656, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 20);
             this.label4.TabIndex = 4;
@@ -691,7 +702,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(652, 91);
+            this.groupBox1.Size = new System.Drawing.Size(928, 91);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asociado";
@@ -713,7 +724,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtNombreAsociado.Location = new System.Drawing.Point(84, 20);
             this.TxtNombreAsociado.Name = "TxtNombreAsociado";
             this.TxtNombreAsociado.ReadOnly = true;
-            this.TxtNombreAsociado.Size = new System.Drawing.Size(562, 27);
+            this.TxtNombreAsociado.Size = new System.Drawing.Size(838, 27);
             this.TxtNombreAsociado.TabIndex = 4;
             // 
             // TxtCodigoAsociado
@@ -755,7 +766,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar.ForeColor = System.Drawing.Color.Black;
             this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.logout;
             this.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCerrar.Location = new System.Drawing.Point(575, 646);
+            this.BtnCerrar.Location = new System.Drawing.Point(851, 608);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(89, 35);
             this.BtnCerrar.TabIndex = 41;
@@ -764,19 +775,60 @@ namespace WindowsFormsUI.Formularios
             this.BtnCerrar.UseVisualStyleBackColor = false;
             this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label28.Location = new System.Drawing.Point(694, 311);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(128, 20);
+            this.label28.TabIndex = 37;
+            this.label28.Text = "Deuda adquirida :";
+            // 
+            // TxtDeudaAdquirida
+            // 
+            this.TxtDeudaAdquirida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDeudaAdquirida.Location = new System.Drawing.Point(830, 308);
+            this.TxtDeudaAdquirida.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtDeudaAdquirida.Name = "TxtDeudaAdquirida";
+            this.TxtDeudaAdquirida.ReadOnly = true;
+            this.TxtDeudaAdquirida.Size = new System.Drawing.Size(92, 27);
+            this.TxtDeudaAdquirida.TabIndex = 36;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(727, 348);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(95, 20);
+            this.label29.TabIndex = 39;
+            this.label29.Text = "Deuda total :";
+            // 
+            // TxtDeudaTotal
+            // 
+            this.TxtDeudaTotal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDeudaTotal.Location = new System.Drawing.Point(830, 345);
+            this.TxtDeudaTotal.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtDeudaTotal.Name = "TxtDeudaTotal";
+            this.TxtDeudaTotal.ReadOnly = true;
+            this.TxtDeudaTotal.Size = new System.Drawing.Size(92, 27);
+            this.TxtDeudaTotal.TabIndex = 38;
+            // 
             // FrmDetallesCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(675, 688);
+            this.ClientSize = new System.Drawing.Size(952, 650);
             this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "FrmDetallesCredito";
             this.Text = "Cooperativa AZOC de R. L. - Detalles del crédito";
+            this.Load += new System.EventHandler(this.FrmDetallesCredito_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -802,7 +854,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtInteres;
         private System.Windows.Forms.TextBox TxtCapital;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox TxtMonto;
+        private System.Windows.Forms.TextBox TxtMontoCuota;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label8;
@@ -819,7 +871,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtPendientes;
         private System.Windows.Forms.TextBox TxtCanceladas;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TxtCantidad;
+        private System.Windows.Forms.TextBox TxtCantidadCuotas;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtNombreAsociado;
@@ -854,5 +906,9 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox TxtPlazo;
         private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox TxtDeudaTotal;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox TxtDeudaAdquirida;
     }
 }

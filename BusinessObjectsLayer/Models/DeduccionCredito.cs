@@ -10,6 +10,7 @@ namespace BusinessObjectsLayer.Models
         public int DeduccionCreditoId { get; set; }
         public int DeduccionId { get; set; }
         public int CreditoId { get; set; }
+        public decimal Monto { get; set; }
 
         public virtual Credito Credito { get; set; }
         public virtual Deduccion Deduccion { get; set; }
