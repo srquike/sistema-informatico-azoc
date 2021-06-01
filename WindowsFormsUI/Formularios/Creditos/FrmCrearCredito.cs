@@ -206,24 +206,31 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
-            decimal monto = NudMonto.Value;
-            int plazo = Convert.ToInt32(NudPlazo.Value);
+            if (NudMonto.Value > 0 && NudPlazo.Value > 0)
+            {
+                decimal monto = NudMonto.Value;
+                int plazo = Convert.ToInt32(NudPlazo.Value);
 
-            CalcularPorcentajeInteres(monto);
-            CalcularPorcentajeTramite(monto);
+                CalcularPorcentajeInteres(monto);
+                CalcularPorcentajeTramite(monto);
 
-            decimal porcentajeTramite = NudPorcentajeTramite.Value;
-            decimal interes = NudPorcentajeInteres.Value;
+                decimal porcentajeTramite = NudPorcentajeTramite.Value;
+                decimal interes = NudPorcentajeInteres.Value;
 
-            CalcularCuota(monto, plazo, interes);
+                CalcularCuota(monto, plazo, interes);
 
-            //NudInteresSobrePrestamo.Value = monto * (interes / 100);
-            NudTramites.Value = porcentajeTramite;
-            NudTotalDeducciones.Value = CalcularDeducciones();
+                //NudInteresSobrePrestamo.Value = monto * (interes / 100);
+                NudTramites.Value = porcentajeTramite;
+                NudTotalDeducciones.Value = CalcularDeducciones();
 
-            TxtLiquidoRecibido.Text = string.Format("{0:C2}", (monto - NudTotalDeducciones.Value));
-            TxtDeudaAdquirida.Text = string.Format("{0:C2}", (monto + porcentajeTramite));
-            TxtDeudaTotal.Text = string.Format("{0:C2}", (monto + porcentajeTramite + NudPrestamoAnterior.Value));
+                TxtLiquidoRecibido.Text = string.Format("{0:C2}", (monto - NudTotalDeducciones.Value));
+                TxtDeudaAdquirida.Text = string.Format("{0:C2}", (monto + porcentajeTramite));
+                TxtDeudaTotal.Text = string.Format("{0:C2}", (monto + porcentajeTramite + NudPrestamoAnterior.Value));
+            }
+            else
+            {
+                MessageBox.Show("El monto solicitado o el plazo debe ser diferente de cero!");
+            }            
         }
 
         private void CmbAsociados_SelectionChangeCommitted(object sender, EventArgs e)
