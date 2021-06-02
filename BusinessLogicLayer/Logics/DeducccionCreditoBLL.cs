@@ -48,16 +48,14 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(DeduccionCredito deduccioncredito)
         {
-            try
-            {
-                _deduccioncreditoRepository.InsertDeduccionCredito(deduccioncredito);
-                _deduccioncreditoRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _deduccioncreditoRepository.InsertDeduccionCredito(deduccioncredito);
+
+            if (_deduccioncreditoRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
 
         public bool Edit(DeduccionCredito deduccioncredito)

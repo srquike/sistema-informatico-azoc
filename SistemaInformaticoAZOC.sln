@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessObjectsLayer", "Bus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "Repositorios\RepositoryLayer.csproj", "{858D97E4-C991-4A60-994F-92C28A562E9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{175E8309-2724-4EA7-A429-DA02230DF125}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControls", "CustomControls\CustomControls.csproj", "{175E8309-2724-4EA7-A429-DA02230DF125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

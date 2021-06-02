@@ -38,6 +38,10 @@ namespace WindowsFormsUI.Formularios
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtDeudaTotal = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.TxtDeudaAdquirida = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
             this.TxtCodigoCredito = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -53,6 +57,15 @@ namespace WindowsFormsUI.Formularios
             this.TxtMontoCuota = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.NudTotalDeducciones = new System.Windows.Forms.NumericUpDown();
             this.NudAhorroSimultaneo = new System.Windows.Forms.NumericUpDown();
             this.NudDocumentoAutenticado = new System.Windows.Forms.NumericUpDown();
@@ -64,7 +77,7 @@ namespace WindowsFormsUI.Formularios
             this.NudPrestamoAnterior = new System.Windows.Forms.NumericUpDown();
             this.NudPlazo = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.NudMonto = new System.Windows.Forms.NumericUpDown();
+            this.NudMontoSolicitado = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,19 +87,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.EpControles = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.TxtDeudaAdquirida = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.TxtDeudaTotal = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ChkAprobarCredito = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeTramite)).BeginInit();
@@ -102,7 +103,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.NudTramites)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPrestamoAnterior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPlazo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudMonto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoSolicitado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeInteres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpControles)).BeginInit();
             this.SuspendLayout();
@@ -190,6 +191,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.ChkAprobarCredito);
             this.groupBox2.Controls.Add(this.TxtDeudaTotal);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.TxtDeudaAdquirida);
@@ -205,7 +207,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.NudPlazo);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.NudMonto);
+            this.groupBox2.Controls.Add(this.NudMontoSolicitado);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.DtpFechaInicio);
             this.groupBox2.Controls.Add(this.label5);
@@ -219,6 +221,46 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Crédito";
             // 
+            // TxtDeudaTotal
+            // 
+            this.TxtDeudaTotal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDeudaTotal.Location = new System.Drawing.Point(632, 339);
+            this.TxtDeudaTotal.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtDeudaTotal.Name = "TxtDeudaTotal";
+            this.TxtDeudaTotal.ReadOnly = true;
+            this.TxtDeudaTotal.Size = new System.Drawing.Size(143, 27);
+            this.TxtDeudaTotal.TabIndex = 30;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(529, 342);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(95, 20);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Deuda total :";
+            // 
+            // TxtDeudaAdquirida
+            // 
+            this.TxtDeudaAdquirida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtDeudaAdquirida.Location = new System.Drawing.Point(632, 302);
+            this.TxtDeudaAdquirida.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtDeudaAdquirida.Name = "TxtDeudaAdquirida";
+            this.TxtDeudaAdquirida.ReadOnly = true;
+            this.TxtDeudaAdquirida.Size = new System.Drawing.Size(143, 27);
+            this.TxtDeudaAdquirida.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(496, 305);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 20);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Deuda adquirida :";
+            // 
             // BtnCalcular
             // 
             this.BtnCalcular.BackColor = System.Drawing.Color.White;
@@ -227,7 +269,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCalcular.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnCalcular.ForeColor = System.Drawing.Color.Black;
-            this.BtnCalcular.Image = global::WindowsFormsUI.Properties.Resources.salary24px;
+            this.BtnCalcular.Image = global::WindowsFormsUI.Properties.Resources.calculator;
             this.BtnCalcular.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCalcular.Location = new System.Drawing.Point(651, 88);
             this.BtnCalcular.Name = "BtnCalcular";
@@ -285,11 +327,11 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(348, 92);
+            this.label14.Location = new System.Drawing.Point(385, 92);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(109, 20);
+            this.label14.Size = new System.Drawing.Size(72, 20);
             this.label14.TabIndex = 20;
-            this.label14.Text = "% de Tramites :";
+            this.label14.Text = "Tramites :";
             // 
             // label3
             // 
@@ -401,6 +443,96 @@ namespace WindowsFormsUI.Formularios
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Deducciones";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(25, 319);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(157, 20);
+            this.label25.TabIndex = 42;
+            this.label25.Text = "Total de deducciones :";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(130, 282);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(52, 20);
+            this.label24.TabIndex = 41;
+            this.label24.Text = "Otros :";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(14, 208);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(168, 20);
+            this.label23.TabIndex = 40;
+            this.label23.Text = "Interes sobre prestamo :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(10, 134);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(172, 20);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "Pago prestamo anterior :";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(54, 96);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(128, 20);
+            this.label21.TabIndex = 38;
+            this.label21.Text = "Hipoteca abierta :";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(5, 60);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(177, 20);
+            this.label20.TabIndex = 37;
+            this.label20.Text = "Documento autenticado :";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(43, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(139, 20);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "Ahorro simultaneo :";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(110, 171);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(72, 20);
+            this.label18.TabIndex = 35;
+            this.label18.Text = "Tramites :";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(78, 245);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(104, 20);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "Aportaciones :";
             // 
             // NudTotalDeducciones
             // 
@@ -553,20 +685,20 @@ namespace WindowsFormsUI.Formularios
             this.label8.TabIndex = 12;
             this.label8.Text = "Plazo :";
             // 
-            // NudMonto
+            // NudMontoSolicitado
             // 
-            this.NudMonto.DecimalPlaces = 2;
-            this.NudMonto.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NudMonto.Location = new System.Drawing.Point(463, 55);
-            this.NudMonto.Margin = new System.Windows.Forms.Padding(5);
-            this.NudMonto.Maximum = new decimal(new int[] {
+            this.NudMontoSolicitado.DecimalPlaces = 2;
+            this.NudMontoSolicitado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudMontoSolicitado.Location = new System.Drawing.Point(463, 55);
+            this.NudMontoSolicitado.Margin = new System.Windows.Forms.Padding(5);
+            this.NudMontoSolicitado.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NudMonto.Name = "NudMonto";
-            this.NudMonto.Size = new System.Drawing.Size(110, 27);
-            this.NudMonto.TabIndex = 11;
+            this.NudMontoSolicitado.Name = "NudMontoSolicitado";
+            this.NudMontoSolicitado.Size = new System.Drawing.Size(110, 27);
+            this.NudMontoSolicitado.TabIndex = 11;
             // 
             // label7
             // 
@@ -685,135 +817,16 @@ namespace WindowsFormsUI.Formularios
             this.EpControles.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.EpControles.ContainerControl = this;
             // 
-            // label25
+            // ChkAprobarCredito
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(25, 319);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(157, 20);
-            this.label25.TabIndex = 42;
-            this.label25.Text = "Total de deducciones :";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(130, 282);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(52, 20);
-            this.label24.TabIndex = 41;
-            this.label24.Text = "Otros :";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(14, 208);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(168, 20);
-            this.label23.TabIndex = 40;
-            this.label23.Text = "Interes sobre prestamo :";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(10, 134);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(172, 20);
-            this.label22.TabIndex = 39;
-            this.label22.Text = "Pago prestamo anterior :";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(54, 96);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(128, 20);
-            this.label21.TabIndex = 38;
-            this.label21.Text = "Hipoteca abierta :";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(5, 60);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(177, 20);
-            this.label20.TabIndex = 37;
-            this.label20.Text = "Documento autenticado :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(43, 23);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(139, 20);
-            this.label19.TabIndex = 36;
-            this.label19.Text = "Ahorro simultaneo :";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(110, 171);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(72, 20);
-            this.label18.TabIndex = 35;
-            this.label18.Text = "Tramites :";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(78, 245);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(104, 20);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "Aportaciones :";
-            // 
-            // TxtDeudaAdquirida
-            // 
-            this.TxtDeudaAdquirida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeudaAdquirida.Location = new System.Drawing.Point(632, 302);
-            this.TxtDeudaAdquirida.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtDeudaAdquirida.Name = "TxtDeudaAdquirida";
-            this.TxtDeudaAdquirida.ReadOnly = true;
-            this.TxtDeudaAdquirida.Size = new System.Drawing.Size(143, 27);
-            this.TxtDeudaAdquirida.TabIndex = 28;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(496, 305);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(128, 20);
-            this.label9.TabIndex = 29;
-            this.label9.Text = "Deuda adquirida :";
-            // 
-            // TxtDeudaTotal
-            // 
-            this.TxtDeudaTotal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeudaTotal.Location = new System.Drawing.Point(632, 339);
-            this.TxtDeudaTotal.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtDeudaTotal.Name = "TxtDeudaTotal";
-            this.TxtDeudaTotal.ReadOnly = true;
-            this.TxtDeudaTotal.Size = new System.Drawing.Size(143, 27);
-            this.TxtDeudaTotal.TabIndex = 30;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(529, 342);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(95, 20);
-            this.label15.TabIndex = 31;
-            this.label15.Text = "Deuda total :";
+            this.ChkAprobarCredito.AutoSize = true;
+            this.ChkAprobarCredito.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkAprobarCredito.Location = new System.Drawing.Point(328, 22);
+            this.ChkAprobarCredito.Name = "ChkAprobarCredito";
+            this.ChkAprobarCredito.Size = new System.Drawing.Size(134, 24);
+            this.ChkAprobarCredito.TabIndex = 33;
+            this.ChkAprobarCredito.Text = "Aprobar crédito";
+            this.ChkAprobarCredito.UseVisualStyleBackColor = true;
             // 
             // FrmCrearCredito
             // 
@@ -850,7 +863,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.NudTramites)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPrestamoAnterior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPlazo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudMonto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoSolicitado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeInteres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpControles)).EndInit();
             this.ResumeLayout(false);
@@ -873,7 +886,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown NudPlazo;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown NudMonto;
+        private System.Windows.Forms.NumericUpDown NudMontoSolicitado;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker DtpFechaInicio;
         private System.Windows.Forms.Label label5;
@@ -916,5 +929,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox ChkAprobarCredito;
     }
 }

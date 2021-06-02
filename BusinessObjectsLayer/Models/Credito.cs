@@ -24,7 +24,7 @@ namespace BusinessObjectsLayer.Models
         public int Plazo { get; set; }
 
         public virtual Asociado Asociado { get; set; }
-        public virtual EstadoCredito EstadosCreditos { get; set; }
+        public virtual EstadoCredito EstadoCredito { get; set; }
         public virtual ICollection<Cuota> Cuotas { get; set; }
         public virtual ICollection<DeduccionCredito> DeduccionesCreditos { get; set; }
     }

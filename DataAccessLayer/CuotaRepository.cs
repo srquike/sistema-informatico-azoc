@@ -56,14 +56,19 @@ namespace DataAccessLayer
             _context.Cuota.Add(cuota);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateCuota(Cuota cuota)
         {
             _context.Entry(cuota).State = EntityState.Modified;
+        }
+
+        public void InsertMany(ICollection<Cuota> cuotas)
+        {
+            _context.Cuota.AddRange(cuotas);
         }
     }
 }

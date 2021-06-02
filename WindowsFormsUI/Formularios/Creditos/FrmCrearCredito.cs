@@ -15,7 +15,8 @@ namespace WindowsFormsUI.Formularios
     {
         private readonly AsociadoBLL _asociadoLogic;
         private readonly CreditoBLL _creditoLogic;
-        private readonly DeduccionBLL _deduccionLogic;
+        private readonly CuotaBLL _cuotaBLL;
+        private readonly DeducccionCreditoBLL _deducccionCreditoBLL;
 
         public FrmCrearCredito()
         {
@@ -23,7 +24,8 @@ namespace WindowsFormsUI.Formularios
 
             _asociadoLogic = new AsociadoBLL();
             _creditoLogic = new CreditoBLL();
-            _deduccionLogic = new DeduccionBLL();
+            _cuotaBLL = new CuotaBLL();
+            _deducccionCreditoBLL = new DeducccionCreditoBLL();
         }
 
         private void ActualizarAsociados(ref ComboBox comboBox)
@@ -137,9 +139,9 @@ namespace WindowsFormsUI.Formularios
             {
                 EpControles.Clear();
 
-                if (NudMonto.Value <= 0)
+                if (NudMontoSolicitado.Value <= 0)
                 {
-                    EpControles.SetError(NudMonto, "Por favor, ingrese un valor mayor a cero para continuar!");
+                    EpControles.SetError(NudMontoSolicitado, "Por favor, ingrese un valor mayor a cero para continuar!");
                 }
                 else
                 {
@@ -183,32 +185,189 @@ namespace WindowsFormsUI.Formularios
             if (ValidarEntradas())
             {
                 int asociadoId = Convert.ToInt32(CmbAsociados.SelectedValue);
+                int creditoId = Convert.ToInt32(TxtCodigoCredito.Text);
                 int plazo = Convert.ToInt32(NudPlazo.Value);
+                decimal cuota = Convert.ToDecimal(TxtMontoCuota.Text.Replace("$", ""));
 
                 Credito credito = new Credito()
                 {
-                    FechaAprobacion = DateTime.Today,
+                    CreditoId = creditoId,
                     FechaInicio = DtpFechaInicio.Value.Date,
-                    Monto = NudMonto.Value,
+                    Monto = NudMontoSolicitado.Value,
                     Interes = NudPorcentajeInteres.Value,
                     Tramite = NudPorcentajeTramite.Value,
                     AsociadoId = asociadoId,
-                    EstadoCreditoId = 1,
-                    Plazo = plazo
+                    Plazo = plazo,
+                    EstadoCreditoId = ChkAprobarCredito.Checked ? 2 : 1
                 };
+
+                if (credito.EstadoCreditoId == 2)
+                {
+                    credito.FechaAprobacion = DateTime.Today;
+                }
 
                 if (_creditoLogic.Create(credito))
                 {
-                    DialogResult = DialogResult.OK;
+                    var cuotas = CrearCuotas(credito.CreditoId, cuota, plazo);
+
+                    if (cuotas != null && cuotas.Count > 0)
+                    {
+                        CrearDeducciones(credito.CreditoId);
+
+                        DialogResult = DialogResult.OK;
+                    }                    
                 }
             }
         }
 
+        private void CrearDeducciones(int creditoId)
+        {
+            DeduccionCredito deduccion;
+            IList<DeduccionCredito> deducciones = new List<DeduccionCredito>();
+
+            if (NudAhorroSimultaneo.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 1,
+                    Monto = NudAhorroSimultaneo.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudDocumentoAutenticado.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 2,
+                    Monto = NudDocumentoAutenticado.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudHipotecaAbierta.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 3,
+                    Monto = NudHipotecaAbierta.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudPrestamoAnterior.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 4,
+                    Monto = NudPrestamoAnterior.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudTramites.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 5,
+                    Monto = NudTramites.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudInteresSobrePrestamo.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 6,
+                    Monto = NudInteresSobrePrestamo.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudAportaciones.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 7,
+                    Monto = NudAportaciones.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+            if (NudOtros.Value > 0)
+            {
+                deduccion = new DeduccionCredito()
+                {
+                    CreditoId = creditoId,
+                    DeduccionId = 8,
+                    Monto = NudOtros.Value
+                };
+
+                deducciones.Add(deduccion);
+            }
+
+            foreach (DeduccionCredito deduccionCredito in deducciones)
+            {
+                if (_deducccionCreditoBLL.Create(deduccionCredito) == false)
+                {
+                    MessageBox.Show("No se pudo crear la deducción", "Crear deducción: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private ICollection<Cuota> CrearCuotas(int creditoId, decimal monto, int plazo)
+        {
+            Cuota cuota, cuotaAnterior;
+            ICollection<Cuota> cuotas;
+
+            cuotas = new List<Cuota>();
+            cuotaAnterior = new Cuota();
+
+            for (int i = 1; i <= plazo; i++)
+            {
+                cuota = new Cuota()
+                {
+                    Monto = monto,
+                    Numero = i,
+                    EstadoCuotaId = 1,
+                    TipoCuotaId = 1,
+                    CreditoId = creditoId,
+                };
+
+                if (i == 1)
+                {
+                    cuota.FechaVencimiento = DateTime.Today;
+                }
+                else
+                {
+                    cuota.FechaVencimiento = cuotaAnterior.FechaVencimiento.AddDays(15);
+                }
+
+                cuotaAnterior = cuota;
+                cuotas.Add(cuota);
+            }
+
+            if (_cuotaBLL.CreateMany(cuotas))
+            {
+                return cuotas;
+            }
+
+            return null;
+        }
+
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
-            if (NudMonto.Value > 0 && NudPlazo.Value > 0)
+            if (NudMontoSolicitado.Value > 0 && NudPlazo.Value > 0)
             {
-                decimal monto = NudMonto.Value;
+                decimal monto = NudMontoSolicitado.Value;
                 int plazo = Convert.ToInt32(NudPlazo.Value);
 
                 CalcularPorcentajeInteres(monto);
@@ -230,7 +389,7 @@ namespace WindowsFormsUI.Formularios
             else
             {
                 MessageBox.Show("El monto solicitado o el plazo debe ser diferente de cero!");
-            }            
+            }
         }
 
         private void CmbAsociados_SelectionChangeCommitted(object sender, EventArgs e)
@@ -255,7 +414,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnLimpiarControles_Click(object sender, EventArgs e)
         {
             TxtCodigoCredito.Clear();
-            NudMonto.Value = 0;
+            NudMontoSolicitado.Value = 0;
             NudPlazo.Value = 0;
             NudPorcentajeInteres.Value = 0;
             NudDocumentoAutenticado.Value = 0;

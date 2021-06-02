@@ -7,7 +7,7 @@ using RepositoryLayer;
 
 namespace BusinessLogicLayer.Logics
 {
-  public  class CuotaBLL
+    public class CuotaBLL
     {
         private ICuotaRepository _cuotaRepository;
 
@@ -49,16 +49,26 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(Cuota cuota)
         {
-            try
-            {
-                _cuotaRepository.InsertCuota(cuota);
-                _cuotaRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _cuotaRepository.InsertCuota(cuota);
+
+            if (_cuotaRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
+        }
+
+        public bool CreateMany(ICollection<Cuota> cuotas)
+        {
+            _cuotaRepository.InsertMany(cuotas);
+
+            if (_cuotaRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool Edit(Cuota cuota)

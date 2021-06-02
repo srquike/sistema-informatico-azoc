@@ -11,6 +11,6 @@ namespace RepositoryLayer
         void InsertDeduccionCredito(DeduccionCredito deduccioncredito);
         void DeleteDeduccionCredito(DeduccionCredito deduccioncredito);
         void UpdateDeduccionCredito(DeduccionCredito deduccioncredito);
-        void Save();
+        int Save();
     }
 }

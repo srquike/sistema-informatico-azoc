@@ -55,7 +55,7 @@ namespace WindowsFormsUI.Formularios
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Asociado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Aprobar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvLista)).BeginInit();
@@ -269,7 +269,7 @@ namespace WindowsFormsUI.Formularios
             this.Estado,
             this.Asociado,
             this.Detalles,
-            this.Editar,
+            this.Aprobar,
             this.Eliminar});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -369,18 +369,17 @@ namespace WindowsFormsUI.Formularios
             this.Detalles.UseColumnTextForButtonValue = true;
             this.Detalles.Width = 5;
             // 
-            // Editar
+            // Aprobar
             // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Editar.Text = "Editar";
-            this.Editar.ToolTipText = "Editar datos del usuario";
-            this.Editar.UseColumnTextForButtonValue = true;
-            this.Editar.Width = 5;
+            this.Aprobar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Aprobar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Aprobar.HeaderText = "";
+            this.Aprobar.Name = "Aprobar";
+            this.Aprobar.ReadOnly = true;
+            this.Aprobar.Text = "Aprobar";
+            this.Aprobar.ToolTipText = "Aprueba el crédito";
+            this.Aprobar.UseColumnTextForButtonValue = true;
+            this.Aprobar.Width = 5;
             // 
             // Eliminar
             // 
@@ -451,7 +450,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Asociado;
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
-        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private System.Windows.Forms.DataGridViewButtonColumn Aprobar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }

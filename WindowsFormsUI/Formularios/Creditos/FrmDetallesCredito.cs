@@ -25,7 +25,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         private void LlenarCampos()
@@ -43,11 +43,12 @@ namespace WindowsFormsUI.Formularios
             TxtNombreAsociado.Text = nombreAsociado;
             TxtCodigoAsociado.Text = _credito.AsociadoId.ToString();
             TxtCodigoCredito.Text = _credito.CreditoId.ToString();
-            TxtMontoCuota.Text = _credito.Monto.ToString();
+            TxtMontoSolicitado.Text = string.Format("{0:C2}", _credito.Monto);
             TxtFechaInicio.Text = _credito.FechaInicio.ToShortDateString();
             TxtFechaAprobacion.Text = _credito.FechaAprobacion.ToShortDateString();
-            TxtPInteres.Text = _credito.Interes.ToString() + " %";
-            TxtPTramite.Text = _credito.Tramite.ToString() + " %";
+            TxtPInteres.Text = string.Format("{0:N2}", _credito.Interes);
+            TxtPTramite.Text = string.Format("{0:C2}", _credito.Tramite);
+            TxtPlazo.Text = _credito.Plazo.ToString();
 
             foreach (Cuota cuota in _credito.Cuotas)
             {
@@ -70,19 +71,18 @@ namespace WindowsFormsUI.Formularios
             capital = _credito.Monto / cuotas;
             interes = (_credito.Monto * (_credito.Interes / 100)) / 2;
 
-            TxtCapital.Text = capital.ToString();
-            TxtInteres.Text = interes.ToString();
-            TxtMontoCuota.Text = (capital + interes).ToString();
+            TxtCapital.Text = string.Format("{0:C2}", capital);
+            TxtInteres.Text = string.Format("{0:C2}", interes);
+            TxtMontoCuota.Text = string.Format("{0:C2}", (capital + interes));
 
-            foreach (DeduccionCredito deduccion in _credito.DeduccionesCreditos)
-            {
-                deducciones += deduccion.Monto;
-            }
+            deducciones = ObtenerDeducciones();
 
-            TxtLiquidoRecibido.Text = (_credito.Monto - deducciones).ToString();
-            TxtSaldo.Text = (capital * canceladas).ToString();
-            TxtInteresAcumulado.Text = (interes * canceladas).ToString();
-            TxtDeudaAdquirida.Text = (((_credito.Tramite / 100) * _credito.Monto) + _credito.Monto).ToString();
+            decimal deudaAdquirida = _credito.Monto + _credito.Tramite;
+
+            TxtLiquidoRecibido.Text = string.Format("{0:C2}", (_credito.Monto - deducciones));
+            TxtInteresAcumulado.Text = string.Format("{0:C2}", (interes * canceladas));
+            TxtDeudaAdquirida.Text = string.Format("{0:C2}", deudaAdquirida);
+            TxtSaldo.Text = string.Format("{0:C2}", (capital * pendientes));
 
             foreach (Credito credito in _credito.Asociado.Creditos)
             {
@@ -92,7 +92,51 @@ namespace WindowsFormsUI.Formularios
                 }
             }
 
-            TxtDeudaTotal.Text = deuda.ToString();
+            TxtDeudaTotal.Text = string.Format("{0:C2}", (deuda + deudaAdquirida));
+        }
+
+        private decimal ObtenerDeducciones()
+        {
+            decimal deducciones = 0;
+
+            foreach (DeduccionCredito deduccionCredito in _credito.DeduccionesCreditos)
+            {
+                switch (deduccionCredito.DeduccionId)
+                {
+                    case 1:
+                        TxtAhorroSimultaneo.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 2:
+                        TxtDocumentoAutenticado.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 3:
+                        TxtHipotecaAbierta.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 4:
+                        TxtPagoPrestamoAnterior.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 5:
+                        TxtTramites.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 6:
+                        TxtInteresSobrePrestamo.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 7:
+                        TxtAportaciones.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    case 8:
+                        TxtOtros.Text = string.Format("{0:C2}", deduccionCredito.Monto);
+                        break;
+                    default:
+                        break;
+                }
+
+                deducciones += deduccionCredito.Monto;
+            }
+
+            TxtTotalDeducciones.Text = string.Format("{0:C2}", deducciones);
+
+            return deducciones;
         }
 
         private void FrmDetallesCredito_Load(object sender, EventArgs e)
@@ -101,6 +145,14 @@ namespace WindowsFormsUI.Formularios
             {
                 LlenarCampos();
             }
+        }
+
+        private void LlblDetallesAsociado_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int asociadoId = Convert.ToInt32(TxtCodigoAsociado.Text);
+            FrmDetallesAsociado frmDetallesAsociado = new FrmDetallesAsociado(asociadoId);
+            frmDetallesAsociado.StartPosition = FormStartPosition.CenterScreen;
+            frmDetallesAsociado.ShowDialog();
         }
     }
 }

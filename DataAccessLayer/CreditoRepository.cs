@@ -46,6 +46,9 @@ namespace DataAccessLayer
         {
             return _context.Creditos.Where(c => c.CreditoId == id)
                 .Include(c => c.Asociado)
+                .Include(c => c.Cuotas)
+                .Include(c => c.EstadoCredito)
+                .Include(c => c.DeduccionesCreditos)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
@@ -54,8 +57,9 @@ namespace DataAccessLayer
         {
             return _context.Creditos.AsNoTracking()
                 .Include(c => c.Asociado)
-                .Include(c => c.EstadosCreditos)
+                .Include(c => c.EstadoCredito)
                 .Include(c => c.Cuotas)
+                .Include(c => c.DeduccionesCreditos)
                 .ToList();
         }
 

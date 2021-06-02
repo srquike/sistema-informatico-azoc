@@ -339,7 +339,7 @@ namespace DataAccessLayer
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_Credito_Asociado");
 
-                entity.HasOne(d => d.EstadosCreditos)
+                entity.HasOne(d => d.EstadoCredito)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.EstadoCreditoId)
                     .OnDelete(DeleteBehavior.SetNull)

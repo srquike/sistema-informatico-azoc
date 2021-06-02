@@ -32,9 +32,10 @@ namespace WindowsFormsUI.Formularios
             {
                 string fechaInicio = string.Format("{0:dd/MM/yyyy}", credito.FechaInicio);
                 string monto = string.Format("{0:C}", credito.Monto);
+                string interes = string.Format("{0:P2}", (credito.Interes / 100));
                 string nombreAsociado = string.Concat(credito.Asociado.PrimerNombre, " ", credito.Asociado.SegundoNombre, " ", credito.Asociado.TercerNombre, " ", credito.Asociado.PrimerApellido, " ", credito.Asociado.SegundoApellido, " ", credito.Asociado.TercerNombre);
 
-                dataGrid.Rows.Add(false, credito.CreditoId, monto, credito.Interes, credito.Plazo, fechaInicio, credito.EstadosCreditos.Nombre, nombreAsociado);
+                dataGrid.Rows.Add(false, credito.CreditoId, monto, interes, credito.Plazo, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
             }
 
             dataGrid.ClearSelection();
@@ -84,13 +85,27 @@ namespace WindowsFormsUI.Formularios
                     }
                     else if (e.ColumnIndex == 9)
                     {
-                        FrmEditarCredito frmEditar = new FrmEditarCredito(creditoId);
-                        frmEditar.StartPosition = FormStartPosition.CenterParent;
-                        frmEditar.ShowDialog();
+                        Credito credito = _creditoLogic.Find(creditoId);
 
-                        if (frmEditar.DialogResult == DialogResult.OK)
+                        if (credito != null)
                         {
-                            ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                            if (credito.EstadoCreditoId == 1)
+                            {
+                                credito.EstadoCreditoId = 2;
+
+                                if (_creditoLogic.Edit(credito))
+                                {
+                                    ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error al intentar aprobar el crédito, por favor intente de nuevo!", "Aprobar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se puede aprobar un crédito ya aprobado o finalizado!", "Aprobar crédito: información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                     else if (e.ColumnIndex == 10)

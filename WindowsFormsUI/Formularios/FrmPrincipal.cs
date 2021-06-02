@@ -43,7 +43,7 @@ namespace WindowsFormsUI.Formularios
                 }
                 else
                 {
-                    PctAvatar.Image = _usuario.Empleado.Genero == "F" 
+                    PctAvatar.Image = _usuario.Empleado.Genero == "F"
                         ? Properties.Resources.female_avatar_default
                         : Properties.Resources.male_avatar_default;
                 }
@@ -178,7 +178,7 @@ namespace WindowsFormsUI.Formularios
         private void BtnCreditos_MouseEnter(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.ForeColor = Color.White;           
+            button.ForeColor = Color.White;
         }
 
         private void BtnCreditos_MouseLeave(object sender, EventArgs e)
@@ -201,14 +201,28 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnAdministracion_Click(object sender, EventArgs e)
         {
-            administracionCustomMenuStrip.Visible = true;
-            administracionCustomMenuStrip.Focus();
+            if (administracionCustomMenuStrip.Visible == true)
+            {
+                administracionCustomMenuStrip.Visible = false;
+            }
+            else if (administracionCustomMenuStrip.Visible == false)
+            {
+                administracionCustomMenuStrip.Visible = true;
+                administracionCustomMenuStrip.Focus();
+            }
         }
 
         private void BtnCreditos_Click_1(object sender, EventArgs e)
         {
-            creditosCustomMenuStrip.Visible = true;
-            creditosCustomMenuStrip.Focus();
+            if (creditosCustomMenuStrip.Visible)
+            {
+                creditosCustomMenuStrip.Visible = false;
+            }
+            else
+            {
+                creditosCustomMenuStrip.Visible = true;
+                creditosCustomMenuStrip.Focus();
+            }
         }
 
         private void TSMIAcercaDe_Click(object sender, EventArgs e)
@@ -231,7 +245,7 @@ namespace WindowsFormsUI.Formularios
 
             if (frmConfiguracion.DialogResult == DialogResult.OK)
             {
-                
+
             }
         }
     }

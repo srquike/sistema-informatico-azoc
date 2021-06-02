@@ -262,6 +262,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelar.UseVisualStyleBackColor = false;
+            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnGuardar
             // 
@@ -271,15 +272,16 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
+            this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
             this.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardar.Location = new System.Drawing.Point(263, 403);
+            this.BtnGuardar.Location = new System.Drawing.Point(253, 403);
             this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(193, 35);
+            this.BtnGuardar.Size = new System.Drawing.Size(203, 35);
             this.BtnGuardar.TabIndex = 25;
             this.BtnGuardar.Text = "Guardar configuración";
             this.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // OfdSeleccionar
             // 

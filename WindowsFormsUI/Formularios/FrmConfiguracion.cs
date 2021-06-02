@@ -27,7 +27,7 @@ namespace WindowsFormsUI.Formularios
 
                 try
                 {
-                    Server server = new Server(new ServerConnection("DESKTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
+                    Server server = new Server(new ServerConnection("LAPTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
                     Backup backup = new Backup()
                     {
                         Action = BackupActionType.Database,
@@ -83,7 +83,7 @@ namespace WindowsFormsUI.Formularios
 
                 try
                 {
-                    Server server = new Server(new ServerConnection("DESKTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
+                    Server server = new Server(new ServerConnection("LAPTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
                     Restore restore = new Restore()
                     {
                         Database = "AzocDb",
@@ -128,6 +128,16 @@ namespace WindowsFormsUI.Formularios
                     LblEstado.Text = e.Error.Message;
                 });
             }
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void BtnGuardar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

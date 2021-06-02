@@ -55,9 +55,9 @@ namespace DataAccessLayer
             _context.DeduccionesCreditos.Add(deduccioncredito);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateDeduccionCredito(DeduccionCredito deduccioncredito)
