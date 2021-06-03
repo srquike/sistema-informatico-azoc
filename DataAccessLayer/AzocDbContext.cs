@@ -20,7 +20,8 @@ namespace DataAccessLayer
         }
 
         public virtual DbSet<Aportacion> Aportaciones { get; set; }
-        public virtual DbSet<Asociado> Asociados { get; set; }
+
+        public virtual DbSet<Socio> Socios { get; set; }
         public virtual DbSet<Beneficiario> Beneficiarios { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<CategoriaAsociado> CategoriasAsociados { get; set; }
@@ -65,6 +66,106 @@ namespace DataAccessLayer
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
 
+            modelBuilder.Entity<Socio>(entity =>
+            {
+                entity.HasKey(e => e.SocioId)
+                .HasName("PK__Socio__165D08BAAABAF47D");
+
+                entity.ToTable("Socio");
+
+                entity.Property(e => e.Codigo)
+                    .IsRequired()
+                    .HasMaxLength(5)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Departamento)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Direccion)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Dui)
+                    .IsRequired()
+                    .HasMaxLength(9)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Estado)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Genero)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ingreso).HasColumnType("date");
+
+                entity.Property(e => e.Municipio)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Nacimiento).HasColumnType("date");
+
+                entity.Property(e => e.Nit)
+                    .HasMaxLength(14)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Papellido)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("PApellido");
+
+                entity.Property(e => e.Pnombre)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("PNombre");
+
+                entity.Property(e => e.Retiro).HasColumnType("date");
+
+                entity.Property(e => e.Sapellido)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("SApellido");
+
+                entity.Property(e => e.Snombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("SNombre");
+
+                entity.Property(e => e.Tapellido)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("TApellido");
+
+                entity.Property(e => e.Telefono)
+                    .HasMaxLength(8)
+                    .IsUnicode(false)
+                    .IsFixedLength(true);
+
+                entity.Property(e => e.Tnombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("TNombre");
+
+                entity.HasOne(d => d.CategoriaAsociado)
+                    .WithMany(p => p.Socios)
+                    .HasForeignKey(d => d.CategoriaAsociadoId)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("FK_Socio_CategoriaAsociado");
+            });
+
             modelBuilder.Entity<Aportacion>(entity =>
             {
                 entity.ToTable("Aportacion");
@@ -81,111 +182,7 @@ namespace DataAccessLayer
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Aportaciones)
                     .HasForeignKey(d => d.AsociadoId)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK__Aportacio__Asoci__5DCAEF64");
-            });
-
-            modelBuilder.Entity<Asociado>(entity =>
-            {
-                entity.ToTable("Asociado");
-
-                entity.HasIndex(e => e.Telefono, "UQ__Asociado__4EC50480CD961316")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Dui, "UQ__Asociado__C0317D91412822E5")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Nit, "UQ__Asociado__C7D1D6DAA8E25C44")
-                    .IsUnique();
-
-                entity.Property(e => e.AsociadoId).ValueGeneratedNever();
-
-                entity.Property(e => e.Departamento)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Estado)
-                    .IsRequired()
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Ingreso).HasColumnType("date");
-
-                entity.Property(e => e.Retiro).HasColumnType("date");
-
-                entity.Property(e => e.Direccion)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Dui)
-                    .IsRequired()
-                    .HasMaxLength(9)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.FechaNacimiento).HasColumnType("date");
-
-                entity.Property(e => e.Genero)
-                    .IsRequired()
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Municipio)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Nit)
-                    .IsRequired()
-                    .HasMaxLength(14)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.PrimerApellido)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PrimerNombre)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SegundoApellido)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SegundoNombre)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Telefono)
-                    .IsRequired()
-                    .HasMaxLength(8)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.TercerApellido)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.TercerNombre)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.CategoriaAsociado)
-                    .WithMany(p => p.Asociados)
-                    .HasForeignKey(d => d.CategoriaAsociadoId)
-                    .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_Asociado_CategoriaAsociado");
+                    .HasConstraintName("FK_Aportacion_Socio");
             });
 
             modelBuilder.Entity<Beneficiario>(entity =>
@@ -276,7 +273,7 @@ namespace DataAccessLayer
                     .WithMany(p => p.Beneficiarios)
                     .HasForeignKey(d => d.AsociadoId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("FK_Beneficiario_Asociado");
+                    .HasConstraintName("FK_Beneficiario_Socio");
             });
 
             modelBuilder.Entity<Cargo>(entity =>
@@ -317,27 +314,33 @@ namespace DataAccessLayer
 
             modelBuilder.Entity<Credito>(entity =>
             {
+                entity.HasKey(e => e.CreditoId)
+                .HasName("PK__Credito__4FE406DDC4D852B6");
+
                 entity.ToTable("Credito");
 
-                entity.Property(e => e.CreditoId).ValueGeneratedNever();
+                entity.Property(e => e.TasaInteres).HasColumnType("decimal")
+                .IsRequired();
 
-                entity.Property(e => e.FechaAprobacion).HasColumnType("date");
+                entity.Property(e => e.Aprobacion).HasColumnType("date");
 
-                entity.Property(e => e.FechaInicio).HasColumnType("date");
+                entity.Property(e => e.Inicio).HasColumnType("date")
+                .IsRequired();
 
-                entity.Property(e => e.Monto).HasColumnType("money");
+                entity.Property(e => e.Monto).HasColumnType("money")
+                .IsRequired();
 
-                entity.Property(e => e.Interes).HasColumnType("money");
+                entity.Property(e => e.Plazo).HasColumnType("int")
+                .IsRequired();
 
-                entity.Property(e => e.Tramite).HasColumnType("money");
+                entity.Property(e => e.Codigo).HasColumnType("int")
+                .IsRequired();
 
-                entity.Property(e => e.Plazo).HasColumnType("int");
-
-                entity.HasOne(d => d.Asociado)
+                entity.HasOne(d => d.Socio)
                     .WithMany(p => p.Creditos)
                     .HasForeignKey(d => d.AsociadoId)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_Credito_Asociado");
+                    .HasConstraintName("FK_Socio_Credito");
 
                 entity.HasOne(d => d.EstadoCredito)
                     .WithMany(p => p.Creditos)

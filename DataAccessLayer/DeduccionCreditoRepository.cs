@@ -64,5 +64,10 @@ namespace DataAccessLayer
         {
             _context.Entry(deduccioncredito).State = EntityState.Modified;
         }
+
+        public void InsertMany(ICollection<DeduccionCredito> deduccionesCreditos)
+        {
+            _context.DeduccionesCreditos.AddRange(deduccionesCreditos);
+        }
     }
 }

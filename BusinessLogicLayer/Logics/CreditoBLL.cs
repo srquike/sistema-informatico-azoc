@@ -22,19 +22,15 @@ namespace BusinessLogicLayer.Logics
 
             if (credito != null)
             {
-                try
-                {
-                    _creditoRepository.DeleteCredito(credito);
-                    _creditoRepository.Save();
-                    return true;
-                }
-                catch (Exception)
+                _creditoRepository.DeleteCredito(credito);
+
+                if (_creditoRepository.Save() == 0)
                 {
                     return false;
                 }
             }
 
-            return false;
+            return true;
         }
 
         public IEnumerable<Credito> List()

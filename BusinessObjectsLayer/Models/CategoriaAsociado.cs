@@ -9,13 +9,13 @@ namespace BusinessObjectsLayer.Models
     {
         public CategoriaAsociado()
         {
-            Asociados = new HashSet<Asociado>();
+            Socios = new HashSet<Socio>();
         }
 
         public int CategoriaAsociadoId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
 
-        public virtual ICollection<Asociado> Asociados { get; set; }
+        public virtual ICollection<Socio> Socios { get; set; }
     }
 }

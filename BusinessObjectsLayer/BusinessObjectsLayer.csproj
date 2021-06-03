@@ -9,9 +9,6 @@
     <Compile Update="Models\Aportacion.cs">
       <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
     </Compile>
-    <Compile Update="Models\Asociado.cs">
-      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
-    </Compile>
     <Compile Update="Models\Beneficiario.cs">
       <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
     </Compile>

@@ -45,7 +45,7 @@ namespace DataAccessLayer
         public Credito GetCreditoById(int id)
         {
             return _context.Creditos.Where(c => c.CreditoId == id)
-                .Include(c => c.Asociado)
+                .Include(c => c.Socio)
                 .Include(c => c.Cuotas)
                 .Include(c => c.EstadoCredito)
                 .Include(c => c.DeduccionesCreditos)
@@ -55,11 +55,10 @@ namespace DataAccessLayer
 
         public IEnumerable<Credito> GetCreditos()
         {
-            return _context.Creditos.AsNoTracking()
-                .Include(c => c.Asociado)
+            return _context.Creditos.Include(c => c.Socio)
                 .Include(c => c.EstadoCredito)
                 .Include(c => c.Cuotas)
-                .Include(c => c.DeduccionesCreditos)
+                .AsNoTracking()
                 .ToList();
         }
 

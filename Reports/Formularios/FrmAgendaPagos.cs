@@ -3,7 +3,9 @@ using Reports.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,24 +16,48 @@ namespace Reports.Formularios
 {
     public partial class FrmAgendaPagos : Form
     {
-        private ICollection<Cuota> _cuotas;
+        private readonly int _creditoId;
 
-        public FrmAgendaPagos(ICollection<Cuota> cuotas)
+        public FrmAgendaPagos(int creditoId)
         {
             InitializeComponent();
 
-            _cuotas = cuotas;
+            _creditoId = creditoId;
+        }
+
+        private DataTable GetSPResult()
+        {
+            DataTable ResultsTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(Properties.Settings.Default.AzocDbConnectionString))
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    using (SqlCommand command = new SqlCommand("GetCuotasCredito", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@CreditoId", _creditoId);
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(ResultsTable);
+                        }
+                    }
+                }
+            }
+
+            return ResultsTable;
         }
 
         private void FrmAgendaPagos_Load(object sender, EventArgs e)
         {
-            RvAgendaPagos.LocalReport.DataSources.Clear();
-            RvAgendaPagos.LocalReport.DisplayName = "Agenda de pagos de cuotas";
-            RvAgendaPagos.SetDisplayMode(DisplayMode.PrintLayout);
-            RvAgendaPagos.ZoomMode = ZoomMode.Percent;
-            RvAgendaPagos.ZoomPercent = 100;
-            RvAgendaPagos.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", _cuotas));
-            this.RvAgendaPagos.RefreshReport();
+            //RvAgendaPagos.LocalReport.DataSources.Clear();
+            //RvAgendaPagos.LocalReport.DisplayName = "Agenda de pagos de cuotas";
+            //RvAgendaPagos.SetDisplayMode(DisplayMode.PrintLayout);
+            //RvAgendaPagos.ZoomMode = ZoomMode.Percent;
+            //RvAgendaPagos.ZoomPercent = 100;
+            //RvAgendaPagos.LocalReport.DataSources.Add(new ReportDataSource("CreditoCuotasDataSet", GetSPResult()));
+            //RvAgendaPagos.RefreshReport();
         }
     }
 }

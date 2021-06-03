@@ -7,40 +7,40 @@ using RepositoryLayer;
 
 namespace BusinessLogicLayer.Logics
 {
-    public class AsociadoBLL
+    public class SocioBLL
     {
         private IAsociadoRepository _asociadoRepository;
 
-        public AsociadoBLL()
+        public SocioBLL()
         {
-            _asociadoRepository = new AsociadoRepository(new AzocDbContext());
+            _asociadoRepository = new SocioRepository(new AzocDbContext());
         }
 
         public void Delete(int id)
         {
-            Asociado asociado = _asociadoRepository.GetAsociadoById(id);
+            Socio asociado = _asociadoRepository.GetAsociadoById(id);
 
             _asociadoRepository.DeleteAsociado(asociado);
             _asociadoRepository.Save();
         }
 
-        public IEnumerable<Asociado> List()
+        public IEnumerable<Socio> List()
         {
             return _asociadoRepository.GetAsociados();
         }
 
-        public Asociado Find(int id)
+        public Socio Find(int id)
         {
             return _asociadoRepository.GetAsociadoById(id);
         }
 
-        public void Create(Asociado asociado)
+        public void Create(Socio asociado)
         {
             _asociadoRepository.InsertAsociado(asociado);
             _asociadoRepository.Save();
         }
 
-        public void Edit(Asociado asociado)
+        public void Edit(Socio asociado)
         {
             _asociadoRepository.UpdateAsociado(asociado);
             _asociadoRepository.Save();

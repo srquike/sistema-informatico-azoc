@@ -13,6 +13,6 @@ namespace BusinessObjectsLayer.Models
         public string Fuente { get; set; }
         public int AsociadoId { get; set; }
 
-        public virtual Asociado Asociado { get; set; }
+        public virtual Socio Asociado { get; set; }
     }
 }

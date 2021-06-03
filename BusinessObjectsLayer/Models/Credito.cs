@@ -14,16 +14,16 @@ namespace BusinessObjectsLayer.Models
         }
 
         public int CreditoId { get; set; }
-        public DateTime FechaAprobacion { get; set; }
-        public DateTime FechaInicio { get; set; }
+        public int Codigo { get; set; }
+        public DateTime? Aprobacion { get; set; }
+        public DateTime Inicio { get; set; }
         public decimal Monto { get; set; }
-        public decimal Interes { get; set; }
-        public decimal Tramite { get; set; }
-        public int EstadoCreditoId { get; set; }
-        public int AsociadoId { get; set; }
         public int Plazo { get; set; }
+        public decimal TasaInteres { get; set; }
+        public int? AsociadoId { get; set; }
+        public int? EstadoCreditoId { get; set; }
 
-        public virtual Asociado Asociado { get; set; }
+        public virtual Socio Socio { get; set; }
         public virtual EstadoCredito EstadoCredito { get; set; }
         public virtual ICollection<Cuota> Cuotas { get; set; }
         public virtual ICollection<DeduccionCredito> DeduccionesCreditos { get; set; }

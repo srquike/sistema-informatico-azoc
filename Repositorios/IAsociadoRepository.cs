@@ -4,14 +4,13 @@ using BusinessObjectsLayer.Models;
 
 namespace RepositoryLayer
 {
-   public  interface IAsociadoRepository:IDisposable
+    public interface IAsociadoRepository : IDisposable
     {
-        IEnumerable<Asociado> GetAsociados();
-        Asociado GetAsociadoById(int id);
-        void InsertAsociado(Asociado asociado);
-        void DeleteAsociado(Asociado asociado);
-        void UpdateAsociado(Asociado asociado);
+        IEnumerable<Socio> GetAsociados();
+        Socio GetAsociadoById(int id);
+        void InsertAsociado(Socio asociado);
+        void DeleteAsociado(Socio asociado);
+        void UpdateAsociado(Socio asociado);
         void Save();
-
     }
 }

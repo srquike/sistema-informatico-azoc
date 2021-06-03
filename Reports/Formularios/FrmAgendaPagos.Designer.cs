@@ -31,16 +31,20 @@ namespace Reports.Formularios
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.CuotaReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RvAgendaPagos = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.CuotaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.CuotaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CuotaReportBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // CuotaReportBindingSource
+            // 
+            this.CuotaReportBindingSource.DataSource = typeof(Reports.Models.CuotaReport);
             // 
             // RvAgendaPagos
             // 
             this.RvAgendaPagos.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "DataSet1";
-            reportDataSource1.Value = this.CuotaBindingSource;
+            reportDataSource1.Name = "CuotasDataSet";
+            reportDataSource1.Value = this.CuotaReportBindingSource;
             this.RvAgendaPagos.LocalReport.DataSources.Add(reportDataSource1);
             this.RvAgendaPagos.LocalReport.ReportEmbeddedResource = "Reports.Informes.RptAgendaPagos.rdlc";
             this.RvAgendaPagos.Location = new System.Drawing.Point(0, 0);
@@ -49,21 +53,16 @@ namespace Reports.Formularios
             this.RvAgendaPagos.Size = new System.Drawing.Size(800, 450);
             this.RvAgendaPagos.TabIndex = 0;
             // 
-            // CuotaBindingSource
-            // 
-            this.CuotaBindingSource.DataSource = typeof(Reports.Models.Cuota);
-            // 
             // FrmAgendaPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.RvAgendaPagos);
             this.Name = "FrmAgendaPagos";
-            this.Text = "Cooperativa AZOC de R. L. - Agenda de pagos de cuotas";
+            this.Text = "Cooperativa AZOC de R. L. - Agenda de pagos de cuota";
             this.Load += new System.EventHandler(this.FrmAgendaPagos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.CuotaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CuotaReportBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -71,6 +70,6 @@ namespace Reports.Formularios
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer RvAgendaPagos;
-        private System.Windows.Forms.BindingSource CuotaBindingSource;
+        private System.Windows.Forms.BindingSource CuotaReportBindingSource;
     }
 }

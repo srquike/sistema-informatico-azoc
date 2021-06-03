@@ -12,14 +12,14 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmDetallesAsociado : Form
     {
-        private readonly AsociadoBLL _asociadoLogic;
-        private Asociado _asociado;
+        private readonly SocioBLL _asociadoLogic;
+        private Socio _asociado;
 
         public FrmDetallesAsociado(int asociadoId)
         {
             InitializeComponent();
 
-            _asociadoLogic = new AsociadoBLL();
+            _asociadoLogic = new SocioBLL();
             _asociado = _asociadoLogic.Find(asociadoId);
         }
 
@@ -40,15 +40,15 @@ namespace WindowsFormsUI.Formularios
 
         private void RellenarControles()
         {
-            string nombre = string.Concat(_asociado.PrimerNombre, " ", _asociado.SegundoNombre, " ", _asociado.TercerNombre, " ", _asociado.PrimerApellido, " ", _asociado.SegundoApellido, " ", _asociado.TercerApellido);
+            string nombre = string.Concat(_asociado.Pnombre, " ", _asociado.Snombre, " ", _asociado.Tnombre, " ", _asociado.Papellido, " ", _asociado.Sapellido, " ", _asociado.Tapellido);
             string genero = _asociado.Genero == "F" ? "Femenino" : "Masculino";
             string estado = _asociado.Estado == "1" ? "Activo" : "Inactivo";
 
-            TxtCodigo.Text = _asociado.AsociadoId.ToString();
+            TxtCodigo.Text = _asociado.Codigo;
             TxtCategoria.Text = _asociado.CategoriaAsociado.Nombre;
             TxtEstado.Text = estado;
             TxtNombre.Text = nombre;
-            TxtFNacimiento.Text = _asociado.FechaNacimiento.ToShortDateString();
+            TxtFNacimiento.Text = _asociado.Nacimiento.Value.ToShortDateString();
             TxtGenero.Text = genero;
             TxtEmail.Text = _asociado.Email;
             TxtDireccion.Text = _asociado.Direccion;
@@ -58,7 +58,7 @@ namespace WindowsFormsUI.Formularios
             MTxtNit.Text = _asociado.Nit;
             MTxtTelefono.Text = _asociado.Telefono;
             TxtFIngreso.Text = _asociado.Ingreso.ToShortDateString();
-            TxtFRetiro.Text = _asociado.Retiro.ToString();
+            TxtFRetiro.Text = _asociado.Retiro.Value.ToShortDateString();
 
             LlenarListado(ref DgvListado, _asociado.Beneficiarios);
         }
@@ -95,7 +95,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -8,12 +8,14 @@ using System.Windows.Forms;
 using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
 using System.Linq;
+using AutoMapper;
+using Reports.Formularios;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmCrearCredito : Form
     {
-        private readonly AsociadoBLL _asociadoLogic;
+        private readonly SocioBLL _asociadoLogic;
         private readonly CreditoBLL _creditoLogic;
         private readonly CuotaBLL _cuotaBLL;
         private readonly DeducccionCreditoBLL _deducccionCreditoBLL;
@@ -22,7 +24,7 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
 
-            _asociadoLogic = new AsociadoBLL();
+            _asociadoLogic = new SocioBLL();
             _creditoLogic = new CreditoBLL();
             _cuotaBLL = new CuotaBLL();
             _deducccionCreditoBLL = new DeducccionCreditoBLL();
@@ -34,8 +36,8 @@ namespace WindowsFormsUI.Formularios
             var asociadosNombres = (from asociado in asociados
                                     select new
                                     {
-                                        Nombre = string.Concat(asociado.PrimerNombre, " ", asociado.SegundoNombre, " ", asociado.TercerNombre, " ", asociado.PrimerApellido, " ", asociado.SegundoApellido, " ", asociado.TercerApellido),
-                                        Id = asociado.AsociadoId
+                                        Nombre = string.Concat(asociado.Pnombre, " ", asociado.Snombre, " ", asociado.Tnombre, " ", asociado.Papellido, " ", asociado.Sapellido, " ", asociado.Tapellido),
+                                        Id = asociado.SocioId
                                     }).ToList();
 
             comboBox.DataSource = asociadosNombres;
@@ -48,7 +50,7 @@ namespace WindowsFormsUI.Formularios
             ActualizarAsociados(ref CmbAsociados);
         }
 
-        private decimal CalcularDeducciones()
+        private decimal ObtenerDeducciones()
         {
             decimal deducciones = 0;
             decimal ahorroSimultaneo = NudAhorroSimultaneo.Value;
@@ -86,47 +88,53 @@ namespace WindowsFormsUI.Formularios
             NudPrestamoAnterior.Value = prestamoAnterior;
         }
 
-        private void CalcularCuota(decimal montoSolicitado, int plazo, decimal Porcentajeinteres)
+        private decimal ObtenerCuota(decimal montoSolicitado, int plazo, decimal tasaInteres)
         {
             decimal capital = montoSolicitado / plazo;
-            decimal interes = (montoSolicitado * (Porcentajeinteres / 100)) / 2;
-            decimal monto = capital + interes;
+            decimal interes = (montoSolicitado * (tasaInteres / 100)) / 2;
+            decimal cuota = capital + interes;
 
-            TxtMontoCuota.Text = string.Format("{0:C2}", monto);
-            TxtInteres.Text = string.Format("{0:C2}", interes);
-            TxtCapital.Text = string.Format("{0:C2}", capital);
+            return cuota;
         }
 
-        private void CalcularPorcentajeTramite(decimal monto)
+        private decimal ObtenerMontoTramite(decimal monto)
         {
+            decimal montoTramite = 0;
+
             if (monto >= 1 && monto <= 100)
             {
-                NudPorcentajeTramite.Value = 2.00M;
+                montoTramite = 2.00M;
             }
             else if (monto > 100 && monto <= 200)
             {
-                NudPorcentajeTramite.Value = 3.00M;
+                montoTramite = 3.00M;
             }
             else if (monto > 200)
             {
-                NudPorcentajeTramite.Value = monto * 0.015M;
+                montoTramite = monto * 0.015M;
             }
+
+            return montoTramite;
         }
 
-        private void CalcularPorcentajeInteres(decimal monto)
+        private decimal ObtenerTasaInteres(decimal monto)
         {
+            decimal tasaInteres = 0;
+
             if (monto >= 1 && monto <= 300)
             {
-                NudPorcentajeInteres.Value = 5;
+                tasaInteres = 5;
             }
             else if (monto > 300 && monto <= 450)
             {
-                NudPorcentajeInteres.Value = 3.33M;
+                tasaInteres = 3.33M;
             }
             else if (monto > 450)
             {
-                NudPorcentajeInteres.Value = 1.67M;
+                tasaInteres = 1.67M;
             }
+
+            return tasaInteres;
         }
 
         private bool ValidarEntradas()
@@ -155,17 +163,17 @@ namespace WindowsFormsUI.Formularios
                     {
                         EpControles.Clear();
 
-                        if (NudPorcentajeInteres.Value <= 0)
+                        if (NudTasaInteres.Value <= 0)
                         {
-                            EpControles.SetError(NudPorcentajeInteres, "Por favor, ingrese un valor mayor a cero para continuar!");
+                            EpControles.SetError(NudTasaInteres, "Por favor, ingrese un valor mayor a cero para continuar!");
                         }
                         else
                         {
                             EpControles.Clear();
 
-                            if (NudPorcentajeTramite.Value <= 0)
+                            if (NudMontoTramite.Value <= 0)
                             {
-                                EpControles.SetError(NudPorcentajeTramite, "Por favor, ingrese un valor mayor a cero para continuar!");
+                                EpControles.SetError(NudMontoTramite, "Por favor, ingrese un valor mayor a cero para continuar!");
                             }
                             else
                             {
@@ -185,45 +193,47 @@ namespace WindowsFormsUI.Formularios
             if (ValidarEntradas())
             {
                 int asociadoId = Convert.ToInt32(CmbAsociados.SelectedValue);
-                int creditoId = Convert.ToInt32(TxtCodigoCredito.Text);
+                int codigoCredito = Convert.ToInt32(TxtCodigoCredito.Text);
                 int plazo = Convert.ToInt32(NudPlazo.Value);
-                decimal cuota = Convert.ToDecimal(TxtMontoCuota.Text.Replace("$", ""));
+                decimal cuota = NudMontoCuota.Value;
 
                 Credito credito = new Credito()
                 {
-                    CreditoId = creditoId,
-                    FechaInicio = DtpFechaInicio.Value.Date,
+                    Codigo = codigoCredito,
+                    Inicio = DtpFechaInicio.Value.Date,
                     Monto = NudMontoSolicitado.Value,
-                    Interes = NudPorcentajeInteres.Value,
-                    Tramite = NudPorcentajeTramite.Value,
                     AsociadoId = asociadoId,
                     Plazo = plazo,
+                    TasaInteres = NudTasaInteres.Value,
                     EstadoCreditoId = ChkAprobarCredito.Checked ? 2 : 1
                 };
 
                 if (credito.EstadoCreditoId == 2)
                 {
-                    credito.FechaAprobacion = DateTime.Today;
+                    credito.Aprobacion = DateTime.Today;
                 }
 
                 if (_creditoLogic.Create(credito))
                 {
-                    var cuotas = CrearCuotas(credito.CreditoId, cuota, plazo);
-
-                    if (cuotas != null && cuotas.Count > 0)
+                    if (CrearCuotas(credito.CreditoId, cuota, plazo))
                     {
-                        CrearDeducciones(credito.CreditoId);
+                        if (CrearDeducciones(credito.CreditoId))
+                        {
+                            FrmAgendaPagos frmAgendaPagos = new FrmAgendaPagos(credito.CreditoId);
+                            frmAgendaPagos.StartPosition = FormStartPosition.CenterScreen;
+                            frmAgendaPagos.ShowDialog();
 
-                        DialogResult = DialogResult.OK;
-                    }                    
+                            DialogResult = DialogResult.OK;
+                        }
+                    }
                 }
             }
         }
 
-        private void CrearDeducciones(int creditoId)
+        private bool CrearDeducciones(int creditoId)
         {
             DeduccionCredito deduccion;
-            IList<DeduccionCredito> deducciones = new List<DeduccionCredito>();
+            ICollection<DeduccionCredito> deducciones = new List<DeduccionCredito>();
 
             if (NudAhorroSimultaneo.Value > 0)
             {
@@ -314,16 +324,15 @@ namespace WindowsFormsUI.Formularios
                 deducciones.Add(deduccion);
             }
 
-            foreach (DeduccionCredito deduccionCredito in deducciones)
+            if (_deducccionCreditoBLL.CreateMany(deducciones))
             {
-                if (_deducccionCreditoBLL.Create(deduccionCredito) == false)
-                {
-                    MessageBox.Show("No se pudo crear la deducción", "Crear deducción: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                return true;
             }
+
+            return false;
         }
 
-        private ICollection<Cuota> CrearCuotas(int creditoId, decimal monto, int plazo)
+        private bool CrearCuotas(int creditoId, decimal monto, int plazo)
         {
             Cuota cuota, cuotaAnterior;
             ICollection<Cuota> cuotas;
@@ -357,34 +366,39 @@ namespace WindowsFormsUI.Formularios
 
             if (_cuotaBLL.CreateMany(cuotas))
             {
-                return cuotas;
+                return true;
             }
 
-            return null;
+            return false;
         }
 
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
             if (NudMontoSolicitado.Value > 0 && NudPlazo.Value > 0)
             {
-                decimal monto = NudMontoSolicitado.Value;
-                int plazo = Convert.ToInt32(NudPlazo.Value);
+                decimal montoSolicitado, tasaInteres, montoTramite, cuota, deducciones, prestamoAnterior;
+                int plazo;
 
-                CalcularPorcentajeInteres(monto);
-                CalcularPorcentajeTramite(monto);
+                plazo = Convert.ToInt32(NudPlazo.Value);
+                montoSolicitado = NudMontoSolicitado.Value;
+                tasaInteres = ObtenerTasaInteres(montoSolicitado);
+                montoTramite = ObtenerMontoTramite(montoSolicitado);
+                cuota = ObtenerCuota(montoSolicitado, plazo, tasaInteres);
+                prestamoAnterior = NudPrestamoAnterior.Value;
 
-                decimal porcentajeTramite = NudPorcentajeTramite.Value;
-                decimal interes = NudPorcentajeInteres.Value;
+                NudTramites.Value = montoTramite;
 
-                CalcularCuota(monto, plazo, interes);
+                deducciones = ObtenerDeducciones();
 
-                //NudInteresSobrePrestamo.Value = monto * (interes / 100);
-                NudTramites.Value = porcentajeTramite;
-                NudTotalDeducciones.Value = CalcularDeducciones();
-
-                TxtLiquidoRecibido.Text = string.Format("{0:C2}", (monto - NudTotalDeducciones.Value));
-                TxtDeudaAdquirida.Text = string.Format("{0:C2}", (monto + porcentajeTramite));
-                TxtDeudaTotal.Text = string.Format("{0:C2}", (monto + porcentajeTramite + NudPrestamoAnterior.Value));
+                NudTasaInteres.Value = tasaInteres;
+                NudMontoTramite.Value = montoTramite;
+                NudMontoCuota.Value = cuota;
+                NudCapitalCuota.Value = montoSolicitado / plazo;
+                NudInteresCuota.Value = (montoSolicitado * (tasaInteres / 100)) / 2;
+                NudTotalDeducciones.Value = deducciones;
+                NudLiquidoRecibir.Value = montoSolicitado - deducciones;
+                NudDeudaAdquirida.Value = montoSolicitado + montoTramite;
+                NudDeudaTotal.Value = montoSolicitado + montoTramite + prestamoAnterior;
             }
             else
             {
@@ -395,12 +409,11 @@ namespace WindowsFormsUI.Formularios
         private void CmbAsociados_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int asociadoId = Convert.ToInt32(CmbAsociados.SelectedValue);
-            Asociado asociado = _asociadoLogic.Find(asociadoId);
+            Socio asociado = _asociadoLogic.Find(asociadoId);
 
             if (asociado != null)
             {
-                TxtCodigoAsociado.Text = asociado.AsociadoId.ToString();
-                MTxtDui.Text = asociado.Dui;
+                TxtCodigoAsociado.Text = asociado.Codigo;
 
                 CalcularPrestamoAnterior(asociado.Creditos);
             }
@@ -416,9 +429,9 @@ namespace WindowsFormsUI.Formularios
             TxtCodigoCredito.Clear();
             NudMontoSolicitado.Value = 0;
             NudPlazo.Value = 0;
-            NudPorcentajeInteres.Value = 0;
+            NudTasaInteres.Value = 0;
             NudDocumentoAutenticado.Value = 0;
-            NudPorcentajeTramite.Value = 0;
+            NudMontoTramite.Value = 0;
             NudAhorroSimultaneo.Value = 0;
             NudHipotecaAbierta.Value = 0;
             NudTramites.Value = 0;
@@ -426,13 +439,27 @@ namespace WindowsFormsUI.Formularios
             NudAportaciones.Value = 0;
             NudOtros.Value = 0;
             NudTotalDeducciones.Value = 0;
-            TxtMontoCuota.Clear();
-            TxtCapital.Clear();
-            TxtInteres.Clear();
-            TxtLiquidoRecibido.Clear();
-            TxtDeudaAdquirida.Clear();
-            TxtDeudaTotal.Clear();
+            NudMontoCuota.Value = 0;
+            NudCapitalCuota.Value = 0;
+            NudInteresCuota.Value = 0;
+            NudLiquidoRecibir.Value = 0;
+            NudDeudaAdquirida.Value = 0;
+            NudDeudaTotal.Value = 0;
             TxtCodigoCredito.Focus();
+        }
+
+        private void LlblVerDetallesAsociado_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            int asociadoId = Convert.ToInt32(CmbAsociados.SelectedValue);
+
+            FrmDetallesAsociado frmDetallesAsociado = new FrmDetallesAsociado(asociadoId);
+            frmDetallesAsociado.StartPosition = FormStartPosition.CenterScreen;
+            frmDetallesAsociado.ShowDialog();
+
+            if (frmDetallesAsociado.DialogResult == DialogResult.OK)
+            {
+                frmDetallesAsociado.Close();
+            }
         }
     }
 }

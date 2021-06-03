@@ -13,9 +13,9 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmEditarAsociado : Form
     {
-        private Asociado _asociado;
+        private Socio _asociado;
         private bool _continuar = false;
-        private readonly AsociadoBLL _asociadoLogic;
+        private readonly SocioBLL _asociadoLogic;
         private readonly BeneficiarioBLL _beneficiarioLogic;
         private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private ICollection<Beneficiario> _beneficiarios;
@@ -24,7 +24,7 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
 
-            _asociadoLogic = new AsociadoBLL();
+            _asociadoLogic = new SocioBLL();
             _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _beneficiarioLogic = new BeneficiarioBLL();
             _beneficiarios = new List<Beneficiario>();
@@ -67,16 +67,16 @@ namespace WindowsFormsUI.Formularios
             {
                 LlenarComboBoxCategorias(ref CmbCategoria);
 
-                TxtCodigo.Text = _asociado.AsociadoId.ToString();
+                TxtCodigo.Text = _asociado.Codigo;
                 CmbCategoria.SelectedItem = _asociado.CategoriaAsociado.Nombre;
-                TxtPNombre.Text = _asociado.PrimerNombre;
-                TxtSNombre.Text = _asociado.SegundoNombre;
-                TxtTNombre.Text = _asociado.TercerNombre;
-                TxtPApellido.Text = _asociado.PrimerApellido;
-                TxtSApellido.Text = _asociado.SegundoApellido;
-                TxtTApellido.Text = _asociado.TercerApellido;
+                TxtPNombre.Text = _asociado.Pnombre;
+                TxtSNombre.Text = _asociado.Snombre;
+                TxtTNombre.Text = _asociado.Tnombre;
+                TxtPApellido.Text = _asociado.Papellido;
+                TxtSApellido.Text = _asociado.Sapellido;
+                TxtTApellido.Text = _asociado.Tapellido;
                 TxtEmail.Text = _asociado.Email;
-                DtpFNacimiento.Value = _asociado.FechaNacimiento;
+                DtpFNacimiento.Value = _asociado.Nacimiento.Value;
                 CmbGenero.SelectedItem = _asociado.Genero == "F" ? "Femenino" : "Masculino";
                 TxtDireccion.Text = _asociado.Direccion;
                 CmbDepartamentos.SelectedItem = _asociado.Departamento;
@@ -341,14 +341,14 @@ namespace WindowsFormsUI.Formularios
                     string municipio = CmbMunicipios.SelectedItem.ToString();
                     int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
 
-                    _asociado.PrimerNombre = TxtPNombre.Text;
-                    _asociado.SegundoNombre = TxtSNombre.Text;
-                    _asociado.TercerNombre = TxtTNombre.Text;
-                    _asociado.PrimerApellido = TxtPApellido.Text;
-                    _asociado.SegundoApellido = TxtSApellido.Text;
-                    _asociado.TercerApellido = TxtTApellido.Text;
+                    _asociado.Pnombre = TxtPNombre.Text;
+                    _asociado.Snombre = TxtSNombre.Text;
+                    _asociado.Tnombre = TxtTNombre.Text;
+                    _asociado.Papellido = TxtPApellido.Text;
+                    _asociado.Sapellido = TxtSApellido.Text;
+                    _asociado.Tapellido = TxtTApellido.Text;
                     _asociado.Email = TxtEmail.Text;
-                    _asociado.FechaNacimiento = DtpFNacimiento.Value;
+                    _asociado.Nacimiento = DtpFNacimiento.Value;
                     _asociado.Genero = genero;
                     _asociado.Direccion = TxtDireccion.Text;
                     _asociado.Departamento = departamento;
@@ -362,7 +362,7 @@ namespace WindowsFormsUI.Formularios
 
                     _asociadoLogic.Edit(_asociado);
 
-                    ActualizarBeneficiarios(_asociado.AsociadoId);
+                    ActualizarBeneficiarios(_asociado.SocioId);
 
                     DialogResult = DialogResult.OK;
                 }

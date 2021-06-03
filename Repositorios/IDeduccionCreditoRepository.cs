@@ -9,6 +9,7 @@ namespace RepositoryLayer
         IEnumerable<DeduccionCredito> GetDeduccionCreditos();
         DeduccionCredito GetDeduccionCreditoById(int id);
         void InsertDeduccionCredito(DeduccionCredito deduccioncredito);
+        void InsertMany(ICollection<DeduccionCredito> deduccionesCreditos);
         void DeleteDeduccionCredito(DeduccionCredito deduccioncredito);
         void UpdateDeduccionCredito(DeduccionCredito deduccioncredito);
         int Save();

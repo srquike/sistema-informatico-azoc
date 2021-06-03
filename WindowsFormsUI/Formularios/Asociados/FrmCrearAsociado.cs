@@ -13,7 +13,7 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmCrearAsociado : Form
     {
-        private readonly AsociadoBLL _asociadoLogic;
+        private readonly SocioBLL _asociadoLogic;
         private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private readonly BeneficiarioBLL _beneficiarioLogic;
         private IList<Beneficiario> _beneficiarios;
@@ -24,7 +24,7 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
 
-            _asociadoLogic = new AsociadoBLL();
+            _asociadoLogic = new SocioBLL();
             _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _beneficiarioLogic = new BeneficiarioBLL();
             _beneficiarios = new List<Beneficiario>();
@@ -245,10 +245,10 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private bool VerificarEntradasUnicas(string dui, string nit, string telefono, int id)
+        private bool VerificarEntradasUnicas(string dui, string nit, string telefono, string id)
         {
             var asociados = _asociadoLogic.List();
-            var resultado = (from asociado in asociados where asociado.Dui == dui || asociado.Nit == nit || asociado.Telefono == telefono || asociado.AsociadoId == id select asociado).FirstOrDefault();
+            var resultado = (from asociado in asociados where asociado.Dui == dui || asociado.Nit == nit || asociado.Telefono == telefono || asociado.Codigo == id select asociado).FirstOrDefault();
 
             if (resultado == null)
             {
@@ -279,7 +279,7 @@ namespace WindowsFormsUI.Formularios
                 string dui = MTxtDui.Text;
                 string nit = MTxtNit.Text;
                 string telefono = MTxtTelefono.Text;
-                int asociadoId = Convert.ToInt32(TxtCodigo.Text);
+                string asociadoId = TxtCodigo.Text;
 
                 if (VerificarEntradasUnicas(dui, nit, telefono, asociadoId))
                 {
@@ -288,17 +288,17 @@ namespace WindowsFormsUI.Formularios
                     string municipio = CmbMunicipios.SelectedItem.ToString();
                     int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);                    
 
-                    Asociado asociado = new Asociado()
+                    Socio asociado = new Socio()
                     {
-                        AsociadoId = asociadoId,
-                        PrimerNombre = TxtPNombre.Text,
-                        SegundoNombre = TxtSNombre.Text,
-                        TercerNombre = TxtTNombre.Text,
-                        PrimerApellido = TxtPApellido.Text,
-                        SegundoApellido = TxtSApellido.Text,
-                        TercerApellido = TxtTApellido.Text,
+                        Codigo = asociadoId,
+                        Pnombre = TxtPNombre.Text,
+                        Snombre = TxtSNombre.Text,
+                        Tnombre = TxtTNombre.Text,
+                        Papellido = TxtPApellido.Text,
+                        Sapellido = TxtSApellido.Text,
+                        Tapellido = TxtTApellido.Text,
                         Email = TxtEmail.Text,
-                        FechaNacimiento = DtpFNacimiento.Value,
+                        Nacimiento = DtpFNacimiento.Value,
                         Genero = genero,
                         Direccion = TxtDireccion.Text,
                         Departamento = departamento,
@@ -313,7 +313,7 @@ namespace WindowsFormsUI.Formularios
 
                     _asociadoLogic.Create(asociado);
 
-                    AgregarBeneficiarios(asociado.AsociadoId);
+                    AgregarBeneficiarios(asociado.SocioId);
 
                     DialogResult = DialogResult.OK;
                 }

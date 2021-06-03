@@ -30,12 +30,12 @@ namespace WindowsFormsUI.Formularios
 
             foreach (Credito credito in creditos)
             {
-                string fechaInicio = string.Format("{0:dd/MM/yyyy}", credito.FechaInicio);
+                string fechaInicio = string.Format("{0:dd/MM/yyyy}", credito.Inicio);
                 string monto = string.Format("{0:C}", credito.Monto);
-                string interes = string.Format("{0:P2}", (credito.Interes / 100));
-                string nombreAsociado = string.Concat(credito.Asociado.PrimerNombre, " ", credito.Asociado.SegundoNombre, " ", credito.Asociado.TercerNombre, " ", credito.Asociado.PrimerApellido, " ", credito.Asociado.SegundoApellido, " ", credito.Asociado.TercerNombre);
+                string nombreAsociado = string.Concat(credito.Socio.Pnombre, " ", credito.Socio.Snombre, " ", credito.Socio.Tnombre, " ", credito.Socio.Papellido, " ", credito.Socio.Sapellido, " ", credito.Socio.Tapellido);
+                string tasaInteres = string.Format("{0:P2}", (credito.TasaInteres / 100));
 
-                dataGrid.Rows.Add(false, credito.CreditoId, monto, interes, credito.Plazo, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
+                dataGrid.Rows.Add(false, credito.Codigo, monto, tasaInteres, credito.Plazo, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
             }
 
             dataGrid.ClearSelection();
@@ -104,7 +104,7 @@ namespace WindowsFormsUI.Formularios
                             }
                             else
                             {
-                                MessageBox.Show("No se puede aprobar un crédito ya aprobado o finalizado!", "Aprobar crédito: información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No se puede aprobar un crédito previamente aprobado o finalizado!", "Aprobar crédito: información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -112,8 +112,14 @@ namespace WindowsFormsUI.Formularios
                     {
                         if (MessageBox.Show("¿Esta seguro de querer eliminar el crédito del sistema?", "Eliminación de crédito: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            _creditoLogic.Delete(creditoId);
-                            ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                            if (_creditoLogic.Delete(creditoId))
+                            {
+                                ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al intentar eliminar el crédito, por favor intente de nuevo!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -142,7 +148,7 @@ namespace WindowsFormsUI.Formularios
                 string busqueda = TxtBusqueda.Text;
                 var creditos = _creditoLogic.List();
 
-                var resultados = from credito in creditos where credito.CreditoId.ToString() == busqueda || credito.Asociado.PrimerNombre == busqueda || credito.Asociado.PrimerApellido == busqueda select credito;
+                var resultados = from credito in creditos where credito.CreditoId.ToString() == busqueda || credito.Socio.Pnombre == busqueda || credito.Socio.Papellido == busqueda select credito;
 
                 ActualizarDataGridView(ref DgvLista, resultados);
                 LLblQuitarBusqueda.Enabled = true;
@@ -188,6 +194,6 @@ namespace WindowsFormsUI.Formularios
             {
                 MessageBox.Show("Por favor, seleccione una o mas filas!", "Acciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }        
+        }
     }
 }

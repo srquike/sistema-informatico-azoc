@@ -30,7 +30,9 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -135,8 +137,8 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1102, 686);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(1102, 605);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
@@ -144,15 +146,16 @@ namespace WindowsFormsUI.Formularios
             // 
             this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCodigo.Location = new System.Drawing.Point(132, 20);
+            this.TxtCodigo.Margin = new System.Windows.Forms.Padding(5);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
-            this.TxtCodigo.TabIndex = 48;
+            this.TxtCodigo.TabIndex = 1;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(61, 23);
+            this.label20.Location = new System.Drawing.Point(59, 23);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(65, 20);
             this.label20.TabIndex = 47;
@@ -178,55 +181,59 @@ namespace WindowsFormsUI.Formularios
             "Santa Rosa Guachipilín",
             "Santiago de la Frontera",
             "Texistepeque"});
-            this.CmbMunicipios.Location = new System.Drawing.Point(879, 248);
+            this.CmbMunicipios.Location = new System.Drawing.Point(879, 167);
+            this.CmbMunicipios.Margin = new System.Windows.Forms.Padding(5);
             this.CmbMunicipios.Name = "CmbMunicipios";
             this.CmbMunicipios.Size = new System.Drawing.Size(200, 28);
-            this.CmbMunicipios.TabIndex = 46;
+            this.CmbMunicipios.TabIndex = 14;
             // 
             // MTxtNit
             // 
             this.MTxtNit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtNit.HidePromptOnLeave = true;
-            this.MTxtNit.Location = new System.Drawing.Point(519, 305);
+            this.MTxtNit.Location = new System.Drawing.Point(521, 205);
+            this.MTxtNit.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtNit.Mask = "0000-000000-000-0";
             this.MTxtNit.Name = "MTxtNit";
             this.MTxtNit.PromptChar = '-';
             this.MTxtNit.Size = new System.Drawing.Size(200, 27);
-            this.MTxtNit.TabIndex = 45;
+            this.MTxtNit.TabIndex = 16;
             this.MTxtNit.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // MTxtTelefono
             // 
             this.MTxtTelefono.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtTelefono.HidePromptOnLeave = true;
-            this.MTxtTelefono.Location = new System.Drawing.Point(879, 306);
+            this.MTxtTelefono.Location = new System.Drawing.Point(879, 205);
+            this.MTxtTelefono.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtTelefono.Mask = "0000-0000";
             this.MTxtTelefono.Name = "MTxtTelefono";
             this.MTxtTelefono.PromptChar = '-';
             this.MTxtTelefono.Size = new System.Drawing.Size(200, 27);
-            this.MTxtTelefono.TabIndex = 44;
+            this.MTxtTelefono.TabIndex = 17;
             this.MTxtTelefono.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // MTxtDui
             // 
             this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtDui.HidePromptOnLeave = true;
-            this.MTxtDui.Location = new System.Drawing.Point(132, 305);
+            this.MTxtDui.Location = new System.Drawing.Point(132, 205);
+            this.MTxtDui.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtDui.Mask = "00000000-0";
             this.MTxtDui.Name = "MTxtDui";
             this.MTxtDui.PromptChar = '-';
             this.MTxtDui.Size = new System.Drawing.Size(200, 27);
-            this.MTxtDui.TabIndex = 43;
+            this.MTxtDui.TabIndex = 15;
             this.MTxtDui.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.BtnAgregar);
             this.groupBox2.Controls.Add(this.DgvListado);
-            this.groupBox2.Location = new System.Drawing.Point(6, 335);
+            this.groupBox2.Location = new System.Drawing.Point(6, 240);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1090, 345);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.Size = new System.Drawing.Size(1090, 355);
+            this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Beneficiarios";
             // 
@@ -243,7 +250,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnAgregar.Location = new System.Drawing.Point(6, 26);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.Size = new System.Drawing.Size(102, 35);
-            this.BtnAgregar.TabIndex = 16;
+            this.BtnAgregar.TabIndex = 19;
             this.BtnAgregar.Text = "Agregar";
             this.BtnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnAgregar.UseVisualStyleBackColor = false;
@@ -271,17 +278,33 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListado.Location = new System.Drawing.Point(6, 67);
             this.DgvListado.MultiSelect = false;
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListado.Size = new System.Drawing.Size(1078, 272);
-            this.DgvListado.TabIndex = 15;
+            this.DgvListado.Size = new System.Drawing.Size(1078, 282);
+            this.DgvListado.TabIndex = 20;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             // 
             // Seleccion
@@ -305,7 +328,7 @@ namespace WindowsFormsUI.Formularios
             this.Dui.HeaderText = "# DUI";
             this.Dui.Name = "Dui";
             this.Dui.ReadOnly = true;
-            this.Dui.Width = 69;
+            this.Dui.Width = 74;
             // 
             // Nit
             // 
@@ -381,7 +404,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(799, 308);
+            this.label18.Location = new System.Drawing.Point(797, 208);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 20);
             this.label18.TabIndex = 39;
@@ -392,16 +415,17 @@ namespace WindowsFormsUI.Formularios
             this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbCategoria.FormattingEnabled = true;
-            this.CmbCategoria.Location = new System.Drawing.Point(520, 20);
+            this.CmbCategoria.Location = new System.Drawing.Point(521, 19);
+            this.CmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.CmbCategoria.Name = "CmbCategoria";
             this.CmbCategoria.Size = new System.Drawing.Size(200, 28);
-            this.CmbCategoria.TabIndex = 38;
+            this.CmbCategoria.TabIndex = 2;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(428, 23);
+            this.label17.Location = new System.Drawing.Point(426, 23);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(85, 20);
             this.label17.TabIndex = 37;
@@ -410,16 +434,17 @@ namespace WindowsFormsUI.Formularios
             // TxtEmail
             // 
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.Location = new System.Drawing.Point(132, 191);
+            this.TxtEmail.Location = new System.Drawing.Point(132, 131);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(200, 27);
-            this.TxtEmail.TabIndex = 31;
+            this.TxtEmail.TabIndex = 9;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(61, 194);
+            this.label16.Location = new System.Drawing.Point(59, 134);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 30;
@@ -434,16 +459,17 @@ namespace WindowsFormsUI.Formularios
             "-- Seleccionar -- ",
             "Femenino",
             "Masculino"});
-            this.CmbGeneros.Location = new System.Drawing.Point(879, 191);
+            this.CmbGeneros.Location = new System.Drawing.Point(879, 129);
+            this.CmbGeneros.Margin = new System.Windows.Forms.Padding(5);
             this.CmbGeneros.Name = "CmbGeneros";
             this.CmbGeneros.Size = new System.Drawing.Size(200, 28);
-            this.CmbGeneros.TabIndex = 29;
+            this.CmbGeneros.TabIndex = 11;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(805, 194);
+            this.label15.Location = new System.Drawing.Point(803, 134);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 28;
@@ -453,7 +479,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(470, 308);
+            this.label14.Location = new System.Drawing.Point(468, 208);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 20);
             this.label14.TabIndex = 26;
@@ -463,7 +489,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(81, 308);
+            this.label13.Location = new System.Drawing.Point(79, 208);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 20);
             this.label13.TabIndex = 24;
@@ -472,16 +498,17 @@ namespace WindowsFormsUI.Formularios
             // TxtDireccion
             // 
             this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDireccion.Location = new System.Drawing.Point(132, 248);
+            this.TxtDireccion.Location = new System.Drawing.Point(132, 168);
+            this.TxtDireccion.Margin = new System.Windows.Forms.Padding(5);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(200, 27);
-            this.TxtDireccion.TabIndex = 23;
+            this.TxtDireccion.TabIndex = 12;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(43, 251);
+            this.label12.Location = new System.Drawing.Point(41, 171);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 22;
@@ -491,7 +518,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(787, 251);
+            this.label11.Location = new System.Drawing.Point(785, 171);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 20;
@@ -500,26 +527,28 @@ namespace WindowsFormsUI.Formularios
             // TxtSNombre
             // 
             this.TxtSNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSNombre.Location = new System.Drawing.Point(519, 77);
+            this.TxtSNombre.Location = new System.Drawing.Point(521, 57);
+            this.TxtSNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
-            this.TxtSNombre.TabIndex = 19;
+            this.TxtSNombre.TabIndex = 4;
             // 
             // DtpFNacimiento
             // 
             this.DtpFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DtpFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFNacimiento.Location = new System.Drawing.Point(519, 189);
+            this.DtpFNacimiento.Location = new System.Drawing.Point(521, 131);
+            this.DtpFNacimiento.Margin = new System.Windows.Forms.Padding(5);
             this.DtpFNacimiento.Name = "DtpFNacimiento";
             this.DtpFNacimiento.Size = new System.Drawing.Size(200, 27);
-            this.DtpFNacimiento.TabIndex = 18;
+            this.DtpFNacimiento.TabIndex = 10;
             this.DtpFNacimiento.Value = new System.DateTime(2021, 4, 19, 12, 32, 5, 0);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(357, 194);
+            this.label10.Location = new System.Drawing.Point(355, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 20);
             this.label10.TabIndex = 17;
@@ -533,16 +562,17 @@ namespace WindowsFormsUI.Formularios
             this.CmbDepartamentos.Items.AddRange(new object[] {
             "-- Seleccionar --",
             "Santa Ana"});
-            this.CmbDepartamentos.Location = new System.Drawing.Point(519, 248);
+            this.CmbDepartamentos.Location = new System.Drawing.Point(521, 168);
+            this.CmbDepartamentos.Margin = new System.Windows.Forms.Padding(5);
             this.CmbDepartamentos.Name = "CmbDepartamentos";
             this.CmbDepartamentos.Size = new System.Drawing.Size(200, 28);
-            this.CmbDepartamentos.TabIndex = 16;
+            this.CmbDepartamentos.TabIndex = 13;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(396, 251);
+            this.label9.Location = new System.Drawing.Point(394, 171);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 15;
@@ -551,24 +581,26 @@ namespace WindowsFormsUI.Formularios
             // TxtTApellido
             // 
             this.TxtTApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTApellido.Location = new System.Drawing.Point(879, 134);
+            this.TxtTApellido.Location = new System.Drawing.Point(879, 92);
+            this.TxtTApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(200, 27);
-            this.TxtTApellido.TabIndex = 12;
+            this.TxtTApellido.TabIndex = 8;
             // 
             // TxtPApellido
             // 
             this.TxtPApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPApellido.Location = new System.Drawing.Point(132, 134);
+            this.TxtPApellido.Location = new System.Drawing.Point(132, 94);
+            this.TxtPApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
-            this.TxtPApellido.TabIndex = 11;
+            this.TxtPApellido.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(756, 137);
+            this.label7.Location = new System.Drawing.Point(754, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 10;
@@ -578,7 +610,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(758, 80);
+            this.label6.Location = new System.Drawing.Point(756, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 9;
@@ -587,16 +619,17 @@ namespace WindowsFormsUI.Formularios
             // TxtSApellido
             // 
             this.TxtSApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSApellido.Location = new System.Drawing.Point(519, 134);
+            this.TxtSApellido.Location = new System.Drawing.Point(521, 94);
+            this.TxtSApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
-            this.TxtSApellido.TabIndex = 8;
+            this.TxtSApellido.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(377, 137);
+            this.label5.Location = new System.Drawing.Point(375, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 7;
@@ -622,7 +655,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(6, 137);
+            this.label3.Location = new System.Drawing.Point(4, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 4;
@@ -631,16 +664,17 @@ namespace WindowsFormsUI.Formularios
             // TxtTNombre
             // 
             this.TxtTNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTNombre.Location = new System.Drawing.Point(879, 77);
+            this.TxtTNombre.Location = new System.Drawing.Point(879, 55);
+            this.TxtTNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(200, 27);
-            this.TxtTNombre.TabIndex = 3;
+            this.TxtTNombre.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(379, 80);
+            this.label2.Location = new System.Drawing.Point(377, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 2;
@@ -649,16 +683,17 @@ namespace WindowsFormsUI.Formularios
             // TxtPNombre
             // 
             this.TxtPNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPNombre.Location = new System.Drawing.Point(132, 77);
+            this.TxtPNombre.Location = new System.Drawing.Point(132, 57);
+            this.TxtPNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
-            this.TxtPNombre.TabIndex = 1;
+            this.TxtPNombre.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(8, 80);
+            this.label1.Location = new System.Drawing.Point(6, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
@@ -693,10 +728,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.ForeColor = System.Drawing.Color.Black;
             this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrear.Location = new System.Drawing.Point(726, 704);
+            this.BtnCrear.Location = new System.Drawing.Point(726, 623);
             this.BtnCrear.Name = "BtnCrear";
             this.BtnCrear.Size = new System.Drawing.Size(148, 35);
-            this.BtnCrear.TabIndex = 19;
+            this.BtnCrear.TabIndex = 22;
             this.BtnCrear.Text = "Crear asociado";
             this.BtnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrear.UseVisualStyleBackColor = false;
@@ -712,10 +747,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(880, 704);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(880, 623);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
-            this.BtnLimpiarControles.TabIndex = 20;
+            this.BtnLimpiarControles.TabIndex = 21;
             this.BtnLimpiarControles.Text = "Limpiar";
             this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiarControles.UseVisualStyleBackColor = false;
@@ -734,10 +769,10 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
             this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
             this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(1000, 704);
+            this.BtnCancelar.Location = new System.Drawing.Point(1000, 623);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
-            this.BtnCancelar.TabIndex = 23;
+            this.BtnCancelar.TabIndex = 20;
             this.BtnCancelar.Text = "Cancelar";
             this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelar.UseVisualStyleBackColor = false;
@@ -748,7 +783,7 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1126, 747);
+            this.ClientSize = new System.Drawing.Size(1126, 666);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.BtnLimpiarControles);

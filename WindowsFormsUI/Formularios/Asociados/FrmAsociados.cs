@@ -11,7 +11,7 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmAsociados : Form
     {
-        private readonly AsociadoBLL _asociadoLogic;
+        private readonly SocioBLL _asociadoLogic;
         private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private int _filasMarcadas;
 
@@ -19,22 +19,22 @@ namespace WindowsFormsUI.Formularios
         {
             InitializeComponent();
 
-            _asociadoLogic = new AsociadoBLL();
+            _asociadoLogic = new SocioBLL();
             _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
         }
 
-        private void ActualizarListado(ref DataGridView dataGrid, IEnumerable<Asociado> asociados)
+        private void ActualizarListado(ref DataGridView dataGrid, IEnumerable<Socio> asociados)
         {
             dataGrid.Rows.Clear();
 
-            foreach (Asociado asociado in asociados)
+            foreach (Socio asociado in asociados)
             {
-                string nombreAsociado = string.Concat(asociado.PrimerNombre, " ", asociado.SegundoNombre, " ", asociado.TercerNombre, " ",
-                    asociado.PrimerApellido, " ", asociado.SegundoApellido, " ", asociado.TercerApellido);
+                string nombreAsociado = string.Concat(asociado.Pnombre, " ", asociado.Snombre, " ", asociado.Tnombre, " ",
+                    asociado.Papellido, " ", asociado.Sapellido, " ", asociado.Tapellido);
                 string genero = asociado.Genero == "F" ? "Femenino" : "Masculino";
                 string estado = asociado.Estado == "1" ? "Activo" : "Inactivo";
 
-                dataGrid.Rows.Add(false, asociado.AsociadoId, nombreAsociado, asociado.Dui, asociado.Nit, genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, estado);
+                dataGrid.Rows.Add(false, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, estado);
             }
 
             dataGrid.ClearSelection();
@@ -67,7 +67,7 @@ namespace WindowsFormsUI.Formularios
                 string busqueda = TxtBusqueda.Text;
                 var asociados = _asociadoLogic.List();
 
-                var resultados = from asociado in asociados where asociado.PrimerNombre.Contains(busqueda) || asociado.PrimerApellido.Contains(busqueda) || asociado.Dui == busqueda || asociado.Nit == busqueda || asociado.Telefono == busqueda select asociado;
+                var resultados = from asociado in asociados where asociado.Pnombre.Contains(busqueda) || asociado.Papellido.Contains(busqueda) || asociado.Dui == busqueda || asociado.Nit == busqueda || asociado.Telefono == busqueda select asociado;
 
                 ActualizarListado(ref DgvListado, resultados);
                 LLblQuitarBusqueda.Enabled = true;

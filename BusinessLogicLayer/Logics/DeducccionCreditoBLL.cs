@@ -58,6 +58,18 @@ namespace BusinessLogicLayer.Logics
             return true;
         }
 
+        public bool CreateMany(ICollection<DeduccionCredito> deduccionesCreditos)
+        {
+            _deduccioncreditoRepository.InsertMany(deduccionesCreditos);
+
+            if (_deduccioncreditoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public bool Edit(DeduccionCredito deduccioncredito)
         {
             try

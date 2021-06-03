@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class AsociadoRepository : IAsociadoRepository, IDisposable
+    public class SocioRepository : IAsociadoRepository, IDisposable
     {
         private AzocDbContext _context;
         private bool disposed = false;
@@ -25,13 +25,15 @@ namespace DataAccessLayer
 
             disposed = true;
         }
-        public AsociadoRepository(AzocDbContext context)
+
+        public SocioRepository(AzocDbContext context)
         {
             _context = context;
         }
-        public void DeleteAsociado(Asociado asociado)
+
+        public void DeleteAsociado(Socio asociado)
         {
-            _context.Asociados.Remove(asociado);
+            _context.Socios.Remove(asociado);
         }
 
         public void Dispose()
@@ -40,26 +42,28 @@ namespace DataAccessLayer
             GC.SuppressFinalize(this);
         }
 
-        public Asociado GetAsociadoById(int id)
+        public Socio GetAsociadoById(int id)
         {
-            return _context.Asociados.Where(a => a.AsociadoId == id)
+            return _context.Socios.Where(a => a.SocioId == id)
                 .Include(a => a.CategoriaAsociado)
                 .Include(a => a.Beneficiarios)
+                .Include(a => a.Creditos)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
 
-        public IEnumerable<Asociado> GetAsociados()
+        public IEnumerable<Socio> GetAsociados()
         {
-            return _context.Asociados.Include(a => a.CategoriaAsociado)
+            return _context.Socios.Include(a => a.CategoriaAsociado)
                 .Include(a => a.Beneficiarios)
+                .Include(a => a.Creditos)
                 .AsNoTracking()
                 .ToList();
         }
 
-        public void InsertAsociado(Asociado asociado)
+        public void InsertAsociado(Socio asociado)
         {
-            _context.Asociados.Add(asociado);
+            _context.Socios.Add(asociado);
         }
 
         public void Save()
@@ -67,7 +71,7 @@ namespace DataAccessLayer
             _context.SaveChanges();
         }
 
-        public void UpdateAsociado(Asociado asociado)
+        public void UpdateAsociado(Socio asociado)
         {
             _context.Entry(asociado).State = EntityState.Modified;
         }

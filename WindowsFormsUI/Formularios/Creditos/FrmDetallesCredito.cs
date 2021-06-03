@@ -30,7 +30,7 @@ namespace WindowsFormsUI.Formularios
 
         private void LlenarCampos()
         {
-            string nombreAsociado = string.Concat(_credito.Asociado.PrimerNombre, " ", _credito.Asociado.SegundoNombre, " ", _credito.Asociado.TercerNombre, " ", _credito.Asociado.PrimerApellido, " ", _credito.Asociado.SegundoApellido, " ", _credito.Asociado.TercerApellido);
+            string nombreAsociado = string.Concat(_credito.Socio.Pnombre, " ", _credito.Socio.Snombre, " ", _credito.Socio.Tnombre, " ", _credito.Socio.Papellido, " ", _credito.Socio.Sapellido, " ", _credito.Socio.Tapellido);
             int canceladas = 0;
             int pendientes = 0;
             int cuotas = 0;
@@ -44,10 +44,8 @@ namespace WindowsFormsUI.Formularios
             TxtCodigoAsociado.Text = _credito.AsociadoId.ToString();
             TxtCodigoCredito.Text = _credito.CreditoId.ToString();
             TxtMontoSolicitado.Text = string.Format("{0:C2}", _credito.Monto);
-            TxtFechaInicio.Text = _credito.FechaInicio.ToShortDateString();
-            TxtFechaAprobacion.Text = _credito.FechaAprobacion.ToShortDateString();
-            TxtPInteres.Text = string.Format("{0:N2}", _credito.Interes);
-            TxtPTramite.Text = string.Format("{0:C2}", _credito.Tramite);
+            TxtFechaInicio.Text = _credito.Inicio.ToShortDateString();
+            TxtFechaAprobacion.Text = _credito.Aprobacion.Value.ToShortDateString();
             TxtPlazo.Text = _credito.Plazo.ToString();
 
             foreach (Cuota cuota in _credito.Cuotas)
@@ -69,7 +67,7 @@ namespace WindowsFormsUI.Formularios
             TxtCanceladas.Text = canceladas.ToString();
 
             capital = _credito.Monto / cuotas;
-            interes = (_credito.Monto * (_credito.Interes / 100)) / 2;
+            //interes = (_credito.Monto * (_credito.Interes / 100)) / 2;
 
             TxtCapital.Text = string.Format("{0:C2}", capital);
             TxtInteres.Text = string.Format("{0:C2}", interes);
@@ -77,18 +75,18 @@ namespace WindowsFormsUI.Formularios
 
             deducciones = ObtenerDeducciones();
 
-            decimal deudaAdquirida = _credito.Monto + _credito.Tramite;
+            decimal deudaAdquirida = _credito.Monto; // + _credito.Tramite;
 
             TxtLiquidoRecibido.Text = string.Format("{0:C2}", (_credito.Monto - deducciones));
             TxtInteresAcumulado.Text = string.Format("{0:C2}", (interes * canceladas));
             TxtDeudaAdquirida.Text = string.Format("{0:C2}", deudaAdquirida);
             TxtSaldo.Text = string.Format("{0:C2}", (capital * pendientes));
 
-            foreach (Credito credito in _credito.Asociado.Creditos)
+            foreach (Credito credito in _credito.Socio.Creditos)
             {
                 if (credito.EstadoCreditoId == 2)
                 {
-                    deuda += (credito.Monto * (credito.Tramite / 100)) + credito.Monto;
+                    //deuda += (credito.Monto * (credito.Tramite / 100)) + credito.Monto;
                 }
             }
 

@@ -31,30 +31,30 @@ namespace WindowsFormsUI.Formularios
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.MTxtDui = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LlblVerDetallesAsociado = new System.Windows.Forms.LinkLabel();
             this.CmbAsociados = new System.Windows.Forms.ComboBox();
             this.TxtCodigoAsociado = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TxtDeudaTotal = new System.Windows.Forms.TextBox();
+            this.NudDeudaTotal = new System.Windows.Forms.NumericUpDown();
+            this.NudDeudaAdquirida = new System.Windows.Forms.NumericUpDown();
+            this.NudLiquidoRecibir = new System.Windows.Forms.NumericUpDown();
+            this.ChkAprobarCredito = new System.Windows.Forms.CheckBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.TxtDeudaAdquirida = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
             this.TxtCodigoCredito = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.TxtLiquidoRecibido = new System.Windows.Forms.TextBox();
-            this.NudPorcentajeTramite = new System.Windows.Forms.NumericUpDown();
+            this.NudMontoTramite = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.NudInteresCuota = new System.Windows.Forms.NumericUpDown();
+            this.NudCapitalCuota = new System.Windows.Forms.NumericUpDown();
+            this.NudMontoCuota = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.TxtInteres = new System.Windows.Forms.TextBox();
-            this.TxtCapital = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.TxtMontoCuota = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -81,17 +81,22 @@ namespace WindowsFormsUI.Formularios
             this.label7 = new System.Windows.Forms.Label();
             this.DtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.NudPorcentajeInteres = new System.Windows.Forms.NumericUpDown();
+            this.NudTasaInteres = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.BtnCrear = new System.Windows.Forms.Button();
             this.BtnLimpiarControles = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.EpControles = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ChkAprobarCredito = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeTramite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudDeudaTotal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudDeudaAdquirida)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudLiquidoRecibir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoTramite)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NudInteresCuota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudCapitalCuota)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoCuota)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudTotalDeducciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudAhorroSimultaneo)).BeginInit();
@@ -104,14 +109,13 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.NudPrestamoAnterior)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPlazo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudMontoSolicitado)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeInteres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudTasaInteres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpControles)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.MTxtDui);
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.LlblVerDetallesAsociado);
             this.groupBox1.Controls.Add(this.CmbAsociados);
             this.groupBox1.Controls.Add(this.TxtCodigoAsociado);
             this.groupBox1.Controls.Add(this.label2);
@@ -119,31 +123,22 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(781, 91);
+            this.groupBox1.Size = new System.Drawing.Size(781, 57);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asociado";
             // 
-            // MTxtDui
+            // LlblVerDetallesAsociado
             // 
-            this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.MTxtDui.Location = new System.Drawing.Point(516, 53);
-            this.MTxtDui.Mask = "00000000-0";
-            this.MTxtDui.Name = "MTxtDui";
-            this.MTxtDui.PromptChar = '-';
-            this.MTxtDui.ReadOnly = true;
-            this.MTxtDui.Size = new System.Drawing.Size(259, 27);
-            this.MTxtDui.TabIndex = 25;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(469, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 20);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "DUI :";
+            this.LlblVerDetallesAsociado.AutoSize = true;
+            this.LlblVerDetallesAsociado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LlblVerDetallesAsociado.Location = new System.Drawing.Point(652, 23);
+            this.LlblVerDetallesAsociado.Name = "LlblVerDetallesAsociado";
+            this.LlblVerDetallesAsociado.Size = new System.Drawing.Size(117, 20);
+            this.LlblVerDetallesAsociado.TabIndex = 24;
+            this.LlblVerDetallesAsociado.TabStop = true;
+            this.LlblVerDetallesAsociado.Text = "Ver más detalles";
+            this.LlblVerDetallesAsociado.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LlblVerDetallesAsociado_LinkClicked);
             // 
             // CmbAsociados
             // 
@@ -166,7 +161,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtCodigoAsociado.Location = new System.Drawing.Point(516, 20);
             this.TxtCodigoAsociado.Name = "TxtCodigoAsociado";
             this.TxtCodigoAsociado.ReadOnly = true;
-            this.TxtCodigoAsociado.Size = new System.Drawing.Size(259, 27);
+            this.TxtCodigoAsociado.Size = new System.Drawing.Size(129, 27);
             this.TxtCodigoAsociado.TabIndex = 3;
             // 
             // label2
@@ -191,16 +186,16 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.NudDeudaTotal);
+            this.groupBox2.Controls.Add(this.NudDeudaAdquirida);
+            this.groupBox2.Controls.Add(this.NudLiquidoRecibir);
             this.groupBox2.Controls.Add(this.ChkAprobarCredito);
-            this.groupBox2.Controls.Add(this.TxtDeudaTotal);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.TxtDeudaAdquirida);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.BtnCalcular);
             this.groupBox2.Controls.Add(this.TxtCodigoCredito);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.TxtLiquidoRecibido);
-            this.groupBox2.Controls.Add(this.NudPorcentajeTramite);
+            this.groupBox2.Controls.Add(this.NudMontoTramite);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.groupBox4);
@@ -211,25 +206,68 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.DtpFechaInicio);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.NudPorcentajeInteres);
+            this.groupBox2.Controls.Add(this.NudTasaInteres);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 109);
+            this.groupBox2.Location = new System.Drawing.Point(12, 75);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(781, 484);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Crédito";
             // 
-            // TxtDeudaTotal
+            // NudDeudaTotal
             // 
-            this.TxtDeudaTotal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeudaTotal.Location = new System.Drawing.Point(632, 339);
-            this.TxtDeudaTotal.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtDeudaTotal.Name = "TxtDeudaTotal";
-            this.TxtDeudaTotal.ReadOnly = true;
-            this.TxtDeudaTotal.Size = new System.Drawing.Size(143, 27);
-            this.TxtDeudaTotal.TabIndex = 30;
+            this.NudDeudaTotal.DecimalPlaces = 2;
+            this.NudDeudaTotal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudDeudaTotal.Location = new System.Drawing.Point(630, 340);
+            this.NudDeudaTotal.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudDeudaTotal.Name = "NudDeudaTotal";
+            this.NudDeudaTotal.Size = new System.Drawing.Size(145, 27);
+            this.NudDeudaTotal.TabIndex = 36;
+            // 
+            // NudDeudaAdquirida
+            // 
+            this.NudDeudaAdquirida.DecimalPlaces = 2;
+            this.NudDeudaAdquirida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudDeudaAdquirida.Location = new System.Drawing.Point(630, 303);
+            this.NudDeudaAdquirida.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudDeudaAdquirida.Name = "NudDeudaAdquirida";
+            this.NudDeudaAdquirida.Size = new System.Drawing.Size(145, 27);
+            this.NudDeudaAdquirida.TabIndex = 35;
+            // 
+            // NudLiquidoRecibir
+            // 
+            this.NudLiquidoRecibir.DecimalPlaces = 2;
+            this.NudLiquidoRecibir.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudLiquidoRecibir.Location = new System.Drawing.Point(630, 266);
+            this.NudLiquidoRecibir.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudLiquidoRecibir.Name = "NudLiquidoRecibir";
+            this.NudLiquidoRecibir.Size = new System.Drawing.Size(145, 27);
+            this.NudLiquidoRecibir.TabIndex = 34;
+            // 
+            // ChkAprobarCredito
+            // 
+            this.ChkAprobarCredito.AutoSize = true;
+            this.ChkAprobarCredito.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkAprobarCredito.Location = new System.Drawing.Point(328, 22);
+            this.ChkAprobarCredito.Name = "ChkAprobarCredito";
+            this.ChkAprobarCredito.Size = new System.Drawing.Size(134, 24);
+            this.ChkAprobarCredito.TabIndex = 33;
+            this.ChkAprobarCredito.Text = "Aprobar crédito";
+            this.ChkAprobarCredito.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -240,16 +278,6 @@ namespace WindowsFormsUI.Formularios
             this.label15.Size = new System.Drawing.Size(95, 20);
             this.label15.TabIndex = 31;
             this.label15.Text = "Deuda total :";
-            // 
-            // TxtDeudaAdquirida
-            // 
-            this.TxtDeudaAdquirida.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDeudaAdquirida.Location = new System.Drawing.Point(632, 302);
-            this.TxtDeudaAdquirida.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtDeudaAdquirida.Name = "TxtDeudaAdquirida";
-            this.TxtDeudaAdquirida.ReadOnly = true;
-            this.TxtDeudaAdquirida.Size = new System.Drawing.Size(143, 27);
-            this.TxtDeudaAdquirida.TabIndex = 28;
             // 
             // label9
             // 
@@ -299,29 +327,19 @@ namespace WindowsFormsUI.Formularios
             this.label13.TabIndex = 22;
             this.label13.Text = "Código :";
             // 
-            // TxtLiquidoRecibido
+            // NudMontoTramite
             // 
-            this.TxtLiquidoRecibido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtLiquidoRecibido.Location = new System.Drawing.Point(632, 265);
-            this.TxtLiquidoRecibido.Margin = new System.Windows.Forms.Padding(5);
-            this.TxtLiquidoRecibido.Name = "TxtLiquidoRecibido";
-            this.TxtLiquidoRecibido.ReadOnly = true;
-            this.TxtLiquidoRecibido.Size = new System.Drawing.Size(143, 27);
-            this.TxtLiquidoRecibido.TabIndex = 8;
-            // 
-            // NudPorcentajeTramite
-            // 
-            this.NudPorcentajeTramite.DecimalPlaces = 2;
-            this.NudPorcentajeTramite.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NudPorcentajeTramite.Location = new System.Drawing.Point(463, 90);
-            this.NudPorcentajeTramite.Maximum = new decimal(new int[] {
+            this.NudMontoTramite.DecimalPlaces = 2;
+            this.NudMontoTramite.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudMontoTramite.Location = new System.Drawing.Point(463, 90);
+            this.NudMontoTramite.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NudPorcentajeTramite.Name = "NudPorcentajeTramite";
-            this.NudPorcentajeTramite.Size = new System.Drawing.Size(110, 27);
-            this.NudPorcentajeTramite.TabIndex = 21;
+            this.NudMontoTramite.Name = "NudMontoTramite";
+            this.NudMontoTramite.Size = new System.Drawing.Size(110, 27);
+            this.NudMontoTramite.TabIndex = 21;
             // 
             // label14
             // 
@@ -345,11 +363,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.NudInteresCuota);
+            this.groupBox4.Controls.Add(this.NudCapitalCuota);
+            this.groupBox4.Controls.Add(this.NudMontoCuota);
             this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.TxtInteres);
-            this.groupBox4.Controls.Add(this.TxtCapital);
             this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.TxtMontoCuota);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.Location = new System.Drawing.Point(388, 123);
@@ -358,6 +376,48 @@ namespace WindowsFormsUI.Formularios
             this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cuota";
+            // 
+            // NudInteresCuota
+            // 
+            this.NudInteresCuota.DecimalPlaces = 2;
+            this.NudInteresCuota.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudInteresCuota.Location = new System.Drawing.Point(92, 94);
+            this.NudInteresCuota.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudInteresCuota.Name = "NudInteresCuota";
+            this.NudInteresCuota.Size = new System.Drawing.Size(289, 27);
+            this.NudInteresCuota.TabIndex = 35;
+            // 
+            // NudCapitalCuota
+            // 
+            this.NudCapitalCuota.DecimalPlaces = 2;
+            this.NudCapitalCuota.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudCapitalCuota.Location = new System.Drawing.Point(92, 58);
+            this.NudCapitalCuota.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudCapitalCuota.Name = "NudCapitalCuota";
+            this.NudCapitalCuota.Size = new System.Drawing.Size(289, 27);
+            this.NudCapitalCuota.TabIndex = 34;
+            // 
+            // NudMontoCuota
+            // 
+            this.NudMontoCuota.DecimalPlaces = 2;
+            this.NudMontoCuota.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudMontoCuota.Location = new System.Drawing.Point(92, 21);
+            this.NudMontoCuota.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.NudMontoCuota.Name = "NudMontoCuota";
+            this.NudMontoCuota.Size = new System.Drawing.Size(289, 27);
+            this.NudMontoCuota.TabIndex = 33;
             // 
             // label12
             // 
@@ -369,24 +429,6 @@ namespace WindowsFormsUI.Formularios
             this.label12.TabIndex = 7;
             this.label12.Text = "Interes :";
             // 
-            // TxtInteres
-            // 
-            this.TxtInteres.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtInteres.Location = new System.Drawing.Point(92, 97);
-            this.TxtInteres.Name = "TxtInteres";
-            this.TxtInteres.ReadOnly = true;
-            this.TxtInteres.Size = new System.Drawing.Size(289, 27);
-            this.TxtInteres.TabIndex = 6;
-            // 
-            // TxtCapital
-            // 
-            this.TxtCapital.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtCapital.Location = new System.Drawing.Point(92, 56);
-            this.TxtCapital.Name = "TxtCapital";
-            this.TxtCapital.ReadOnly = true;
-            this.TxtCapital.Size = new System.Drawing.Size(289, 27);
-            this.TxtCapital.TabIndex = 5;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -396,15 +438,6 @@ namespace WindowsFormsUI.Formularios
             this.label11.Size = new System.Drawing.Size(67, 20);
             this.label11.TabIndex = 4;
             this.label11.Text = " Capital :";
-            // 
-            // TxtMontoCuota
-            // 
-            this.TxtMontoCuota.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtMontoCuota.Location = new System.Drawing.Point(92, 20);
-            this.TxtMontoCuota.Name = "TxtMontoCuota";
-            this.TxtMontoCuota.ReadOnly = true;
-            this.TxtMontoCuota.Size = new System.Drawing.Size(289, 27);
-            this.TxtMontoCuota.TabIndex = 3;
             // 
             // label10
             // 
@@ -731,29 +764,29 @@ namespace WindowsFormsUI.Formularios
             this.label5.TabIndex = 6;
             this.label5.Text = "Fecha de Inicio :";
             // 
-            // NudPorcentajeInteres
+            // NudTasaInteres
             // 
-            this.NudPorcentajeInteres.DecimalPlaces = 2;
-            this.NudPorcentajeInteres.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.NudPorcentajeInteres.Location = new System.Drawing.Point(145, 90);
-            this.NudPorcentajeInteres.Maximum = new decimal(new int[] {
+            this.NudTasaInteres.DecimalPlaces = 2;
+            this.NudTasaInteres.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.NudTasaInteres.Location = new System.Drawing.Point(145, 90);
+            this.NudTasaInteres.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
-            this.NudPorcentajeInteres.Name = "NudPorcentajeInteres";
-            this.NudPorcentajeInteres.Size = new System.Drawing.Size(171, 27);
-            this.NudPorcentajeInteres.TabIndex = 5;
+            this.NudTasaInteres.Name = "NudTasaInteres";
+            this.NudTasaInteres.Size = new System.Drawing.Size(171, 27);
+            this.NudTasaInteres.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(42, 92);
+            this.label4.Location = new System.Drawing.Point(26, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(113, 20);
             this.label4.TabIndex = 4;
-            this.label4.Text = "% de Interes :";
+            this.label4.Text = "Tasa de Interes :";
             // 
             // BtnCrear
             // 
@@ -765,7 +798,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.ForeColor = System.Drawing.Color.Black;
             this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.salary24px;
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrear.Location = new System.Drawing.Point(420, 599);
+            this.BtnCrear.Location = new System.Drawing.Point(420, 565);
             this.BtnCrear.Name = "BtnCrear";
             this.BtnCrear.Size = new System.Drawing.Size(133, 35);
             this.BtnCrear.TabIndex = 16;
@@ -784,7 +817,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.ForeColor = System.Drawing.Color.Black;
             this.BtnLimpiarControles.Image = global::WindowsFormsUI.Properties.Resources.household;
             this.BtnLimpiarControles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnLimpiarControles.Location = new System.Drawing.Point(559, 599);
+            this.BtnLimpiarControles.Location = new System.Drawing.Point(559, 565);
             this.BtnLimpiarControles.Name = "BtnLimpiarControles";
             this.BtnLimpiarControles.Size = new System.Drawing.Size(114, 35);
             this.BtnLimpiarControles.TabIndex = 17;
@@ -803,7 +836,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
             this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
             this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(679, 599);
+            this.BtnCancelar.Location = new System.Drawing.Point(679, 565);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
             this.BtnCancelar.TabIndex = 24;
@@ -817,23 +850,12 @@ namespace WindowsFormsUI.Formularios
             this.EpControles.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.EpControles.ContainerControl = this;
             // 
-            // ChkAprobarCredito
-            // 
-            this.ChkAprobarCredito.AutoSize = true;
-            this.ChkAprobarCredito.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ChkAprobarCredito.Location = new System.Drawing.Point(328, 22);
-            this.ChkAprobarCredito.Name = "ChkAprobarCredito";
-            this.ChkAprobarCredito.Size = new System.Drawing.Size(134, 24);
-            this.ChkAprobarCredito.TabIndex = 33;
-            this.ChkAprobarCredito.Text = "Aprobar crédito";
-            this.ChkAprobarCredito.UseVisualStyleBackColor = true;
-            // 
             // FrmCrearCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(805, 644);
+            this.ClientSize = new System.Drawing.Size(805, 609);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnCrear);
             this.Controls.Add(this.BtnLimpiarControles);
@@ -848,9 +870,15 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeTramite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudDeudaTotal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudDeudaAdquirida)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudLiquidoRecibir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoTramite)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NudInteresCuota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudCapitalCuota)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudMontoCuota)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NudTotalDeducciones)).EndInit();
@@ -864,7 +892,7 @@ namespace WindowsFormsUI.Formularios
             ((System.ComponentModel.ISupportInitialize)(this.NudPrestamoAnterior)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudPlazo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NudMontoSolicitado)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NudPorcentajeInteres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NudTasaInteres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EpControles)).EndInit();
             this.ResumeLayout(false);
 
@@ -879,10 +907,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox TxtInteres;
-        private System.Windows.Forms.TextBox TxtCapital;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox TxtMontoCuota;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown NudPlazo;
         private System.Windows.Forms.Label label8;
@@ -890,18 +915,15 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker DtpFechaInicio;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown NudPorcentajeInteres;
+        private System.Windows.Forms.NumericUpDown NudTasaInteres;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox CmbAsociados;
         private System.Windows.Forms.Button BtnCrear;
         private System.Windows.Forms.Button BtnLimpiarControles;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.MaskedTextBox MTxtDui;
         private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.NumericUpDown NudPorcentajeTramite;
+        private System.Windows.Forms.NumericUpDown NudMontoTramite;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox TxtLiquidoRecibido;
         private System.Windows.Forms.ErrorProvider EpControles;
         private System.Windows.Forms.TextBox TxtCodigoCredito;
         private System.Windows.Forms.Label label13;
@@ -916,9 +938,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.NumericUpDown NudInteresSobrePrestamo;
         private System.Windows.Forms.NumericUpDown NudTramites;
         private System.Windows.Forms.NumericUpDown NudPrestamoAnterior;
-        private System.Windows.Forms.TextBox TxtDeudaTotal;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox TxtDeudaAdquirida;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
@@ -930,5 +950,12 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox ChkAprobarCredito;
+        private System.Windows.Forms.LinkLabel LlblVerDetallesAsociado;
+        private System.Windows.Forms.NumericUpDown NudDeudaTotal;
+        private System.Windows.Forms.NumericUpDown NudDeudaAdquirida;
+        private System.Windows.Forms.NumericUpDown NudLiquidoRecibir;
+        private System.Windows.Forms.NumericUpDown NudInteresCuota;
+        private System.Windows.Forms.NumericUpDown NudCapitalCuota;
+        private System.Windows.Forms.NumericUpDown NudMontoCuota;
     }
 }
