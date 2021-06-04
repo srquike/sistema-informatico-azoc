@@ -13,14 +13,18 @@ namespace WindowsFormsUI.Formularios
     {
         private readonly SocioBLL _asociadoLogic;
         private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
+        private readonly RegistroUsuarioBLL _registroUsuarioBLL;
+        private readonly Usuario _usuarioLogeado;
         private int _filasMarcadas;
 
-        public FrmAsociados()
+        public FrmAsociados(Usuario usuarioLogeado)
         {
             InitializeComponent();
 
             _asociadoLogic = new SocioBLL();
             _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
+            _registroUsuarioBLL = new RegistroUsuarioBLL();
+            _usuarioLogeado = usuarioLogeado;
         }
 
         private void ActualizarListado(ref DataGridView dataGrid, IEnumerable<Socio> asociados)
@@ -54,6 +58,22 @@ namespace WindowsFormsUI.Formularios
 
             if (frmCrear.DialogResult == DialogResult.OK)
             {
+                if (_usuarioLogeado != null)
+                {
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 10,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Creación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 ActualizarListado(ref DgvListado, _asociadoLogic.List());
             }
         }
@@ -168,6 +188,22 @@ namespace WindowsFormsUI.Formularios
 
                         if (frmEditar.DialogResult == DialogResult.OK)
                         {
+                            if (_usuarioLogeado != null)
+                            {
+                                RegistroUsuario registro = new RegistroUsuario
+                                {
+                                    UsuarioId = _usuarioLogeado.UsuarioId,
+                                    RegistroId = 12,
+                                    Fecha = DateTime.Now,
+                                    Informacion = $"Modificación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                };
+
+                                if (_registroUsuarioBLL.Create(registro) == false)
+                                {
+                                    MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+
                             ActualizarListado(ref DgvListado, _asociadoLogic.List());
                         }
                     }
@@ -175,8 +211,30 @@ namespace WindowsFormsUI.Formularios
                     {
                         if (MessageBox.Show("¿Esta seguro de querer eliminar al socio del sistema?", "Eliminación de socio: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            _asociadoLogic.Delete(asociadoId);
-                            ActualizarListado(ref dataGrid, _asociadoLogic.List());
+                            if (_asociadoLogic.Delete(asociadoId))
+                            {
+                                if (_usuarioLogeado != null)
+                                {
+                                    RegistroUsuario registro = new RegistroUsuario
+                                    {
+                                        UsuarioId = _usuarioLogeado.UsuarioId,
+                                        RegistroId = 11,
+                                        Fecha = DateTime.Now,
+                                        Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                    };
+
+                                    if (_registroUsuarioBLL.Create(registro) == false)
+                                    {
+                                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
+                                ActualizarListado(ref dataGrid, _asociadoLogic.List());
+                            }
+                            else
+                            {
+                                MessageBox.Show("No fue posible eliminar al socio, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -212,7 +270,30 @@ namespace WindowsFormsUI.Formularios
                             if ((bool)fila.Cells["Seleccion"].Value == true)
                             {
                                 int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                                _asociadoLogic.Delete(id);
+                                string codigo = fila.Cells["Codigo"].Value.ToString();
+
+                                if (_asociadoLogic.Delete(id))
+                                {
+                                    if (_usuarioLogeado != null)
+                                    {
+                                        RegistroUsuario registro = new RegistroUsuario
+                                        {
+                                            UsuarioId = _usuarioLogeado.UsuarioId,
+                                            RegistroId = 11,
+                                            Fecha = DateTime.Now,
+                                            Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                        };
+
+                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                        {
+                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"No fue posible eliminar al socio {codigo}, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
 

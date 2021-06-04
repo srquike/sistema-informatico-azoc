@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,7 +109,7 @@ namespace WindowsFormsUI.Formularios
                                             {
                                                 ErrPControles.Clear();
                                                 _continuar = true;
-                                            }                                            
+                                            }
                                         }
                                     }
                                 }
@@ -181,14 +181,20 @@ namespace WindowsFormsUI.Formularios
                         empleado.Genero = "M";
                     }
 
-                    _empleadoLogic.Create(empleado);
+                    if (_empleadoLogic.Create(empleado))
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible crear al empleado, por favor intente de nuevo!", "Crear empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     MessageBox.Show("Ya exite un empleado con el mismo número de DUI, NIT o Teléfono!", "Crear empleado: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }              
+                }
             }
         }
 

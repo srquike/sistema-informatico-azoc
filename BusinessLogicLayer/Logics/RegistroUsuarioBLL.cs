@@ -22,15 +22,15 @@ namespace BusinessLogicLayer.Logics
 
             if (registroUsuario != null)
             {
-                try
-                {
-                    _registroUsuarioRepository.DeleteRegistroUsuario(registroUsuario);
-                    _registroUsuarioRepository.Save();
-                    return true;
-                }
-                catch (Exception)
+                _registroUsuarioRepository.DeleteRegistroUsuario(registroUsuario);
+
+                if (_registroUsuarioRepository.Save() == 0)
                 {
                     return false;
+                }
+                else
+                {
+                    return true;
                 }
             }
 
@@ -44,27 +44,38 @@ namespace BusinessLogicLayer.Logics
 
         public RegistroUsuario Find(int id)
         {
-            return _registroUsuarioRepository.GetRegistroUsuarioById(id);
+            RegistroUsuario registro = _registroUsuarioRepository.GetRegistroUsuarioById(id);
+
+            if (registro != null)
+            {
+                return registro;
+            }
+
+            return null;
         }
 
-        public void Create(RegistroUsuario registroUsuario)
+        public bool Create(RegistroUsuario registroUsuario)
         {
             _registroUsuarioRepository.InsertRegistroUsuario(registroUsuario);
-            _registroUsuarioRepository.Save();
+
+            if (_registroUsuarioRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool Edit(RegistroUsuario registroUsuario)
         {
-            try
-            {
-                _registroUsuarioRepository.UpdateRegistroUsuario(registroUsuario);
-                _registroUsuarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _registroUsuarioRepository.UpdateRegistroUsuario(registroUsuario);
+
+            if (_registroUsuarioRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
     }
 }

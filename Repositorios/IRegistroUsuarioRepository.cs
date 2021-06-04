@@ -12,6 +12,6 @@ namespace RepositoryLayer
         void InsertRegistroUsuario(RegistroUsuario registroUsuario);
         void DeleteRegistroUsuario(RegistroUsuario registroUsuario);
         void UpdateRegistroUsuario(RegistroUsuario registroUsuario);
-        void Save();
+        int Save();
     }
 }

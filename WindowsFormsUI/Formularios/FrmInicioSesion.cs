@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -11,9 +12,8 @@ namespace WindowsFormsUI.Formularios
     {
         private UsuarioBLL _usuarioLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioLogic;
-        private bool _continuar = false;
         private Usuario _usuarioLogin;
-
+        private const string archivoConfiguracion = "configuracion.bin";
 
         public FrmInicioSesion()
         {
@@ -23,7 +23,7 @@ namespace WindowsFormsUI.Formularios
             _registroUsuarioLogic = new RegistroUsuarioBLL();
         }
 
-        private void ValidarControles()
+        private bool ValidarEntradas()
         {
             if (MTxtUsuario.MaskFull != true)
             {
@@ -40,9 +40,11 @@ namespace WindowsFormsUI.Formularios
                 else
                 {
                     ErrPClave.Clear();
-                    _continuar = true;
+                    return true;
                 }
             }
+
+            return false;
         }
 
         private bool AutenticarUsuario(string password, string nombre)
@@ -57,7 +59,7 @@ namespace WindowsFormsUI.Formularios
                     _usuarioLogin.UltimoAcceso = DateTime.Now;
 
                     _usuarioLogic.Edit(_usuarioLogin, false);
-                    
+
                     return true;
                 }
                 else
@@ -83,11 +85,26 @@ namespace WindowsFormsUI.Formularios
             MTxtUsuario.Focus();
         }
 
-        private bool EsAdministrador()
+        private bool AutenticarUsuarioAdministrador(string clave, string nombre)
         {
-            if (MTxtUsuario.Text == "000000000" && TxtClave.Text == "admin")
+            if (File.Exists(archivoConfiguracion))
             {
-                return true;
+                string claveConfig;
+                string nombreConfig;
+
+                using (FileStream stream = new FileStream(archivoConfiguracion, FileMode.Open, FileAccess.Read))
+                {
+                    using (BinaryReader reader = new BinaryReader(stream))
+                    {
+                        claveConfig = reader.ReadString();
+                        nombreConfig = reader.ReadString();
+
+                        if (claveConfig.Equals(clave) && nombreConfig.Equals(nombre))
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
 
             return false;
@@ -95,19 +112,20 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnIngresar_Click(object sender, EventArgs e)
         {
-            if (EsAdministrador())
+            if (ValidarEntradas())
             {
-                MostrarFormularioPrincipal();
-            }
-            else
-            {
-                ValidarControles();
+                string password = TxtClave.Text;
+                string nombre = MTxtUsuario.Text;
 
-                if (_continuar)
+                if (ChkAdministrador.Checked)
                 {
-                    string password = TxtClave.Text;
-                    string nombre = MTxtUsuario.Text;
-
+                    if (AutenticarUsuarioAdministrador(password, nombre))
+                    {
+                        MostrarFormularioPrincipal();
+                    }
+                }
+                else
+                {
                     if (AutenticarUsuario(password, nombre))
                     {
                         RegistroUsuario registro = new RegistroUsuario
@@ -118,7 +136,10 @@ namespace WindowsFormsUI.Formularios
                             Informacion = $"Inicio de sesión del usuario {_usuarioLogin.Nombre}"
                         };
 
-                        _registroUsuarioLogic.Create(registro);
+                        if (_registroUsuarioLogic.Create(registro) == false)
+                        {
+                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
                         MostrarFormularioPrincipal();
                     }
@@ -134,6 +155,7 @@ namespace WindowsFormsUI.Formularios
 
             if (frmPrincipal.DialogResult == DialogResult.Abort)
             {
+                frmPrincipal.Dispose();
                 Show();
                 LimpiarControles();
             }
@@ -185,6 +207,7 @@ namespace WindowsFormsUI.Formularios
             if (frmRecuperararClave.DialogResult == DialogResult.OK)
             {
                 frmRecuperararClave.Close();
+                TxtClave.Clear();
                 MTxtUsuario.Focus();
             }
         }

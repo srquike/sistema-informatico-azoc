@@ -11,6 +11,6 @@ namespace RepositoryLayer
         void InsertEmpleado(Empleado empleado);
         void DeleteEmpleado(Empleado empleado);
         void UpdateEmpleado(Empleado empleado);
-        void Save();
+        int Save();
     }
 }

@@ -22,7 +22,15 @@ namespace BusinessLogicLayer.Logics
             if (empleado != null)
             {
                 _empleadoRepository.DeleteEmpleado(empleado);
-                _empleadoRepository.Save();
+
+                if (_empleadoRepository.Save() == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -38,16 +46,28 @@ namespace BusinessLogicLayer.Logics
             return _empleadoRepository.GetEmpleadoById(id);
         }
 
-        public void Create(Empleado empleado)
+        public bool Create(Empleado empleado)
         {
             _empleadoRepository.InsertEmpleado(empleado);
-            _empleadoRepository.Save();
+
+            if (_empleadoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
-        public void Edit(Empleado empleado)
+        public bool Edit(Empleado empleado)
         {
             _empleadoRepository.UpdateEmpleado(empleado);
-            _empleadoRepository.Save();
+
+            if (_empleadoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

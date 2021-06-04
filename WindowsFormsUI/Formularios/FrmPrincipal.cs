@@ -10,29 +10,36 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmPrincipal : Form
     {
-        private Usuario _usuario;
+        private Usuario _usuarioLogeado;
         private RegistroUsuarioBLL _registroUsuarioLogic;
         private AdministracionCustomMenuStrip administracionCustomMenuStrip;
         private CreditosCustomMenuStrip creditosCustomMenuStrip;
+
+        #region Inicializar formularios
+        private FrmUsuarios _frmUsuarios = null;
+        private FrmEmpleados _frmEmpleados = null;
+        private FrmCreditos _frmCreditos = null;
+        private FrmAsociados _frmAsociados = null;
+        #endregion
 
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
             CargarControlesPersonalizados();
 
-            _usuario = usuario;
+            _usuarioLogeado = usuario;
             _registroUsuarioLogic = new RegistroUsuarioBLL();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            if (_usuario != null)
+            if (_usuarioLogeado != null)
             {
-                string nombreEmpleado = $"{_usuario.Empleado.PrimerNombre} {_usuario.Empleado.SegundoNombre} {_usuario.Empleado.TercerNombre} {_usuario.Empleado.PrimerApellido} {_usuario.Empleado.SegundoApellido} {_usuario.Empleado.TercerApellido}";
+                string nombreEmpleado = $"{_usuarioLogeado.Empleado.PrimerNombre} {_usuarioLogeado.Empleado.SegundoNombre} {_usuarioLogeado.Empleado.TercerNombre} {_usuarioLogeado.Empleado.PrimerApellido} {_usuarioLogeado.Empleado.SegundoApellido} {_usuarioLogeado.Empleado.TercerApellido}";
 
                 string extension = ".jpeg";
                 string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
-                string archivo = string.Concat(ruta, _usuario.Nombre, extension);
+                string archivo = string.Concat(ruta, _usuarioLogeado.Nombre, extension);
 
                 if (File.Exists(archivo))
                 {
@@ -43,12 +50,12 @@ namespace WindowsFormsUI.Formularios
                 }
                 else
                 {
-                    PctAvatar.Image = _usuario.Empleado.Genero == "F"
+                    PctAvatar.Image = _usuarioLogeado.Empleado.Genero == "F"
                         ? Properties.Resources.female_avatar_default
                         : Properties.Resources.male_avatar_default;
                 }
 
-                LblSaludo.Text = _usuario.Empleado.Genero == "F" ? "BIENVENIDA" : "BIENVENIDO";
+                LblSaludo.Text = _usuarioLogeado.Empleado.Genero == "F" ? "BIENVENIDA" : "BIENVENIDO";
 
                 TxtNombreEmpleado.Text = nombreEmpleado;
             }
@@ -67,17 +74,20 @@ namespace WindowsFormsUI.Formularios
             }
             else
             {
-                if (_usuario != null)
+                if (_usuarioLogeado != null)
                 {
                     RegistroUsuario registro = new RegistroUsuario
                     {
-                        UsuarioId = _usuario.UsuarioId,
+                        UsuarioId = _usuarioLogeado.UsuarioId,
                         RegistroId = 2,
                         Fecha = DateTime.Now,
-                        Informacion = $"Cierre de sesión del usuario {_usuario.Nombre}"
+                        Informacion = $"Cierre de sesión del usuario {_usuarioLogeado.Nombre}"
                     };
 
-                    _registroUsuarioLogic.Create(registro);
+                    if (_registroUsuarioLogic.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                     DialogResult = DialogResult.Abort;
                 }
@@ -119,36 +129,88 @@ namespace WindowsFormsUI.Formularios
         {
             administracionCustomMenuStrip.Visible = false;
 
-            FrmUsuarios frmUsuarios = new FrmUsuarios(_usuario);
-            frmUsuarios.MdiParent = this;
-            frmUsuarios.Show();
+            if (_frmUsuarios == null)
+            {
+                _frmUsuarios = new FrmUsuarios(_usuarioLogeado);
+                _frmUsuarios.MdiParent = this;
+                _frmUsuarios.FormClosed += new FormClosedEventHandler(FrmUsuarios_Closed);
+                _frmUsuarios.Show();
+            }
+            else
+            {
+                _frmUsuarios.Activate();
+            }
+        }
+
+        private void FrmUsuarios_Closed(object sender, EventArgs e)
+        {
+            _frmUsuarios = null;
         }
 
         private void BtnEmpleados_Click(object sender, EventArgs e)
         {
             administracionCustomMenuStrip.Visible = false;
 
-            FrmEmpleados frmEmpleados = new FrmEmpleados();
-            frmEmpleados.MdiParent = this;
-            frmEmpleados.Show();
+            if (_frmEmpleados == null)
+            {
+                _frmEmpleados = new FrmEmpleados(_usuarioLogeado);
+                _frmEmpleados.MdiParent = this;
+                _frmEmpleados.FormClosed += new FormClosedEventHandler(FrmEmpleados_Closed);
+                _frmEmpleados.Show();
+            }
+            else
+            {
+                _frmEmpleados.Activate();
+            }
+        }
+
+        private void FrmEmpleados_Closed(object sender, EventArgs e)
+        {
+            _frmEmpleados = null;
         }
 
         private void BtnCreditos_Click(object sender, EventArgs e)
         {
             creditosCustomMenuStrip.Visible = false;
 
-            FrmCreditos frmCreditos = new FrmCreditos();
-            frmCreditos.MdiParent = this;
-            frmCreditos.Show();
+            if (_frmCreditos == null)
+            {
+                _frmCreditos = new FrmCreditos(_usuarioLogeado);
+                _frmCreditos.MdiParent = this;
+                _frmCreditos.FormClosed += new FormClosedEventHandler(FrmCreditos_Closed);
+                _frmCreditos.Show();
+            }
+            else
+            {
+                _frmCreditos.Activate();
+            }
+        }
+
+        private void FrmCreditos_Closed(object sender, EventArgs e)
+        {
+            _frmCreditos = null;
         }
 
         private void BtnAsociados_Click(object sender, EventArgs e)
         {
             creditosCustomMenuStrip.Visible = false;
 
-            FrmAsociados frmAsociados = new FrmAsociados();
-            frmAsociados.MdiParent = this;
-            frmAsociados.Show();
+            if (_frmAsociados == null)
+            {
+                _frmAsociados = new FrmAsociados(_usuarioLogeado);
+                _frmAsociados.MdiParent = this;
+                _frmAsociados.FormClosed += new FormClosedEventHandler(FrmAsociados_Closed);
+                _frmAsociados.Show();
+            }
+            else
+            {
+                _frmAsociados.Activate();
+            }
+        }
+
+        private void FrmAsociados_Closed(object sende, EventArgs e)
+        {
+            _frmAsociados = null;
         }
 
         private void AdministracionCustomMenuStrip_Leave(object sender, EventArgs e)

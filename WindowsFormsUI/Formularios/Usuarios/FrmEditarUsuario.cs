@@ -47,7 +47,7 @@ namespace WindowsFormsUI.Formularios
             CmbEmpleados.DataSource = nombres;
             CmbEmpleados.DisplayMember = "Nombre";
             CmbEmpleados.ValueMember = "Id";
-            CmbEmpleados.SelectedItem = _usuarioEdit.EmpleadoId;
+            CmbEmpleados.SelectedValue = _usuarioEdit.EmpleadoId;
         }
 
         private void LlenarControles()

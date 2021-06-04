@@ -11,17 +11,21 @@ using System.Runtime.InteropServices;
 using System.Linq;
 
 namespace WindowsFormsUI.Formularios
-{ 
+{
     public partial class FrmEmpleados : Form
     {
         private readonly EmpleadoBLL _empleadoLogic;
+        private readonly RegistroUsuarioBLL _registroUsuarioBLL;
+        private readonly Usuario _usuarioLogeado;
         private int _filasMarcadas;
 
-        public FrmEmpleados()
+        public FrmEmpleados(Usuario usuarioLogeado)
         {
             InitializeComponent();
 
             _empleadoLogic = new EmpleadoBLL();
+            _registroUsuarioBLL = new RegistroUsuarioBLL();
+            _usuarioLogeado = usuarioLogeado;
         }
 
         private void ActualizarDataGridView(ref DataGridView dataGrid, IEnumerable<Empleado> empleados)
@@ -45,6 +49,22 @@ namespace WindowsFormsUI.Formularios
 
             if (frmAgregar.DialogResult == DialogResult.OK)
             {
+                if (_usuarioLogeado != null)
+                {
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 1,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Creación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
             }
             else
@@ -103,6 +123,22 @@ namespace WindowsFormsUI.Formularios
 
                     if (frmEditar.DialogResult == DialogResult.OK)
                     {
+                        if (_usuarioLogeado != null)
+                        {
+                            RegistroUsuario registro = new RegistroUsuario
+                            {
+                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                RegistroId = 3,
+                                Fecha = DateTime.Now,
+                                Informacion = $"Modificación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                            };
+
+                            if (_registroUsuarioBLL.Create(registro) == false)
+                            {
+                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
                         ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
                     }
                 }
@@ -110,8 +146,30 @@ namespace WindowsFormsUI.Formularios
                 {
                     if (MessageBox.Show("¿Esta seguro de querer eliminar al empleado del sistema?", "Eliminación de empleado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
-                        _empleadoLogic.Delete(empleadoId);
-                        ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
+                        if (_empleadoLogic.Delete(empleadoId))
+                        {
+                            if (_usuarioLogeado != null)
+                            {
+                                RegistroUsuario registro = new RegistroUsuario
+                                {
+                                    UsuarioId = _usuarioLogeado.UsuarioId,
+                                    RegistroId = 2,
+                                    Fecha = DateTime.Now,
+                                    Informacion = $"Eliminación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                                };
+
+                                if (_registroUsuarioBLL.Create(registro) == false)
+                                {
+                                    MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+
+                            ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo eliminar al empleado, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -206,7 +264,12 @@ namespace WindowsFormsUI.Formularios
                             if ((bool)fila.Cells["Seleccion"].Value == true)
                             {
                                 int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                                _empleadoLogic.Delete(id);
+                                string nombre = fila.Cells["Nombre"].Value.ToString();
+
+                                if (_empleadoLogic.Delete(id) == false)
+                                {
+                                    MessageBox.Show($"No se pudo eliminar al empleado {nombre}, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
 

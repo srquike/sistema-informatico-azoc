@@ -34,7 +34,7 @@ namespace WindowsFormsUI.Formularios
             Beneficiario = beneficiario;
         }
 
-        private void ValidarEntradasRequeridas()
+        private bool ValidarEntradasRequeridas()
         {
             if (string.IsNullOrEmpty(TxtPNombre.Text))
             {
@@ -60,63 +60,20 @@ namespace WindowsFormsUI.Formularios
                     {
                         ErrPControles.Clear();
 
-                        if (CmbDepartamentos.SelectedIndex == 0)
+                        if (MTxtDui.MaskFull == false)
                         {
-                            ErrPControles.SetError(CmbDepartamentos, "Seleccione un departamento!");
+                            ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
                         }
                         else
                         {
                             ErrPControles.Clear();
-
-                            if (CmbMunicipios.SelectedIndex == 0)
-                            {
-                                ErrPControles.SetError(CmbMunicipios, "Seleccione un municipio!");
-                            }
-                            else
-                            {
-                                ErrPControles.Clear();
-
-                                if (MTxtDui.MaskFull == false)
-                                {
-                                    ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
-                                }
-                                else
-                                {
-                                    ErrPControles.Clear();
-
-                                    if (MTxtNit.MaskFull == false)
-                                    {
-                                        ErrPControles.SetError(MTxtNit, "El número de NIT es requerido!");
-                                    }
-                                    else
-                                    {
-                                        ErrPControles.Clear();
-
-                                        if (MTxtTelefono.MaskFull == false)
-                                        {
-                                            ErrPControles.SetError(MTxtTelefono, "El número de teléfono es requerido!");
-                                        }
-                                        else
-                                        {
-                                            ErrPControles.Clear();
-
-                                            if (string.IsNullOrEmpty(TxtDireccion.Text))
-                                            {
-                                                ErrPControles.SetError(TxtDireccion, "La direccion es requerida!");
-                                            }
-                                            else
-                                            {
-                                                ErrPControles.Clear();
-                                                _continuar = true;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            return true;
                         }
                     }
                 }
             }
+
+            return false;
         }
 
         private bool VerificarEntradasUnicas(string dui, string nit, string telefono)
@@ -167,9 +124,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            ValidarEntradasRequeridas();
-
-            if (_continuar)
+            if (ValidarEntradasRequeridas())
             {
                 string dui = MTxtDui.Text;
                 string nit = MTxtNit.Text;
@@ -201,7 +156,10 @@ namespace WindowsFormsUI.Formularios
 
                     if (_editar)
                     {
-                        _beneficiarioLogica.Edit(Beneficiario);
+                        if (_beneficiarioLogica.Edit(Beneficiario) == false)
+                        {
+                            MessageBox.Show("No fue posible editar al beneficiario, por favor intente de nuevo!", "Editar beneficiario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
 
                     DialogResult = DialogResult.OK;

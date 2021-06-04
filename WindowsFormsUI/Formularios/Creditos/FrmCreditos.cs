@@ -15,13 +15,17 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmCreditos : Form
     {
         private readonly CreditoBLL _creditoLogic;
+        private readonly Usuario _usuarioLogeado;
+        private readonly RegistroUsuarioBLL _registroUsuarioBLL;
         private int _filasMarcadas;
 
-        public FrmCreditos()
+        public FrmCreditos(Usuario usuarioLogeado)
         {
             InitializeComponent();
 
             _creditoLogic = new CreditoBLL();
+            _registroUsuarioBLL = new RegistroUsuarioBLL();
+            _usuarioLogeado = usuarioLogeado;
         }
 
         private void ActualizarDataGridView(ref DataGridView dataGrid, IEnumerable<Credito> creditos)
@@ -57,6 +61,22 @@ namespace WindowsFormsUI.Formularios
 
             if (frmCrear.DialogResult == DialogResult.OK)
             {
+                if (_usuarioLogeado != null)
+                {
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 4,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Creación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
             }
         }
@@ -95,6 +115,22 @@ namespace WindowsFormsUI.Formularios
 
                                 if (_creditoLogic.Edit(credito))
                                 {
+                                    if (_usuarioLogeado != null)
+                                    {
+                                        RegistroUsuario registro = new RegistroUsuario
+                                        {
+                                            UsuarioId = _usuarioLogeado.UsuarioId,
+                                            RegistroId = 1005,
+                                            Fecha = DateTime.Now,
+                                            Informacion = $"Aprobación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                        };
+
+                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                        {
+                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+
                                     ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
                                 }
                                 else
@@ -114,6 +150,22 @@ namespace WindowsFormsUI.Formularios
                         {
                             if (_creditoLogic.Delete(creditoId))
                             {
+                                if (_usuarioLogeado != null)
+                                {
+                                    RegistroUsuario registro = new RegistroUsuario
+                                    {
+                                        UsuarioId = _usuarioLogeado.UsuarioId,
+                                        RegistroId = 5,
+                                        Fecha = DateTime.Now,
+                                        Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                    };
+
+                                    if (_registroUsuarioBLL.Create(registro) == false)
+                                    {
+                                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
                                 ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
                             }
                             else
@@ -175,7 +227,30 @@ namespace WindowsFormsUI.Formularios
                             if ((bool)fila.Cells["Seleccion"].Value == true)
                             {
                                 int creditoId = Convert.ToInt32(fila.Cells["Id"].Value);
-                                _creditoLogic.Delete(creditoId);
+                                string codigo = fila.Cells["Codigo"].Value.ToString();
+
+                                if (_creditoLogic.Delete(creditoId))
+                                {
+                                    if (_usuarioLogeado != null)
+                                    {
+                                        RegistroUsuario registro = new RegistroUsuario
+                                        {
+                                            UsuarioId = _usuarioLogeado.UsuarioId,
+                                            RegistroId = 5,
+                                            Fecha = DateTime.Now,
+                                            Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                        };
+
+                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                        {
+                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"No fue posible eliminar el credito {codigo}, por favor intente nuevamente!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
 

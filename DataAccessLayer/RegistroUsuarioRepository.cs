@@ -57,9 +57,9 @@ namespace DataAccessLayer
             _context.RegistrosUsuarios.Add(registroUsuario);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateRegistroUsuario(RegistroUsuario registroUsuario)

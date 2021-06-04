@@ -192,7 +192,7 @@ namespace WindowsFormsUI.Formularios
                 string nit = MTxtNit.Text;
                 string telefono = MTxtTelefono.Text;
 
-                if (VerificarEntradasUnicas(dui, nit ,telefono))
+                if (VerificarEntradasUnicas(dui, nit, telefono))
                 {
                     _empleado.PrimerNombre = TxtPNombre.Text;
                     _empleado.SegundoNombre = TxtSNombre.Text;
@@ -211,9 +211,15 @@ namespace WindowsFormsUI.Formularios
                     _empleado.CargoId = Convert.ToInt32(CmbCargos.SelectedValue);
                     _empleado.Genero = CmbCargos.SelectedItem.ToString() == "Femenino" ? "F" : "M";
 
-                    _empleadoLogic.Edit(_empleado);
+                    if (_empleadoLogic.Edit(_empleado))
+                    {
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible editar al empleado, por favor intente de nuevo!", "Editar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                    DialogResult = DialogResult.OK;
                 }
                 else
                 {

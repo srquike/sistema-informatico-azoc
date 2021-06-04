@@ -42,6 +42,7 @@ namespace WindowsFormsUI.Formularios
             this.ErrPClave = new System.Windows.Forms.ErrorProvider(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ChkAdministrador = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPNombreUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPClave)).BeginInit();
@@ -150,7 +151,7 @@ namespace WindowsFormsUI.Formularios
             this.MTxtUsuario.Mask = "00000000-0";
             this.MTxtUsuario.Name = "MTxtUsuario";
             this.MTxtUsuario.PromptChar = '-';
-            this.MTxtUsuario.Size = new System.Drawing.Size(280, 27);
+            this.MTxtUsuario.Size = new System.Drawing.Size(154, 27);
             this.MTxtUsuario.TabIndex = 0;
             this.MTxtUsuario.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -178,6 +179,19 @@ namespace WindowsFormsUI.Formularios
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
+            // ChkAdministrador
+            // 
+            this.ChkAdministrador.AutoSize = true;
+            this.ChkAdministrador.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkAdministrador.Location = new System.Drawing.Point(551, 15);
+            this.ChkAdministrador.Margin = new System.Windows.Forms.Padding(0);
+            this.ChkAdministrador.Name = "ChkAdministrador";
+            this.ChkAdministrador.Size = new System.Drawing.Size(123, 24);
+            this.ChkAdministrador.TabIndex = 12;
+            this.ChkAdministrador.Text = "Administrador";
+            this.ChkAdministrador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ChkAdministrador.UseVisualStyleBackColor = true;
+            // 
             // FrmInicioSesion
             // 
             this.AcceptButton = this.BtnIngresar;
@@ -186,6 +200,7 @@ namespace WindowsFormsUI.Formularios
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.BtnCancelar;
             this.ClientSize = new System.Drawing.Size(700, 157);
+            this.Controls.Add(this.ChkAdministrador);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.MTxtUsuario);
@@ -224,5 +239,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.MaskedTextBox MTxtUsuario;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox ChkAdministrador;
     }
 }

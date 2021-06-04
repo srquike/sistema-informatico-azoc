@@ -14,8 +14,10 @@ namespace WindowsFormsUI.Formularios
 {
     public partial class FrmUsuarios : Form
     {
-        private UsuarioBLL _usuarioLogic;
-        private EmpleadoBLL _empleadoLogic;
+        private readonly UsuarioBLL _usuarioLogic;
+        private readonly EmpleadoBLL _empleadoLogic;
+        private readonly RegistroUsuarioBLL _registroUsuarioBLL;
+
         private int _filasMarcadas;
         private readonly Usuario _usuarioLogeado;
 
@@ -25,6 +27,7 @@ namespace WindowsFormsUI.Formularios
 
             _usuarioLogic = new UsuarioBLL();
             _empleadoLogic = new EmpleadoBLL();
+            _registroUsuarioBLL = new RegistroUsuarioBLL();
             _filasMarcadas = 0;
             _usuarioLogeado = usuarioLogeado;
         }
@@ -96,6 +99,22 @@ namespace WindowsFormsUI.Formularios
 
             if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
             {
+                if (_usuarioLogeado != null)
+                {
+                    RegistroUsuario registro = new RegistroUsuario
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 1002,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Creación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
                 RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
             }
         }
@@ -128,6 +147,22 @@ namespace WindowsFormsUI.Formularios
 
                     if (frmEditar.DialogResult == DialogResult.OK)
                     {
+                        if (_usuarioLogeado != null)
+                        {
+                            RegistroUsuario registro = new RegistroUsuario
+                            {
+                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                RegistroId = 1004,
+                                Fecha = DateTime.Now,
+                                Informacion = $"Modificación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                            };
+
+                            if (_registroUsuarioBLL.Create(registro) == false)
+                            {
+                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
                         RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
                     }
                 }
@@ -143,8 +178,30 @@ namespace WindowsFormsUI.Formularios
                         {
                             if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                _usuarioLogic.Delete(userId);
-                                RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                                if (_usuarioLogic.Delete(userId))
+                                {
+                                    if (_usuarioLogeado != null)
+                                    {
+                                        RegistroUsuario registro = new RegistroUsuario
+                                        {
+                                            UsuarioId = _usuarioLogeado.UsuarioId,
+                                            RegistroId = 1003,
+                                            Fecha = DateTime.Now,
+                                            Informacion = $"Eliminación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                                        };
+
+                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                        {
+                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+
+                                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo eliminar al usuario, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
                     }
@@ -244,7 +301,10 @@ namespace WindowsFormsUI.Formularios
                                     }
                                     else
                                     {
-                                        _usuarioLogic.Delete(userId);
+                                        if (_usuarioLogic.Delete(userId) == false)
+                                        {
+                                            MessageBox.Show($"No se pudo eliminar al usuario {userId}, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
                                 }
                             }

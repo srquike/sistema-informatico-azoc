@@ -168,7 +168,7 @@ namespace WindowsFormsUI.Formularios
                 BinaryWriter binaryWriter = new BinaryWriter(fileStream);
 
                 string clave = TxtClave.Text;
-                string user = "admin";
+                string user = "000000000";
 
                 binaryWriter.Write(clave);
                 binaryWriter.Write(user);

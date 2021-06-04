@@ -225,7 +225,19 @@ namespace WindowsFormsUI.Formularios
 
                             DialogResult = DialogResult.OK;
                         }
+                        else
+                        {
+                            MessageBox.Show("No fue posible crear las deducciones, por favor intente de nuevo!", "Crear deducciones: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show("No fue posible crear las cuotas, por favor intente de nuevo!", "Crear cuotas: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No fue posible crear el crédito, por favor intente de nuevo!", "Crear crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

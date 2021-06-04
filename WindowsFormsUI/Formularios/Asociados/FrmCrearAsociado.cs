@@ -240,7 +240,7 @@ namespace WindowsFormsUI.Formularios
                     string genero = CmbGeneros.SelectedItem.ToString();
                     string departamento = CmbDepartamentos.SelectedItem.ToString();
                     string municipio = CmbMunicipios.SelectedItem.ToString();
-                    int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);                    
+                    int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
 
                     Socio asociado = new Socio()
                     {
@@ -265,11 +265,16 @@ namespace WindowsFormsUI.Formularios
                         CategoriaAsociadoId = categoriaId
                     };
 
-                    _asociadoLogic.Create(asociado);
+                    if (_asociadoLogic.Create(asociado))
+                    {
+                        AgregarBeneficiarios(asociado.SocioId);
 
-                    AgregarBeneficiarios(asociado.SocioId);
-
-                    DialogResult = DialogResult.OK;
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No fue posible crear al socio, por favor intente de nuevo!", "Crear socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

@@ -33,8 +33,15 @@ namespace BusinessLogicLayer.Logics
             if (usuario != null)
             {
                 _usuarioRepository.DeleteUsuario(usuario);
-                _usuarioRepository.Save();
-                return true;
+
+                if (_usuarioRepository.Save() == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
             }
 
             return false;
@@ -49,12 +56,24 @@ namespace BusinessLogicLayer.Logics
         {
             Usuario usuario = _usuarioRepository.GetUsuarioById(id);
 
-            return usuario;
+            if (usuario != null)
+            {
+                return usuario;
+            }
+
+            return null;
         }
 
         public Usuario FindByName(string name)
         {
-            return _usuarioRepository.GetUsuarioByName(name);
+            Usuario usuario = _usuarioRepository.GetUsuarioByName(name);
+
+            if (usuario != null)
+            {
+                return usuario;
+            }
+
+            return null;
         }
 
         public bool Create(Usuario usuario)
