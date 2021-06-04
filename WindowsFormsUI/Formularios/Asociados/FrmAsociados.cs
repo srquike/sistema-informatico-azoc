@@ -31,10 +31,8 @@ namespace WindowsFormsUI.Formularios
             {
                 string nombreAsociado = string.Concat(asociado.Pnombre, " ", asociado.Snombre, " ", asociado.Tnombre, " ",
                     asociado.Papellido, " ", asociado.Sapellido, " ", asociado.Tapellido);
-                string genero = asociado.Genero == "F" ? "Femenino" : "Masculino";
-                string estado = asociado.Estado == "1" ? "Activo" : "Inactivo";
 
-                dataGrid.Rows.Add(false, asociado.SocioId, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, estado);
+                dataGrid.Rows.Add(false, asociado.SocioId, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, asociado.Genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, asociado.Estado);
             }
 
             dataGrid.ClearSelection();
@@ -106,7 +104,7 @@ namespace WindowsFormsUI.Formularios
 
             if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
             {
-                string genero = CmbFiltro.SelectedItem.ToString() == "Femenino" ? "F" : "M";
+                string genero = CmbFiltro.SelectedItem.ToString();
 
                 var resultados = from asociado in asociados where asociado.Genero == genero select asociado;
 
@@ -175,7 +173,7 @@ namespace WindowsFormsUI.Formularios
                     }
                     else if (e.ColumnIndex == 12)
                     {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar al asociado del sistema?", "Eliminación de asociado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        if (MessageBox.Show("¿Esta seguro de querer eliminar al socio del sistema?", "Eliminación de socio: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
                             _asociadoLogic.Delete(asociadoId);
                             ActualizarListado(ref dataGrid, _asociadoLogic.List());
@@ -207,7 +205,7 @@ namespace WindowsFormsUI.Formularios
             {
                 if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar a los asociados selecionados?", "Asociados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (MessageBox.Show("¿Esta seguro de querer borrar a los socios selecionados?", "Eliminar socios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow fila in DgvListado.Rows)
                         {

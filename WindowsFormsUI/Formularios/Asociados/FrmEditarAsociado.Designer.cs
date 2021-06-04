@@ -32,6 +32,7 @@ namespace WindowsFormsUI.Formularios
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label18 = new System.Windows.Forms.Label();
             this.CmbCategoria = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@ namespace WindowsFormsUI.Formularios
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ChkEstado = new System.Windows.Forms.CheckBox();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -95,7 +97,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(795, 305);
+            this.label18.Location = new System.Drawing.Point(795, 208);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 20);
             this.label18.TabIndex = 39;
@@ -106,7 +108,8 @@ namespace WindowsFormsUI.Formularios
             this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCategoria.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbCategoria.FormattingEnabled = true;
-            this.CmbCategoria.Location = new System.Drawing.Point(525, 20);
+            this.CmbCategoria.Location = new System.Drawing.Point(526, 19);
+            this.CmbCategoria.Margin = new System.Windows.Forms.Padding(5);
             this.CmbCategoria.Name = "CmbCategoria";
             this.CmbCategoria.Size = new System.Drawing.Size(200, 28);
             this.CmbCategoria.TabIndex = 2;
@@ -124,7 +127,8 @@ namespace WindowsFormsUI.Formularios
             // TxtEmail
             // 
             this.TxtEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtEmail.Location = new System.Drawing.Point(134, 188);
+            this.TxtEmail.Location = new System.Drawing.Point(134, 131);
+            this.TxtEmail.Margin = new System.Windows.Forms.Padding(5);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(200, 27);
             this.TxtEmail.TabIndex = 9;
@@ -133,7 +137,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(63, 191);
+            this.label16.Location = new System.Drawing.Point(59, 134);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 20);
             this.label16.TabIndex = 30;
@@ -148,7 +152,8 @@ namespace WindowsFormsUI.Formularios
             "-- Seleccionar -- ",
             "Femenino",
             "Masculino"});
-            this.CmbGenero.Location = new System.Drawing.Point(875, 188);
+            this.CmbGenero.Location = new System.Drawing.Point(877, 131);
+            this.CmbGenero.Margin = new System.Windows.Forms.Padding(5);
             this.CmbGenero.Name = "CmbGenero";
             this.CmbGenero.Size = new System.Drawing.Size(200, 28);
             this.CmbGenero.TabIndex = 11;
@@ -173,7 +178,8 @@ namespace WindowsFormsUI.Formularios
             "Santa Rosa Guachipilín",
             "Santiago de la Frontera",
             "Texistepeque"});
-            this.CmbMunicipios.Location = new System.Drawing.Point(875, 245);
+            this.CmbMunicipios.Location = new System.Drawing.Point(877, 167);
+            this.CmbMunicipios.Margin = new System.Windows.Forms.Padding(5);
             this.CmbMunicipios.Name = "CmbMunicipios";
             this.CmbMunicipios.Size = new System.Drawing.Size(200, 28);
             this.CmbMunicipios.TabIndex = 14;
@@ -182,7 +188,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtNit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtNit.HidePromptOnLeave = true;
-            this.MTxtNit.Location = new System.Drawing.Point(524, 302);
+            this.MTxtNit.Location = new System.Drawing.Point(526, 205);
+            this.MTxtNit.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtNit.Mask = "0000-000000-000-0";
             this.MTxtNit.Name = "MTxtNit";
             this.MTxtNit.PromptChar = '-';
@@ -194,7 +201,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtTelefono.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtTelefono.HidePromptOnLeave = true;
-            this.MTxtTelefono.Location = new System.Drawing.Point(875, 303);
+            this.MTxtTelefono.Location = new System.Drawing.Point(877, 205);
+            this.MTxtTelefono.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtTelefono.Mask = "0000-0000";
             this.MTxtTelefono.Name = "MTxtTelefono";
             this.MTxtTelefono.PromptChar = '-';
@@ -206,7 +214,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.MTxtDui.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MTxtDui.HidePromptOnLeave = true;
-            this.MTxtDui.Location = new System.Drawing.Point(134, 302);
+            this.MTxtDui.Location = new System.Drawing.Point(134, 205);
+            this.MTxtDui.Margin = new System.Windows.Forms.Padding(5);
             this.MTxtDui.Mask = "00000000-0";
             this.MTxtDui.Name = "MTxtDui";
             this.MTxtDui.PromptChar = '-';
@@ -218,7 +227,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.groupBox2.Controls.Add(this.BtnAgregarBeneficiario);
             this.groupBox2.Controls.Add(this.DgvListado);
-            this.groupBox2.Location = new System.Drawing.Point(6, 335);
+            this.groupBox2.Location = new System.Drawing.Point(6, 240);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1090, 345);
             this.groupBox2.TabIndex = 18;
@@ -279,8 +288,16 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1078, 272);
@@ -317,7 +334,7 @@ namespace WindowsFormsUI.Formularios
             this.Nit.HeaderText = "# NIT";
             this.Nit.Name = "Nit";
             this.Nit.ReadOnly = true;
-            this.Nit.Width = 68;
+            this.Nit.Width = 73;
             // 
             // Telefono
             // 
@@ -325,7 +342,7 @@ namespace WindowsFormsUI.Formularios
             this.Telefono.HeaderText = "# Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 99;
+            this.Telefono.Width = 108;
             // 
             // Genero
             // 
@@ -341,7 +358,7 @@ namespace WindowsFormsUI.Formularios
             this.Porcentaje.HeaderText = "% de crédito";
             this.Porcentaje.Name = "Porcentaje";
             this.Porcentaje.ReadOnly = true;
-            this.Porcentaje.Width = 111;
+            this.Porcentaje.Width = 121;
             // 
             // Detalles
             // 
@@ -390,7 +407,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(801, 191);
+            this.label15.Location = new System.Drawing.Point(801, 136);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(68, 20);
             this.label15.TabIndex = 28;
@@ -398,6 +415,7 @@ namespace WindowsFormsUI.Formularios
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ChkEstado);
             this.groupBox1.Controls.Add(this.TxtCodigo);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.CmbMunicipios);
@@ -438,15 +456,27 @@ namespace WindowsFormsUI.Formularios
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1102, 686);
+            this.groupBox1.Size = new System.Drawing.Size(1102, 596);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
+            // 
+            // ChkEstado
+            // 
+            this.ChkEstado.AutoSize = true;
+            this.ChkEstado.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChkEstado.Location = new System.Drawing.Point(875, 23);
+            this.ChkEstado.Name = "ChkEstado";
+            this.ChkEstado.Size = new System.Drawing.Size(70, 24);
+            this.ChkEstado.TabIndex = 48;
+            this.ChkEstado.Text = "Activo";
+            this.ChkEstado.UseVisualStyleBackColor = true;
             // 
             // TxtCodigo
             // 
             this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCodigo.Location = new System.Drawing.Point(134, 20);
+            this.TxtCodigo.Margin = new System.Windows.Forms.Padding(5);
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
             this.TxtCodigo.TabIndex = 1;
@@ -455,7 +485,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(63, 23);
+            this.label8.Location = new System.Drawing.Point(59, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 20);
             this.label8.TabIndex = 47;
@@ -465,7 +495,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(475, 305);
+            this.label14.Location = new System.Drawing.Point(475, 208);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 20);
             this.label14.TabIndex = 26;
@@ -475,7 +505,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(83, 305);
+            this.label13.Location = new System.Drawing.Point(79, 208);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(45, 20);
             this.label13.TabIndex = 24;
@@ -484,7 +514,8 @@ namespace WindowsFormsUI.Formularios
             // TxtDireccion
             // 
             this.TxtDireccion.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtDireccion.Location = new System.Drawing.Point(134, 245);
+            this.TxtDireccion.Location = new System.Drawing.Point(134, 168);
+            this.TxtDireccion.Margin = new System.Windows.Forms.Padding(5);
             this.TxtDireccion.Name = "TxtDireccion";
             this.TxtDireccion.Size = new System.Drawing.Size(200, 27);
             this.TxtDireccion.TabIndex = 12;
@@ -493,7 +524,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(45, 248);
+            this.label12.Location = new System.Drawing.Point(41, 171);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 20);
             this.label12.TabIndex = 22;
@@ -503,7 +534,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(783, 248);
+            this.label11.Location = new System.Drawing.Point(783, 172);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(86, 20);
             this.label11.TabIndex = 20;
@@ -512,7 +543,8 @@ namespace WindowsFormsUI.Formularios
             // TxtSNombre
             // 
             this.TxtSNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSNombre.Location = new System.Drawing.Point(524, 74);
+            this.TxtSNombre.Location = new System.Drawing.Point(526, 57);
+            this.TxtSNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 4;
@@ -521,7 +553,8 @@ namespace WindowsFormsUI.Formularios
             // 
             this.DtpFNacimiento.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.DtpFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpFNacimiento.Location = new System.Drawing.Point(524, 186);
+            this.DtpFNacimiento.Location = new System.Drawing.Point(526, 131);
+            this.DtpFNacimiento.Margin = new System.Windows.Forms.Padding(5);
             this.DtpFNacimiento.Name = "DtpFNacimiento";
             this.DtpFNacimiento.Size = new System.Drawing.Size(200, 27);
             this.DtpFNacimiento.TabIndex = 10;
@@ -531,7 +564,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(362, 191);
+            this.label10.Location = new System.Drawing.Point(362, 134);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(156, 20);
             this.label10.TabIndex = 17;
@@ -545,7 +578,8 @@ namespace WindowsFormsUI.Formularios
             this.CmbDepartamentos.Items.AddRange(new object[] {
             "-- Seleccionar --",
             "Santa Ana"});
-            this.CmbDepartamentos.Location = new System.Drawing.Point(524, 245);
+            this.CmbDepartamentos.Location = new System.Drawing.Point(526, 167);
+            this.CmbDepartamentos.Margin = new System.Windows.Forms.Padding(5);
             this.CmbDepartamentos.Name = "CmbDepartamentos";
             this.CmbDepartamentos.Size = new System.Drawing.Size(200, 28);
             this.CmbDepartamentos.TabIndex = 13;
@@ -554,7 +588,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(401, 248);
+            this.label9.Location = new System.Drawing.Point(401, 170);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 20);
             this.label9.TabIndex = 15;
@@ -563,7 +597,8 @@ namespace WindowsFormsUI.Formularios
             // TxtTApellido
             // 
             this.TxtTApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTApellido.Location = new System.Drawing.Point(875, 131);
+            this.TxtTApellido.Location = new System.Drawing.Point(877, 94);
+            this.TxtTApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtTApellido.TabIndex = 8;
@@ -571,7 +606,8 @@ namespace WindowsFormsUI.Formularios
             // TxtPApellido
             // 
             this.TxtPApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPApellido.Location = new System.Drawing.Point(134, 131);
+            this.TxtPApellido.Location = new System.Drawing.Point(134, 94);
+            this.TxtPApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 6;
@@ -580,7 +616,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(752, 134);
+            this.label7.Location = new System.Drawing.Point(752, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(117, 20);
             this.label7.TabIndex = 10;
@@ -590,7 +626,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(754, 77);
+            this.label6.Location = new System.Drawing.Point(754, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 9;
@@ -599,7 +635,8 @@ namespace WindowsFormsUI.Formularios
             // TxtSApellido
             // 
             this.TxtSApellido.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtSApellido.Location = new System.Drawing.Point(524, 131);
+            this.TxtSApellido.Location = new System.Drawing.Point(526, 94);
+            this.TxtSApellido.Margin = new System.Windows.Forms.Padding(5);
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 7;
@@ -608,7 +645,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(382, 134);
+            this.label5.Location = new System.Drawing.Point(382, 97);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 20);
             this.label5.TabIndex = 7;
@@ -634,7 +671,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(8, 134);
+            this.label3.Location = new System.Drawing.Point(4, 97);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 20);
             this.label3.TabIndex = 4;
@@ -643,7 +680,8 @@ namespace WindowsFormsUI.Formularios
             // TxtTNombre
             // 
             this.TxtTNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtTNombre.Location = new System.Drawing.Point(875, 74);
+            this.TxtTNombre.Location = new System.Drawing.Point(877, 57);
+            this.TxtTNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtTNombre.TabIndex = 5;
@@ -652,7 +690,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(384, 77);
+            this.label2.Location = new System.Drawing.Point(384, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 20);
             this.label2.TabIndex = 2;
@@ -661,7 +699,8 @@ namespace WindowsFormsUI.Formularios
             // TxtPNombre
             // 
             this.TxtPNombre.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPNombre.Location = new System.Drawing.Point(134, 74);
+            this.TxtPNombre.Location = new System.Drawing.Point(134, 57);
+            this.TxtPNombre.Margin = new System.Windows.Forms.Padding(5);
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 3;
@@ -670,7 +709,7 @@ namespace WindowsFormsUI.Formularios
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 77);
+            this.label1.Location = new System.Drawing.Point(6, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
             this.label1.TabIndex = 0;
@@ -686,7 +725,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnGuardarCambios.ForeColor = System.Drawing.Color.Black;
             this.BtnGuardarCambios.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
             this.BtnGuardarCambios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardarCambios.Location = new System.Drawing.Point(830, 702);
+            this.BtnGuardarCambios.Location = new System.Drawing.Point(830, 612);
             this.BtnGuardarCambios.Name = "BtnGuardarCambios";
             this.BtnGuardarCambios.Size = new System.Drawing.Size(164, 35);
             this.BtnGuardarCambios.TabIndex = 22;
@@ -705,7 +744,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
             this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
             this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(1000, 702);
+            this.BtnCancelar.Location = new System.Drawing.Point(1000, 612);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.Size = new System.Drawing.Size(114, 35);
             this.BtnCancelar.TabIndex = 21;
@@ -719,14 +758,14 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1126, 747);
+            this.ClientSize = new System.Drawing.Size(1126, 656);
             this.Controls.Add(this.BtnCancelar);
             this.Controls.Add(this.BtnGuardarCambios);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmEditarAsociado";
-            this.Text = "Cooperativa AZOC de R. L. - Editar datos de asociado";
+            this.Text = "Cooperativa AZOC de R. L. - Editar datos de socio";
             this.Load += new System.EventHandler(this.FrmEditarAsociado_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).EndInit();
@@ -791,5 +830,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.CheckBox ChkEstado;
     }
 }

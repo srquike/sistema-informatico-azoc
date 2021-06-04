@@ -31,8 +31,6 @@ namespace WindowsFormsUI.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TxtCodigo = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -278,29 +276,13 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListado.Location = new System.Drawing.Point(6, 67);
             this.DgvListado.MultiSelect = false;
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1078, 282);
@@ -328,7 +310,7 @@ namespace WindowsFormsUI.Formularios
             this.Dui.HeaderText = "# DUI";
             this.Dui.Name = "Dui";
             this.Dui.ReadOnly = true;
-            this.Dui.Width = 74;
+            this.Dui.Width = 69;
             // 
             // Nit
             // 
@@ -728,11 +710,11 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrear.ForeColor = System.Drawing.Color.Black;
             this.BtnCrear.Image = global::WindowsFormsUI.Properties.Resources.add_friend;
             this.BtnCrear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCrear.Location = new System.Drawing.Point(726, 623);
+            this.BtnCrear.Location = new System.Drawing.Point(749, 623);
             this.BtnCrear.Name = "BtnCrear";
-            this.BtnCrear.Size = new System.Drawing.Size(148, 35);
+            this.BtnCrear.Size = new System.Drawing.Size(125, 35);
             this.BtnCrear.TabIndex = 22;
-            this.BtnCrear.Text = "Crear asociado";
+            this.BtnCrear.Text = "Crear socio";
             this.BtnCrear.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCrear.UseVisualStyleBackColor = false;
             this.BtnCrear.Click += new System.EventHandler(this.BtnCrear_Click);
@@ -791,7 +773,7 @@ namespace WindowsFormsUI.Formularios
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmCrearAsociado";
-            this.Text = "Cooperativa AZOC de R. L. - Crear nuevo asociado";
+            this.Text = "Cooperativa AZOC de R. L. - Crear nuevo socio";
             this.Load += new System.EventHandler(this.FrmCrearAsociado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

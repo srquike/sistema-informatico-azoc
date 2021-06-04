@@ -41,8 +41,8 @@ namespace WindowsFormsUI.Formularios
         private void RellenarControles()
         {
             string nombre = string.Concat(_asociado.Pnombre, " ", _asociado.Snombre, " ", _asociado.Tnombre, " ", _asociado.Papellido, " ", _asociado.Sapellido, " ", _asociado.Tapellido);
-            string genero = _asociado.Genero == "F" ? "Femenino" : "Masculino";
-            string estado = _asociado.Estado == "1" ? "Activo" : "Inactivo";
+            string genero = _asociado.Genero;
+            string estado = _asociado.Estado;
 
             TxtCodigo.Text = _asociado.Codigo;
             TxtCategoria.Text = _asociado.CategoriaAsociado.Nombre;

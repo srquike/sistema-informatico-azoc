@@ -12,6 +12,6 @@ namespace RepositoryLayer
         void InsertAsociado(Socio asociado);
         void DeleteAsociado(Socio asociado);
         void UpdateAsociado(Socio asociado);
-        void Save();
+        int Save();
     }
 }

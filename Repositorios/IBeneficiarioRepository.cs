@@ -9,9 +9,10 @@ namespace RepositoryLayer
         IEnumerable<Beneficiario> GetBeneficiarios();
         Beneficiario GetBeneficiarioById(int id);
         void InsertBeneficiario(Beneficiario beneficiario);
+        void InsertMany(ICollection<Beneficiario> beneficiarios);
         void DeleteBeneficiario(Beneficiario beneficiario);
         void UpdateBeneficiario(Beneficiario beneficiario);
-        void Save();
+        int Save();
 
     }
 }

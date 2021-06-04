@@ -28,7 +28,7 @@ namespace WindowsFormsUI.Formularios
             _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _beneficiarioLogic = new BeneficiarioBLL();
             _beneficiarios = new List<Beneficiario>();
-            _asociado = _asociadoLogic.Find(asociadoId);  
+            _asociado = _asociadoLogic.Find(asociadoId);
         }
 
         private void LlenarComboBoxCategorias(ref ComboBox combo)
@@ -77,7 +77,8 @@ namespace WindowsFormsUI.Formularios
                 TxtTApellido.Text = _asociado.Tapellido;
                 TxtEmail.Text = _asociado.Email;
                 DtpFNacimiento.Value = _asociado.Nacimiento.Value;
-                CmbGenero.SelectedItem = _asociado.Genero == "F" ? "Femenino" : "Masculino";
+                CmbGenero.SelectedItem = _asociado.Genero;
+                ChkEstado.Checked = _asociado.Estado == "Activo" ? true : false;
                 TxtDireccion.Text = _asociado.Direccion;
                 CmbDepartamentos.SelectedItem = _asociado.Departamento;
                 CmbMunicipios.SelectedItem = _asociado.Municipio;
@@ -193,92 +194,27 @@ namespace WindowsFormsUI.Formularios
                     {
                         ErrPControles.Clear();
 
-                        if (CmbDepartamentos.SelectedIndex == 0)
+                        if (MTxtDui.MaskFull == false)
                         {
-                            ErrPControles.SetError(CmbDepartamentos, "Seleccione un departamento!");
+                            ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
                         }
                         else
                         {
                             ErrPControles.Clear();
 
-                            if (CmbMunicipios.SelectedIndex == 0)
+                            if (string.IsNullOrEmpty(TxtCodigo.Text))
                             {
-                                ErrPControles.SetError(CmbMunicipios, "Seleccione un municipio!");
+                                ErrPControles.SetError(TxtCodigo, "El código es requerido");
                             }
                             else
                             {
                                 ErrPControles.Clear();
-
-                                if (MTxtDui.MaskFull == false)
-                                {
-                                    ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
-                                }
-                                else
-                                {
-                                    ErrPControles.Clear();
-
-                                    if (MTxtNit.MaskFull == false)
-                                    {
-                                        ErrPControles.SetError(MTxtNit, "El número de NIT es requerido!");
-                                    }
-                                    else
-                                    {
-                                        ErrPControles.Clear();
-
-                                        if (MTxtTelefono.MaskFull == false)
-                                        {
-                                            ErrPControles.SetError(MTxtTelefono, "El número de teléfono es requerido!");
-                                        }
-                                        else
-                                        {
-                                            ErrPControles.Clear();
-
-                                            if (string.IsNullOrEmpty(TxtDireccion.Text))
-                                            {
-                                                ErrPControles.SetError(TxtDireccion, "La direccion es requerida!");
-                                            }
-                                            else
-                                            {
-                                                ErrPControles.Clear();
-
-                                                if (string.IsNullOrEmpty(TxtCodigo.Text))
-                                                {
-                                                    ErrPControles.SetError(TxtCodigo, "El código es requerido");
-                                                }
-                                                else
-                                                {
-                                                    ErrPControles.Clear();
-                                                    _continuar = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                _continuar = true;
                             }
                         }
                     }
                 }
             }
-        }
-
-        private bool VerificarEntradasUnicas(string dui, string nit, string telefono, int id)
-        {
-            if (!_asociado.Dui.Equals(dui) || !_asociado.Nit.Equals(nit) || !_asociado.Telefono.Equals(telefono))
-            {
-                var asociados = _asociadoLogic.List();
-                var resultado = (from asociado in asociados where asociado.Dui == dui || asociado.Nit == nit || asociado.Telefono == telefono select asociado).FirstOrDefault();
-
-                if (resultado == null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         private void ActualizarBeneficiarios(int asociadoId)
@@ -320,7 +256,7 @@ namespace WindowsFormsUI.Formularios
                         _beneficiarioLogic.Delete(beneficiario.BeneficiarioId);
                     }
                 }
-            }        
+            }
         }
 
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
@@ -332,39 +268,42 @@ namespace WindowsFormsUI.Formularios
                 string dui = MTxtDui.Text;
                 string nit = MTxtNit.Text;
                 string telefono = MTxtTelefono.Text;
-                int asociadoId = Convert.ToInt32(TxtCodigo.Text);
+                string codigo = TxtCodigo.Text;
 
-                if (VerificarEntradasUnicas(dui, nit, telefono, asociadoId))
+                string genero = CmbGenero.SelectedItem.ToString();
+                string departamento = CmbDepartamentos.SelectedItem.ToString();
+                string municipio = CmbMunicipios.SelectedItem.ToString();
+                int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
+                string estado = ChkEstado.Checked ? "Activo" : "Inactivo";
+
+                _asociado.Pnombre = TxtPNombre.Text;
+                _asociado.Snombre = TxtSNombre.Text;
+                _asociado.Tnombre = TxtTNombre.Text;
+                _asociado.Papellido = TxtPApellido.Text;
+                _asociado.Sapellido = TxtSApellido.Text;
+                _asociado.Tapellido = TxtTApellido.Text;
+                _asociado.Email = TxtEmail.Text;
+                _asociado.Nacimiento = DtpFNacimiento.Value;
+                _asociado.Genero = genero;
+                _asociado.Direccion = TxtDireccion.Text;
+                _asociado.Departamento = departamento;
+                _asociado.Municipio = municipio;
+                _asociado.Nit = nit;
+                _asociado.Dui = dui;
+                _asociado.Telefono = telefono;
+                _asociado.Estado = estado;
+                _asociado.Ingreso = DateTime.Today;
+                _asociado.CategoriaAsociadoId = categoriaId;
+
+                if (_asociadoLogic.Edit(_asociado))
                 {
-                    string genero = CmbGenero.SelectedItem.ToString() == "Femenino" ? "F" : "M";
-                    string departamento = CmbDepartamentos.SelectedItem.ToString();
-                    string municipio = CmbMunicipios.SelectedItem.ToString();
-                    int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
-
-                    _asociado.Pnombre = TxtPNombre.Text;
-                    _asociado.Snombre = TxtSNombre.Text;
-                    _asociado.Tnombre = TxtTNombre.Text;
-                    _asociado.Papellido = TxtPApellido.Text;
-                    _asociado.Sapellido = TxtSApellido.Text;
-                    _asociado.Tapellido = TxtTApellido.Text;
-                    _asociado.Email = TxtEmail.Text;
-                    _asociado.Nacimiento = DtpFNacimiento.Value;
-                    _asociado.Genero = genero;
-                    _asociado.Direccion = TxtDireccion.Text;
-                    _asociado.Departamento = departamento;
-                    _asociado.Municipio = municipio;
-                    _asociado.Nit = nit;
-                    _asociado.Dui = dui;
-                    _asociado.Telefono = telefono;
-                    _asociado.Estado = "1";
-                    _asociado.Ingreso = DateTime.Today;
-                    _asociado.CategoriaAsociadoId = categoriaId;
-
-                    _asociadoLogic.Edit(_asociado);
-
                     ActualizarBeneficiarios(_asociado.SocioId);
 
                     DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("El socio no pudo ser editado, por favor intente de nuevo", "Editar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

@@ -580,7 +580,7 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "FrmDetallesAsociado";
-            this.Text = "Cooperativa AZOC de R. L. - Detalles del asociado";
+            this.Text = "Cooperativa AZOC de R. L. - Detalles del socio";
             this.Load += new System.EventHandler(this.FrmDetallesAsociado_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

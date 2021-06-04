@@ -45,8 +45,6 @@ namespace WindowsFormsUI.Formularios
             this.label3 = new System.Windows.Forms.Label();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.DgvListado = new System.Windows.Forms.DataGridView();
-            this.TxtBusqueda = new System.Windows.Forms.TextBox();
-            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +58,8 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.TxtBusqueda = new System.Windows.Forms.TextBox();
+            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.SuspendLayout();
@@ -217,9 +217,9 @@ namespace WindowsFormsUI.Formularios
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 20);
+            this.label3.Size = new System.Drawing.Size(53, 20);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Asociados";
+            this.label3.Text = "Socios";
             // 
             // PnlBarraSuperior
             // 
@@ -286,31 +286,6 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.Size = new System.Drawing.Size(1214, 385);
             this.DgvListado.TabIndex = 29;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
-            // 
-            // TxtBusqueda
-            // 
-            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
-            this.TxtBusqueda.MaxLength = 50;
-            this.TxtBusqueda.Multiline = true;
-            this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
-            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
-            this.TxtBusqueda.TabIndex = 30;
-            this.TxtBusqueda.UseSystemPasswordChar = true;
-            // 
-            // LLblQuitarMarcadas
-            // 
-            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LLblQuitarMarcadas.AutoSize = true;
-            this.LLblQuitarMarcadas.Enabled = false;
-            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
-            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
-            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
-            this.LLblQuitarMarcadas.TabIndex = 31;
-            this.LLblQuitarMarcadas.TabStop = true;
-            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
-            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
             // 
             // Seleccion
             // 
@@ -436,6 +411,31 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
             // 
+            // TxtBusqueda
+            // 
+            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
+            this.TxtBusqueda.MaxLength = 50;
+            this.TxtBusqueda.Multiline = true;
+            this.TxtBusqueda.Name = "TxtBusqueda";
+            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
+            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
+            this.TxtBusqueda.TabIndex = 30;
+            this.TxtBusqueda.UseSystemPasswordChar = true;
+            // 
+            // LLblQuitarMarcadas
+            // 
+            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LLblQuitarMarcadas.AutoSize = true;
+            this.LLblQuitarMarcadas.Enabled = false;
+            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
+            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
+            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
+            this.LLblQuitarMarcadas.TabIndex = 31;
+            this.LLblQuitarMarcadas.TabStop = true;
+            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
+            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
+            // 
             // FrmAsociados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -458,7 +458,7 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.PnlBarraSuperior);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmAsociados";
-            this.Text = "FrmAsociados";
+            this.Text = "Socios";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmAsociados_Load);
             this.PnlBarraSuperior.ResumeLayout(false);

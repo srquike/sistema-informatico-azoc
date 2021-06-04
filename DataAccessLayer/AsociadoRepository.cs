@@ -66,9 +66,9 @@ namespace DataAccessLayer
             _context.Socios.Add(asociado);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdateAsociado(Socio asociado)

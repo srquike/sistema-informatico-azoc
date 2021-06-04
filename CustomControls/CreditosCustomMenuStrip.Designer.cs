@@ -59,7 +59,7 @@ namespace CustomControls
             this.BtnAsociados.Name = "BtnAsociados";
             this.BtnAsociados.Size = new System.Drawing.Size(177, 58);
             this.BtnAsociados.TabIndex = 15;
-            this.BtnAsociados.Text = "Asociados";
+            this.BtnAsociados.Text = "Socios";
             this.BtnAsociados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnAsociados.UseVisualStyleBackColor = false;
             this.BtnAsociados.MouseEnter += new System.EventHandler(this.CustomButton_MouseEnter);

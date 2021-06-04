@@ -48,6 +48,7 @@ namespace WindowsFormsUI.Formularios
             this.DgvLista = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plazo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -262,6 +263,7 @@ namespace WindowsFormsUI.Formularios
             this.DgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
             this.Id,
+            this.Codigo,
             this.Monto,
             this.Interes,
             this.Plazo,
@@ -305,11 +307,21 @@ namespace WindowsFormsUI.Formularios
             // Id
             // 
             this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Id.HeaderText = "Código";
+            this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Id.Width = 83;
+            this.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Id.ToolTipText = "Identificador del crédito para el sistema informático";
+            this.Id.Width = 29;
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Codigo.Width = 83;
             // 
             // Monto
             // 
@@ -443,6 +455,7 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridView DgvLista;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Interes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plazo;

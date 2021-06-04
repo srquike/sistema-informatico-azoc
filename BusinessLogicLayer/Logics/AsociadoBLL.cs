@@ -16,12 +16,18 @@ namespace BusinessLogicLayer.Logics
             _asociadoRepository = new SocioRepository(new AzocDbContext());
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             Socio asociado = _asociadoRepository.GetAsociadoById(id);
 
             _asociadoRepository.DeleteAsociado(asociado);
-            _asociadoRepository.Save();
+
+            if (_asociadoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public IEnumerable<Socio> List()
@@ -34,16 +40,28 @@ namespace BusinessLogicLayer.Logics
             return _asociadoRepository.GetAsociadoById(id);
         }
 
-        public void Create(Socio asociado)
+        public bool Create(Socio asociado)
         {
             _asociadoRepository.InsertAsociado(asociado);
-            _asociadoRepository.Save();
+
+            if (_asociadoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
-        public void Edit(Socio asociado)
+        public bool Edit(Socio asociado)
         {
             _asociadoRepository.UpdateAsociado(asociado);
-            _asociadoRepository.Save();
+
+            if (_asociadoRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public Socio FindByCode(string code)

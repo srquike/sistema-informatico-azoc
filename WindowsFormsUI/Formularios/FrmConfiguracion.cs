@@ -135,9 +135,69 @@ namespace WindowsFormsUI.Formularios
             Close();
         }
 
+        private bool ValidarClaves()
+        {
+            if (string.IsNullOrEmpty(TxtClave.Text))
+            {
+                EpClaves.SetError(TxtClave, "Por favor ingrese la clave");
+            }
+            else
+            {
+                EpClaves.Clear();
+
+                if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtClave.Text != TxtRepetirClave.Text)
+                {
+                    EpClaves.SetError(TxtRepetirClave, "Por favor la claves debeb ser iguales!");
+                }
+                else
+                {
+                    EpClaves.Clear();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void GuardarArchivoConfiguracion()
+        {
+            string archivo = "configuracion.bin";
+
+            using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
+            {
+                BinaryWriter binaryWriter = new BinaryWriter(fileStream);
+
+                string clave = TxtClave.Text;
+                string user = "admin";
+
+                binaryWriter.Write(clave);
+                binaryWriter.Write(user);
+                binaryWriter.Close();
+
+                MessageBox.Show("Configuración guarda con exito!", "Guardar configuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
+            if (ValidarClaves())
+            {
+                GuardarArchivoConfiguracion();
+            }
+        }
 
+        private void ChkVerClaves_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ChkVerClaves.Checked)
+            {
+                TxtClave.UseSystemPasswordChar = false;
+                TxtRepetirClave.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                TxtClave.UseSystemPasswordChar = true;
+                TxtRepetirClave.UseSystemPasswordChar = true;
+            }
         }
     }
 }

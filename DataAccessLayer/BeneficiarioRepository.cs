@@ -68,6 +68,16 @@ namespace DataAccessLayer
         {
             _context.Entry(beneficiario).State = EntityState.Modified;
         }
+
+        public void InsertMany(ICollection<Beneficiario> beneficiarios)
+        {
+            _context.Beneficiarios.AddRange(beneficiarios);
+        }
+
+        int IBeneficiarioRepository.Save()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

@@ -35,7 +35,7 @@ namespace WindowsFormsUI.Formularios
                 string nombreAsociado = string.Concat(credito.Socio.Pnombre, " ", credito.Socio.Snombre, " ", credito.Socio.Tnombre, " ", credito.Socio.Papellido, " ", credito.Socio.Sapellido, " ", credito.Socio.Tapellido);
                 string tasaInteres = string.Format("{0:P2}", (credito.TasaInteres / 100));
 
-                dataGrid.Rows.Add(false, credito.Codigo, monto, tasaInteres, credito.Plazo, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
+                dataGrid.Rows.Add(false, credito.CreditoId, credito.Codigo, monto, tasaInteres, credito.Plazo, fechaInicio, credito.EstadoCredito.Nombre, nombreAsociado);
             }
 
             dataGrid.ClearSelection();
@@ -72,7 +72,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    if (e.ColumnIndex == 8)
+                    if (e.ColumnIndex == 9)
                     {
                         FrmDetallesCredito frmDetalles = new FrmDetallesCredito(creditoId);
                         frmDetalles.StartPosition = FormStartPosition.CenterParent;
@@ -83,7 +83,7 @@ namespace WindowsFormsUI.Formularios
                             frmDetalles.Close();
                         }
                     }
-                    else if (e.ColumnIndex == 9)
+                    else if (e.ColumnIndex == 10)
                     {
                         Credito credito = _creditoLogic.Find(creditoId);
 
@@ -108,7 +108,7 @@ namespace WindowsFormsUI.Formularios
                             }
                         }
                     }
-                    else if (e.ColumnIndex == 10)
+                    else if (e.ColumnIndex == 11)
                     {
                         if (MessageBox.Show("¿Esta seguro de querer eliminar el crédito del sistema?", "Eliminación de crédito: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {

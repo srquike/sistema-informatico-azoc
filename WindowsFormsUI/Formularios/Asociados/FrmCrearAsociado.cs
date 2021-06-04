@@ -88,7 +88,7 @@ namespace WindowsFormsUI.Formularios
             }
             else
             {
-                MessageBox.Show("El asociado solo puede tener 6 beneficiarios!", "Beneficiarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El socio solo puede tener 6 beneficiarios!", "Beneficiarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -177,67 +177,22 @@ namespace WindowsFormsUI.Formularios
                     {
                         ErrPControles.Clear();
 
-                        if (CmbDepartamentos.SelectedIndex == 0)
+                        if (MTxtDui.MaskFull == false)
                         {
-                            ErrPControles.SetError(CmbDepartamentos, "Seleccione un departamento!");
+                            ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
                         }
                         else
                         {
                             ErrPControles.Clear();
 
-                            if (CmbMunicipios.SelectedIndex == 0)
+                            if (string.IsNullOrEmpty(TxtCodigo.Text))
                             {
-                                ErrPControles.SetError(CmbMunicipios, "Seleccione un municipio!");
+                                ErrPControles.SetError(TxtCodigo, "El código es requerido");
                             }
                             else
                             {
                                 ErrPControles.Clear();
-
-                                if (MTxtDui.MaskFull == false)
-                                {
-                                    ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
-                                }
-                                else
-                                {
-                                    ErrPControles.Clear();
-
-                                    if (MTxtNit.MaskFull == false)
-                                    {
-                                        ErrPControles.SetError(MTxtNit, "El número de NIT es requerido!");
-                                    }
-                                    else
-                                    {
-                                        ErrPControles.Clear();
-
-                                        if (MTxtTelefono.MaskFull == false)
-                                        {
-                                            ErrPControles.SetError(MTxtTelefono, "El número de teléfono es requerido!");
-                                        }
-                                        else
-                                        {
-                                            ErrPControles.Clear();
-
-                                            if (string.IsNullOrEmpty(TxtDireccion.Text))
-                                            {
-                                                ErrPControles.SetError(TxtDireccion, "La direccion es requerida!");
-                                            }
-                                            else
-                                            {
-                                                ErrPControles.Clear();
-
-                                                if (string.IsNullOrEmpty(TxtCodigo.Text))
-                                                {
-                                                    ErrPControles.SetError(TxtCodigo, "El código es requerido");
-                                                }
-                                                else
-                                                {
-                                                    ErrPControles.Clear();
-                                                    _continuar = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                _continuar = true;
                             }
                         }
                     }
@@ -262,10 +217,9 @@ namespace WindowsFormsUI.Formularios
         {
             if (_beneficiarios.Count > 0)
             {
-                foreach (Beneficiario beneficiario in _beneficiarios)
+                if (_beneficiarioLogic.CreateMany(_beneficiarios) == false)
                 {
-                    beneficiario.AsociadoId = asociadoId;
-                    _beneficiarioLogic.Create(beneficiario);
+                    MessageBox.Show("No se pudo agregar a los beneficiarios, por favor intente de nuevo!", "Agregar beneficiarios: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -283,7 +237,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (VerificarEntradasUnicas(dui, nit, telefono, asociadoId))
                 {
-                    string genero = CmbGeneros.SelectedItem.ToString() == "Femenino" ? "F" : "M";
+                    string genero = CmbGeneros.SelectedItem.ToString();
                     string departamento = CmbDepartamentos.SelectedItem.ToString();
                     string municipio = CmbMunicipios.SelectedItem.ToString();
                     int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);                    
@@ -306,7 +260,7 @@ namespace WindowsFormsUI.Formularios
                         Nit = nit,
                         Dui = dui,
                         Telefono = telefono,
-                        Estado = "1",
+                        Estado = "Activo",
                         Ingreso = DateTime.Today,
                         CategoriaAsociadoId = categoriaId
                     };

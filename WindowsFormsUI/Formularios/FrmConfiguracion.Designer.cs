@@ -29,6 +29,7 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TcOpciones = new System.Windows.Forms.TabControl();
             this.TpGeneral = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -37,6 +38,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtRepetirClave = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.BtnGuardar = new System.Windows.Forms.Button();
             this.TpBaseDatos = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.BtnRestaurar = new System.Windows.Forms.Button();
@@ -45,16 +47,17 @@ namespace WindowsFormsUI.Formularios
             this.PbProgreso = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnRespaldar = new System.Windows.Forms.Button();
-            this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnGuardar = new System.Windows.Forms.Button();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.FbdUbicacion = new System.Windows.Forms.FolderBrowserDialog();
             this.OfdSeleccionar = new System.Windows.Forms.OpenFileDialog();
+            this.EpClaves = new System.Windows.Forms.ErrorProvider(this.components);
             this.TcOpciones.SuspendLayout();
             this.TpGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.TpBaseDatos.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EpClaves)).BeginInit();
             this.SuspendLayout();
             // 
             // TcOpciones
@@ -73,6 +76,7 @@ namespace WindowsFormsUI.Formularios
             // TpGeneral
             // 
             this.TpGeneral.Controls.Add(this.groupBox1);
+            this.TpGeneral.Controls.Add(this.BtnGuardar);
             this.TpGeneral.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TpGeneral.Location = new System.Drawing.Point(4, 29);
             this.TpGeneral.Name = "TpGeneral";
@@ -107,6 +111,7 @@ namespace WindowsFormsUI.Formularios
             this.ChkVerClaves.TabIndex = 21;
             this.ChkVerClaves.Text = "Ver contraseñas";
             this.ChkVerClaves.UseVisualStyleBackColor = true;
+            this.ChkVerClaves.CheckedChanged += new System.EventHandler(this.ChkVerClaves_CheckedChanged);
             // 
             // TxtClave
             // 
@@ -148,6 +153,25 @@ namespace WindowsFormsUI.Formularios
             this.label2.Size = new System.Drawing.Size(90, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "Contraseña :";
+            // 
+            // BtnGuardar
+            // 
+            this.BtnGuardar.BackColor = System.Drawing.Color.White;
+            this.BtnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnGuardar.ForeColor = System.Drawing.Color.Black;
+            this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
+            this.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnGuardar.Location = new System.Drawing.Point(360, 323);
+            this.BtnGuardar.Name = "BtnGuardar";
+            this.BtnGuardar.Size = new System.Drawing.Size(203, 35);
+            this.BtnGuardar.TabIndex = 25;
+            this.BtnGuardar.Text = "Guardar configuración";
+            this.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnGuardar.UseVisualStyleBackColor = false;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // TpBaseDatos
             // 
@@ -194,7 +218,7 @@ namespace WindowsFormsUI.Formularios
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblPorcentaje.AutoSize = true;
             this.LblPorcentaje.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPorcentaje.Location = new System.Drawing.Point(259, 333);
+            this.LblPorcentaje.Location = new System.Drawing.Point(530, 335);
             this.LblPorcentaje.Name = "LblPorcentaje";
             this.LblPorcentaje.Size = new System.Drawing.Size(33, 20);
             this.LblPorcentaje.TabIndex = 5;
@@ -219,7 +243,7 @@ namespace WindowsFormsUI.Formularios
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PbProgreso.Location = new System.Drawing.Point(8, 332);
             this.PbProgreso.Name = "PbProgreso";
-            this.PbProgreso.Size = new System.Drawing.Size(553, 23);
+            this.PbProgreso.Size = new System.Drawing.Size(504, 23);
             this.PbProgreso.TabIndex = 1;
             // 
             // groupBox2
@@ -245,48 +269,33 @@ namespace WindowsFormsUI.Formularios
             this.BtnRespaldar.UseVisualStyleBackColor = true;
             this.BtnRespaldar.Click += new System.EventHandler(this.BtnRespaldar_Click);
             // 
-            // BtnCancelar
+            // BtnCerrar
             // 
-            this.BtnCancelar.BackColor = System.Drawing.Color.White;
-            this.BtnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.BtnCancelar.Image = global::WindowsFormsUI.Properties.Resources.prohibition;
-            this.BtnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnCancelar.Location = new System.Drawing.Point(462, 403);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(103, 35);
-            this.BtnCancelar.TabIndex = 26;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnCancelar.UseVisualStyleBackColor = false;
-            this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
-            // 
-            // BtnGuardar
-            // 
-            this.BtnGuardar.BackColor = System.Drawing.Color.White;
-            this.BtnGuardar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnGuardar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnGuardar.ForeColor = System.Drawing.Color.Black;
-            this.BtnGuardar.Image = global::WindowsFormsUI.Properties.Resources.floppy_disk;
-            this.BtnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnGuardar.Location = new System.Drawing.Point(253, 403);
-            this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.Size = new System.Drawing.Size(203, 35);
-            this.BtnGuardar.TabIndex = 25;
-            this.BtnGuardar.Text = "Guardar configuración";
-            this.BtnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnGuardar.UseVisualStyleBackColor = false;
-            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
+            this.BtnCerrar.BackColor = System.Drawing.Color.White;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCerrar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.logout;
+            this.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCerrar.Location = new System.Drawing.Point(462, 403);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(103, 35);
+            this.BtnCerrar.TabIndex = 26;
+            this.BtnCerrar.Text = "Cerrar";
+            this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // OfdSeleccionar
             // 
             this.OfdSeleccionar.Filter = "Backup |*.bak";
             this.OfdSeleccionar.Title = "Seleccionar archivo de respaldo";
+            // 
+            // EpClaves
+            // 
+            this.EpClaves.ContainerControl = this;
             // 
             // FrmConfiguracion
             // 
@@ -294,8 +303,7 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(577, 450);
-            this.Controls.Add(this.BtnCancelar);
-            this.Controls.Add(this.BtnGuardar);
+            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.TcOpciones);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmConfiguracion";
@@ -308,6 +316,7 @@ namespace WindowsFormsUI.Formularios
             this.TpBaseDatos.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.EpClaves)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,9 +339,10 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnRestaurar;
         private System.Windows.Forms.Label LblPorcentaje;
         private System.Windows.Forms.Label LblEstado;
-        private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.Button BtnCerrar;
         private System.Windows.Forms.Button BtnGuardar;
         private System.Windows.Forms.FolderBrowserDialog FbdUbicacion;
         private System.Windows.Forms.OpenFileDialog OfdSeleccionar;
+        private System.Windows.Forms.ErrorProvider EpClaves;
     }
 }

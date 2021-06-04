@@ -21,16 +21,14 @@ namespace BusinessLogicLayer.Logics
 
             if (beneficiario != null)
             {
-                try
-                {
-                    _beneficiarioRepository.DeleteBeneficiario(beneficiario);
-                    _beneficiarioRepository.Save();
-                    return true;
-                }
-                catch (Exception)
+                _beneficiarioRepository.DeleteBeneficiario(beneficiario);
+
+                if (_beneficiarioRepository.Save() == 0)
                 {
                     return false;
                 }
+
+                return true;
             }
 
             return false;
@@ -47,30 +45,38 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(Beneficiario beneficiario)
         {
-            try
-            {
-                _beneficiarioRepository.InsertBeneficiario(beneficiario);
-                _beneficiarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _beneficiarioRepository.InsertBeneficiario(beneficiario);
+
+            if (_beneficiarioRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
+        }
+
+        public bool CreateMany(ICollection<Beneficiario> beneficiarios)
+        {
+            _beneficiarioRepository.InsertMany(beneficiarios);
+
+            if (_beneficiarioRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool Edit(Beneficiario beneficiario)
         {
-            try
-            {
-                _beneficiarioRepository.UpdateBeneficiario(beneficiario);
-                _beneficiarioRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _beneficiarioRepository.UpdateBeneficiario(beneficiario);
+
+            if (_beneficiarioRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
     }
 }
