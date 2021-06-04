@@ -41,7 +41,7 @@ namespace WindowsFormsUI.Formularios
 
 
             TxtNombreAsociado.Text = nombreAsociado;
-            TxtCodigoAsociado.Text = _credito.AsociadoId.ToString();
+            TxtCodigoAsociado.Text = _credito.Socio.Codigo;
             TxtCodigoCredito.Text = _credito.CreditoId.ToString();
             TxtMontoSolicitado.Text = string.Format("{0:C2}", _credito.Monto);
             TxtFechaInicio.Text = _credito.Inicio.ToShortDateString();

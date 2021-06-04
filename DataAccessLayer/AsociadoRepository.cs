@@ -75,5 +75,15 @@ namespace DataAccessLayer
         {
             _context.Entry(asociado).State = EntityState.Modified;
         }
+
+        public Socio GetSocioByCode(string code)
+        {
+            return _context.Socios.Where(a => a.Codigo == code)
+                .Include(a => a.CategoriaAsociado)
+                .Include(a => a.Beneficiarios)
+                .Include(a => a.Creditos)
+                .AsNoTracking()
+                .FirstOrDefault();
+        }
     }
 }

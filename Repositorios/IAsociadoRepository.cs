@@ -8,6 +8,7 @@ namespace RepositoryLayer
     {
         IEnumerable<Socio> GetAsociados();
         Socio GetAsociadoById(int id);
+        Socio GetSocioByCode(string code);
         void InsertAsociado(Socio asociado);
         void DeleteAsociado(Socio asociado);
         void UpdateAsociado(Socio asociado);

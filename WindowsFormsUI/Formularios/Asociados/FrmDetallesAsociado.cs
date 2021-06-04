@@ -58,14 +58,17 @@ namespace WindowsFormsUI.Formularios
             MTxtNit.Text = _asociado.Nit;
             MTxtTelefono.Text = _asociado.Telefono;
             TxtFIngreso.Text = _asociado.Ingreso.ToShortDateString();
-            TxtFRetiro.Text = _asociado.Retiro.Value.ToShortDateString();
+            TxtFRetiro.Text = _asociado.Retiro.ToString();
 
             LlenarListado(ref DgvListado, _asociado.Beneficiarios);
         }
 
         private void FrmDetallesAsociado_Load(object sender, EventArgs e)
         {
-            RellenarControles();
+            if (_asociado != null)
+            {
+                RellenarControles();
+            }
         }
 
         private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)

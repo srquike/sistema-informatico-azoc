@@ -20,7 +20,7 @@ namespace BusinessObjectsLayer.Models
         public decimal Monto { get; set; }
         public int Plazo { get; set; }
         public decimal TasaInteres { get; set; }
-        public int? AsociadoId { get; set; }
+        public int? SocioId { get; set; }
         public int? EstadoCreditoId { get; set; }
 
         public virtual Socio Socio { get; set; }

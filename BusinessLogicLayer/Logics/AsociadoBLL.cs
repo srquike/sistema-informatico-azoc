@@ -45,5 +45,10 @@ namespace BusinessLogicLayer.Logics
             _asociadoRepository.UpdateAsociado(asociado);
             _asociadoRepository.Save();
         }
+
+        public Socio FindByCode(string code)
+        {
+            return _asociadoRepository.GetSocioByCode(code);
+        }
     }
 }

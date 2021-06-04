@@ -34,7 +34,7 @@ namespace WindowsFormsUI.Formularios
                 string genero = asociado.Genero == "F" ? "Femenino" : "Masculino";
                 string estado = asociado.Estado == "1" ? "Activo" : "Inactivo";
 
-                dataGrid.Rows.Add(false, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, estado);
+                dataGrid.Rows.Add(false, asociado.SocioId, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, estado);
             }
 
             dataGrid.ClearSelection();
@@ -151,7 +151,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    if (e.ColumnIndex == 9)
+                    if (e.ColumnIndex == 10)
                     {
                         FrmDetallesAsociado frmDetalles = new FrmDetallesAsociado(asociadoId);
                         frmDetalles.StartPosition = FormStartPosition.CenterParent;
@@ -162,7 +162,7 @@ namespace WindowsFormsUI.Formularios
                             frmDetalles.Close();
                         }
                     }
-                    else if (e.ColumnIndex == 10)
+                    else if (e.ColumnIndex == 11)
                     {
                         FrmEditarAsociado frmEditar = new FrmEditarAsociado(asociadoId);
                         frmEditar.StartPosition = FormStartPosition.CenterParent;
@@ -173,7 +173,7 @@ namespace WindowsFormsUI.Formularios
                             ActualizarListado(ref DgvListado, _asociadoLogic.List());
                         }
                     }
-                    else if (e.ColumnIndex == 11)
+                    else if (e.ColumnIndex == 12)
                     {
                         if (MessageBox.Show("¿Esta seguro de querer eliminar al asociado del sistema?", "Eliminación de asociado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {

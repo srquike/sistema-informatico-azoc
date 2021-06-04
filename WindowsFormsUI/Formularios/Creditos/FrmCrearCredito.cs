@@ -202,7 +202,7 @@ namespace WindowsFormsUI.Formularios
                     Codigo = codigoCredito,
                     Inicio = DtpFechaInicio.Value.Date,
                     Monto = NudMontoSolicitado.Value,
-                    AsociadoId = asociadoId,
+                    SocioId = asociadoId,
                     Plazo = plazo,
                     TasaInteres = NudTasaInteres.Value,
                     EstadoCreditoId = ChkAprobarCredito.Checked ? 2 : 1
