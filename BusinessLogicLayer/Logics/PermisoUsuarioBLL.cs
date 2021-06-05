@@ -23,7 +23,12 @@ namespace BusinessLogicLayer.Logics
             if (permisoUsuario != null)
             {
                 _permisoUsuarioRepository.DeletePermisoUsuario(permisoUsuario);
-                _permisoUsuarioRepository.Save();
+
+                if (_permisoUsuarioRepository.Save() == 0)
+                {
+                    return false;
+                }
+
                 return true;
             }
 
@@ -40,16 +45,39 @@ namespace BusinessLogicLayer.Logics
             return _permisoUsuarioRepository.GetPermisoUsuarioById(id);
         }
 
-        public void Create(PermisoUsuario permisoUsuario)
+        public bool Create(PermisoUsuario permisoUsuario)
         {
             _permisoUsuarioRepository.InsertPermisoUsuario(permisoUsuario);
-            _permisoUsuarioRepository.Save();
+
+            if (_permisoUsuarioRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool CreateMany(ICollection<PermisoUsuario> permisosUsuarios)
+        {
+            _permisoUsuarioRepository.InsertMany(permisosUsuarios);
+
+            if (_permisoUsuarioRepository.Save() == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public bool Edit(PermisoUsuario permisoUsuario)
         {
             _permisoUsuarioRepository.UpdatePermisoUsuario(permisoUsuario);
-            _permisoUsuarioRepository.Save();
+
+            if (_permisoUsuarioRepository.Save() == 0)
+            {
+                return false;
+            }
+
             return true;
         }
     }

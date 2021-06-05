@@ -9,6 +9,7 @@ using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -125,7 +126,8 @@ namespace WindowsFormsUI.Formularios
 
             if (dataGridView.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                int userId = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[1].Value);
+                int userId = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells["Id"].Value);
+                string nombreUsuario = dataGridView.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
 
                 if (e.ColumnIndex == 8)
                 {
@@ -182,6 +184,8 @@ namespace WindowsFormsUI.Formularios
                                 {
                                     if (_usuarioLogeado != null)
                                     {
+                                        EliminarAvatar(nombreUsuario);
+
                                         RegistroUsuario registro = new RegistroUsuario
                                         {
                                             UsuarioId = _usuarioLogeado.UsuarioId,
@@ -224,6 +228,18 @@ namespace WindowsFormsUI.Formularios
 
                 LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
                 LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
+            }
+        }
+
+        private void EliminarAvatar(string usuarioNombre)
+        {
+            string ruta = @"Imagenes\";
+            string extension = ".jpeg";
+            string archivo = string.Concat(ruta, usuarioNombre, extension);
+
+            if (File.Exists(archivo))
+            {
+                File.Delete(archivo);
             }
         }
 

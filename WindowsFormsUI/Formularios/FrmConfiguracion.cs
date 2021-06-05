@@ -9,14 +9,22 @@ using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.Data.SqlClient;
 using System.IO;
+using BusinessLogicLayer.Logics;
+using BusinessObjectsLayer.Models;
 
 namespace WindowsFormsUI.Formularios
 {
     public partial class FrmConfiguracion : Form
     {
-        public FrmConfiguracion()
+        private readonly Usuario _usuarioLogeado;
+        private readonly RegistroUsuarioBLL _registroUsuarioBLL;
+
+        public FrmConfiguracion(Usuario usuarioLogeado)
         {
             InitializeComponent();
+
+            _registroUsuarioBLL = new RegistroUsuarioBLL();
+            _usuarioLogeado = usuarioLogeado;
         }
 
         private void BtnRespaldar_Click(object sender, EventArgs e)
@@ -41,6 +49,19 @@ namespace WindowsFormsUI.Formularios
                     backup.PercentComplete += Backup_PercentComplete;
                     backup.Complete += Backup_Complete;
                     backup.SqlBackup(server);
+
+                    RegistroUsuario registro = new RegistroUsuario()
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 1006,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Respaldo de la base de datos por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
                 }
                 catch (Exception ex)
@@ -97,6 +118,19 @@ namespace WindowsFormsUI.Formularios
                     restore.PercentComplete += Restore_PercentComplete;
                     restore.Complete += Restore_Complete;
                     restore.SqlRestore(server);
+
+                    RegistroUsuario registro = new RegistroUsuario()
+                    {
+                        UsuarioId = _usuarioLogeado.UsuarioId,
+                        RegistroId = 1007,
+                        Fecha = DateTime.Now,
+                        Informacion = $"Restauración de la base de datos por parte del usuario {_usuarioLogeado.Nombre}"
+                    };
+
+                    if (_registroUsuarioBLL.Create(registro) == false)
+                    {
+                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -132,7 +166,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         private bool ValidarClaves()
@@ -161,9 +195,24 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarArchivoConfiguracion()
         {
+            string directorio = @"Configuracion\";
             string archivo = "configuracion.bin";
 
-            using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
+            if (!Directory.Exists(directorio))
+            {
+                try
+                {
+                    Directory.CreateDirectory(directorio);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "La carpeta para almacenar la configuracion no se pudo crear", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            string ruta = string.Concat(directorio, archivo);
+
+            using (FileStream fileStream = new FileStream(ruta, FileMode.Create, FileAccess.Write))
             {
                 BinaryWriter binaryWriter = new BinaryWriter(fileStream);
 
@@ -173,6 +222,19 @@ namespace WindowsFormsUI.Formularios
                 binaryWriter.Write(clave);
                 binaryWriter.Write(user);
                 binaryWriter.Close();
+
+                RegistroUsuario registro = new RegistroUsuario()
+                {
+                    UsuarioId = _usuarioLogeado.UsuarioId,
+                    RegistroId = 1008,
+                    Fecha = DateTime.Now,
+                    Informacion = $"Cambio de configuracipon por parte del usuario {_usuarioLogeado.Nombre}"
+                };
+
+                if (_registroUsuarioBLL.Create(registro) == false)
+                {
+                    MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 MessageBox.Show("Configuración guarda con exito!", "Guardar configuración", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

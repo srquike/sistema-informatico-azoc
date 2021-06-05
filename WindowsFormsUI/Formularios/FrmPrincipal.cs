@@ -15,7 +15,7 @@ namespace WindowsFormsUI.Formularios
         private AdministracionCustomMenuStrip administracionCustomMenuStrip;
         private CreditosCustomMenuStrip creditosCustomMenuStrip;
 
-        #region Inicializar formularios
+        #region Inicializar formularios hijos
         private FrmUsuarios _frmUsuarios = null;
         private FrmEmpleados _frmEmpleados = null;
         private FrmCreditos _frmCreditos = null;
@@ -38,7 +38,7 @@ namespace WindowsFormsUI.Formularios
                 string nombreEmpleado = $"{_usuarioLogeado.Empleado.PrimerNombre} {_usuarioLogeado.Empleado.SegundoNombre} {_usuarioLogeado.Empleado.TercerNombre} {_usuarioLogeado.Empleado.PrimerApellido} {_usuarioLogeado.Empleado.SegundoApellido} {_usuarioLogeado.Empleado.TercerApellido}";
 
                 string extension = ".jpeg";
-                string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
+                string ruta = @"Imagenes\";
                 string archivo = string.Concat(ruta, _usuarioLogeado.Nombre, extension);
 
                 if (File.Exists(archivo))
@@ -50,12 +50,14 @@ namespace WindowsFormsUI.Formularios
                 }
                 else
                 {
-                    PctAvatar.Image = _usuarioLogeado.Empleado.Genero == "F"
+                    PctAvatar.Image = _usuarioLogeado.Empleado.Genero == "Femenino"
                         ? Properties.Resources.female_avatar_default
                         : Properties.Resources.male_avatar_default;
                 }
 
-                LblSaludo.Text = _usuarioLogeado.Empleado.Genero == "F" ? "BIENVENIDA" : "BIENVENIDO";
+                LblSaludo.Text = _usuarioLogeado.Empleado.Genero == "Femenino" 
+                    ? "BIENVENIDA" 
+                    : "BIENVENIDO";
 
                 TxtNombreEmpleado.Text = nombreEmpleado;
             }
@@ -301,13 +303,13 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnConfiguracion_Click(object sender, EventArgs e)
         {
-            FrmConfiguracion frmConfiguracion = new FrmConfiguracion();
+            FrmConfiguracion frmConfiguracion = new FrmConfiguracion(_usuarioLogeado);
             frmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
             frmConfiguracion.ShowDialog();
 
             if (frmConfiguracion.DialogResult == DialogResult.OK)
             {
-
+                frmConfiguracion.Close();
             }
         }
     }

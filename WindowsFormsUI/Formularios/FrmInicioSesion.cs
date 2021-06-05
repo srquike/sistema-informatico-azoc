@@ -13,7 +13,7 @@ namespace WindowsFormsUI.Formularios
         private UsuarioBLL _usuarioLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioLogic;
         private Usuario _usuarioLogin;
-        private const string archivoConfiguracion = "configuracion.bin";
+        private const string archivoConfiguracion = @"Configuracion\configuracion.bin";
 
         public FrmInicioSesion()
         {
@@ -122,6 +122,10 @@ namespace WindowsFormsUI.Formularios
                     if (AutenticarUsuarioAdministrador(password, nombre))
                     {
                         MostrarFormularioPrincipal();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al intentar autenticar usuario administrador", "Autenticar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

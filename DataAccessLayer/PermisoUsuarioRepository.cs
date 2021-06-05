@@ -57,14 +57,19 @@ namespace DataAccessLayer
             _context.PermisoUsuarios.Add(permisoUsuario);
         }
 
-        public void Save()
+        public int Save()
         {
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
         public void UpdatePermisoUsuario(PermisoUsuario permisoUsuario)
         {
             _context.Entry(permisoUsuario).State = EntityState.Modified;
+        }
+
+        public void InsertMany(ICollection<PermisoUsuario> permisosUsuarios)
+        {
+            _context.PermisoUsuarios.AddRange(permisosUsuarios);
         }
     }
 }

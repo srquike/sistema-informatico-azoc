@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Logics;
 using BusinessObjectsLayer.Models;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -134,9 +135,10 @@ namespace WindowsFormsUI.Formularios
             return true;
         }
 
-        private void AgregarPermisos(int userId)
+        private bool AgregarPermisos(int userId)
         {
             PermisoUsuario permiso;
+            ICollection<PermisoUsuario> permisos = new List<PermisoUsuario>();
 
             foreach (CheckBox check in GrpPermisos.Controls)
             {
@@ -148,9 +150,21 @@ namespace WindowsFormsUI.Formularios
                         UsuarioId = userId
                     };
 
-                    _permisoUsuarioLogic.Create(permiso);
+                    permisos.Add(permiso);
                 }
             }
+
+            if (permisos.Count > 0)
+            {
+                if (_permisoUsuarioLogic.CreateMany(permisos))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            return true;
         }
 
         private void BtnCrearUsuario_Click(object sender, EventArgs e)
@@ -172,20 +186,26 @@ namespace WindowsFormsUI.Formularios
                         Respuesta1 = TxtPregunta1.Text,
                         Respuesta2 = TxtPregunta2.Text,
                         Respuesta3 = TxtPregunta3.Text,
-                        Estado = ChkActivarUsuario.Checked ? '1' : '0'                        
+                        Estado = ChkActivarUsuario.Checked ? '1' : '0'
                     };
 
                     if (_usuarioLogic.Create(usuario)) // Se valida que el usuario fue insertado a la base de datos
                     {
-                        AgregarPermisos(usuario.UsuarioId);
-                        GuardarAvatar(nombreUsuario);
+                        if (AgregarPermisos(usuario.UsuarioId))
+                        {
+                            GuardarAvatar(nombreUsuario);
 
-                        DialogResult = DialogResult.OK;
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No fue posible asignar los permisos al usuario!", "Asignar permisos: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
                         MessageBox.Show("No fue posible crear el usuario, por favor intente de nuevo!", "Crear usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                    
+                    }
                 }
                 else
                 {
@@ -196,8 +216,21 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string nombreUsuario)
         {
-            string ruta = @"C:\Users\Jonathan Vanegas\source\repos\srquike\sistema-informatico-azoc\WindowsFormsUI\Resources\Imagenes";
+            string ruta = @"Imagenes\";
             string extension = ".jpeg";
+
+            if (!Directory.Exists(ruta))
+            {
+                try
+                {
+                    Directory.CreateDirectory(ruta);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "No se pudo crear la carpeta para almacenar las imagenes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             string archivo = string.Concat(ruta, nombreUsuario, extension);
 
             if (!File.Exists(archivo))
