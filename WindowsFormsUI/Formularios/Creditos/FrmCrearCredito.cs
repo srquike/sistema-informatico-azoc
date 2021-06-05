@@ -19,6 +19,7 @@ namespace WindowsFormsUI.Formularios
         private readonly CreditoBLL _creditoLogic;
         private readonly CuotaBLL _cuotaBLL;
         private readonly DeducccionCreditoBLL _deducccionCreditoBLL;
+        private Credito _creditoAnterior;
 
         public FrmCrearCredito()
         {
@@ -65,27 +66,6 @@ namespace WindowsFormsUI.Formularios
             deducciones = ahorroSimultaneo + documentoAutenticado + hipotecaAbierta + prestamoAnterior + tramites + interesSobrePrestamo + aportaciones + otros;
 
             return deducciones;
-        }
-
-        private void CalcularPrestamoAnterior(ICollection<Credito> creditos)
-        {
-            decimal prestamoAnterior = 0;
-
-            foreach (Credito credito in creditos)
-            {
-                if (credito.EstadoCreditoId == 2) // Solo el credito que esta activo
-                {
-                    foreach (Cuota cuota in credito.Cuotas)
-                    {
-                        if (cuota.EstadoCuotaId == 1) // Solo la cuota que no ha sido cancelada
-                        {
-                            prestamoAnterior += cuota.Monto;
-                        }
-                    }
-                }
-            }
-
-            NudPrestamoAnterior.Value = prestamoAnterior;
         }
 
         private decimal ObtenerCuota(decimal montoSolicitado, int plazo, decimal tasaInteres)
@@ -219,11 +199,21 @@ namespace WindowsFormsUI.Formularios
                     {
                         if (CrearDeducciones(credito.CreditoId))
                         {
+                            if (_creditoAnterior != null)
+                            {
+                                if (FinalizarCreditoAnterior() == false)
+                                {
+                                    MessageBox.Show("No fue posible finalizar el crédito anterior", "Finalizar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                }
+                            }
+
                             FrmAgendaPagos frmAgendaPagos = new FrmAgendaPagos(credito.CreditoId);
                             frmAgendaPagos.StartPosition = FormStartPosition.CenterScreen;
                             frmAgendaPagos.ShowDialog();
 
                             DialogResult = DialogResult.OK;
+
                         }
                         else
                         {
@@ -240,6 +230,31 @@ namespace WindowsFormsUI.Formularios
                     MessageBox.Show("No fue posible crear el crédito, por favor intente de nuevo!", "Crear crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private bool FinalizarCreditoAnterior()
+        {
+            _creditoAnterior.EstadoCreditoId = 3;
+
+            if (_creditoLogic.Edit(_creditoAnterior))
+            {
+                foreach (Cuota cuota in _creditoAnterior.Cuotas)
+                {
+                    if (cuota.EstadoCuotaId == 1)
+                    {
+                        cuota.EstadoCuotaId = 2;
+
+                        if (_cuotaBLL.Edit(cuota))
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         private bool CrearDeducciones(int creditoId)
@@ -421,14 +436,45 @@ namespace WindowsFormsUI.Formularios
         private void CmbAsociados_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int asociadoId = Convert.ToInt32(CmbAsociados.SelectedValue);
+            decimal montoCreditoAnterior = 0;
             Socio asociado = _asociadoLogic.Find(asociadoId);
+            Credito creditoAnterior;
 
             if (asociado != null)
             {
                 TxtCodigoAsociado.Text = asociado.Codigo;
 
-                CalcularPrestamoAnterior(asociado.Creditos);
+                if (asociado.Creditos.Count > 0)
+                {
+                    creditoAnterior = asociado.Creditos.Where(c => c.EstadoCreditoId == 2).First();
+
+                    if (creditoAnterior != null)
+                    {
+                        _creditoAnterior = _creditoLogic.Find(creditoAnterior.CreditoId);
+
+                        if (_creditoAnterior != null)
+                        {
+                            montoCreditoAnterior = ObtenerMontoCreditoAnterior(_creditoAnterior.Cuotas);
+                            NudPrestamoAnterior.Value = montoCreditoAnterior;
+                        }
+                    }
+                }
             }
+        }
+
+        private decimal ObtenerMontoCreditoAnterior(ICollection<Cuota> cuotas)
+        {
+            decimal montoPrestamoAnterior = 0;
+
+            foreach (Cuota cuota in cuotas)
+            {
+                if (cuota.EstadoCuotaId == 1)
+                {
+                    montoPrestamoAnterior += cuota.Monto;
+                }
+            }
+
+            return montoPrestamoAnterior;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

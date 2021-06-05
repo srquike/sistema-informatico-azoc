@@ -60,21 +60,7 @@ namespace WindowsFormsUI.Formularios
             foreach (Usuario usuario in usuarios)
             {
                 string nombreEmpleado = $"{usuario.Empleado.PrimerNombre} {usuario.Empleado.SegundoNombre} {usuario.Empleado.TercerNombre} {usuario.Empleado.PrimerApellido} {usuario.Empleado.SegundoApellido} {usuario.Empleado.TercerApellido}";
-                string estado;
-
-                if (usuario.Estado == '0')
-                {
-                    estado = "Desactivado";
-                }
-                else if (usuario.Estado == '1')
-                {
-                    estado = "Activado";
-                }
-                else
-                {
-                    estado = "-";
-                }
-
+                string estado = usuario.Estado == '0' ? "Desactivado" : "Activado";
                 string fechaCreacion = string.Format("{0:dd/MM/yyyy}", usuario.FechaCreacion);
                 string fechaModificacion = string.Format("{0:dd/MM/yyyy}", usuario.FechaModificacion);
 

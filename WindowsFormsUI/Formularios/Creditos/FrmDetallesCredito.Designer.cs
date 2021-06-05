@@ -262,7 +262,7 @@ namespace WindowsFormsUI.Formularios
             this.groupBox5.Size = new System.Drawing.Size(272, 136);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Cuotas";
+            this.groupBox5.Text = "Cuota";
             // 
             // label3
             // 

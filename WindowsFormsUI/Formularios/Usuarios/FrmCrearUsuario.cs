@@ -291,5 +291,22 @@ namespace WindowsFormsUI.Formularios
         {
             Close();
         }
+
+        private void CmbEmpleados_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int empleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);
+
+            Empleado empleado = _empleadoLogic.Find(empleadoId);
+
+            if (empleado != null)
+            {
+                int usuarios = empleado.Usuarios.Count;
+
+                if (usuarios > 0)
+                {
+                    MessageBox.Show("No se puede crear un usuario para este empleado debiado a que ya posee uno. Elimine el usuario actual del empleado e intente de nuevo!", "Crear usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

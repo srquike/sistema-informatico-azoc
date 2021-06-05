@@ -187,31 +187,53 @@ namespace WindowsFormsUI.Formularios
                 {
                     if (VerificarPermisos(4))
                     {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar al empleado del sistema?", "Eliminación de empleado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        {
-                            if (_empleadoLogic.Delete(empleadoId))
-                            {
-                                if (_usuarioLogeado != null)
-                                {
-                                    RegistroUsuario registro = new RegistroUsuario
-                                    {
-                                        UsuarioId = _usuarioLogeado.UsuarioId,
-                                        RegistroId = 2,
-                                        Fecha = DateTime.Now,
-                                        Informacion = $"Eliminación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
-                                    };
+                        Empleado empleado = _empleadoLogic.Find(empleadoId);
 
-                                    if (_registroUsuarioBLL.Create(registro) == false)
+                        if (empleado != null)
+                        {
+                            int usuarios = empleado.Usuarios.Count;
+
+                            if (usuarios > 0)
+                            {
+                                Usuario usuario = empleado.Usuarios.First();
+
+                                if (usuario != null)
+                                {
+                                    if (usuario.UsuarioId == _usuarioLogeado.UsuarioId)
                                     {
-                                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("No puede eliminar este empledo ya que el usuario actual es de su pertenecia. Cierre sesion e ingrese con otro usuario!", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
-
-                                ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
                             }
                             else
                             {
-                                MessageBox.Show("No se pudo eliminar al empleado, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (MessageBox.Show("¿Esta seguro de querer eliminar al empleado del sistema?", "Eliminación de empleado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                                {
+                                    if (_empleadoLogic.Delete(empleadoId))
+                                    {
+                                        if (_usuarioLogeado != null)
+                                        {
+                                            RegistroUsuario registro = new RegistroUsuario
+                                            {
+                                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                                RegistroId = 2,
+                                                Fecha = DateTime.Now,
+                                                Informacion = $"Eliminación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                                            };
+
+                                            if (_registroUsuarioBLL.Create(registro) == false)
+                                            {
+                                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                        }
+
+                                        ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se pudo eliminar al empleado, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
                             }
                         }
                     }

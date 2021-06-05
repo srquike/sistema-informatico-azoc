@@ -226,6 +226,11 @@ namespace WindowsFormsUI.Formularios
             0,
             0,
             0});
+            this.NudDeudaTotal.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
             this.NudDeudaTotal.Name = "NudDeudaTotal";
             this.NudDeudaTotal.Size = new System.Drawing.Size(145, 27);
             this.NudDeudaTotal.TabIndex = 36;
@@ -240,6 +245,11 @@ namespace WindowsFormsUI.Formularios
             0,
             0,
             0});
+            this.NudDeudaAdquirida.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
             this.NudDeudaAdquirida.Name = "NudDeudaAdquirida";
             this.NudDeudaAdquirida.Size = new System.Drawing.Size(145, 27);
             this.NudDeudaAdquirida.TabIndex = 35;
@@ -254,6 +264,11 @@ namespace WindowsFormsUI.Formularios
             0,
             0,
             0});
+            this.NudLiquidoRecibir.Minimum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            -2147483648});
             this.NudLiquidoRecibir.Name = "NudLiquidoRecibir";
             this.NudLiquidoRecibir.Size = new System.Drawing.Size(145, 27);
             this.NudLiquidoRecibir.TabIndex = 34;

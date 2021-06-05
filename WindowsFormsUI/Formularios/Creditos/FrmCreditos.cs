@@ -139,7 +139,7 @@ namespace WindowsFormsUI.Formularios
                     }
                     else if (e.ColumnIndex == 10)
                     {
-                        if (VerificarPermisos(7))
+                        if (VerificarPermisos(3))
                         {
                             Credito credito = _creditoLogic.Find(creditoId);
 

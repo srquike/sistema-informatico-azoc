@@ -27,10 +27,8 @@ namespace BusinessLogicLayer.Logics
                 {
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
+
+                return true;
             }
 
             return false;

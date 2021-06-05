@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using WindowsFormsUI.Formularios.Cuotas;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -20,6 +21,7 @@ namespace WindowsFormsUI.Formularios
         private FrmEmpleados _frmEmpleados = null;
         private FrmCreditos _frmCreditos = null;
         private FrmAsociados _frmAsociados = null;
+        private FrmCuotas _frmCuotas = null;
         #endregion
 
         public FrmPrincipal(Usuario usuario)
@@ -102,7 +104,7 @@ namespace WindowsFormsUI.Formularios
             administracionCustomMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
             administracionCustomMenuStrip.Location = new System.Drawing.Point(236, 424);
             administracionCustomMenuStrip.Name = "administracionCustomMenuStrip";
-            administracionCustomMenuStrip.Size = new System.Drawing.Size(225, 151);
+            administracionCustomMenuStrip.Size = new System.Drawing.Size(225, 221);
             administracionCustomMenuStrip.TabIndex = 15;
             administracionCustomMenuStrip.Visible = false;
             administracionCustomMenuStrip.BtnUsuarios.Click += new EventHandler(BtnUsuarios_Click);
@@ -111,13 +113,14 @@ namespace WindowsFormsUI.Formularios
 
             creditosCustomMenuStrip = new CreditosCustomMenuStrip();
             creditosCustomMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
-            creditosCustomMenuStrip.Location = new System.Drawing.Point(236, 488);
+            creditosCustomMenuStrip.Location = new System.Drawing.Point(236, 407);
             creditosCustomMenuStrip.Name = "creditosCustomMenuStrip";
-            creditosCustomMenuStrip.Size = new System.Drawing.Size(225, 151);
+            creditosCustomMenuStrip.Size = new System.Drawing.Size(225, 221);
             creditosCustomMenuStrip.TabIndex = 17;
             creditosCustomMenuStrip.Visible = false;
             creditosCustomMenuStrip.BtnCreditos.Click += new EventHandler(BtnCreditos_Click);
             creditosCustomMenuStrip.BtnAsociados.Click += new EventHandler(BtnAsociados_Click);
+            creditosCustomMenuStrip.BtnCuotas.Click += new EventHandler(BtnCuotas_Click);
             creditosCustomMenuStrip.Leave += new EventHandler(CreditosCustomMenuStrip_Leave);
 
 
@@ -126,6 +129,31 @@ namespace WindowsFormsUI.Formularios
         }
 
         #region Eventos de los controles personalizados
+
+        private void BtnCuotas_Click(object sender, EventArgs e)
+        {
+            creditosCustomMenuStrip.Visible = false;
+
+            if (_frmCuotas == null)
+            {
+                if (VerificarPermisos(1))
+                {
+                    _frmCuotas = new FrmCuotas(_usuarioLogeado);
+                    _frmCuotas.MdiParent = this;
+                    _frmCuotas.FormClosed += new FormClosedEventHandler(FrmCuotas_Closed);
+                    _frmCuotas.Show();
+                }
+            }
+            else
+            {
+                _frmCuotas.Activate();
+            }
+        }
+
+        private void FrmCuotas_Closed(object sender, EventArgs e)
+        {
+            _frmCuotas = null;
+        }
 
         private void BtnUsuarios_Click(object sender, EventArgs e)
         {
@@ -331,7 +359,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnConfiguracion_Click(object sender, EventArgs e)
         {
-            if (VerificarPermisos(6))
+            if (VerificarPermisos(3))
             {
                 FrmConfiguracion frmConfiguracion = new FrmConfiguracion(_usuarioLogeado);
                 frmConfiguracion.StartPosition = FormStartPosition.CenterScreen;

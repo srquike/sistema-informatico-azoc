@@ -34,6 +34,8 @@ namespace CustomControls
             this.BtnAsociados = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnCreditos = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnCuotas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel2
@@ -94,17 +96,48 @@ namespace CustomControls
             this.BtnCreditos.MouseEnter += new System.EventHandler(this.CustomButton_MouseEnter);
             this.BtnCreditos.MouseLeave += new System.EventHandler(this.CustomButton_MouseLeave);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(9, 149);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(23, 58);
+            this.panel3.TabIndex = 18;
+            // 
+            // BtnCuotas
+            // 
+            this.BtnCuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.BtnCuotas.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnCuotas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.BtnCuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCuotas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnCuotas.ForeColor = System.Drawing.Color.White;
+            this.BtnCuotas.Image = global::CustomControls.Properties.Resources.payment_method;
+            this.BtnCuotas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCuotas.Location = new System.Drawing.Point(40, 149);
+            this.BtnCuotas.Margin = new System.Windows.Forms.Padding(5);
+            this.BtnCuotas.Name = "BtnCuotas";
+            this.BtnCuotas.Size = new System.Drawing.Size(177, 58);
+            this.BtnCuotas.TabIndex = 17;
+            this.BtnCuotas.Text = "Cuotas";
+            this.BtnCuotas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCuotas.UseVisualStyleBackColor = false;
+            this.BtnCuotas.MouseEnter += new System.EventHandler(this.CustomButton_MouseEnter);
+            this.BtnCuotas.MouseLeave += new System.EventHandler(this.CustomButton_MouseLeave);
+            // 
             // CreditosCustomMenuStrip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.BtnCuotas);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.BtnAsociados);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnCreditos);
             this.Name = "CreditosCustomMenuStrip";
-            this.Size = new System.Drawing.Size(225, 151);
+            this.Size = new System.Drawing.Size(225, 221);
             this.ResumeLayout(false);
 
         }
@@ -115,5 +148,7 @@ namespace CustomControls
         public System.Windows.Forms.Button BtnAsociados;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button BtnCreditos;
+        private System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Button BtnCuotas;
     }
 }

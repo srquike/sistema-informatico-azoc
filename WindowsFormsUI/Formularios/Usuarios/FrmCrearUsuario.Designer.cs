@@ -101,10 +101,10 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeEditar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.chkPuedeEditar.Location = new System.Drawing.Point(6, 98);
             this.chkPuedeEditar.Name = "chkPuedeEditar";
-            this.chkPuedeEditar.Size = new System.Drawing.Size(112, 24);
+            this.chkPuedeEditar.Size = new System.Drawing.Size(137, 24);
             this.chkPuedeEditar.TabIndex = 16;
             this.chkPuedeEditar.Tag = "3";
-            this.chkPuedeEditar.Text = "Puede editar";
+            this.chkPuedeEditar.Text = "Puede modificar";
             this.chkPuedeEditar.UseVisualStyleBackColor = true;
             // 
             // chkPuedeAgregar
@@ -113,10 +113,10 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeAgregar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.chkPuedeAgregar.Location = new System.Drawing.Point(6, 60);
             this.chkPuedeAgregar.Name = "chkPuedeAgregar";
-            this.chkPuedeAgregar.Size = new System.Drawing.Size(125, 24);
+            this.chkPuedeAgregar.Size = new System.Drawing.Size(106, 24);
             this.chkPuedeAgregar.TabIndex = 15;
             this.chkPuedeAgregar.Tag = "2";
-            this.chkPuedeAgregar.Text = "Puede agregar";
+            this.chkPuedeAgregar.Text = "Puede crear";
             this.chkPuedeAgregar.UseVisualStyleBackColor = true;
             // 
             // chkPuedeVer
@@ -290,6 +290,7 @@ namespace WindowsFormsUI.Formularios
             this.CmbEmpleados.Name = "CmbEmpleados";
             this.CmbEmpleados.Size = new System.Drawing.Size(369, 28);
             this.CmbEmpleados.TabIndex = 1;
+            this.CmbEmpleados.SelectionChangeCommitted += new System.EventHandler(this.CmbEmpleados_SelectionChangeCommitted);
             // 
             // label4
             // 

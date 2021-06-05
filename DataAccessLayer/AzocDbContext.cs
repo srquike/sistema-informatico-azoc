@@ -31,7 +31,7 @@ namespace DataAccessLayer
         public virtual DbSet<DeduccionCredito> DeduccionesCreditos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<EstadoCredito> EstadosCreditos { get; set; }
-        public virtual DbSet<EstadoCuota> EstadosCuotas { get; set; }
+        public virtual DbSet<EstadoCuota> EstadoCuota { get; set; }
         public virtual DbSet<Permiso> Permisos { get; set; }
         public virtual DbSet<PermisoUsuario> PermisoUsuarios { get; set; }
         public virtual DbSet<TipoCuota> TiposCuotas { get; set; }
@@ -367,7 +367,7 @@ namespace DataAccessLayer
                     .HasConstraintName("FK_Cuota_Credito");
 
                 entity.HasOne(d => d.EstadoCuota)
-                    .WithMany(p => p.Cuota)
+                    .WithMany(p => p.Cuotas)
                     .HasForeignKey(d => d.EstadoCuotaId)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FK_Cuota_EstadoCuota");

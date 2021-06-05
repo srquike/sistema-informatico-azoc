@@ -31,7 +31,7 @@ namespace DataAccessLayer
         }
         public void DeleteEstadoCuota(EstadoCuota estadocuota)
         {
-            _context.EstadosCuotas.Remove(estadocuota);
+            _context.EstadoCuota.Remove(estadocuota);
         }
 
         public void Dispose()
@@ -42,17 +42,17 @@ namespace DataAccessLayer
 
         public EstadoCuota GetEstadoCuotaById(int id)
         {
-            return _context.EstadosCuotas.Find(id);
+            return _context.EstadoCuota.Find(id);
         }
 
         public IEnumerable<EstadoCuota> GetEstadoCuotas()
         {
-            return _context.EstadosCuotas.ToList();
+            return _context.EstadoCuota.ToList();
         }
 
         public void InsertEstadoCuota(EstadoCuota estadocuota)
         {
-            _context.EstadosCuotas.Add(estadocuota);
+            _context.EstadoCuota.Add(estadocuota);
         }
 
         public void Save()

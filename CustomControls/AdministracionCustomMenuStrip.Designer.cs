@@ -34,6 +34,8 @@ namespace CustomControls
             this.BtnUsuarios = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnEmpleados = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.BtnRegistros = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panel1
@@ -94,17 +96,48 @@ namespace CustomControls
             this.BtnEmpleados.MouseEnter += new System.EventHandler(this.CustomButton_MouseEnter);
             this.BtnEmpleados.MouseLeave += new System.EventHandler(this.CustomButton_MouseLeave);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Location = new System.Drawing.Point(9, 149);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(23, 58);
+            this.panel3.TabIndex = 14;
+            // 
+            // BtnRegistros
+            // 
+            this.BtnRegistros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.BtnRegistros.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnRegistros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.BtnRegistros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRegistros.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnRegistros.ForeColor = System.Drawing.Color.White;
+            this.BtnRegistros.Image = global::CustomControls.Properties.Resources.notes;
+            this.BtnRegistros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnRegistros.Location = new System.Drawing.Point(38, 149);
+            this.BtnRegistros.Margin = new System.Windows.Forms.Padding(5);
+            this.BtnRegistros.Name = "BtnRegistros";
+            this.BtnRegistros.Size = new System.Drawing.Size(177, 58);
+            this.BtnRegistros.TabIndex = 13;
+            this.BtnRegistros.Text = "Registros";
+            this.BtnRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRegistros.UseVisualStyleBackColor = false;
+            this.BtnRegistros.MouseEnter += new System.EventHandler(this.CustomButton_MouseEnter);
+            this.BtnRegistros.MouseLeave += new System.EventHandler(this.CustomButton_MouseLeave);
+            // 
             // AdministracionCustomMenuStrip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(52)))), ((int)(((byte)(96)))));
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.BtnRegistros);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.BtnEmpleados);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BtnUsuarios);
             this.Name = "AdministracionCustomMenuStrip";
-            this.Size = new System.Drawing.Size(225, 151);
+            this.Size = new System.Drawing.Size(225, 221);
             this.ResumeLayout(false);
 
         }
@@ -115,5 +148,7 @@ namespace CustomControls
         private System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Button BtnUsuarios;
         public System.Windows.Forms.Button BtnEmpleados;
+        private System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Button BtnRegistros;
     }
 }

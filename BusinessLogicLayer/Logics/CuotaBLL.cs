@@ -22,16 +22,14 @@ namespace BusinessLogicLayer.Logics
 
             if (cuota != null)
             {
-                try
-                {
-                    _cuotaRepository.DeleteCuota(cuota);
-                    _cuotaRepository.Save();
-                    return true;
-                }
-                catch (Exception)
+                _cuotaRepository.DeleteCuota(cuota);
+
+                if (_cuotaRepository.Save() == 0)
                 {
                     return false;
                 }
+
+                return true;
             }
 
             return false;
@@ -73,16 +71,14 @@ namespace BusinessLogicLayer.Logics
 
         public bool Edit(Cuota cuota)
         {
-            try
-            {
-                _cuotaRepository.UpdateCuota(cuota);
-                _cuotaRepository.Save();
-                return true;
-            }
-            catch (Exception)
+            _cuotaRepository.UpdateCuota(cuota);
+
+            if (_cuotaRepository.Save() == 0)
             {
                 return false;
             }
+
+            return true;
         }
     }
 }

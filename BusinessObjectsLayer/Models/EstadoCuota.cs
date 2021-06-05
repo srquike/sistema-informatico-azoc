@@ -9,13 +9,13 @@ namespace BusinessObjectsLayer.Models
     {
         public EstadoCuota()
         {
-            Cuota = new HashSet<Cuota>();
+            Cuotas = new HashSet<Cuota>();
         }
 
         public int EstadoCuotaId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
 
-        public virtual ICollection<Cuota> Cuota { get; set; }
+        public virtual ICollection<Cuota> Cuotas { get; set; }
     }
 }

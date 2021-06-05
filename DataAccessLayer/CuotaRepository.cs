@@ -43,12 +43,20 @@ namespace DataAccessLayer
 
         public Cuota GetCuotaById(int id)
         {
-            return _context.Cuota.Find(id);
+            return _context.Cuota.Where(c => c.CuotaId == id)
+                .Include(c => c.Credito)
+                .Include(c => c.EstadoCuota)
+                .AsNoTracking()
+                .First();
         }
 
         public IEnumerable<Cuota> GetCuotas()
         {
-            return _context.Cuota.ToList();
+            return _context.Cuota
+                .Include(c => c.Credito)
+                .Include(c => c.EstadoCuota)
+                .AsNoTracking()
+                .ToList();
         }
 
         public void InsertCuota(Cuota cuota)

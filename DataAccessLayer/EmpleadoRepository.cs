@@ -46,6 +46,7 @@ namespace DataAccessLayer
         {
             return _context.Empleados.Where(e => e.EmpleadoId == id)
                 .Include(e => e.Cargo)
+                .Include(e => e.Usuarios)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
@@ -53,6 +54,7 @@ namespace DataAccessLayer
         public IEnumerable<Empleado> GetEmpleados()
         {
             return _context.Empleados.Include(e => e.Cargo)
+                .Include(e => e.Usuarios)
                 .AsNoTracking()
                 .ToList();
         }
