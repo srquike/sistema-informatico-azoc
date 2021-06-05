@@ -28,6 +28,26 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogeado = usuarioLogeado;
         }
 
+        private bool VerificarPermisos(int permisoId)
+        {
+            int permisos = 0;
+
+            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
+            {
+                if (permiso.PermisoId == permisoId)
+                {
+                    permisos++;
+                }
+            }
+
+            if (permisos > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ActualizarDataGridView(ref DataGridView dataGrid, IEnumerable<Empleado> empleados)
         {
             dataGrid.Rows.Clear();
@@ -43,33 +63,40 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
-            FrmCrearEmpleado frmAgregar = new FrmCrearEmpleado();
-            frmAgregar.StartPosition = FormStartPosition.CenterParent;
-            frmAgregar.ShowDialog();
-
-            if (frmAgregar.DialogResult == DialogResult.OK)
+            if (VerificarPermisos(2))
             {
-                if (_usuarioLogeado != null)
+                FrmCrearEmpleado frmAgregar = new FrmCrearEmpleado();
+                frmAgregar.StartPosition = FormStartPosition.CenterParent;
+                frmAgregar.ShowDialog();
+
+                if (frmAgregar.DialogResult == DialogResult.OK)
                 {
-                    RegistroUsuario registro = new RegistroUsuario
+                    if (_usuarioLogeado != null)
                     {
-                        UsuarioId = _usuarioLogeado.UsuarioId,
-                        RegistroId = 1,
-                        Fecha = DateTime.Now,
-                        Informacion = $"Creación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
-                    };
+                        RegistroUsuario registro = new RegistroUsuario
+                        {
+                            UsuarioId = _usuarioLogeado.UsuarioId,
+                            RegistroId = 1,
+                            Fecha = DateTime.Now,
+                            Informacion = $"Creación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                        };
 
-                    if (_registroUsuarioBLL.Create(registro) == false)
-                    {
-                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_registroUsuarioBLL.Create(registro) == false)
+                        {
+                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                }
 
-                ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+                    ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+                }
+                else
+                {
+                    frmAgregar.Close();
+                }
             }
             else
             {
-                frmAgregar.Close();
+                MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -106,56 +133,40 @@ namespace WindowsFormsUI.Formularios
 
                 if (e.ColumnIndex == 8)
                 {
-                    FrmDetallesEmpledos frmDetalles = new FrmDetallesEmpledos(empleadoId);
-                    frmDetalles.StartPosition = FormStartPosition.CenterParent;
-                    frmDetalles.ShowDialog();
-
-                    if (frmDetalles.DialogResult == DialogResult.OK)
+                    if (VerificarPermisos(1))
                     {
-                        frmDetalles.Close();
+                        FrmDetallesEmpledos frmDetalles = new FrmDetallesEmpledos(empleadoId);
+                        frmDetalles.StartPosition = FormStartPosition.CenterParent;
+                        frmDetalles.ShowDialog();
+
+                        if (frmDetalles.DialogResult == DialogResult.OK)
+                        {
+                            frmDetalles.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 else if (e.ColumnIndex == 9)
                 {
-                    FrmEditarEmpleado frmEditar = new FrmEditarEmpleado(empleadoId);
-                    frmEditar.StartPosition = FormStartPosition.CenterParent;
-                    frmEditar.ShowDialog();
-
-                    if (frmEditar.DialogResult == DialogResult.OK)
+                    if (VerificarPermisos(3))
                     {
-                        if (_usuarioLogeado != null)
-                        {
-                            RegistroUsuario registro = new RegistroUsuario
-                            {
-                                UsuarioId = _usuarioLogeado.UsuarioId,
-                                RegistroId = 3,
-                                Fecha = DateTime.Now,
-                                Informacion = $"Modificación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
-                            };
+                        FrmEditarEmpleado frmEditar = new FrmEditarEmpleado(empleadoId);
+                        frmEditar.StartPosition = FormStartPosition.CenterParent;
+                        frmEditar.ShowDialog();
 
-                            if (_registroUsuarioBLL.Create(registro) == false)
-                            {
-                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-
-                        ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
-                    }
-                }
-                else if (e.ColumnIndex == 10)
-                {
-                    if (MessageBox.Show("¿Esta seguro de querer eliminar al empleado del sistema?", "Eliminación de empleado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                    {
-                        if (_empleadoLogic.Delete(empleadoId))
+                        if (frmEditar.DialogResult == DialogResult.OK)
                         {
                             if (_usuarioLogeado != null)
                             {
                                 RegistroUsuario registro = new RegistroUsuario
                                 {
                                     UsuarioId = _usuarioLogeado.UsuarioId,
-                                    RegistroId = 2,
+                                    RegistroId = 3,
                                     Fecha = DateTime.Now,
-                                    Informacion = $"Eliminación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                                    Informacion = $"Modificación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
                                 };
 
                                 if (_registroUsuarioBLL.Create(registro) == false)
@@ -166,10 +177,47 @@ namespace WindowsFormsUI.Formularios
 
                             ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
                         }
-                        else
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                }
+                else if (e.ColumnIndex == 10)
+                {
+                    if (VerificarPermisos(4))
+                    {
+                        if (MessageBox.Show("¿Esta seguro de querer eliminar al empleado del sistema?", "Eliminación de empleado: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            MessageBox.Show("No se pudo eliminar al empleado, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (_empleadoLogic.Delete(empleadoId))
+                            {
+                                if (_usuarioLogeado != null)
+                                {
+                                    RegistroUsuario registro = new RegistroUsuario
+                                    {
+                                        UsuarioId = _usuarioLogeado.UsuarioId,
+                                        RegistroId = 2,
+                                        Fecha = DateTime.Now,
+                                        Informacion = $"Eliminación de empleado por parte del usuario {_usuarioLogeado.Nombre}"
+                                    };
+
+                                    if (_registroUsuarioBLL.Create(registro) == false)
+                                    {
+                                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+
+                                ActualizarDataGridView(ref dataGrid, _empleadoLogic.List());
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo eliminar al empleado, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }
@@ -257,30 +305,37 @@ namespace WindowsFormsUI.Formularios
             {
                 if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (VerificarPermisos(4))
                     {
-                        foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
+                        if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
                             {
-                                int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                                string nombre = fila.Cells["Nombre"].Value.ToString();
-
-                                if (_empleadoLogic.Delete(id) == false)
+                                if ((bool)fila.Cells["Seleccion"].Value == true)
                                 {
-                                    MessageBox.Show($"No se pudo eliminar al empleado {nombre}, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    int id = Convert.ToInt32(fila.Cells["Id"].Value);
+                                    string nombre = fila.Cells["Nombre"].Value.ToString();
+
+                                    if (_empleadoLogic.Delete(id) == false)
+                                    {
+                                        MessageBox.Show($"No se pudo eliminar al empleado {nombre}, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
-                        }
 
-                        ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        CmbAcciones.SelectedIndex = 0;
+                            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
+                            _filasMarcadas = 0;
+                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                            CmbAcciones.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            CmbAcciones.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
-                        CmbAcciones.SelectedIndex = 0;
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }

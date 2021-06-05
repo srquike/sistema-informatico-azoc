@@ -28,6 +28,26 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogeado = usuarioLogeado;
         }
 
+        private bool VerificarPermisos(int permisoId)
+        {
+            int permisos = 0;
+
+            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
+            {
+                if (permiso.PermisoId == permisoId)
+                {
+                    permisos++;
+                }
+            }
+
+            if (permisos > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ActualizarDataGridView(ref DataGridView dataGrid, IEnumerable<Credito> creditos)
         {
             dataGrid.Rows.Clear();
@@ -55,29 +75,36 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
-            FrmCrearCredito frmCrear = new FrmCrearCredito();
-            frmCrear.StartPosition = FormStartPosition.CenterParent;
-            frmCrear.ShowDialog();
-
-            if (frmCrear.DialogResult == DialogResult.OK)
+            if (VerificarPermisos(2))
             {
-                if (_usuarioLogeado != null)
+                FrmCrearCredito frmCrear = new FrmCrearCredito();
+                frmCrear.StartPosition = FormStartPosition.CenterParent;
+                frmCrear.ShowDialog();
+
+                if (frmCrear.DialogResult == DialogResult.OK)
                 {
-                    RegistroUsuario registro = new RegistroUsuario
+                    if (_usuarioLogeado != null)
                     {
-                        UsuarioId = _usuarioLogeado.UsuarioId,
-                        RegistroId = 4,
-                        Fecha = DateTime.Now,
-                        Informacion = $"Creación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
-                    };
+                        RegistroUsuario registro = new RegistroUsuario
+                        {
+                            UsuarioId = _usuarioLogeado.UsuarioId,
+                            RegistroId = 4,
+                            Fecha = DateTime.Now,
+                            Informacion = $"Creación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                        };
 
-                    if (_registroUsuarioBLL.Create(registro) == false)
-                    {
-                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_registroUsuarioBLL.Create(registro) == false)
+                        {
+                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                }
 
-                ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                    ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -94,35 +121,86 @@ namespace WindowsFormsUI.Formularios
                 {
                     if (e.ColumnIndex == 9)
                     {
-                        FrmDetallesCredito frmDetalles = new FrmDetallesCredito(creditoId);
-                        frmDetalles.StartPosition = FormStartPosition.CenterParent;
-                        frmDetalles.ShowDialog();
-
-                        if (frmDetalles.DialogResult == DialogResult.OK)
+                        if (VerificarPermisos(1))
                         {
-                            frmDetalles.Close();
+                            FrmDetallesCredito frmDetalles = new FrmDetallesCredito(creditoId);
+                            frmDetalles.StartPosition = FormStartPosition.CenterParent;
+                            frmDetalles.ShowDialog();
+
+                            if (frmDetalles.DialogResult == DialogResult.OK)
+                            {
+                                frmDetalles.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                     else if (e.ColumnIndex == 10)
                     {
-                        Credito credito = _creditoLogic.Find(creditoId);
-
-                        if (credito != null)
+                        if (VerificarPermisos(7))
                         {
-                            if (credito.EstadoCreditoId == 1)
-                            {
-                                credito.EstadoCreditoId = 2;
+                            Credito credito = _creditoLogic.Find(creditoId);
 
-                                if (_creditoLogic.Edit(credito))
+                            if (credito != null)
+                            {
+                                if (credito.EstadoCreditoId == 1)
+                                {
+                                    credito.EstadoCreditoId = 2;
+
+                                    if (_creditoLogic.Edit(credito))
+                                    {
+                                        if (_usuarioLogeado != null)
+                                        {
+                                            RegistroUsuario registro = new RegistroUsuario
+                                            {
+                                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                                RegistroId = 1005,
+                                                Fecha = DateTime.Now,
+                                                Informacion = $"Aprobación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                            };
+
+                                            if (_registroUsuarioBLL.Create(registro) == false)
+                                            {
+                                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
+                                        }
+
+                                        ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Error al intentar aprobar el crédito, por favor intente de nuevo!", "Aprobar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se puede aprobar un crédito previamente aprobado o finalizado!", "Aprobar crédito: información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    }
+                    else if (e.ColumnIndex == 11)
+                    {
+                        if (VerificarPermisos(4))
+                        {
+                            if (MessageBox.Show("¿Esta seguro de querer eliminar el crédito del sistema?", "Eliminación de crédito: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            {
+                                if (_creditoLogic.Delete(creditoId))
                                 {
                                     if (_usuarioLogeado != null)
                                     {
                                         RegistroUsuario registro = new RegistroUsuario
                                         {
                                             UsuarioId = _usuarioLogeado.UsuarioId,
-                                            RegistroId = 1005,
+                                            RegistroId = 5,
                                             Fecha = DateTime.Now,
-                                            Informacion = $"Aprobación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                            Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
                                         };
 
                                         if (_registroUsuarioBLL.Create(registro) == false)
@@ -135,43 +213,13 @@ namespace WindowsFormsUI.Formularios
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Error al intentar aprobar el crédito, por favor intente de nuevo!", "Aprobar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Error al intentar eliminar el crédito, por favor intente de nuevo!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se puede aprobar un crédito previamente aprobado o finalizado!", "Aprobar crédito: información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
-                    }
-                    else if (e.ColumnIndex == 11)
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar el crédito del sistema?", "Eliminación de crédito: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                        else
                         {
-                            if (_creditoLogic.Delete(creditoId))
-                            {
-                                if (_usuarioLogeado != null)
-                                {
-                                    RegistroUsuario registro = new RegistroUsuario
-                                    {
-                                        UsuarioId = _usuarioLogeado.UsuarioId,
-                                        RegistroId = 5,
-                                        Fecha = DateTime.Now,
-                                        Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
-                                    };
-
-                                    if (_registroUsuarioBLL.Create(registro) == false)
-                                    {
-                                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-
-                                ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
-                            }
-                            else
-                            {
-                                MessageBox.Show("Error al intentar eliminar el crédito, por favor intente de nuevo!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                 }
@@ -220,48 +268,55 @@ namespace WindowsFormsUI.Formularios
             {
                 if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar los créditos selecionados?", "Créditos: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (VerificarPermisos(4))
                     {
-                        foreach (DataGridViewRow fila in DgvLista.Rows)
+                        if (MessageBox.Show("¿Esta seguro de querer borrar los créditos selecionados?", "Créditos: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            foreach (DataGridViewRow fila in DgvLista.Rows)
                             {
-                                int creditoId = Convert.ToInt32(fila.Cells["Id"].Value);
-                                string codigo = fila.Cells["Codigo"].Value.ToString();
-
-                                if (_creditoLogic.Delete(creditoId))
+                                if ((bool)fila.Cells["Seleccion"].Value == true)
                                 {
-                                    if (_usuarioLogeado != null)
-                                    {
-                                        RegistroUsuario registro = new RegistroUsuario
-                                        {
-                                            UsuarioId = _usuarioLogeado.UsuarioId,
-                                            RegistroId = 5,
-                                            Fecha = DateTime.Now,
-                                            Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
-                                        };
+                                    int creditoId = Convert.ToInt32(fila.Cells["Id"].Value);
+                                    string codigo = fila.Cells["Codigo"].Value.ToString();
 
-                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                    if (_creditoLogic.Delete(creditoId))
+                                    {
+                                        if (_usuarioLogeado != null)
                                         {
-                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            RegistroUsuario registro = new RegistroUsuario
+                                            {
+                                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                                RegistroId = 5,
+                                                Fecha = DateTime.Now,
+                                                Informacion = $"Eliminación de crédito por parte del usuario {_usuarioLogeado.Nombre}"
+                                            };
+
+                                            if (_registroUsuarioBLL.Create(registro) == false)
+                                            {
+                                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show($"No fue posible eliminar el credito {codigo}, por favor intente nuevamente!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    else
+                                    {
+                                        MessageBox.Show($"No fue posible eliminar el credito {codigo}, por favor intente nuevamente!", "Eliminar crédito: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
-                        }
 
-                        ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        CmbAcciones.SelectedIndex = 0;
+                            ActualizarDataGridView(ref DgvLista, _creditoLogic.List());
+                            _filasMarcadas = 0;
+                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                            CmbAcciones.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            CmbAcciones.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
-                        CmbAcciones.SelectedIndex = 0;
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }

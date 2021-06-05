@@ -33,6 +33,26 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogeado = usuarioLogeado;
         }
 
+        private bool VerificarPermisos(int permisoId)
+        {
+            int permisos = 0;
+
+            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
+            {
+                if (permiso.PermisoId == permisoId)
+                {
+                    permisos++;
+                }
+            }
+
+            if (permisos > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void RefrescarDataGridView(ref DataGridView dataGrid, IEnumerable<Usuario> usuarios)
         {
             dataGrid.Rows.Clear();
@@ -95,28 +115,35 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
-            FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
-            frmCrearUsuario.StartPosition = FormStartPosition.CenterParent;
-
-            if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
+            if (VerificarPermisos(2))
             {
-                if (_usuarioLogeado != null)
+                FrmCrearUsuario frmCrearUsuario = new FrmCrearUsuario();
+                frmCrearUsuario.StartPosition = FormStartPosition.CenterParent;
+
+                if (frmCrearUsuario.ShowDialog() == DialogResult.OK)
                 {
-                    RegistroUsuario registro = new RegistroUsuario
+                    if (_usuarioLogeado != null)
                     {
-                        UsuarioId = _usuarioLogeado.UsuarioId,
-                        RegistroId = 1002,
-                        Fecha = DateTime.Now,
-                        Informacion = $"Creación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
-                    };
+                        RegistroUsuario registro = new RegistroUsuario
+                        {
+                            UsuarioId = _usuarioLogeado.UsuarioId,
+                            RegistroId = 1002,
+                            Fecha = DateTime.Now,
+                            Informacion = $"Creación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                        };
 
-                    if (_registroUsuarioBLL.Create(registro) == false)
-                    {
-                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_registroUsuarioBLL.Create(registro) == false)
+                        {
+                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                }
 
-                RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -131,83 +158,105 @@ namespace WindowsFormsUI.Formularios
 
                 if (e.ColumnIndex == 8)
                 {
-                    FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
-                    detallesUsuario.StartPosition = FormStartPosition.CenterParent;
-                    detallesUsuario.ShowDialog();
-                    if (detallesUsuario.DialogResult == DialogResult.OK)
+                    if (VerificarPermisos(1))
                     {
-                        detallesUsuario.Close();
+                        FrmDetallesUsuario detallesUsuario = new FrmDetallesUsuario(userId);
+                        detallesUsuario.StartPosition = FormStartPosition.CenterParent;
+                        detallesUsuario.ShowDialog();
+
+                        if (detallesUsuario.DialogResult == DialogResult.OK)
+                        {
+                            detallesUsuario.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 else if (e.ColumnIndex == 9)
                 {
-                    Usuario usuario = _usuarioLogic.Find(userId);
-
-                    FrmEditarUsuario frmEditar = new FrmEditarUsuario(usuario);
-                    frmEditar.StartPosition = FormStartPosition.CenterParent;
-                    frmEditar.ShowDialog();
-
-                    if (frmEditar.DialogResult == DialogResult.OK)
+                    if (VerificarPermisos(3))
                     {
-                        if (_usuarioLogeado != null)
+                        Usuario usuario = _usuarioLogic.Find(userId);
+
+                        FrmEditarUsuario frmEditar = new FrmEditarUsuario(usuario);
+                        frmEditar.StartPosition = FormStartPosition.CenterParent;
+                        frmEditar.ShowDialog();
+
+                        if (frmEditar.DialogResult == DialogResult.OK)
                         {
-                            RegistroUsuario registro = new RegistroUsuario
+                            if (_usuarioLogeado != null)
                             {
-                                UsuarioId = _usuarioLogeado.UsuarioId,
-                                RegistroId = 1004,
-                                Fecha = DateTime.Now,
-                                Informacion = $"Modificación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
-                            };
+                                RegistroUsuario registro = new RegistroUsuario
+                                {
+                                    UsuarioId = _usuarioLogeado.UsuarioId,
+                                    RegistroId = 1004,
+                                    Fecha = DateTime.Now,
+                                    Informacion = $"Modificación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                                };
 
-                            if (_registroUsuarioBLL.Create(registro) == false)
-                            {
-                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (_registroUsuarioBLL.Create(registro) == false)
+                                {
+                                    MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
-                        }
 
-                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
                 else if (e.ColumnIndex == 10)
                 {
-                    if (_usuarioLogeado != null)
+                    if (VerificarPermisos(4))
                     {
-                        if (userId == _usuarioLogeado.UsuarioId)
+                        if (_usuarioLogeado != null)
                         {
-                            MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            if (userId == _usuarioLogeado.UsuarioId)
                             {
-                                if (_usuarioLogic.Delete(userId))
+                                MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                if (MessageBox.Show("¿Esta seguro de querer eliminar al usuario del sistema?", "Eliminar usuario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                                 {
-                                    if (_usuarioLogeado != null)
+                                    if (_usuarioLogic.Delete(userId))
                                     {
-                                        EliminarAvatar(nombreUsuario);
-
-                                        RegistroUsuario registro = new RegistroUsuario
+                                        if (_usuarioLogeado != null)
                                         {
-                                            UsuarioId = _usuarioLogeado.UsuarioId,
-                                            RegistroId = 1003,
-                                            Fecha = DateTime.Now,
-                                            Informacion = $"Eliminación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
-                                        };
+                                            EliminarAvatar(nombreUsuario);
 
-                                        if (_registroUsuarioBLL.Create(registro) == false)
-                                        {
-                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            RegistroUsuario registro = new RegistroUsuario
+                                            {
+                                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                                RegistroId = 1003,
+                                                Fecha = DateTime.Now,
+                                                Informacion = $"Eliminación de usuario por parte del usuario {_usuarioLogeado.Nombre}"
+                                            };
+
+                                            if (_registroUsuarioBLL.Create(registro) == false)
+                                            {
+                                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
-                                    }
 
-                                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No se pudo eliminar al usuario, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No se pudo eliminar al usuario, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }
@@ -300,40 +349,47 @@ namespace WindowsFormsUI.Formularios
             {
                 if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Eliminar usuarios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (VerificarPermisos(4))
                     {
-                        foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
+                        if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Eliminar usuarios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
                             {
-                                int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-
-                                if (_usuarioLogeado != null)
+                                if ((bool)fila.Cells["Seleccion"].Value == true)
                                 {
-                                    if (_usuarioLogeado.UsuarioId == userId)
+                                    int userId = Convert.ToInt32(fila.Cells["Id"].Value);
+
+                                    if (_usuarioLogeado != null)
                                     {
-                                        MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        if (_usuarioLogic.Delete(userId) == false)
+                                        if (_usuarioLogeado.UsuarioId == userId)
                                         {
-                                            MessageBox.Show($"No se pudo eliminar al usuario {userId}, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            if (_usuarioLogic.Delete(userId) == false)
+                                            {
+                                                MessageBox.Show($"No se pudo eliminar al usuario {userId}, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
 
-                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        CmbAcciones.SelectedIndex = 0;
+                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            _filasMarcadas = 0;
+                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                            CmbAcciones.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            CmbAcciones.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
-                        CmbAcciones.SelectedIndex = 0;
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }

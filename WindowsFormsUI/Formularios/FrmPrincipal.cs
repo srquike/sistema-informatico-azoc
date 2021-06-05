@@ -133,10 +133,17 @@ namespace WindowsFormsUI.Formularios
 
             if (_frmUsuarios == null)
             {
-                _frmUsuarios = new FrmUsuarios(_usuarioLogeado);
-                _frmUsuarios.MdiParent = this;
-                _frmUsuarios.FormClosed += new FormClosedEventHandler(FrmUsuarios_Closed);
-                _frmUsuarios.Show();
+                if (VerificarPermisos(1))
+                {
+                    _frmUsuarios = new FrmUsuarios(_usuarioLogeado);
+                    _frmUsuarios.MdiParent = this;
+                    _frmUsuarios.FormClosed += new FormClosedEventHandler(FrmUsuarios_Closed);
+                    _frmUsuarios.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {
@@ -155,10 +162,17 @@ namespace WindowsFormsUI.Formularios
 
             if (_frmEmpleados == null)
             {
-                _frmEmpleados = new FrmEmpleados(_usuarioLogeado);
-                _frmEmpleados.MdiParent = this;
-                _frmEmpleados.FormClosed += new FormClosedEventHandler(FrmEmpleados_Closed);
-                _frmEmpleados.Show();
+                if (VerificarPermisos(1))
+                {
+                    _frmEmpleados = new FrmEmpleados(_usuarioLogeado);
+                    _frmEmpleados.MdiParent = this;
+                    _frmEmpleados.FormClosed += new FormClosedEventHandler(FrmEmpleados_Closed);
+                    _frmEmpleados.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {
@@ -177,10 +191,17 @@ namespace WindowsFormsUI.Formularios
 
             if (_frmCreditos == null)
             {
-                _frmCreditos = new FrmCreditos(_usuarioLogeado);
-                _frmCreditos.MdiParent = this;
-                _frmCreditos.FormClosed += new FormClosedEventHandler(FrmCreditos_Closed);
-                _frmCreditos.Show();
+                if (VerificarPermisos(1))
+                {
+                    _frmCreditos = new FrmCreditos(_usuarioLogeado);
+                    _frmCreditos.MdiParent = this;
+                    _frmCreditos.FormClosed += new FormClosedEventHandler(FrmCreditos_Closed);
+                    _frmCreditos.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {
@@ -199,10 +220,17 @@ namespace WindowsFormsUI.Formularios
 
             if (_frmAsociados == null)
             {
-                _frmAsociados = new FrmAsociados(_usuarioLogeado);
-                _frmAsociados.MdiParent = this;
-                _frmAsociados.FormClosed += new FormClosedEventHandler(FrmAsociados_Closed);
-                _frmAsociados.Show();
+                if (VerificarPermisos(1))
+                {
+                    _frmAsociados = new FrmAsociados(_usuarioLogeado);
+                    _frmAsociados.MdiParent = this;
+                    _frmAsociados.FormClosed += new FormClosedEventHandler(FrmAsociados_Closed);
+                    _frmAsociados.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
             }
             else
             {
@@ -303,14 +331,41 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnConfiguracion_Click(object sender, EventArgs e)
         {
-            FrmConfiguracion frmConfiguracion = new FrmConfiguracion(_usuarioLogeado);
-            frmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
-            frmConfiguracion.ShowDialog();
-
-            if (frmConfiguracion.DialogResult == DialogResult.OK)
+            if (VerificarPermisos(6))
             {
-                frmConfiguracion.Close();
+                FrmConfiguracion frmConfiguracion = new FrmConfiguracion(_usuarioLogeado);
+                frmConfiguracion.StartPosition = FormStartPosition.CenterScreen;
+                frmConfiguracion.ShowDialog();
+
+                if (frmConfiguracion.DialogResult == DialogResult.OK)
+                {
+                    frmConfiguracion.Close();
+                }
             }
+            else
+            {
+                MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private bool VerificarPermisos(int permisoId)
+        {
+            int permisos = 0;
+
+            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
+            {
+                if (permiso.PermisoId == permisoId)
+                {
+                    permisos++;
+                }
+            }
+
+            if (permisos > 0)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

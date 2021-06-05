@@ -44,6 +44,7 @@ namespace DataAccessLayer
         public IEnumerable<Usuario> GetUsuarios()
         {
             return _context.Usuarios.Include(u => u.Empleado)
+                .Include(u => u.PermisoUsuarios)
                 .AsNoTracking()
                 .ToList();
         }
@@ -81,7 +82,10 @@ namespace DataAccessLayer
 
         public Usuario Authentication(string passwordHash, string nombre)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash && u.Nombre == nombre).Include(u => u.Empleado).FirstOrDefault();
+            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash && u.Nombre == nombre)
+                .Include(u => u.Empleado)
+                .Include(u => u.PermisoUsuarios)
+                .FirstOrDefault();
 
             return usuario;
         }

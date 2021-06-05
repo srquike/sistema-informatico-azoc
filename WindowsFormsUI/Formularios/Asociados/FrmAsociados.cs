@@ -27,6 +27,26 @@ namespace WindowsFormsUI.Formularios
             _usuarioLogeado = usuarioLogeado;
         }
 
+        private bool VerificarPermisos(int permisoId)
+        {
+            int permisos = 0;
+
+            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
+            {
+                if (permiso.PermisoId == permisoId)
+                {
+                    permisos++;
+                }
+            }
+
+            if (permisos > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ActualizarListado(ref DataGridView dataGrid, IEnumerable<Socio> asociados)
         {
             dataGrid.Rows.Clear();
@@ -52,29 +72,36 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrearNuevo_Click(object sender, EventArgs e)
         {
-            FrmCrearAsociado frmCrear = new FrmCrearAsociado();
-            frmCrear.StartPosition = FormStartPosition.CenterParent;
-            frmCrear.ShowDialog();
-
-            if (frmCrear.DialogResult == DialogResult.OK)
+            if (VerificarPermisos(2))
             {
-                if (_usuarioLogeado != null)
+                FrmCrearAsociado frmCrear = new FrmCrearAsociado();
+                frmCrear.StartPosition = FormStartPosition.CenterParent;
+                frmCrear.ShowDialog();
+
+                if (frmCrear.DialogResult == DialogResult.OK)
                 {
-                    RegistroUsuario registro = new RegistroUsuario
+                    if (_usuarioLogeado != null)
                     {
-                        UsuarioId = _usuarioLogeado.UsuarioId,
-                        RegistroId = 10,
-                        Fecha = DateTime.Now,
-                        Informacion = $"Creación de socio por parte del usuario {_usuarioLogeado.Nombre}"
-                    };
+                        RegistroUsuario registro = new RegistroUsuario
+                        {
+                            UsuarioId = _usuarioLogeado.UsuarioId,
+                            RegistroId = 10,
+                            Fecha = DateTime.Now,
+                            Informacion = $"Creación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                        };
 
-                    if (_registroUsuarioBLL.Create(registro) == false)
-                    {
-                        MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (_registroUsuarioBLL.Create(registro) == false)
+                        {
+                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                }
 
-                ActualizarListado(ref DgvListado, _asociadoLogic.List());
+                    ActualizarListado(ref DgvListado, _asociadoLogic.List());
+                }
+            }
+            else
+            {
+                MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -171,56 +198,40 @@ namespace WindowsFormsUI.Formularios
                 {
                     if (e.ColumnIndex == 10)
                     {
-                        FrmDetallesAsociado frmDetalles = new FrmDetallesAsociado(asociadoId);
-                        frmDetalles.StartPosition = FormStartPosition.CenterParent;
-                        frmDetalles.ShowDialog();
-
-                        if (frmDetalles.DialogResult == DialogResult.OK)
+                        if (VerificarPermisos(1))
                         {
-                            frmDetalles.Close();
+                            FrmDetallesAsociado frmDetalles = new FrmDetallesAsociado(asociadoId);
+                            frmDetalles.StartPosition = FormStartPosition.CenterParent;
+                            frmDetalles.ShowDialog();
+
+                            if (frmDetalles.DialogResult == DialogResult.OK)
+                            {
+                                frmDetalles.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                     else if (e.ColumnIndex == 11)
                     {
-                        FrmEditarAsociado frmEditar = new FrmEditarAsociado(asociadoId);
-                        frmEditar.StartPosition = FormStartPosition.CenterParent;
-                        frmEditar.ShowDialog();
-
-                        if (frmEditar.DialogResult == DialogResult.OK)
+                        if (VerificarPermisos(3))
                         {
-                            if (_usuarioLogeado != null)
-                            {
-                                RegistroUsuario registro = new RegistroUsuario
-                                {
-                                    UsuarioId = _usuarioLogeado.UsuarioId,
-                                    RegistroId = 12,
-                                    Fecha = DateTime.Now,
-                                    Informacion = $"Modificación de socio por parte del usuario {_usuarioLogeado.Nombre}"
-                                };
+                            FrmEditarAsociado frmEditar = new FrmEditarAsociado(asociadoId);
+                            frmEditar.StartPosition = FormStartPosition.CenterParent;
+                            frmEditar.ShowDialog();
 
-                                if (_registroUsuarioBLL.Create(registro) == false)
-                                {
-                                    MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-
-                            ActualizarListado(ref DgvListado, _asociadoLogic.List());
-                        }
-                    }
-                    else if (e.ColumnIndex == 12)
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar al socio del sistema?", "Eliminación de socio: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        {
-                            if (_asociadoLogic.Delete(asociadoId))
+                            if (frmEditar.DialogResult == DialogResult.OK)
                             {
                                 if (_usuarioLogeado != null)
                                 {
                                     RegistroUsuario registro = new RegistroUsuario
                                     {
                                         UsuarioId = _usuarioLogeado.UsuarioId,
-                                        RegistroId = 11,
+                                        RegistroId = 12,
                                         Fecha = DateTime.Now,
-                                        Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                        Informacion = $"Modificación de socio por parte del usuario {_usuarioLogeado.Nombre}"
                                     };
 
                                     if (_registroUsuarioBLL.Create(registro) == false)
@@ -229,12 +240,49 @@ namespace WindowsFormsUI.Formularios
                                     }
                                 }
 
-                                ActualizarListado(ref dataGrid, _asociadoLogic.List());
+                                ActualizarListado(ref DgvListado, _asociadoLogic.List());
                             }
-                            else
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    }
+                    else if (e.ColumnIndex == 12)
+                    {
+                        if (VerificarPermisos(4))
+                        {
+                            if (MessageBox.Show("¿Esta seguro de querer eliminar al socio del sistema?", "Eliminación de socio: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
-                                MessageBox.Show("No fue posible eliminar al socio, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                if (_asociadoLogic.Delete(asociadoId))
+                                {
+                                    if (_usuarioLogeado != null)
+                                    {
+                                        RegistroUsuario registro = new RegistroUsuario
+                                        {
+                                            UsuarioId = _usuarioLogeado.UsuarioId,
+                                            RegistroId = 11,
+                                            Fecha = DateTime.Now,
+                                            Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                        };
+
+                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                        {
+                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+
+                                    ActualizarListado(ref dataGrid, _asociadoLogic.List());
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No fue posible eliminar al socio, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     }
                 }
@@ -263,48 +311,55 @@ namespace WindowsFormsUI.Formularios
             {
                 if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
                 {
-                    if (MessageBox.Show("¿Esta seguro de querer borrar a los socios selecionados?", "Eliminar socios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    if (VerificarPermisos(4))
                     {
-                        foreach (DataGridViewRow fila in DgvListado.Rows)
+                        if (MessageBox.Show("¿Esta seguro de querer borrar a los socios selecionados?", "Eliminar socios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
-                            if ((bool)fila.Cells["Seleccion"].Value == true)
+                            foreach (DataGridViewRow fila in DgvListado.Rows)
                             {
-                                int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                                string codigo = fila.Cells["Codigo"].Value.ToString();
-
-                                if (_asociadoLogic.Delete(id))
+                                if ((bool)fila.Cells["Seleccion"].Value == true)
                                 {
-                                    if (_usuarioLogeado != null)
-                                    {
-                                        RegistroUsuario registro = new RegistroUsuario
-                                        {
-                                            UsuarioId = _usuarioLogeado.UsuarioId,
-                                            RegistroId = 11,
-                                            Fecha = DateTime.Now,
-                                            Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
-                                        };
+                                    int id = Convert.ToInt32(fila.Cells["Id"].Value);
+                                    string codigo = fila.Cells["Codigo"].Value.ToString();
 
-                                        if (_registroUsuarioBLL.Create(registro) == false)
+                                    if (_asociadoLogic.Delete(id))
+                                    {
+                                        if (_usuarioLogeado != null)
                                         {
-                                            MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            RegistroUsuario registro = new RegistroUsuario
+                                            {
+                                                UsuarioId = _usuarioLogeado.UsuarioId,
+                                                RegistroId = 11,
+                                                Fecha = DateTime.Now,
+                                                Informacion = $"Eliminación de socio por parte del usuario {_usuarioLogeado.Nombre}"
+                                            };
+
+                                            if (_registroUsuarioBLL.Create(registro) == false)
+                                            {
+                                                MessageBox.Show("No se pudo crear el registro de acciones del usuario, pero puede continuar!", "Crear registro: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show($"No fue posible eliminar al socio {codigo}, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    else
+                                    {
+                                        MessageBox.Show($"No fue posible eliminar al socio {codigo}, por favor intente de nuevo!", "Eliminar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
-                        }
 
-                        ActualizarListado(ref DgvListado, _asociadoLogic.List());
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        CmbAcciones.SelectedIndex = 0;
+                            ActualizarListado(ref DgvListado, _asociadoLogic.List());
+                            _filasMarcadas = 0;
+                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
+                            CmbAcciones.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            CmbAcciones.SelectedIndex = 0;
+                        }
                     }
                     else
                     {
-                        CmbAcciones.SelectedIndex = 0;
+                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                 }
             }
