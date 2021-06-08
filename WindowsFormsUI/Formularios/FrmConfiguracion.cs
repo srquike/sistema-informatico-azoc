@@ -35,7 +35,7 @@ namespace WindowsFormsUI.Formularios
 
                 try
                 {
-                    Server server = new Server(new ServerConnection("LAPTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
+                    Server server = new Server(new ServerConnection("LAPTOP-2A4RVOL7", "sa", "_Si@Azoc$2021&123!"));
                     Backup backup = new Backup()
                     {
                         Action = BackupActionType.Database,
@@ -104,7 +104,7 @@ namespace WindowsFormsUI.Formularios
 
                 try
                 {
-                    Server server = new Server(new ServerConnection("LAPTOP-2NF0HEH\\SQLEXPRESS", "sa", "_Mi@Sqlserver$Jevc&27!"));
+                    Server server = new Server(new ServerConnection("LAPTOP-2A4RVOL7", "sa", "_Si@Azoc$2021&123!"));
                     Restore restore = new Restore()
                     {
                         Database = "AzocDb",

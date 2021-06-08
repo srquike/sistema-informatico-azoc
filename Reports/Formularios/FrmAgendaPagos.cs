@@ -51,13 +51,13 @@ namespace Reports.Formularios
 
         private void FrmAgendaPagos_Load(object sender, EventArgs e)
         {
-            //RvAgendaPagos.LocalReport.DataSources.Clear();
-            //RvAgendaPagos.LocalReport.DisplayName = "Agenda de pagos de cuotas";
-            //RvAgendaPagos.SetDisplayMode(DisplayMode.PrintLayout);
-            //RvAgendaPagos.ZoomMode = ZoomMode.Percent;
-            //RvAgendaPagos.ZoomPercent = 100;
-            //RvAgendaPagos.LocalReport.DataSources.Add(new ReportDataSource("CreditoCuotasDataSet", GetSPResult()));
-            //RvAgendaPagos.RefreshReport();
+            RvAgendaPagos.LocalReport.DataSources.Clear();
+            RvAgendaPagos.LocalReport.DisplayName = "Agenda de pagos de cuotas";
+            RvAgendaPagos.SetDisplayMode(DisplayMode.PrintLayout);
+            RvAgendaPagos.ZoomMode = ZoomMode.Percent;
+            RvAgendaPagos.ZoomPercent = 100;
+            RvAgendaPagos.LocalReport.DataSources.Add(new ReportDataSource("CreditoCuotasDataSet", GetSPResult()));
+            RvAgendaPagos.RefreshReport();
         }
     }
 }

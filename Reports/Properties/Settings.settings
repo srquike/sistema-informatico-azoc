@@ -5,10 +5,10 @@
     <Setting Name="AzocDbConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=LAPTOP-2NF0HEH\SQLEXPRESS;Initial Catalog=AzocDb;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Server=LAPTOP-2NF0HEH\SQLEXPRESS;Database=AzocDb;User Id=sa;Password= _Mi@Sqlserver$Jevc&amp;amp;27!;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=LAPTOP-2NF0HEH\SQLEXPRESS;Initial Catalog=AzocDb;Integrated Security=True</Value>
+      <Value Profile="(Default)">Server=LAPTOP-2NF0HEH\SQLEXPRESS;Database=AzocDb;User Id=sa;Password= _Mi@Sqlserver$Jevc&amp;27!;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

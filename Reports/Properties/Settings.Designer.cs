@@ -26,8 +26,8 @@ namespace Reports.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-2NF0HEH\\SQLEXPRESS;Initial Catalog=AzocDb;Integrated Security=" +
-            "True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=LAPTOP-2NF0HEH\\SQLEXPRESS;Database=AzocDb;User Id=sa;Password= _Mi@Sqlserv" +
+            "er$Jevc&27!;")]
         public string AzocDbConnectionString {
             get {
                 return ((string)(this["AzocDbConnectionString"]));
