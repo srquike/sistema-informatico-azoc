@@ -7,85 +7,101 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class UsuarioRepository : IUsuarioRepository, IDisposable
+    public class UsuarioRepository : IUsuarioRepository
     {
-        private AzocDbContext _context;
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+        public UsuarioRepository()
         {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
 
-            disposed = true;
-        }
-
-        public UsuarioRepository(AzocDbContext context)
-        {
-            _context = context;
         }
 
         public void DeleteUsuario(Usuario usuario)
         {
-            _context.Usuarios.Remove(usuario);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Usuarios.Remove(usuario);
+                context.SaveChanges();
+            }
         }
 
         public IEnumerable<Usuario> GetUsuarios()
         {
-            return _context.Usuarios.Include(u => u.Empleado)
-                .Include(u => u.PermisoUsuarios)
+            IEnumerable<Usuario> usuarios;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                usuarios = context.Usuarios
                 .AsNoTracking()
+                .Include(u => u.Empleado)
+                .Include(u => u.PermisoUsuarios)
                 .ToList();
+            }
+
+            return usuarios;
         }
 
         public Usuario GetUsuarioById(int id)
         {
-            return _context.Usuarios.Where(u => u.UsuarioId == id)
+            Usuario usuario;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                usuario = context.Usuarios
+                .AsNoTracking()
                 .Include(u => u.Empleado)
                 .Include(u => u.PermisoUsuarios)
-                .AsNoTracking()
-                .FirstOrDefault();
+                .Where(u => u.UsuarioId == id)
+                .First();
+            }
+
+            return usuario;
         }
 
         public Usuario GetUsuarioByName(string name)
         {
-            return _context.Usuarios.Where(u => u.Nombre == name)
-                .AsNoTracking()
-                .FirstOrDefault();
+            Usuario usuario;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                usuario = context.Usuarios
+                    .AsNoTracking()
+                    .Where(u => u.Nombre == name)
+                    .First();
+            }
+
+            return usuario;
         }
 
         public void InsertUsuario(Usuario usuario)
         {
-            _context.Usuarios.Add(usuario);
-        }
-
-        public int Save()
-        {
-            return _context.SaveChanges();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Usuarios.Add(usuario);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateUsuario(Usuario usuario)
         {
-            _context.Entry(usuario).State = EntityState.Modified;
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Entry(usuario).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
-        public Usuario Authentication(string passwordHash, string nombre)
+        public Usuario Authentication(string clave, string nombre)
         {
-            Usuario usuario = _context.Usuarios.Where(u => u.Clave == passwordHash && u.Nombre == nombre)
-                .Include(u => u.Empleado)
-                .Include(u => u.PermisoUsuarios)
-                .FirstOrDefault();
+            Usuario usuario;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                usuario = context.Usuarios
+                    .AsNoTracking()
+                    .Include(u => u.Empleado)
+                    .Include(u => u.PermisoUsuarios)
+                    .Where(u => u.Clave == clave && u.Nombre == nombre)
+                    .First();
+            }
 
             return usuario;
         }

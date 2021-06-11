@@ -5,7 +5,7 @@ using BusinessObjectsLayer.Models;
 
 namespace RepositoryLayer
 {
-    public interface IUsuarioRepository : IDisposable
+    public interface IUsuarioRepository
     {
         IEnumerable<Usuario> GetUsuarios();
         Usuario GetUsuarioById(int id);
@@ -13,7 +13,6 @@ namespace RepositoryLayer
         void InsertUsuario(Usuario usuario);
         void DeleteUsuario(Usuario usuario);
         void UpdateUsuario(Usuario usuario);
-        int Save();
         Usuario Authentication(string password, string userName);
     }
 }

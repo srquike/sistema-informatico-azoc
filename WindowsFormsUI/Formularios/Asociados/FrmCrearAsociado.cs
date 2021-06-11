@@ -14,7 +14,6 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmCrearAsociado : Form
     {
         private readonly SocioBLL _asociadoLogic;
-        private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private readonly BeneficiarioBLL _beneficiarioLogic;
         private IList<Beneficiario> _beneficiarios;
         private int _filasMarcadas;
@@ -25,24 +24,14 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
 
             _asociadoLogic = new SocioBLL();
-            _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _beneficiarioLogic = new BeneficiarioBLL();
             _beneficiarios = new List<Beneficiario>();
         }
 
         private void LlenarComboBoxCategorias(ref ComboBox combo)
         {
-            var categorias = _categoriaAsociadoLogic.List();
-            var items = (from categoria in categorias
-                         select new
-                         {
-                             Id = categoria.CategoriaAsociadoId,
-                             Nombre = categoria.Nombre
-                         }).ToList();
-
-            combo.DataSource = items;
-            combo.DisplayMember = "Nombre";
-            combo.ValueMember = "Id";
+            string[] categorias = new string[] { "Zafrero", "Temporal", "Perpetuo" };
+            CmbCategoria.Items.AddRange(categorias);
         }
 
         private void ActualizarListado(ref DataGridView dataGrid)
@@ -240,7 +229,7 @@ namespace WindowsFormsUI.Formularios
                     string genero = CmbGeneros.SelectedItem.ToString();
                     string departamento = CmbDepartamentos.SelectedItem.ToString();
                     string municipio = CmbMunicipios.SelectedItem.ToString();
-                    int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
+                    string categoria = CmbCategoria.SelectedItem.ToString();
 
                     Socio asociado = new Socio()
                     {
@@ -262,7 +251,7 @@ namespace WindowsFormsUI.Formularios
                         Telefono = telefono,
                         Estado = "Activo",
                         Ingreso = DateTime.Today,
-                        CategoriaAsociadoId = categoriaId
+                        Categoria = categoria
                     };
 
                     if (_asociadoLogic.Create(asociado))
@@ -282,6 +271,22 @@ namespace WindowsFormsUI.Formularios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

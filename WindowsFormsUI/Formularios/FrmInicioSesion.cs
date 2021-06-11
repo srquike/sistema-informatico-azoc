@@ -58,9 +58,15 @@ namespace WindowsFormsUI.Formularios
                     _usuarioLogin = usuario;
                     _usuarioLogin.UltimoAcceso = DateTime.Now;
 
-                    _usuarioLogic.Edit(_usuarioLogin, false);
-
-                    return true;
+                    if (_usuarioLogic.Edit(_usuarioLogin, false))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo cambiar la fecha de Ultimo acceso, pero puede continuar!", "Editar usuarios: info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
                 }
                 else
                 {

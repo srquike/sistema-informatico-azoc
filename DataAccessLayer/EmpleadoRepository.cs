@@ -44,18 +44,20 @@ namespace DataAccessLayer
 
         public Empleado GetEmpleadoById(int id)
         {
-            return _context.Empleados.Where(e => e.EmpleadoId == id)
+            return _context.Empleados
+                .AsNoTracking()
                 .Include(e => e.Cargo)
                 .Include(e => e.Usuarios)
-                .AsNoTracking()
-                .FirstOrDefault();
+                .Where(e => e.EmpleadoId == id)
+                .First();
         }
 
         public IEnumerable<Empleado> GetEmpleados()
         {
-            return _context.Empleados.Include(e => e.Cargo)
-                .Include(e => e.Usuarios)
+            return _context.Empleados
                 .AsNoTracking()
+                .Include(e => e.Cargo)
+                .Include(e => e.Usuarios)
                 .ToList();
         }
 

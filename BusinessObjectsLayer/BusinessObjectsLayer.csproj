@@ -15,9 +15,6 @@
     <Compile Update="Models\Cargo.cs">
       <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
     </Compile>
-    <Compile Update="Models\CategoriaAsociado.cs">
-      <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
-    </Compile>
     <Compile Update="Models\Credito.cs">
       <CustomToolNamespace>BusinessObjectsLayer.Models</CustomToolNamespace>
     </Compile>

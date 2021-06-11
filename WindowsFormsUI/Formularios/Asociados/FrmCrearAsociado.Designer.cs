@@ -145,9 +145,11 @@ namespace WindowsFormsUI.Formularios
             this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCodigo.Location = new System.Drawing.Point(132, 20);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtCodigo.MaxLength = 5;
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
             this.TxtCodigo.TabIndex = 1;
+            this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
             // 
             // label20
             // 

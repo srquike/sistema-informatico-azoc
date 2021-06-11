@@ -34,9 +34,8 @@ namespace BusinessObjectsLayer.Models
         public string Estado { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public int? CategoriaAsociadoId { get; set; }
+        public string Categoria { get; set; }
 
-        public virtual CategoriaAsociado CategoriaAsociado { get; set; }
         public virtual ICollection<Aportacion> Aportaciones { get; set; }
         public virtual ICollection<Beneficiario> Beneficiarios { get; set; }
         public virtual ICollection<Credito> Creditos { get; set; }

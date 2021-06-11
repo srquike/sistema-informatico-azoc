@@ -20,11 +20,9 @@ namespace DataAccessLayer
         }
 
         public virtual DbSet<Aportacion> Aportaciones { get; set; }
-
         public virtual DbSet<Socio> Socios { get; set; }
         public virtual DbSet<Beneficiario> Beneficiarios { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
-        public virtual DbSet<CategoriaAsociado> CategoriasAsociados { get; set; }
         public virtual DbSet<Credito> Creditos { get; set; }
         public virtual DbSet<Cuota> Cuota { get; set; }
         public virtual DbSet<Deduccion> Deducciones { get; set; }
@@ -47,10 +45,10 @@ namespace DataAccessLayer
                 // optionsBuilder.UseSqlServer("Server = DESKTOP-9NPOF6R\\SQLEXPRESS; Database = AzocDb; Trusted_Connection = True; ");
 
                 // Conexion de Jonathan
-                // optionsBuilder.UseSqlServer("Server=DESKTOP-6AAJJ4I\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-V3OCH3N; Database=AzocDb; Trusted_Connection=True;");
 
                 // Conexion de Jonathan 2
-                optionsBuilder.UseSqlServer("Server=LAPTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
+                // optionsBuilder.UseSqlServer("Server=LAPTOP-2NF0HEH\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
 
                 // Conexion de Walter
                 // optionsBuilder.UseSqlServer("Server=WALTER\\SQLEXPRESS; Database=AzocDb; Trusted_Connection=True;");
@@ -158,12 +156,6 @@ namespace DataAccessLayer
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("TNombre");
-
-                entity.HasOne(d => d.CategoriaAsociado)
-                    .WithMany(p => p.Socios)
-                    .HasForeignKey(d => d.CategoriaAsociadoId)
-                    .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("FK_Socio_CategoriaAsociado");
             });
 
             modelBuilder.Entity<Aportacion>(entity =>
@@ -281,24 +273,6 @@ namespace DataAccessLayer
                 entity.ToTable("Cargo");
 
                 entity.HasIndex(e => e.Nombre, "UQ__Cargo__75E3EFCF0E5027F9")
-                    .IsUnique();
-
-                entity.Property(e => e.Descripcion)
-                    .IsRequired()
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Nombre)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<CategoriaAsociado>(entity =>
-            {
-                entity.ToTable("CategoriaAsociado");
-
-                entity.HasIndex(e => e.Nombre, "UQ__Categori__75E3EFCF5006D49A")
                     .IsUnique();
 
                 entity.Property(e => e.Descripcion)

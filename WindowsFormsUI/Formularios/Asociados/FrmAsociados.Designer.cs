@@ -45,6 +45,8 @@ namespace WindowsFormsUI.Formularios
             this.label3 = new System.Windows.Forms.Label();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.DgvListado = new System.Windows.Forms.DataGridView();
+            this.TxtBusqueda = new System.Windows.Forms.TextBox();
+            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,8 +60,6 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.TxtBusqueda = new System.Windows.Forms.TextBox();
-            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             this.SuspendLayout();
@@ -142,7 +142,8 @@ namespace WindowsFormsUI.Formularios
             this.CmbTipoFiltro.Items.AddRange(new object[] {
             "-- Seleccionar filtro -- ",
             "Genero",
-            "Categoria"});
+            "Categoria",
+            "Estado"});
             this.CmbTipoFiltro.Location = new System.Drawing.Point(540, 129);
             this.CmbTipoFiltro.Name = "CmbTipoFiltro";
             this.CmbTipoFiltro.Size = new System.Drawing.Size(224, 28);
@@ -287,6 +288,31 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.TabIndex = 29;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
             // 
+            // TxtBusqueda
+            // 
+            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
+            this.TxtBusqueda.MaxLength = 50;
+            this.TxtBusqueda.Multiline = true;
+            this.TxtBusqueda.Name = "TxtBusqueda";
+            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
+            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
+            this.TxtBusqueda.TabIndex = 30;
+            this.TxtBusqueda.UseSystemPasswordChar = true;
+            // 
+            // LLblQuitarMarcadas
+            // 
+            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LLblQuitarMarcadas.AutoSize = true;
+            this.LLblQuitarMarcadas.Enabled = false;
+            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
+            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
+            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
+            this.LLblQuitarMarcadas.TabIndex = 31;
+            this.LLblQuitarMarcadas.TabStop = true;
+            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
+            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
+            // 
             // Seleccion
             // 
             this.Seleccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -306,6 +332,7 @@ namespace WindowsFormsUI.Formularios
             this.Id.ReadOnly = true;
             this.Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Id.ToolTipText = "Identificador del socio para el sistema informático";
+            this.Id.Visible = false;
             this.Id.Width = 29;
             // 
             // Codigo
@@ -410,31 +437,6 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.ToolTipText = "Eliminar usuario del sistema";
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
-            // 
-            // TxtBusqueda
-            // 
-            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
-            this.TxtBusqueda.MaxLength = 50;
-            this.TxtBusqueda.Multiline = true;
-            this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
-            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
-            this.TxtBusqueda.TabIndex = 30;
-            this.TxtBusqueda.UseSystemPasswordChar = true;
-            // 
-            // LLblQuitarMarcadas
-            // 
-            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LLblQuitarMarcadas.AutoSize = true;
-            this.LLblQuitarMarcadas.Enabled = false;
-            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
-            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
-            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
-            this.LLblQuitarMarcadas.TabIndex = 31;
-            this.LLblQuitarMarcadas.TabStop = true;
-            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
-            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
             // 
             // FrmAsociados
             // 

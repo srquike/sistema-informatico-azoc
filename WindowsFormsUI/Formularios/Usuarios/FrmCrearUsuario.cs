@@ -216,14 +216,14 @@ namespace WindowsFormsUI.Formularios
 
         private void GuardarAvatar(string nombreUsuario)
         {
-            string ruta = @"Imagenes\";
+            string directorio = @"Imagenes\";
             string extension = ".jpeg";
 
-            if (!Directory.Exists(ruta))
+            if (!Directory.Exists(directorio))
             {
                 try
                 {
-                    Directory.CreateDirectory(ruta);
+                    Directory.CreateDirectory(directorio);
                 }
                 catch (Exception ex)
                 {
@@ -231,20 +231,20 @@ namespace WindowsFormsUI.Formularios
                 }
             }
 
-            string archivo = string.Concat(ruta, nombreUsuario, extension);
+            string archivo = string.Concat(directorio, nombreUsuario, extension);
 
             if (!File.Exists(archivo))
             {
-                using (FileStream fileStream = new FileStream(archivo, FileMode.CreateNew, FileAccess.Write))
+                if (PctAvatar.Image != null)
                 {
-                    if (PctAvatar.Image != null)
+                    using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
                     {
-                        using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                        using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
                         {
                             bitmap.Save(fileStream, ImageFormat.Jpeg);
-                        }
+                        }                        
                     }
-                }
+                }                
             }
             else
             {

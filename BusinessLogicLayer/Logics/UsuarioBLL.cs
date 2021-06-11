@@ -14,16 +14,19 @@ namespace BusinessLogicLayer.Logics
 
         public UsuarioBLL()
         {
-            _usuarioRepository = new UsuarioRepository(new AzocDbContext());
+            _usuarioRepository = new UsuarioRepository();
         }
 
-        public Usuario Authentication(string password, string nombre)
+        public Usuario Authentication(string clave, string nombre)
         {
-            string hashPassword = CryptoService.Encode(password);
+            Usuario usuario = _usuarioRepository.Authentication(CryptoService.Encode(clave), nombre);
 
-            Usuario usuario = _usuarioRepository.Authentication(hashPassword, nombre);
+            if (usuario != null)
+            {
+                return usuario;
+            }
 
-            return usuario;
+            return null;
         }
 
         public bool Delete(int id)
@@ -32,15 +35,14 @@ namespace BusinessLogicLayer.Logics
 
             if (usuario != null)
             {
-                _usuarioRepository.DeleteUsuario(usuario);
-
-                if (_usuarioRepository.Save() == 0)
+                try
+                {
+                    _usuarioRepository.DeleteUsuario(usuario);
+                    return true;
+                }
+                catch (Exception)
                 {
                     return false;
-                }
-                else
-                {
-                    return true;
                 }
             }
 
@@ -82,14 +84,15 @@ namespace BusinessLogicLayer.Logics
 
             usuario.Clave = hashPassword;
 
-            _usuarioRepository.InsertUsuario(usuario);
-
-            if (_usuarioRepository.Save() == 0)
+            try
+            {
+                _usuarioRepository.InsertUsuario(usuario);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            return true;
         }
 
         public bool Edit(Usuario usuario, bool cambiarClave)
@@ -100,14 +103,15 @@ namespace BusinessLogicLayer.Logics
                 usuario.Clave = hashPassword;
             }
 
-            _usuarioRepository.UpdateUsuario(usuario);
-
-            if (_usuarioRepository.Save() == 0)
+            try
+            {
+                _usuarioRepository.UpdateUsuario(usuario);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            return true;
         }
     }
 }

@@ -20,14 +20,19 @@ namespace BusinessLogicLayer.Logics
         {
             Socio asociado = _asociadoRepository.GetAsociadoById(id);
 
-            _asociadoRepository.DeleteAsociado(asociado);
-
-            if (_asociadoRepository.Save() == 0)
+            if (asociado != null)
             {
-                return false;
+                _asociadoRepository.DeleteAsociado(asociado);
+
+                if (_asociadoRepository.Save() == 0)
+                {
+                    return false;
+                }
+
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public IEnumerable<Socio> List()

@@ -45,7 +45,6 @@ namespace DataAccessLayer
         public Socio GetAsociadoById(int id)
         {
             return _context.Socios.Where(a => a.SocioId == id)
-                .Include(a => a.CategoriaAsociado)
                 .Include(a => a.Beneficiarios)
                 .Include(a => a.Creditos)
                 .AsNoTracking()
@@ -54,8 +53,7 @@ namespace DataAccessLayer
 
         public IEnumerable<Socio> GetAsociados()
         {
-            return _context.Socios.Include(a => a.CategoriaAsociado)
-                .Include(a => a.Beneficiarios)
+            return _context.Socios.Include(a => a.Beneficiarios)
                 .Include(a => a.Creditos)
                 .AsNoTracking()
                 .ToList();
@@ -79,7 +77,6 @@ namespace DataAccessLayer
         public Socio GetSocioByCode(string code)
         {
             return _context.Socios.Where(a => a.Codigo == code)
-                .Include(a => a.CategoriaAsociado)
                 .Include(a => a.Beneficiarios)
                 .Include(a => a.Creditos)
                 .AsNoTracking()

@@ -45,7 +45,7 @@ namespace WindowsFormsUI.Formularios
             string estado = _asociado.Estado;
 
             TxtCodigo.Text = _asociado.Codigo;
-            TxtCategoria.Text = _asociado.CategoriaAsociado.Nombre;
+            TxtCategoria.Text = _asociado.Categoria;
             TxtEstado.Text = estado;
             TxtNombre.Text = nombre;
             TxtFNacimiento.Text = _asociado.Nacimiento.Value.ToShortDateString();

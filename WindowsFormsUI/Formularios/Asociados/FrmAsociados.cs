@@ -12,7 +12,6 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmAsociados : Form
     {
         private readonly SocioBLL _asociadoLogic;
-        private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioBLL;
         private readonly Usuario _usuarioLogeado;
         private int _filasMarcadas;
@@ -22,7 +21,6 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
 
             _asociadoLogic = new SocioBLL();
-            _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _registroUsuarioBLL = new RegistroUsuarioBLL();
             _usuarioLogeado = usuarioLogeado;
         }
@@ -56,7 +54,7 @@ namespace WindowsFormsUI.Formularios
                 string nombreAsociado = string.Concat(asociado.Pnombre, " ", asociado.Snombre, " ", asociado.Tnombre, " ",
                     asociado.Papellido, " ", asociado.Sapellido, " ", asociado.Tapellido);
 
-                dataGrid.Rows.Add(false, asociado.SocioId, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, asociado.Genero, asociado.Telefono, asociado.CategoriaAsociado.Nombre, asociado.Estado);
+                dataGrid.Rows.Add(false, asociado.SocioId, asociado.Codigo, nombreAsociado, asociado.Dui, asociado.Nit, asociado.Genero, asociado.Telefono, asociado.Categoria, asociado.Estado);
             }
 
             dataGrid.ClearSelection();
@@ -129,14 +127,14 @@ namespace WindowsFormsUI.Formularios
             }
             else if (CmbTipoFiltro.SelectedItem.ToString() == "Categoria")
             {
-                var categorias = _categoriaAsociadoLogic.List();
-                var nombresCategorias = from categoria in categorias
-                                        select new
-                                        {
-                                            Nombre = categoria.Nombre
-                                        };
-                CmbFiltro.DataSource = categorias;
-                CmbFiltro.DisplayMember = "Nombre";
+                string[] categorias = new string[]
+                {
+                    "Zafrero",
+                    "Temporal",
+                    "Perpetuo"
+                };
+
+                CmbFiltro.Items.AddRange(categorias);
             }
             else
             {
@@ -160,7 +158,7 @@ namespace WindowsFormsUI.Formularios
             else if (CmbTipoFiltro.SelectedItem.ToString() == "Categoria")
             {
                 string categoria = CmbFiltro.SelectedItem.ToString();
-                var resultados = from asociado in asociados where asociado.CategoriaAsociado.Nombre == categoria select asociado;
+                var resultados = from asociado in asociados where asociado.Categoria == categoria select asociado;
 
                 ActualizarListado(ref DgvListado, resultados);
             }

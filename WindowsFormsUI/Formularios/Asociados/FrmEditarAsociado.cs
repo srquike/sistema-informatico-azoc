@@ -17,7 +17,6 @@ namespace WindowsFormsUI.Formularios
         private bool _continuar = false;
         private readonly SocioBLL _asociadoLogic;
         private readonly BeneficiarioBLL _beneficiarioLogic;
-        private readonly CategoriaAsociadoBLL _categoriaAsociadoLogic;
         private ICollection<Beneficiario> _beneficiarios;
 
         public FrmEditarAsociado(int asociadoId)
@@ -25,7 +24,6 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
 
             _asociadoLogic = new SocioBLL();
-            _categoriaAsociadoLogic = new CategoriaAsociadoBLL();
             _beneficiarioLogic = new BeneficiarioBLL();
             _beneficiarios = new List<Beneficiario>();
             _asociado = _asociadoLogic.Find(asociadoId);
@@ -33,17 +31,8 @@ namespace WindowsFormsUI.Formularios
 
         private void LlenarComboBoxCategorias(ref ComboBox combo)
         {
-            var categorias = _categoriaAsociadoLogic.List();
-            var items = (from categoria in categorias
-                         select new
-                         {
-                             Id = categoria.CategoriaAsociadoId,
-                             Nombre = categoria.Nombre
-                         }).ToList();
-
-            combo.DataSource = items;
-            combo.DisplayMember = "Nombre";
-            combo.ValueMember = "Id";
+            string[] categorias = new string[] { "Zafrero", "Temporal", "Perpetuo" };
+            combo.Items.AddRange(categorias);
         }
 
         private void LlenarListado(ref DataGridView dataGrid, ICollection<Beneficiario> beneficiarios)
@@ -68,7 +57,7 @@ namespace WindowsFormsUI.Formularios
                 LlenarComboBoxCategorias(ref CmbCategoria);
 
                 TxtCodigo.Text = _asociado.Codigo;
-                CmbCategoria.SelectedItem = _asociado.CategoriaAsociado.Nombre;
+                CmbCategoria.SelectedItem = _asociado.Categoria;
                 TxtPNombre.Text = _asociado.Pnombre;
                 TxtSNombre.Text = _asociado.Snombre;
                 TxtTNombre.Text = _asociado.Tnombre;
@@ -273,7 +262,7 @@ namespace WindowsFormsUI.Formularios
                 string genero = CmbGenero.SelectedItem.ToString();
                 string departamento = CmbDepartamentos.SelectedItem.ToString();
                 string municipio = CmbMunicipios.SelectedItem.ToString();
-                int categoriaId = Convert.ToInt32(CmbCategoria.SelectedValue);
+                string categoria = CmbCategoria.SelectedItem.ToString();
                 string estado = ChkEstado.Checked ? "Activo" : "Inactivo";
 
                 _asociado.Pnombre = TxtPNombre.Text;
@@ -293,7 +282,7 @@ namespace WindowsFormsUI.Formularios
                 _asociado.Telefono = telefono;
                 _asociado.Estado = estado;
                 _asociado.Ingreso = DateTime.Today;
-                _asociado.CategoriaAsociadoId = categoriaId;
+                _asociado.Categoria = categoria;
 
                 if (_asociadoLogic.Edit(_asociado))
                 {
@@ -305,6 +294,22 @@ namespace WindowsFormsUI.Formularios
                 {
                     MessageBox.Show("El socio no pudo ser editado, por favor intente de nuevo", "Editar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControls", "CustomCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{7A092CAA-BD9F-4597-BF76-B20D0A63CD56}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{942E7AA9-C86A-496D-A80E-4444FA09BBF2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,8 +51,6 @@ Global
 		{7A092CAA-BD9F-4597-BF76-B20D0A63CD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A092CAA-BD9F-4597-BF76-B20D0A63CD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A092CAA-BD9F-4597-BF76-B20D0A63CD56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{942E7AA9-C86A-496D-A80E-4444FA09BBF2}.Debug|Any CPU.ActiveCfg = Release
-		{942E7AA9-C86A-496D-A80E-4444FA09BBF2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

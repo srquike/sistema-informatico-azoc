@@ -30,9 +30,7 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label18 = new System.Windows.Forms.Label();
             this.CmbCategoria = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -275,29 +273,13 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListado.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListado.Location = new System.Drawing.Point(6, 67);
             this.DgvListado.MultiSelect = false;
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListado.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1078, 272);
@@ -326,7 +308,7 @@ namespace WindowsFormsUI.Formularios
             this.Dui.HeaderText = "# DUI";
             this.Dui.Name = "Dui";
             this.Dui.ReadOnly = true;
-            this.Dui.Width = 74;
+            this.Dui.Width = 69;
             // 
             // Nit
             // 
@@ -334,7 +316,7 @@ namespace WindowsFormsUI.Formularios
             this.Nit.HeaderText = "# NIT";
             this.Nit.Name = "Nit";
             this.Nit.ReadOnly = true;
-            this.Nit.Width = 73;
+            this.Nit.Width = 68;
             // 
             // Telefono
             // 
@@ -342,7 +324,7 @@ namespace WindowsFormsUI.Formularios
             this.Telefono.HeaderText = "# Teléfono";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 108;
+            this.Telefono.Width = 99;
             // 
             // Genero
             // 
@@ -358,7 +340,7 @@ namespace WindowsFormsUI.Formularios
             this.Porcentaje.HeaderText = "% de crédito";
             this.Porcentaje.Name = "Porcentaje";
             this.Porcentaje.ReadOnly = true;
-            this.Porcentaje.Width = 121;
+            this.Porcentaje.Width = 111;
             // 
             // Detalles
             // 
@@ -477,9 +459,11 @@ namespace WindowsFormsUI.Formularios
             this.TxtCodigo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TxtCodigo.Location = new System.Drawing.Point(134, 20);
             this.TxtCodigo.Margin = new System.Windows.Forms.Padding(5);
+            this.TxtCodigo.MaxLength = 5;
             this.TxtCodigo.Name = "TxtCodigo";
             this.TxtCodigo.Size = new System.Drawing.Size(200, 27);
             this.TxtCodigo.TabIndex = 1;
+            this.TxtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigo_KeyPress);
             // 
             // label8
             // 
