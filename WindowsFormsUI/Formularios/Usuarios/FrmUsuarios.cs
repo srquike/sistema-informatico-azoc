@@ -16,10 +16,7 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmUsuarios : Form
     {
         private readonly UsuarioBLL _usuarioLogic;
-        private readonly EmpleadoBLL _empleadoLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioBLL;
-
-        private int _filasMarcadas;
         private readonly Usuario _usuarioLogeado;
 
         public FrmUsuarios(Usuario usuarioLogeado)
@@ -27,23 +24,13 @@ namespace WindowsFormsUI.Formularios
             InitializeComponent();
 
             _usuarioLogic = new UsuarioBLL();
-            _empleadoLogic = new EmpleadoBLL();
             _registroUsuarioBLL = new RegistroUsuarioBLL();
-            _filasMarcadas = 0;
             _usuarioLogeado = usuarioLogeado;
         }
 
         private bool VerificarPermisos(int permisoId)
         {
-            int permisos = 0;
-
-            foreach (PermisoUsuario permiso in _usuarioLogeado.PermisoUsuarios)
-            {
-                if (permiso.PermisoId == permisoId)
-                {
-                    permisos++;
-                }
-            }
+            int permisos = (from permiso in _usuarioLogeado.PermisoUsuarios where permiso.PermisoId == permisoId select permiso).Count();
 
             if (permisos > 0)
             {
@@ -94,8 +81,6 @@ namespace WindowsFormsUI.Formularios
         {
             var usuarios = ObtenerLista();
             RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
-            CmbTipoFiltro.SelectedIndex = 0;
-            CmbAcciones.SelectedIndex = 0;
             WindowState = FormWindowState.Maximized;
         }
 
@@ -246,24 +231,6 @@ namespace WindowsFormsUI.Formularios
                     }
                 }
             }
-            else if (dataGridView.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
-            {
-                bool value = (bool)dataGridView.Rows[e.RowIndex].Cells[0].Value;
-
-                if (value)
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[0].Value = false;
-                    _filasMarcadas--;
-                }
-                else
-                {
-                    dataGridView.Rows[e.RowIndex].Cells[0].Value = true;
-                    _filasMarcadas++;
-                }
-
-                LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
-                LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
-            }
         }
 
         private void EliminarAvatar(string usuarioNombre)
@@ -278,133 +245,9 @@ namespace WindowsFormsUI.Formularios
             }
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtBusqueda.Text))
-            {
-                string busqueda = TxtBusqueda.Text;
-                var listaUsuario = _usuarioLogic.List();
-
-                var resultado = from usuario in listaUsuario where usuario.Nombre.Contains(busqueda) || usuario.Empleado.PrimerNombre.Contains(busqueda) || usuario.Empleado.PrimerApellido.Contains(busqueda) select usuario;
-
-                RefrescarDataGridView(ref DgvListaUsuarios, resultado);
-                LLblQuitarBusqueda.Enabled = true;
-            }
-        }
-
-        private void LblQuitarBusqueda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LLblQuitarBusqueda.Enabled = false;
-            TxtBusqueda.Text = string.Empty;
-            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-        }
-
-        private void CmbTipoFiltro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CmbTipoFiltro.SelectedItem.ToString() == "Empleado")
-            {
-                var empleados = _empleadoLogic.List();
-                var nombres = (from empleado in empleados
-                               select new
-                               {
-                                   Nombre = $"{empleado.PrimerNombre} {empleado.SegundoNombre} {empleado.TercerNombre} {empleado.PrimerApellido} {empleado.SegundoApellido} {empleado.TercerApellido} ",
-                                   Id = empleado.EmpleadoId
-                               }).ToList();
-
-                CmbFiltro.DisplayMember = "Nombre";
-                CmbFiltro.DataSource = nombres;
-                CmbFiltro.ValueMember = "Id";
-            }
-            else
-            {
-                CmbFiltro.DataSource = null;
-            }
-        }
-
-        private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LLblQuitarFiltro.Enabled = false;
-            CmbTipoFiltro.SelectedIndex = 0;
-
-            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-        }
-
-        private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_filasMarcadas > 0)
-            {
-                if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
-                {
-                    if (VerificarPermisos(4))
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer borrar los usuarios selecionados?", "Eliminar usuarios: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        {
-                            foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
-                            {
-                                if ((bool)fila.Cells["Seleccion"].Value == true)
-                                {
-                                    int userId = Convert.ToInt32(fila.Cells["Id"].Value);
-
-                                    if (_usuarioLogeado != null)
-                                    {
-                                        if (_usuarioLogeado.UsuarioId == userId)
-                                        {
-                                            MessageBox.Show("No se puede eliminar el usuario actual. Cierre la sesión e ingrese con otro usuario!", "Eliminar usuario: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            if (_usuarioLogic.Delete(userId) == false)
-                                            {
-                                                MessageBox.Show($"No se pudo eliminar al usuario {userId}, por favor intente de nuevo!", "Eliminar usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
-                            _filasMarcadas = 0;
-                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                            CmbAcciones.SelectedIndex = 0;
-                        }
-                        else
-                        {
-                            CmbAcciones.SelectedIndex = 0;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                }
-            }
-        }
-
-        private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (_filasMarcadas > 0)
-            {
-                bool marcada;
-
-                foreach (DataGridViewRow fila in DgvListaUsuarios.Rows)
-                {
-                    marcada = (bool)fila.Cells["Seleccion"].Value;
-
-                    if (marcada)
-                    {
-                        fila.Cells["Seleccion"].Value = false;
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        LLblQuitarMarcadas.Enabled = false;
-                    }
-                }
-            }
+            Close();
         }
     }
 }

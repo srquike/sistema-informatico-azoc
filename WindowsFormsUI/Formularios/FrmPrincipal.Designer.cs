@@ -52,6 +52,7 @@ namespace WindowsFormsUI.Formularios
             this.TSMIVerAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LblVersion = new System.Windows.Forms.Label();
             this.PnlBarraLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PctLogo)).BeginInit();
@@ -61,6 +62,7 @@ namespace WindowsFormsUI.Formularios
             // PnlBarraLateral
             // 
             this.PnlBarraLateral.BackColor = System.Drawing.Color.White;
+            this.PnlBarraLateral.Controls.Add(this.LblVersion);
             this.PnlBarraLateral.Controls.Add(this.panel4);
             this.PnlBarraLateral.Controls.Add(this.panel3);
             this.PnlBarraLateral.Controls.Add(this.button7);
@@ -333,6 +335,16 @@ namespace WindowsFormsUI.Formularios
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             // 
+            // LblVersion
+            // 
+            this.LblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LblVersion.AutoSize = true;
+            this.LblVersion.Location = new System.Drawing.Point(12, 715);
+            this.LblVersion.Name = "LblVersion";
+            this.LblVersion.Size = new System.Drawing.Size(75, 15);
+            this.LblVersion.TabIndex = 13;
+            this.LblVersion.Text = "Versión: 1.0.0";
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -382,5 +394,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.ToolStripMenuItem customizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TSMIVerAyuda;
+        private System.Windows.Forms.Label LblVersion;
     }
 }

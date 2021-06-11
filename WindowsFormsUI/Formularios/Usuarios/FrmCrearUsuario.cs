@@ -36,9 +36,12 @@ namespace WindowsFormsUI.Formularios
                                Id = empleado.EmpleadoId
                            }).ToList();
 
-            CmbEmpleados.DisplayMember = "Nombre";
+            nombres.Add(new { Nombre = "-- Seleccionar --", Id = -1 });
+
             CmbEmpleados.DataSource = nombres;
+            CmbEmpleados.DisplayMember = "Nombre";
             CmbEmpleados.ValueMember = "Id";
+            CmbEmpleados.SelectedValue = -1;
         }
 
         private void FrmCrearUsuario_Load(object sender, EventArgs e)
@@ -64,54 +67,63 @@ namespace WindowsFormsUI.Formularios
 
         private bool ValidarControles()
         {
-            if (MTxtUsuario.MaskFull != true)
+            if (Convert.ToInt32(CmbEmpleados.SelectedValue) == -1)
             {
-                ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese el nombre de usuario para continuar!");
+                ErrPControles.SetError(CmbEmpleados, "Por favor, seleccione un empleado!");
             }
             else
             {
                 ErrPControles.Clear();
 
-                if (string.IsNullOrEmpty(TxtClave.Text))
+                if (MTxtUsuario.MaskFull != true)
                 {
-                    ErrPControles.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
+                    ErrPControles.SetError(MTxtUsuario, "Por favor, ingrese el nombre de usuario para continuar!");
                 }
                 else
                 {
                     ErrPControles.Clear();
 
-                    if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
+                    if (string.IsNullOrEmpty(TxtClave.Text))
                     {
-                        ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese la misma contraseña!");
+                        ErrPControles.SetError(TxtClave, "Por favor, ingrese la contraseña del usuario para continuar!");
                     }
                     else
                     {
                         ErrPControles.Clear();
 
-                        if (string.IsNullOrEmpty(TxtPregunta1.Text))
+                        if (string.IsNullOrEmpty(TxtRepetirClave.Text) || TxtRepetirClave.Text != TxtClave.Text)
                         {
-                            ErrPControles.SetError(TxtPregunta1, "Por favor, ingrese la respuesta");
+                            ErrPControles.SetError(TxtRepetirClave, "Por favor, ingrese la misma contraseña!");
                         }
                         else
                         {
                             ErrPControles.Clear();
 
-                            if (string.IsNullOrEmpty(TxtPregunta2.Text))
+                            if (string.IsNullOrEmpty(TxtPregunta1.Text))
                             {
-                                ErrPControles.SetError(TxtPregunta2, "Por favor, ingrese la respuesta");
+                                ErrPControles.SetError(TxtPregunta1, "Por favor, ingrese la respuesta");
                             }
                             else
                             {
                                 ErrPControles.Clear();
 
-                                if (string.IsNullOrEmpty(TxtPregunta3.Text))
+                                if (string.IsNullOrEmpty(TxtPregunta2.Text))
                                 {
-                                    ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
+                                    ErrPControles.SetError(TxtPregunta2, "Por favor, ingrese la respuesta");
                                 }
                                 else
                                 {
                                     ErrPControles.Clear();
-                                    return true;
+
+                                    if (string.IsNullOrEmpty(TxtPregunta3.Text))
+                                    {
+                                        ErrPControles.SetError(TxtPregunta3, "Por favor, ingrese la respuesta");
+                                    }
+                                    else
+                                    {
+                                        ErrPControles.Clear();
+                                        return true;
+                                    }
                                 }
                             }
                         }
@@ -242,9 +254,9 @@ namespace WindowsFormsUI.Formularios
                         using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
                         {
                             bitmap.Save(fileStream, ImageFormat.Jpeg);
-                        }                        
+                        }
                     }
-                }                
+                }
             }
             else
             {
@@ -294,17 +306,21 @@ namespace WindowsFormsUI.Formularios
 
         private void CmbEmpleados_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            int empleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);
-
-            Empleado empleado = _empleadoLogic.Find(empleadoId);
-
-            if (empleado != null)
+            if (Convert.ToInt32(CmbEmpleados.SelectedValue) != -1)
             {
-                int usuarios = empleado.Usuarios.Count;
+                int empleadoId = Convert.ToInt32(CmbEmpleados.SelectedValue);
 
-                if (usuarios > 0)
+                Empleado empleado = _empleadoLogic.Find(empleadoId);
+
+                if (empleado != null)
                 {
-                    MessageBox.Show("No se puede crear un usuario para este empleado debiado a que ya posee uno. Elimine el usuario actual del empleado e intente de nuevo!", "Crear usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    int usuarios = empleado.Usuarios.Count;
+
+                    if (usuarios > 0)
+                    {
+                        MessageBox.Show("No se puede crear un usuario para este empleado debiado a que ya posee uno. Elimine el usuario actual del empleado e intente de nuevo!", "Crear usuario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CmbEmpleados.SelectedValue = -1;
+                    }
                 }
             }
         }

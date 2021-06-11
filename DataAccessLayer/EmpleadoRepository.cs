@@ -8,72 +8,72 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class EmpleadoRepository : IEmpleadoRepository, IDisposable
+    public class EmpleadoRepository : IEmpleadoRepository
     {
-        private AzocDbContext _context;
-        private bool disposed = false;
 
-        protected virtual void Dispose(bool disposing)
+        public EmpleadoRepository()
         {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
 
-            disposed = true;
-        }
-
-        public EmpleadoRepository(AzocDbContext context)
-        {
-            _context = context;
         }
 
         public void DeleteEmpleado(Empleado empleado)
         {
-            _context.Empleados.Remove(empleado);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Empleados.Remove(empleado);
+                context.SaveChanges();
+            }
         }
 
         public Empleado GetEmpleadoById(int id)
         {
-            return _context.Empleados
+            Empleado empleado;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                empleado = context.Empleados
                 .AsNoTracking()
                 .Include(e => e.Cargo)
                 .Include(e => e.Usuarios)
                 .Where(e => e.EmpleadoId == id)
                 .First();
+            }
+
+            return empleado;
         }
 
         public IEnumerable<Empleado> GetEmpleados()
         {
-            return _context.Empleados
+            IEnumerable<Empleado> empleados;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                empleados = context.Empleados
                 .AsNoTracking()
                 .Include(e => e.Cargo)
                 .Include(e => e.Usuarios)
                 .ToList();
+            }
+
+            return empleados;
         }
 
         public void InsertEmpleado(Empleado empleado)
         {
-            _context.Empleados.Add(empleado);
-        }
-
-        public int Save()
-        {
-            return _context.SaveChanges();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Empleados.Add(empleado);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateEmpleado(Empleado empleado)
         {
-            _context.Entry(empleado).State = EntityState.Modified;
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Entry(empleado).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Logics
 
         public EmpleadoBLL()
         {
-            _empleadoRepository = new EmpleadoRepository(new AzocDbContext());
+            _empleadoRepository = new EmpleadoRepository();
         }
 
         public bool Delete(int id)
@@ -21,14 +21,15 @@ namespace BusinessLogicLayer.Logics
 
             if (empleado != null)
             {
-                _empleadoRepository.DeleteEmpleado(empleado);
-
-                if (_empleadoRepository.Save() == 0)
+                try
+                {
+                    _empleadoRepository.DeleteEmpleado(empleado);
+                    return true;
+                }
+                catch (Exception)
                 {
                     return false;
                 }
-
-                return true;
             }
 
             return false;
@@ -41,31 +42,40 @@ namespace BusinessLogicLayer.Logics
 
         public Empleado Find(int id)
         {
-            return _empleadoRepository.GetEmpleadoById(id);
+            Empleado empleado = _empleadoRepository.GetEmpleadoById(id);
+
+            if (empleado != null)
+            {
+                return empleado;
+            }
+
+            return null;
         }
 
         public bool Create(Empleado empleado)
         {
-            _empleadoRepository.InsertEmpleado(empleado);
-
-            if (_empleadoRepository.Save() == 0)
+            try
+            {
+                _empleadoRepository.InsertEmpleado(empleado);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
-            }
-
-            return true;
+            }           
         }
 
         public bool Edit(Empleado empleado)
         {
-            _empleadoRepository.UpdateEmpleado(empleado);
-
-            if (_empleadoRepository.Save() == 0)
+            try
+            {
+                _empleadoRepository.UpdateEmpleado(empleado);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            return true;
         }
     }
 }
