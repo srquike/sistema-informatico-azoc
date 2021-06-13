@@ -36,7 +36,7 @@ namespace DataAccessLayer
                 .Include(e => e.Cargo)
                 .Include(e => e.Usuarios)
                 .Where(e => e.EmpleadoId == id)
-                .First();
+                .FirstOrDefault();
             }
 
             return empleado;

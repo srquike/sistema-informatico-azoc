@@ -222,7 +222,6 @@ namespace WindowsFormsUI.Formularios
             this.CmbGeneros.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbGeneros.FormattingEnabled = true;
             this.CmbGeneros.Items.AddRange(new object[] {
-            "-- Seleccionar --",
             "Femenino",
             "Masculino"});
             this.CmbGeneros.Location = new System.Drawing.Point(534, 113);

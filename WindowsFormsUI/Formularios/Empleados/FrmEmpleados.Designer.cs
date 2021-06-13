@@ -29,22 +29,12 @@ namespace WindowsFormsUI.Formularios
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PnlBarraSuperior = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.BtnCrearNuevo = new System.Windows.Forms.Button();
-            this.LLblQuitarFiltro = new System.Windows.Forms.LinkLabel();
-            this.LblFilasMarcadas = new System.Windows.Forms.Label();
-            this.CmbFiltro = new System.Windows.Forms.ComboBox();
-            this.CmbAcciones = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.CmbTipoFiltro = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.LLblQuitarBusqueda = new System.Windows.Forms.LinkLabel();
-            this.BtnBuscar = new System.Windows.Forms.Button();
-            this.TxtBusqueda = new System.Windows.Forms.TextBox();
             this.DgvListaEmpleados = new System.Windows.Forms.DataGridView();
             this.Seleccion = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +47,7 @@ namespace WindowsFormsUI.Formularios
             this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.LLblQuitarMarcadas = new System.Windows.Forms.LinkLabel();
+            this.BtnCerrar = new System.Windows.Forms.Button();
             this.PnlBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -103,145 +93,6 @@ namespace WindowsFormsUI.Formularios
             this.BtnCrearNuevo.UseVisualStyleBackColor = false;
             this.BtnCrearNuevo.Click += new System.EventHandler(this.BtnCrearNuevo_Click);
             // 
-            // LLblQuitarFiltro
-            // 
-            this.LLblQuitarFiltro.AutoSize = true;
-            this.LLblQuitarFiltro.Enabled = false;
-            this.LLblQuitarFiltro.Location = new System.Drawing.Point(540, 111);
-            this.LLblQuitarFiltro.Name = "LLblQuitarFiltro";
-            this.LLblQuitarFiltro.Size = new System.Drawing.Size(68, 15);
-            this.LLblQuitarFiltro.TabIndex = 25;
-            this.LLblQuitarFiltro.TabStop = true;
-            this.LLblQuitarFiltro.Text = "Quitar filtro";
-            this.LLblQuitarFiltro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarFiltro_LinkClicked);
-            // 
-            // LblFilasMarcadas
-            // 
-            this.LblFilasMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LblFilasMarcadas.AutoSize = true;
-            this.LblFilasMarcadas.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblFilasMarcadas.Location = new System.Drawing.Point(112, 557);
-            this.LblFilasMarcadas.Name = "LblFilasMarcadas";
-            this.LblFilasMarcadas.Size = new System.Drawing.Size(121, 20);
-            this.LblFilasMarcadas.TabIndex = 24;
-            this.LblFilasMarcadas.Text = "Filas marcadas: 0";
-            // 
-            // CmbFiltro
-            // 
-            this.CmbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.CmbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CmbFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbFiltro.FormattingEnabled = true;
-            this.CmbFiltro.ItemHeight = 20;
-            this.CmbFiltro.Items.AddRange(new object[] {
-            "-- Seleccionar filtro -- ",
-            "Empleado"});
-            this.CmbFiltro.Location = new System.Drawing.Point(770, 129);
-            this.CmbFiltro.Name = "CmbFiltro";
-            this.CmbFiltro.Size = new System.Drawing.Size(456, 28);
-            this.CmbFiltro.TabIndex = 23;
-            this.CmbFiltro.SelectionChangeCommitted += new System.EventHandler(this.CmbFiltro_SelectionChangeCommitted);
-            // 
-            // CmbAcciones
-            // 
-            this.CmbAcciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbAcciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbAcciones.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbAcciones.FormattingEnabled = true;
-            this.CmbAcciones.ItemHeight = 20;
-            this.CmbAcciones.Items.AddRange(new object[] {
-            "-- Seleccionar acción -- ",
-            "Eliminar",
-            "Imprimir"});
-            this.CmbAcciones.Location = new System.Drawing.Point(1047, 554);
-            this.CmbAcciones.Name = "CmbAcciones";
-            this.CmbAcciones.Size = new System.Drawing.Size(179, 28);
-            this.CmbAcciones.TabIndex = 22;
-            this.CmbAcciones.SelectedIndexChanged += new System.EventHandler(this.CmbAcciones_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(970, 557);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Acciones:";
-            // 
-            // CmbTipoFiltro
-            // 
-            this.CmbTipoFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbTipoFiltro.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbTipoFiltro.FormattingEnabled = true;
-            this.CmbTipoFiltro.ItemHeight = 20;
-            this.CmbTipoFiltro.Items.AddRange(new object[] {
-            "-- Seleccionar filtro -- ",
-            "Genero",
-            "Cargo"});
-            this.CmbTipoFiltro.Location = new System.Drawing.Point(540, 129);
-            this.CmbTipoFiltro.Name = "CmbTipoFiltro";
-            this.CmbTipoFiltro.Size = new System.Drawing.Size(224, 28);
-            this.CmbTipoFiltro.TabIndex = 20;
-            this.CmbTipoFiltro.SelectedIndexChanged += new System.EventHandler(this.CmbTipoFiltro_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(457, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 20);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Filtrar por:";
-            // 
-            // LLblQuitarBusqueda
-            // 
-            this.LLblQuitarBusqueda.AutoSize = true;
-            this.LLblQuitarBusqueda.Enabled = false;
-            this.LLblQuitarBusqueda.Location = new System.Drawing.Point(12, 104);
-            this.LLblQuitarBusqueda.Name = "LLblQuitarBusqueda";
-            this.LLblQuitarBusqueda.Size = new System.Drawing.Size(95, 15);
-            this.LLblQuitarBusqueda.TabIndex = 18;
-            this.LLblQuitarBusqueda.TabStop = true;
-            this.LLblQuitarBusqueda.Text = "Quitar busqueda";
-            this.LLblQuitarBusqueda.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarBusqueda_LinkClicked);
-            // 
-            // BtnBuscar
-            // 
-            this.BtnBuscar.BackColor = System.Drawing.Color.White;
-            this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnBuscar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnBuscar.ForeColor = System.Drawing.Color.Black;
-            this.BtnBuscar.Image = global::WindowsFormsUI.Properties.Resources.magnifying_glass;
-            this.BtnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnBuscar.Location = new System.Drawing.Point(362, 122);
-            this.BtnBuscar.Name = "BtnBuscar";
-            this.BtnBuscar.Size = new System.Drawing.Size(89, 35);
-            this.BtnBuscar.TabIndex = 17;
-            this.BtnBuscar.Text = "Buscar";
-            this.BtnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnBuscar.UseVisualStyleBackColor = false;
-            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
-            // 
-            // TxtBusqueda
-            // 
-            this.TxtBusqueda.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtBusqueda.Location = new System.Drawing.Point(12, 122);
-            this.TxtBusqueda.MaxLength = 50;
-            this.TxtBusqueda.Multiline = true;
-            this.TxtBusqueda.Name = "TxtBusqueda";
-            this.TxtBusqueda.PlaceholderText = "Buscar por nombre, DUI, NIT o Teléfono";
-            this.TxtBusqueda.Size = new System.Drawing.Size(344, 35);
-            this.TxtBusqueda.TabIndex = 16;
-            this.TxtBusqueda.UseSystemPasswordChar = true;
-            // 
             // DgvListaEmpleados
             // 
             this.DgvListaEmpleados.AllowUserToAddRows = false;
@@ -255,14 +106,14 @@ namespace WindowsFormsUI.Formularios
             this.DgvListaEmpleados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.DgvListaEmpleados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.DgvListaEmpleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvListaEmpleados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListaEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListaEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccion,
@@ -276,23 +127,23 @@ namespace WindowsFormsUI.Formularios
             this.Detalles,
             this.Editar,
             this.Eliminar});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 163);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvListaEmpleados.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvListaEmpleados.Location = new System.Drawing.Point(12, 85);
             this.DgvListaEmpleados.Name = "DgvListaEmpleados";
             this.DgvListaEmpleados.ReadOnly = true;
             this.DgvListaEmpleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListaEmpleados.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvListaEmpleados.RowTemplate.Height = 25;
             this.DgvListaEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaEmpleados.Size = new System.Drawing.Size(1214, 385);
+            this.DgvListaEmpleados.Size = new System.Drawing.Size(1214, 448);
             this.DgvListaEmpleados.TabIndex = 15;
             this.DgvListaEmpleados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaEmpleados_CellContentClick);
             this.DgvListaEmpleados.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.DgvListaEmpleados_RowPostPaint);
@@ -306,7 +157,7 @@ namespace WindowsFormsUI.Formularios
             this.Seleccion.ReadOnly = true;
             this.Seleccion.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Seleccion.TrueValue = "true";
-            this.Seleccion.Width = 5;
+            this.Seleccion.Visible = false;
             // 
             // Id
             // 
@@ -319,11 +170,10 @@ namespace WindowsFormsUI.Formularios
             // 
             // Nombre
             // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 92;
             // 
             // Dui
             // 
@@ -359,9 +209,11 @@ namespace WindowsFormsUI.Formularios
             // 
             // Cargo
             // 
+            this.Cargo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Cargo.HeaderText = "Cargo";
             this.Cargo.Name = "Cargo";
             this.Cargo.ReadOnly = true;
+            this.Cargo.Width = 75;
             // 
             // Detalles
             // 
@@ -402,18 +254,25 @@ namespace WindowsFormsUI.Formularios
             this.Eliminar.UseColumnTextForButtonValue = true;
             this.Eliminar.Width = 5;
             // 
-            // LLblQuitarMarcadas
+            // BtnCerrar
             // 
-            this.LLblQuitarMarcadas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LLblQuitarMarcadas.AutoSize = true;
-            this.LLblQuitarMarcadas.Enabled = false;
-            this.LLblQuitarMarcadas.Location = new System.Drawing.Point(12, 561);
-            this.LLblQuitarMarcadas.Name = "LLblQuitarMarcadas";
-            this.LLblQuitarMarcadas.Size = new System.Drawing.Size(94, 15);
-            this.LLblQuitarMarcadas.TabIndex = 27;
-            this.LLblQuitarMarcadas.TabStop = true;
-            this.LLblQuitarMarcadas.Text = "Quitar marcadas";
-            this.LLblQuitarMarcadas.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLblQuitarMarcadas_LinkClicked);
+            this.BtnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnCerrar.BackColor = System.Drawing.Color.White;
+            this.BtnCerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCerrar.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnCerrar.ForeColor = System.Drawing.Color.Black;
+            this.BtnCerrar.Image = global::WindowsFormsUI.Properties.Resources.logout;
+            this.BtnCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnCerrar.Location = new System.Drawing.Point(1134, 539);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(92, 35);
+            this.BtnCerrar.TabIndex = 28;
+            this.BtnCerrar.Text = "Cerrar";
+            this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // FrmEmpleados
             // 
@@ -421,17 +280,7 @@ namespace WindowsFormsUI.Formularios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 586);
-            this.Controls.Add(this.LLblQuitarMarcadas);
-            this.Controls.Add(this.LLblQuitarFiltro);
-            this.Controls.Add(this.LblFilasMarcadas);
-            this.Controls.Add(this.CmbFiltro);
-            this.Controls.Add(this.CmbAcciones);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.CmbTipoFiltro);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.LLblQuitarBusqueda);
-            this.Controls.Add(this.BtnBuscar);
-            this.Controls.Add(this.TxtBusqueda);
+            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.DgvListaEmpleados);
             this.Controls.Add(this.BtnCrearNuevo);
             this.Controls.Add(this.PnlBarraSuperior);
@@ -444,7 +293,6 @@ namespace WindowsFormsUI.Formularios
             this.PnlBarraSuperior.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaEmpleados)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -453,17 +301,8 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Panel PnlBarraSuperior;
         private System.Windows.Forms.Button BtnCrearNuevo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.LinkLabel LLblQuitarFiltro;
-        private System.Windows.Forms.Label LblFilasMarcadas;
-        private System.Windows.Forms.ComboBox CmbFiltro;
-        private System.Windows.Forms.ComboBox CmbAcciones;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox CmbTipoFiltro;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel LLblQuitarBusqueda;
-        private System.Windows.Forms.Button BtnBuscar;
-        private System.Windows.Forms.TextBox TxtBusqueda;
         private System.Windows.Forms.DataGridView DgvListaEmpleados;
+        private System.Windows.Forms.Button BtnCerrar;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -475,6 +314,5 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.LinkLabel LLblQuitarMarcadas;
     }
 }

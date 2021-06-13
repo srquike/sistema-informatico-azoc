@@ -8,61 +8,67 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class CargoRepository : ICargoRepository, IDisposable
+    public class CargoRepository : ICargoRepository
     {
-        private AzocDbContext _context;
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+        public CargoRepository()
         {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
 
-            disposed = true;
         }
-        public CargoRepository(AzocDbContext context)
-        {
-            _context = context;
-        }
+
         public void DeleteCargo(Cargo cargo)
         {
-            _context.Cargos.Remove(cargo);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Cargos.Remove(cargo);
+                context.SaveChanges();
+            }
         }
 
         public Cargo GetCargoById(int id)
         {
-            return _context.Cargos.Find(id);
+            Cargo cargo;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                cargo = context.Cargos
+                    .AsNoTracking()
+                    .Where(c => c.CargoId == id)
+                    .FirstOrDefault();
+            }
+
+            return cargo;
         }
 
         public IEnumerable<Cargo> GetCargos()
         {
-            return _context.Cargos.ToList();
+            IEnumerable<Cargo> cargos;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                cargos = context.Cargos
+                    .AsNoTracking()
+                    .ToList();
+            }
+
+            return cargos;
         }
 
         public void InsertCargo(Cargo cargo)
         {
-            _context.Cargos.Add(cargo);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Cargos.Add(cargo);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateCargo(Cargo cargo)
         {
-            _context.Entry(cargo).State = EntityState.Modified;
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Entry(cargo).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

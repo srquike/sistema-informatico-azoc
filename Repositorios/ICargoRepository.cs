@@ -4,13 +4,12 @@ using BusinessObjectsLayer.Models;
 
 namespace RepositoryLayer
 {
-   public interface ICargoRepository : IDisposable
+   public interface ICargoRepository
     {
         IEnumerable<Cargo> GetCargos();
         Cargo GetCargoById(int id);
         void InsertCargo(Cargo cargo);
         void DeleteCargo(Cargo cargo);
         void UpdateCargo(Cargo cargo);
-        void Save();
     }
 }

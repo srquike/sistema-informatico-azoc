@@ -14,7 +14,6 @@ namespace WindowsFormsUI.Formularios
     public partial class FrmCrearBeneficiario : Form
     {
         private readonly BeneficiarioBLL _beneficiarioLogic;
-        private bool _continuar;
         private bool _crear;
         public Beneficiario Beneficiario { get; set; }
 

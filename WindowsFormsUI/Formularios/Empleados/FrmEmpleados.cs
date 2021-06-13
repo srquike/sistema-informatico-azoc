@@ -17,7 +17,6 @@ namespace WindowsFormsUI.Formularios
         private readonly EmpleadoBLL _empleadoLogic;
         private readonly RegistroUsuarioBLL _registroUsuarioBLL;
         private readonly Usuario _usuarioLogeado;
-        private int _filasMarcadas;
 
         public FrmEmpleados(Usuario usuarioLogeado)
         {
@@ -102,9 +101,7 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmEmpleados_Load(object sender, EventArgs e)
         {
-            CmbTipoFiltro.SelectedIndex = 0;
             ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-            CmbAcciones.SelectedIndex = 0;
             WindowState = FormWindowState.Maximized;
         }
 
@@ -243,150 +240,11 @@ namespace WindowsFormsUI.Formularios
                     }
                 }
             }
-            else if (dataGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
-            {
-                bool value = (bool)dataGrid.Rows[e.RowIndex].Cells[0].Value;
-
-                if (value)
-                {
-                    dataGrid.Rows[e.RowIndex].Cells[0].Value = false;
-                    _filasMarcadas--;
-                }
-                else
-                {
-                    dataGrid.Rows[e.RowIndex].Cells[0].Value = true;
-                    _filasMarcadas++;
-                }
-
-                LLblQuitarMarcadas.Enabled = _filasMarcadas > 0 ? true : false;
-                LblFilasMarcadas.Text = $"Filas marcadas: {_filasMarcadas}";
-            }
         }
 
-        private void BtnBuscar_Click(object sender, EventArgs e)
+        private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TxtBusqueda.Text))
-            {
-                string busqueda = TxtBusqueda.Text;
-                var empleados = _empleadoLogic.List();
-
-                var resultados = from empleado in empleados where empleado.PrimerNombre.Contains(busqueda) || empleado.PrimerApellido.Contains(busqueda) || empleado.Dui == busqueda || empleado.Nit == busqueda || empleado.Telefono == busqueda select empleado;
-
-                ActualizarDataGridView(ref DgvListaEmpleados, resultados);
-                LLblQuitarBusqueda.Enabled = true;
-            }
-        }
-
-        private void LLblQuitarBusqueda_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LLblQuitarBusqueda.Enabled = false;
-            TxtBusqueda.Text = string.Empty;
-            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-        }
-
-        private void CmbTipoFiltro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
-            {
-                CmbFiltro.Enabled = true;
-                CmbFiltro.Items.Add("Masculino");
-                CmbFiltro.Items.Add("Femenino");
-                CmbFiltro.SelectedIndex = 0;
-            }
-            else
-            {
-                CmbFiltro.Items.Clear();
-                CmbFiltro.Enabled = false;
-            }
-        }
-
-        private void BtnAplicarFiltro_Click(object sender, EventArgs e)
-        {
-            if (CmbTipoFiltro.SelectedItem.ToString() == "Genero")
-            {
-                LLblQuitarFiltro.Enabled = true;
-
-                string genero = CmbFiltro.SelectedItem.ToString() == "Femenino" ? "F" : "M";
-                var empleados = _empleadoLogic.List();
-                var resultados = from empleado in empleados where empleado.Genero == genero select empleado;
-
-                ActualizarDataGridView(ref DgvListaEmpleados, resultados);
-            }
-        }
-
-        private void LLblQuitarFiltro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LLblQuitarFiltro.Enabled = false;
-            CmbTipoFiltro.SelectedIndex = 0;
-            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-        }
-
-        private void CmbAcciones_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_filasMarcadas > 0)
-            {
-                if (CmbAcciones.SelectedItem.ToString() == "Eliminar")
-                {
-                    if (VerificarPermisos(4))
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer borrar los empleados selecionados?", "Empleados: Confirmación de eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        {
-                            foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
-                            {
-                                if ((bool)fila.Cells["Seleccion"].Value == true)
-                                {
-                                    int id = Convert.ToInt32(fila.Cells["Id"].Value);
-                                    string nombre = fila.Cells["Nombre"].Value.ToString();
-
-                                    if (_empleadoLogic.Delete(id) == false)
-                                    {
-                                        MessageBox.Show($"No se pudo eliminar al empleado {nombre}, por favor intente de nuevo", "Eliminar empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                }
-                            }
-
-                            ActualizarDataGridView(ref DgvListaEmpleados, _empleadoLogic.List());
-                            _filasMarcadas = 0;
-                            LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                            CmbAcciones.SelectedIndex = 0;
-                        }
-                        else
-                        {
-                            CmbAcciones.SelectedIndex = 0;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Este usuario no tiene los permisos necesarios para realizar esta acción!", "Autorización: error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    }
-                }
-            }
-        }
-
-        private void CmbFiltro_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LLblQuitarMarcadas_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            if (_filasMarcadas > 0)
-            {
-                bool marcada;
-
-                foreach (DataGridViewRow fila in DgvListaEmpleados.Rows)
-                {
-                    marcada = (bool)fila.Cells["Seleccion"].Value;
-
-                    if (marcada)
-                    {
-                        fila.Cells["Seleccion"].Value = false;
-                        _filasMarcadas = 0;
-                        LblFilasMarcadas.Text = _filasMarcadas.ToString();
-                        LLblQuitarMarcadas.Enabled = false;
-                    }
-                }
-            }
+            Close();
         }
     }
 }

@@ -35,16 +35,7 @@ namespace WindowsFormsUI.Formularios
             TxtCargo.Text = _empleado.Cargo.Nombre;
             TxtEmail.Text = _empleado.Email;
             TxtFNacimiento.Text = _empleado.Nacimiento.ToShortDateString();
-
-            if (_empleado.Genero == "F")
-            {
-                TxtGenero.Text = "Femenino";
-            }
-            else
-            {
-                TxtGenero.Text = "Masculino";
-            }
-
+            TxtGenero.Text = _empleado.Genero == "F" ? "Femenino" : "Masculino";
             TxtDireccion.Text = _empleado.Direccion;
             TxtDepartamento.Text = _empleado.Departamento;
             TxtMunicipio.Text = _empleado.Municipio;

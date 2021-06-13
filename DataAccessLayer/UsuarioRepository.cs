@@ -50,7 +50,7 @@ namespace DataAccessLayer
                 .Include(u => u.Empleado)
                 .Include(u => u.PermisoUsuarios)
                 .Where(u => u.UsuarioId == id)
-                .First();
+                .FirstOrDefault();
             }
 
             return usuario;
@@ -65,7 +65,7 @@ namespace DataAccessLayer
                 usuario = context.Usuarios
                     .AsNoTracking()
                     .Where(u => u.Nombre == name)
-                    .First();
+                    .FirstOrDefault();
             }
 
             return usuario;
@@ -100,7 +100,7 @@ namespace DataAccessLayer
                     .Include(u => u.Empleado)
                     .Include(u => u.PermisoUsuarios)
                     .Where(u => u.Clave == clave && u.Nombre == nombre)
-                    .First();
+                    .FirstOrDefault();
             }
 
             return usuario;

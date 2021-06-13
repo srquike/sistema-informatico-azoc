@@ -15,7 +15,6 @@ namespace WindowsFormsUI.Formularios
     {
         private readonly CargoBLL _cargoLogic;
         private readonly EmpleadoBLL _empleadoLogic;
-        private bool _continuar;
 
         public FrmCrearEmpleado()
         {
@@ -23,7 +22,6 @@ namespace WindowsFormsUI.Formularios
 
             _cargoLogic = new CargoBLL();
             _empleadoLogic = new EmpleadoBLL();
-            _continuar = false;
         }
 
         private void CargarCargos(ref ComboBox comboBox)
@@ -35,7 +33,7 @@ namespace WindowsFormsUI.Formularios
             comboBox.ValueMember = "CargoId";
         }
 
-        private void ValidarEntradasRequeridas()
+        private bool ValidarEntradasRequeridas()
         {
             if (string.IsNullOrEmpty(TxtPNombre.Text))
             {
@@ -61,63 +59,20 @@ namespace WindowsFormsUI.Formularios
                     {
                         ErrPControles.Clear();
 
-                        if (CmbDepartamentos.SelectedIndex == 0)
+                        if (MTxtDui.MaskFull == false)
                         {
-                            ErrPControles.SetError(CmbDepartamentos, "Seleccione un departamento!");
+                            ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
                         }
                         else
                         {
                             ErrPControles.Clear();
-
-                            if (CmbMunicipios.SelectedIndex == 0)
-                            {
-                                ErrPControles.SetError(CmbMunicipios, "Seleccione un municipio!");
-                            }
-                            else
-                            {
-                                ErrPControles.Clear();
-
-                                if (MTxtDui.MaskFull == false)
-                                {
-                                    ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
-                                }
-                                else
-                                {
-                                    ErrPControles.Clear();
-
-                                    if (MTxtNit.MaskFull == false)
-                                    {
-                                        ErrPControles.SetError(MTxtNit, "El número de NIT es requerido!");
-                                    }
-                                    else
-                                    {
-                                        ErrPControles.Clear();
-
-                                        if (MTxtTelefono.MaskFull == false)
-                                        {
-                                            ErrPControles.SetError(MTxtTelefono, "El número de teléfono es requerido!");
-                                        }
-                                        else
-                                        {
-                                            ErrPControles.Clear();
-
-                                            if (string.IsNullOrEmpty(TxtDireccion.Text))
-                                            {
-                                                ErrPControles.SetError(TxtDireccion, "La direccion es requerida!");
-                                            }
-                                            else
-                                            {
-                                                ErrPControles.Clear();
-                                                _continuar = true;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            return true;
                         }
                     }
                 }
             }
+
+            return false;
         }
 
         private bool VerificarEntradasUnicas(string dui, string nit, string telefono)
@@ -143,9 +98,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
-            ValidarEntradasRequeridas();
-
-            if (_continuar)
+            if (ValidarEntradasRequeridas())
             {
                 string dui = MTxtDui.Text;
                 string nit = MTxtNit.Text;
@@ -153,6 +106,20 @@ namespace WindowsFormsUI.Formularios
 
                 if (VerificarEntradasUnicas(dui, nit, telefono))
                 {
+                    string municipio = CmbMunicipios.SelectedIndex == 0 
+                        ? string.Empty 
+                        : CmbMunicipios.SelectedItem.ToString();
+
+                    string departamento = CmbDepartamentos.SelectedIndex == 0 
+                        ? string.Empty 
+                        : CmbDepartamentos.SelectedItem.ToString();
+
+                    int cargoId = Convert.ToInt32(CmbCargos.SelectedValue);
+
+                    string genero = CmbGeneros.SelectedItem.ToString() == "Femenino" 
+                        ? "F" 
+                        : "M";
+
                     Empleado empleado = new Empleado
                     {
                         PrimerNombre = TxtPNombre.Text,
@@ -162,24 +129,16 @@ namespace WindowsFormsUI.Formularios
                         SegundoApellido = TxtSApellido.Text,
                         TercerApellido = TxtTApellido.Text,
                         Nacimiento = DtpFNacimiento.Value,
-                        Municipio = CmbMunicipios.SelectedItem.ToString(),
-                        Departamento = CmbDepartamentos.SelectedItem.ToString(),
+                        Municipio = municipio,
+                        Departamento = departamento,
                         Dui = MTxtDui.Text,
                         Nit = MTxtNit.Text,
                         Email = TxtEmail.Text,
                         Direccion = TxtDireccion.Text,
                         Telefono = MTxtTelefono.Text,
-                        CargoId = Convert.ToInt32(CmbCargos.SelectedValue)
+                        CargoId = cargoId,
+                        Genero = genero
                     };
-
-                    if (CmbGeneros.SelectedItem.ToString() == "Femenino")
-                    {
-                        empleado.Genero = "F";
-                    }
-                    else if (CmbGeneros.SelectedItem.ToString() == "Masculino")
-                    {
-                        empleado.Genero = "M";
-                    }
 
                     if (_empleadoLogic.Create(empleado))
                     {
@@ -189,7 +148,6 @@ namespace WindowsFormsUI.Formularios
                     {
                         MessageBox.Show("No fue posible crear al empleado, por favor intente de nuevo!", "Crear empleado: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
                 else
                 {
@@ -202,7 +160,7 @@ namespace WindowsFormsUI.Formularios
         {
             Close();
         }
-
+        
         private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar))
@@ -221,6 +179,25 @@ namespace WindowsFormsUI.Formularios
             {
                 e.Handled = true;
             }
+        }
+
+        private void BtnLimpiarControles_Click(object sender, EventArgs e)
+        {
+            TxtPNombre.Clear();
+            TxtSNombre.Clear();
+            TxtTNombre.Clear();
+            TxtPApellido.Clear();
+            TxtSApellido.Clear();
+            TxtTApellido.Clear();
+            CmbGeneros.SelectedIndex = 0;
+            TxtDireccion.Clear();
+            CmbDepartamentos.SelectedIndex = 0;
+            CmbMunicipios.SelectedIndex = 0;
+            TxtEmail.Clear();
+            MTxtDui.Clear();
+            MTxtNit.Clear();
+            MTxtTelefono.Clear();
+            TxtPNombre.Focus();
         }
     }
 }

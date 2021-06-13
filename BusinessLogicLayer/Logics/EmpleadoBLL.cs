@@ -59,7 +59,7 @@ namespace BusinessLogicLayer.Logics
                 _empleadoRepository.InsertEmpleado(empleado);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }           

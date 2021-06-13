@@ -394,15 +394,6 @@ namespace DataAccessLayer
             {
                 entity.ToTable("Empleado");
 
-                entity.HasIndex(e => e.Telefono, "UQ__Empleado__4EC50480A44A864A")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Dui, "UQ__Empleado__C0317D919FB2F25C")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Nit, "UQ__Empleado__C7D1D6DAFA315F35")
-                    .IsUnique();
-
                 entity.Property(e => e.Departamento)
                     .IsRequired()
                     .HasMaxLength(50)

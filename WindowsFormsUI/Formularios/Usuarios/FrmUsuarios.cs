@@ -57,11 +57,6 @@ namespace WindowsFormsUI.Formularios
             dataGrid.ClearSelection();
         }
 
-        private IEnumerable<Usuario> ObtenerLista()
-        {
-            return _usuarioLogic.List();
-        }
-
         private void DgvListaUsuarios_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             var grid = sender as DataGridView;
@@ -79,8 +74,7 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmUsuarios_Load(object sender, EventArgs e)
         {
-            var usuarios = ObtenerLista();
-            RefrescarDataGridView(ref DgvListaUsuarios, usuarios);
+            RefrescarDataGridView(ref DgvListaUsuarios, _usuarioLogic.List());
             WindowState = FormWindowState.Maximized;
         }
 
@@ -109,7 +103,7 @@ namespace WindowsFormsUI.Formularios
                         }
                     }
 
-                    RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                    RefrescarDataGridView(ref DgvListaUsuarios, _usuarioLogic.List());
                 }
             }
             else
@@ -173,7 +167,7 @@ namespace WindowsFormsUI.Formularios
                                 }
                             }
 
-                            RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                            RefrescarDataGridView(ref DgvListaUsuarios, _usuarioLogic.List());
                         }
                     }
                     else
@@ -215,7 +209,7 @@ namespace WindowsFormsUI.Formularios
                                             }
                                         }
 
-                                        RefrescarDataGridView(ref DgvListaUsuarios, ObtenerLista());
+                                        RefrescarDataGridView(ref DgvListaUsuarios, _usuarioLogic.List());
                                     }
                                     else
                                     {

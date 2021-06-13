@@ -210,16 +210,15 @@ namespace WindowsFormsUI.Formularios
         {
             if (!_usuarioEdit.Nombre.Equals(nombre))
             {
-                Usuario usuario = _usuarioLogic.FindByName(nombre);
+                var usuarios = _usuarioLogic.List();
+                var resultado = (from usuario in usuarios where usuario.Nombre == nombre select usuario).Count();
 
-                if (usuario == null)
-                {
-                    return true;
-                }
-                else
+                if (resultado > 0)
                 {
                     return false;
                 }
+
+                return true;
             }
 
             return true;

@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Logics
 
         public CargoBLL()
         {
-            _cargoRepository = new CargoRepository(new AzocDbContext());
+            _cargoRepository = new CargoRepository();
         }
 
         public bool Delete(int id)
@@ -24,7 +24,6 @@ namespace BusinessLogicLayer.Logics
                 try
                 {
                     _cargoRepository.DeleteCargo(cargo);
-                    _cargoRepository.Save();
                     return true;
                 }
                 catch (Exception)
@@ -51,7 +50,6 @@ namespace BusinessLogicLayer.Logics
             try
             {
                 _cargoRepository.InsertCargo(cargo);
-                _cargoRepository.Save();
                 return true;
             }
             catch (Exception)
@@ -65,7 +63,6 @@ namespace BusinessLogicLayer.Logics
             try
             {
                 _cargoRepository.UpdateCargo(cargo);
-                _cargoRepository.Save();
                 return true;
             }
             catch (Exception)

@@ -532,6 +532,7 @@ namespace WindowsFormsUI.Formularios
             this.BtnLimpiarControles.Text = "Limpiar";
             this.BtnLimpiarControles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnLimpiarControles.UseVisualStyleBackColor = false;
+            this.BtnLimpiarControles.Click += new System.EventHandler(this.BtnLimpiarControles_Click);
             // 
             // comboBox1
             // 
