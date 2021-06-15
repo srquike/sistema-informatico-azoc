@@ -30,7 +30,7 @@ namespace WindowsFormsUI.Formularios
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label18 = new System.Windows.Forms.Label();
             this.CmbCategoria = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -44,16 +44,6 @@ namespace WindowsFormsUI.Formularios
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.BtnAgregarBeneficiario = new System.Windows.Forms.Button();
             this.DgvListado = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dui = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detalles = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ErrPControles = new System.Windows.Forms.ErrorProvider(this.components);
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -85,6 +75,16 @@ namespace WindowsFormsUI.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.BtnGuardarCambios = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dui = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
@@ -264,13 +264,13 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.Codigo,
             this.Nombre,
             this.Dui,
             this.Nit,
             this.Telefono,
             this.Genero,
             this.Porcentaje,
-            this.Detalles,
             this.Editar,
             this.Eliminar});
             this.DgvListado.Location = new System.Drawing.Point(6, 67);
@@ -278,108 +278,13 @@ namespace WindowsFormsUI.Formularios
             this.DgvListado.Name = "DgvListado";
             this.DgvListado.ReadOnly = true;
             this.DgvListado.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.DgvListado.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvListado.RowTemplate.Height = 25;
             this.DgvListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvListado.Size = new System.Drawing.Size(1078, 272);
             this.DgvListado.TabIndex = 20;
             this.DgvListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListado_CellContentClick);
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Id.HeaderText = "Código";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Id.Width = 83;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Dui
-            // 
-            this.Dui.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Dui.HeaderText = "# DUI";
-            this.Dui.Name = "Dui";
-            this.Dui.ReadOnly = true;
-            this.Dui.Width = 69;
-            // 
-            // Nit
-            // 
-            this.Nit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Nit.HeaderText = "# NIT";
-            this.Nit.Name = "Nit";
-            this.Nit.ReadOnly = true;
-            this.Nit.Width = 68;
-            // 
-            // Telefono
-            // 
-            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Telefono.HeaderText = "# Teléfono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 99;
-            // 
-            // Genero
-            // 
-            this.Genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Genero.HeaderText = "Genero";
-            this.Genero.Name = "Genero";
-            this.Genero.ReadOnly = true;
-            this.Genero.Width = 85;
-            // 
-            // Porcentaje
-            // 
-            this.Porcentaje.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Porcentaje.HeaderText = "% de crédito";
-            this.Porcentaje.Name = "Porcentaje";
-            this.Porcentaje.ReadOnly = true;
-            this.Porcentaje.Width = 111;
-            // 
-            // Detalles
-            // 
-            this.Detalles.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Detalles.HeaderText = "";
-            this.Detalles.Name = "Detalles";
-            this.Detalles.ReadOnly = true;
-            this.Detalles.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Detalles.Text = "Ver detalles";
-            this.Detalles.ToolTipText = "Ver detalles del asociado";
-            this.Detalles.UseColumnTextForButtonValue = true;
-            this.Detalles.Width = 5;
-            // 
-            // Editar
-            // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Editar.HeaderText = "";
-            this.Editar.Name = "Editar";
-            this.Editar.ReadOnly = true;
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Editar.Text = "Editar";
-            this.Editar.ToolTipText = "Editar datos de beneficiario";
-            this.Editar.UseColumnTextForButtonValue = true;
-            this.Editar.Width = 5;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Eliminar.Text = "Eliminar";
-            this.Eliminar.ToolTipText = "Eliminnar beneficiario";
-            this.Eliminar.UseColumnTextForButtonValue = true;
-            this.Eliminar.Width = 5;
             // 
             // ErrPControles
             // 
@@ -532,6 +437,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSNombre.Name = "TxtSNombre";
             this.TxtSNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtSNombre.TabIndex = 4;
+            this.TxtSNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // DtpFNacimiento
             // 
@@ -586,6 +492,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTApellido.Name = "TxtTApellido";
             this.TxtTApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtTApellido.TabIndex = 8;
+            this.TxtTApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // TxtPApellido
             // 
@@ -595,6 +502,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPApellido.Name = "TxtPApellido";
             this.TxtPApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtPApellido.TabIndex = 6;
+            this.TxtPApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label7
             // 
@@ -624,6 +532,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtSApellido.Name = "TxtSApellido";
             this.TxtSApellido.Size = new System.Drawing.Size(200, 27);
             this.TxtSApellido.TabIndex = 7;
+            this.TxtSApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -669,6 +578,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtTNombre.Name = "TxtTNombre";
             this.TxtTNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtTNombre.TabIndex = 5;
+            this.TxtTNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -688,6 +598,7 @@ namespace WindowsFormsUI.Formularios
             this.TxtPNombre.Name = "TxtPNombre";
             this.TxtPNombre.Size = new System.Drawing.Size(200, 27);
             this.TxtPNombre.TabIndex = 3;
+            this.TxtPNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label1
             // 
@@ -736,6 +647,97 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 48;
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Codigo.Width = 83;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dui
+            // 
+            this.Dui.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Dui.HeaderText = "# DUI";
+            this.Dui.Name = "Dui";
+            this.Dui.ReadOnly = true;
+            this.Dui.Width = 74;
+            // 
+            // Nit
+            // 
+            this.Nit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Nit.HeaderText = "# NIT";
+            this.Nit.Name = "Nit";
+            this.Nit.ReadOnly = true;
+            this.Nit.Width = 73;
+            // 
+            // Telefono
+            // 
+            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Telefono.HeaderText = "# Teléfono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 108;
+            // 
+            // Genero
+            // 
+            this.Genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Genero.HeaderText = "Genero";
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            this.Genero.Width = 85;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Porcentaje.HeaderText = "% de crédito";
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.ReadOnly = true;
+            this.Porcentaje.Width = 121;
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Editar.HeaderText = "";
+            this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Editar.Text = "Editar";
+            this.Editar.ToolTipText = "Editar datos de beneficiario";
+            this.Editar.UseColumnTextForButtonValue = true;
+            this.Editar.Width = 5;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Eliminar.Text = "Eliminar";
+            this.Eliminar.ToolTipText = "Eliminnar beneficiario";
+            this.Eliminar.UseColumnTextForButtonValue = true;
+            this.Eliminar.Width = 5;
             // 
             // FrmEditarAsociado
             // 
@@ -803,17 +805,17 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnGuardarCambios;
         private System.Windows.Forms.TextBox TxtCodigo;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.CheckBox ChkEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dui;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Porcentaje;
-        private System.Windows.Forms.DataGridViewButtonColumn Detalles;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.Button BtnCancelar;
-        private System.Windows.Forms.CheckBox ChkEstado;
     }
 }

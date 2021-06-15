@@ -29,12 +29,6 @@ namespace WindowsFormsUI.Formularios
             _asociado = _asociadoLogic.Find(asociadoId);
         }
 
-        private void LlenarComboBoxCategorias(ref ComboBox combo)
-        {
-            string[] categorias = new string[] { "Zafrero", "Temporal", "Perpetuo" };
-            combo.Items.AddRange(categorias);
-        }
-
         private void LlenarListado(ref DataGridView dataGrid, ICollection<Beneficiario> beneficiarios)
         {
             dataGrid.Rows.Clear();
@@ -42,9 +36,8 @@ namespace WindowsFormsUI.Formularios
             foreach (Beneficiario beneficiario in beneficiarios)
             {
                 string nombre = string.Concat(beneficiario.PrimerNombre, " ", beneficiario.SegundoNombre, " ", beneficiario.TercerNombre, " ", beneficiario.PrimerApellido, " ", beneficiario.SegundoApellido, " ", beneficiario.TercerApellido);
-                string genero = beneficiario.Genero == "F" ? "Femenino" : "Masculino";
 
-                dataGrid.Rows.Add(beneficiario.BeneficiarioId, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, genero, beneficiario.Porcentaje);
+                dataGrid.Rows.Add(beneficiario.BeneficiarioId, beneficiario.Codigo, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, beneficiario.Genero, beneficiario.Porcentaje);
             }
 
             dataGrid.ClearSelection();
@@ -54,8 +47,6 @@ namespace WindowsFormsUI.Formularios
         {
             if (_asociado != null)
             {
-                LlenarComboBoxCategorias(ref CmbCategoria);
-
                 TxtCodigo.Text = _asociado.Codigo;
                 CmbCategoria.SelectedItem = _asociado.Categoria;
                 TxtPNombre.Text = _asociado.Pnombre;
@@ -74,6 +65,7 @@ namespace WindowsFormsUI.Formularios
                 MTxtDui.Text = _asociado.Dui;
                 MTxtNit.Text = _asociado.Nit;
                 MTxtTelefono.Text = _asociado.Telefono;
+                _beneficiarios = _asociado.Beneficiarios;
 
                 LlenarListado(ref DgvListado, _beneficiarios);
             }
@@ -81,13 +73,7 @@ namespace WindowsFormsUI.Formularios
 
         private void FrmEditarAsociado_Load(object sender, EventArgs e)
         {
-            foreach (Beneficiario beneficiario in _asociado.Beneficiarios)
-            {
-                _beneficiarios.Add(beneficiario);
-            }
-
             LlenarControles();
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -95,11 +81,29 @@ namespace WindowsFormsUI.Formularios
             Close();
         }
 
+        private decimal ObtenerPorcentajeRestante()
+        {
+            decimal porcentaje = 0;
+
+            if (_beneficiarios.Count > 0)
+            {
+
+                foreach (Beneficiario beneficiario in _beneficiarios)
+                {
+                    porcentaje += beneficiario.Porcentaje;
+                }
+
+                return 100 - porcentaje;
+            }
+
+            return porcentaje;
+        }
+
         private void BtnAgregarBeneficiario_Click(object sender, EventArgs e)
         {
             if (_beneficiarios.Count < 6)
             {
-                FrmCrearBeneficiario frmCrearBeneficiario = new FrmCrearBeneficiario(false);
+                FrmCrearBeneficiario frmCrearBeneficiario = new FrmCrearBeneficiario(false, ObtenerPorcentajeRestante());
                 frmCrearBeneficiario.StartPosition = FormStartPosition.CenterScreen;
                 frmCrearBeneficiario.ShowDialog();
 
@@ -113,48 +117,37 @@ namespace WindowsFormsUI.Formularios
 
         private void DgvListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dataGrid = (DataGridView)sender;
+            //DataGridView dataGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0)
-            {
-                if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
-                {
-                    Beneficiario beneficiario = _beneficiarios.ElementAt(e.RowIndex);
+            //if (e.RowIndex >= 0)
+            //{
+            //    if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            //    {
+            //        int beneficiarioId = Convert.ToInt32(dataGrid.Rows[e.RowIndex].Cells["Id"].Value);
 
-                    if (e.ColumnIndex == 7)
-                    {
-                        FrmDetallesBeneficiario frmDetalles = new FrmDetallesBeneficiario(beneficiario);
-                        frmDetalles.StartPosition = FormStartPosition.CenterScreen;
-                        frmDetalles.ShowDialog();
+            //        if (e.ColumnIndex == 8)
+            //        {
+            //            FrmEditarBeneficiario frmEditar = new FrmEditarBeneficiario(beneficiarioId);
+            //            frmEditar.StartPosition = FormStartPosition.CenterScreen;
+            //            frmEditar.ShowDialog();
 
-                        if (frmDetalles.DialogResult == DialogResult.OK)
-                        {
-                            Close();
-                        }
-                    }
-                    else if (e.ColumnIndex == 8)
-                    {
-                        FrmEditarBeneficiario frmEditar = new FrmEditarBeneficiario(beneficiario);
-                        frmEditar.StartPosition = FormStartPosition.CenterScreen;
-                        frmEditar.ShowDialog();
-
-                        if (frmEditar.DialogResult == DialogResult.OK)
-                        {
-                            _beneficiarios.Remove(beneficiario);
-                            _beneficiarios.Add(frmEditar.Beneficiario);
-                            LlenarListado(ref DgvListado, _beneficiarios);
-                        }
-                    }
-                    else if (e.ColumnIndex == 9)
-                    {
-                        if (MessageBox.Show("¿Esta seguro de querer eliminar al beneficiario?", "Eliminar beneficiario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        {
-                            _beneficiarios.Remove(beneficiario);
-                            LlenarListado(ref dataGrid, _beneficiarios);
-                        }
-                    }
-                }
-            }
+            //            if (frmEditar.DialogResult == DialogResult.OK)
+            //            {
+            //                _beneficiarios.Remove(beneficiario);
+            //                _beneficiarios.Add(frmEditar.Beneficiario);
+            //                LlenarListado(ref DgvListado, _beneficiarios);
+            //            }
+            //        }
+            //        else if (e.ColumnIndex == 9)
+            //        {
+            //            if (MessageBox.Show("¿Esta seguro de querer eliminar al beneficiario?", "Eliminar beneficiario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            //            {
+            //                _beneficiarios.Remove(beneficiario);
+            //                LlenarListado(ref dataGrid, _beneficiarios);
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void ValidarEntradasRequeridas()
@@ -259,12 +252,25 @@ namespace WindowsFormsUI.Formularios
                 string telefono = MTxtTelefono.Text;
                 string codigo = TxtCodigo.Text;
 
-                string genero = CmbGenero.SelectedItem.ToString();
-                string departamento = CmbDepartamentos.SelectedItem.ToString();
-                string municipio = CmbMunicipios.SelectedItem.ToString();
-                string categoria = CmbCategoria.SelectedItem.ToString();
+                string genero = CmbGenero.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbGenero.SelectedItem.ToString();
+
+                string departamento = CmbDepartamentos.SelectedIndex == 0
+                    ? string.Empty
+                    : CmbDepartamentos.SelectedItem.ToString();
+
+                string municipio = CmbMunicipios.SelectedIndex == 0
+                    ? string.Empty
+                    : CmbMunicipios.SelectedItem.ToString();
+
+                string categoria = CmbCategoria.SelectedIndex == 0
+                    ? string.Empty
+                    : CmbCategoria.SelectedItem.ToString();
+
                 string estado = ChkEstado.Checked ? "Activo" : "Inactivo";
 
+                _asociado.Codigo = codigo;
                 _asociado.Pnombre = TxtPNombre.Text;
                 _asociado.Snombre = TxtSNombre.Text;
                 _asociado.Tnombre = TxtTNombre.Text;
@@ -294,6 +300,22 @@ namespace WindowsFormsUI.Formularios
                 {
                     MessageBox.Show("El socio no pudo ser editado, por favor intente de nuevo", "Editar socio: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
 

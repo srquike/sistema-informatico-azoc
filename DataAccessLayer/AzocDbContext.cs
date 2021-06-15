@@ -181,14 +181,7 @@ namespace DataAccessLayer
             {
                 entity.ToTable("Beneficiario");
 
-                entity.HasIndex(e => e.Telefono, "UQ__Benefici__4EC50480804A089C")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Dui, "UQ__Benefici__C0317D91F47B0EF8")
-                    .IsUnique();
-
-                entity.HasIndex(e => e.Nit, "UQ__Benefici__C7D1D6DAE3F66C52")
-                    .IsUnique();
+                entity.Property(e => e.Codigo).HasColumnType("char(5)");
 
                 entity.Property(e => e.Departamento)
                     .IsRequired()
@@ -214,9 +207,8 @@ namespace DataAccessLayer
 
                 entity.Property(e => e.Genero)
                     .IsRequired()
-                    .HasMaxLength(1)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Municipio)
                     .IsRequired()
@@ -260,6 +252,8 @@ namespace DataAccessLayer
                 entity.Property(e => e.TercerNombre)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Porcentaje).HasColumnType("decimal(5,2)");
 
                 entity.HasOne(d => d.Asociado)
                     .WithMany(p => p.Beneficiarios)

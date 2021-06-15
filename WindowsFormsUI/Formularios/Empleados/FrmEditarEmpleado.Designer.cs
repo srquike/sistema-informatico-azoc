@@ -548,6 +548,7 @@ namespace WindowsFormsUI.Formularios
             this.Controls.Add(this.BtnGuardarCambios);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmEditarEmpleado";
             this.Text = "Cooperativa AZOC de R. L. - Editar datos de empleado";

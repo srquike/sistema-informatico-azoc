@@ -17,7 +17,7 @@ namespace WindowsFormsUI.Formularios
         public FrmDetallesBeneficiario(int beneficiarioId)
         {
             InitializeComponent();
-            
+
             _beneficiario = _beneficiarioLogica.Find(beneficiarioId);
         }
 
@@ -35,11 +35,11 @@ namespace WindowsFormsUI.Formularios
                 string nombre = string.Concat(_beneficiario.PrimerNombre, " ", _beneficiario.SegundoNombre, " ", _beneficiario.TercerNombre, " ", _beneficiario.PrimerApellido, " ", _beneficiario.SegundoApellido, " ", _beneficiario.TercerApellido);
 
                 TxtCodigo.Text = _beneficiario.BeneficiarioId.ToString();
-                TxtPorcentaje.Text = _beneficiario.Porcentaje.ToString();
+                TxtPorcentaje.Text = string.Format("{0:P2}", (_beneficiario.Porcentaje / 100));
                 TxtNombre.Text = nombre;
                 TxtEmail.Text = _beneficiario.Email;
                 TxtFNacimiento.Text = _beneficiario.FechaNacimiento.ToShortDateString();
-                TxtGenero.Text = _beneficiario.Genero == "F" ? "Femenino" : "Masculino";
+                TxtGenero.Text = _beneficiario.Genero;
                 TxtDireccion.Text = _beneficiario.Direccion;
                 TxtDepartamento.Text = _beneficiario.Departamento;
                 TxtMunicipio.Text = _beneficiario.Municipio;

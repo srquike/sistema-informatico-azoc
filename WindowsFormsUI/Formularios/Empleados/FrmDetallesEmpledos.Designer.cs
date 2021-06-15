@@ -502,6 +502,7 @@ namespace WindowsFormsUI.Formularios
             this.ClientSize = new System.Drawing.Size(1137, 363);
             this.Controls.Add(this.BtnSalir);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmDetallesEmpledos";
             this.Text = "Cooperativa AZOC de R. L. - Detalles de empleado ";
             this.Load += new System.EventHandler(this.FrmDetallesEmpledos_Load);

@@ -16,6 +16,7 @@ namespace WindowsFormsUI.Formularios
         private readonly BeneficiarioBLL _beneficiarioLogica = new BeneficiarioBLL();
         private bool _continuar = false;
         private bool _editar = false;
+        private readonly decimal _porcentaje;
 
         public Beneficiario Beneficiario { get; set; }
 
@@ -27,11 +28,12 @@ namespace WindowsFormsUI.Formularios
             _editar = true;
         }
 
-        public FrmEditarBeneficiario(Beneficiario beneficiario)
+        public FrmEditarBeneficiario(Beneficiario beneficiario, decimal porcentaje)
         {
             InitializeComponent();
 
             Beneficiario = beneficiario;
+            _porcentaje = porcentaje;
         }
 
         private bool ValidarEntradasRequeridas()
@@ -98,23 +100,27 @@ namespace WindowsFormsUI.Formularios
 
         private void LlenarControles()
         {
-            TxtCodigo.Text = Beneficiario.BeneficiarioId.ToString();
-            NudPorcentaje.Value = Beneficiario.Porcentaje;
-            TxtPNombre.Text = Beneficiario.PrimerNombre;
-            TxtSNombre.Text = Beneficiario.SegundoNombre;
-            TxtTNombre.Text = Beneficiario.TercerNombre;
-            TxtPApellido.Text = Beneficiario.PrimerApellido;
-            TxtSApellido.Text = Beneficiario.SegundoApellido;
-            TxtTApellido.Text = Beneficiario.TercerApellido;
-            TxtEmail.Text = Beneficiario.Email;
-            DtpFNacimiento.Value = Beneficiario.FechaNacimiento;
-            CmbGeneros.SelectedItem = Beneficiario.Genero == "F" ? "Femenino" : "Masculino";
-            TxtDireccion.Text = Beneficiario.Direccion;
-            CmbDepartamentos.SelectedItem = Beneficiario.Departamento;
-            CmbMunicipios.SelectedItem = Beneficiario.Municipio;
-            MTxtNit.Text = Beneficiario.Nit;
-            MTxtDui.Text = Beneficiario.Dui;
-            MTxtTelefono.Text = Beneficiario.Telefono;
+            if (Beneficiario != null)
+            {
+                TxtCodigo.Text = Beneficiario.BeneficiarioId.ToString();
+                NudPorcentaje.Value = Beneficiario.Porcentaje;
+                NudPorcentaje.Maximum = _porcentaje > 0 ? _porcentaje : 100;
+                TxtPNombre.Text = Beneficiario.PrimerNombre;
+                TxtSNombre.Text = Beneficiario.SegundoNombre;
+                TxtTNombre.Text = Beneficiario.TercerNombre;
+                TxtPApellido.Text = Beneficiario.PrimerApellido;
+                TxtSApellido.Text = Beneficiario.SegundoApellido;
+                TxtTApellido.Text = Beneficiario.TercerApellido;
+                TxtEmail.Text = Beneficiario.Email;
+                DtpFNacimiento.Value = Beneficiario.FechaNacimiento;
+                CmbGeneros.SelectedItem = Beneficiario.Genero;
+                TxtDireccion.Text = Beneficiario.Direccion;
+                CmbDepartamentos.SelectedItem = Beneficiario.Departamento;
+                CmbMunicipios.SelectedItem = Beneficiario.Municipio;
+                MTxtNit.Text = Beneficiario.Nit;
+                MTxtDui.Text = Beneficiario.Dui;
+                MTxtTelefono.Text = Beneficiario.Telefono;
+            }
         }
 
         private void FrmEditarBeneficiario_Load(object sender, EventArgs e)
@@ -132,11 +138,21 @@ namespace WindowsFormsUI.Formularios
 
                 if (VerificarEntradasUnicas(dui, nit, telefono))
                 {
-                    string genero = CmbGeneros.SelectedItem.ToString() == "Femenino" ? "F" : "M";
-                    string departamento = CmbDepartamentos.SelectedItem.ToString();
-                    string municipio = CmbMunicipios.SelectedItem.ToString();
+                    string genero = CmbGeneros.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbGeneros.SelectedItem.ToString();
+
+                    string departamento = CmbDepartamentos.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbDepartamentos.SelectedItem.ToString();
+
+                    string municipio = CmbMunicipios.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbMunicipios.SelectedItem.ToString();
+
                     int porcentaje = Convert.ToInt32(NudPorcentaje.Value);
 
+                    Beneficiario.Codigo = TxtCodigo.Text;
                     Beneficiario.PrimerNombre = TxtPNombre.Text;
                     Beneficiario.SegundoNombre = TxtSNombre.Text;
                     Beneficiario.TercerNombre = TxtTNombre.Text;
@@ -170,6 +186,38 @@ namespace WindowsFormsUI.Formularios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

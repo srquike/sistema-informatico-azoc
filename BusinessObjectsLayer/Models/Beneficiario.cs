@@ -8,6 +8,7 @@ namespace BusinessObjectsLayer.Models
     public partial class Beneficiario
     {
         public int BeneficiarioId { get; set; }
+        public string Codigo { get; set; }
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }
         public string TercerNombre { get; set; }
@@ -23,7 +24,7 @@ namespace BusinessObjectsLayer.Models
         public string Genero { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public int Porcentaje { get; set; }
+        public decimal Porcentaje { get; set; }
         public int AsociadoId { get; set; }
 
         public virtual Socio Asociado { get; set; }

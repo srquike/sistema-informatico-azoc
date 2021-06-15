@@ -35,9 +35,6 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeEditar = new System.Windows.Forms.CheckBox();
             this.chkPuedeAgregar = new System.Windows.Forms.CheckBox();
             this.chkPuedeVer = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.BtnElegirImagen = new System.Windows.Forms.Button();
-            this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ChkActivarUsuario = new System.Windows.Forms.CheckBox();
             this.MTxtUsuario = new System.Windows.Forms.MaskedTextBox();
@@ -61,12 +58,15 @@ namespace WindowsFormsUI.Formularios
             this.TxtPregunta1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.BtnCancelar = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BtnElegirImagen = new System.Windows.Forms.Button();
+            this.PctAvatar = new System.Windows.Forms.PictureBox();
             this.GrpPermisos.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // GrpPermisos
@@ -130,47 +130,6 @@ namespace WindowsFormsUI.Formularios
             this.chkPuedeVer.Tag = "1";
             this.chkPuedeVer.Text = "Puede ver";
             this.chkPuedeVer.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.BtnElegirImagen);
-            this.groupBox2.Controls.Add(this.PctAvatar);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(566, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(296, 258);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Imagen";
-            // 
-            // BtnElegirImagen
-            // 
-            this.BtnElegirImagen.BackColor = System.Drawing.Color.White;
-            this.BtnElegirImagen.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnElegirImagen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
-            this.BtnElegirImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnElegirImagen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnElegirImagen.ForeColor = System.Drawing.Color.Black;
-            this.BtnElegirImagen.Image = global::WindowsFormsUI.Properties.Resources.folder;
-            this.BtnElegirImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnElegirImagen.Location = new System.Drawing.Point(183, 26);
-            this.BtnElegirImagen.Name = "BtnElegirImagen";
-            this.BtnElegirImagen.Size = new System.Drawing.Size(105, 35);
-            this.BtnElegirImagen.TabIndex = 8;
-            this.BtnElegirImagen.Text = "Elegir";
-            this.BtnElegirImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnElegirImagen.UseVisualStyleBackColor = false;
-            this.BtnElegirImagen.Click += new System.EventHandler(this.BtnElegirImagen_Click);
-            // 
-            // PctAvatar
-            // 
-            this.PctAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PctAvatar.Location = new System.Drawing.Point(6, 26);
-            this.PctAvatar.Name = "PctAvatar";
-            this.PctAvatar.Size = new System.Drawing.Size(171, 226);
-            this.PctAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PctAvatar.TabIndex = 0;
-            this.PctAvatar.TabStop = false;
             // 
             // groupBox3
             // 
@@ -441,6 +400,47 @@ namespace WindowsFormsUI.Formularios
             this.BtnCancelar.UseVisualStyleBackColor = false;
             this.BtnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BtnElegirImagen);
+            this.groupBox2.Controls.Add(this.PctAvatar);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(566, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(296, 258);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Imagen";
+            // 
+            // BtnElegirImagen
+            // 
+            this.BtnElegirImagen.BackColor = System.Drawing.Color.White;
+            this.BtnElegirImagen.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnElegirImagen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(83)))), ((int)(((byte)(103)))));
+            this.BtnElegirImagen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnElegirImagen.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnElegirImagen.ForeColor = System.Drawing.Color.Black;
+            this.BtnElegirImagen.Image = global::WindowsFormsUI.Properties.Resources.folder;
+            this.BtnElegirImagen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnElegirImagen.Location = new System.Drawing.Point(183, 26);
+            this.BtnElegirImagen.Name = "BtnElegirImagen";
+            this.BtnElegirImagen.Size = new System.Drawing.Size(105, 35);
+            this.BtnElegirImagen.TabIndex = 8;
+            this.BtnElegirImagen.Text = "Elegir";
+            this.BtnElegirImagen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnElegirImagen.UseVisualStyleBackColor = false;
+            this.BtnElegirImagen.Click += new System.EventHandler(this.BtnElegirImagen_Click);
+            // 
+            // PctAvatar
+            // 
+            this.PctAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PctAvatar.Location = new System.Drawing.Point(6, 26);
+            this.PctAvatar.Name = "PctAvatar";
+            this.PctAvatar.Size = new System.Drawing.Size(171, 226);
+            this.PctAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PctAvatar.TabIndex = 0;
+            this.PctAvatar.TabStop = false;
+            // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -461,13 +461,13 @@ namespace WindowsFormsUI.Formularios
             this.Load += new System.EventHandler(this.FrmCrearUsuario_Load);
             this.GrpPermisos.ResumeLayout(false);
             this.GrpPermisos.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrPControles)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PctAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -475,8 +475,6 @@ namespace WindowsFormsUI.Formularios
         #endregion
 
         private System.Windows.Forms.GroupBox GrpPermisos;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox PctAvatar;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox CmbEmpleados;
         private System.Windows.Forms.Label label4;
@@ -496,7 +494,6 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.Button BtnLimpiarControles;
         private System.Windows.Forms.Button BtnCrearUsuario;
         private System.Windows.Forms.ErrorProvider ErrPControles;
-        private System.Windows.Forms.Button BtnElegirImagen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox TxtPregunta3;
         private System.Windows.Forms.Label label5;
@@ -505,5 +502,8 @@ namespace WindowsFormsUI.Formularios
         private System.Windows.Forms.TextBox TxtPregunta1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button BtnCancelar;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button BtnElegirImagen;
+        private System.Windows.Forms.PictureBox PctAvatar;
     }
 }

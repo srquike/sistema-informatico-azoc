@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.Logics
 
         public BeneficiarioBLL()
         {
-            _beneficiarioRepository = new BeneficiarioRepository(new AzocDbContext());
+            _beneficiarioRepository = new BeneficiarioRepository();
         }
 
         public bool Delete(int id)
@@ -21,14 +21,15 @@ namespace BusinessLogicLayer.Logics
 
             if (beneficiario != null)
             {
-                _beneficiarioRepository.DeleteBeneficiario(beneficiario);
-
-                if (_beneficiarioRepository.Save() == 0)
+                try
+                {
+                    _beneficiarioRepository.DeleteBeneficiario(beneficiario);
+                    return true;
+                }
+                catch (Exception)
                 {
                     return false;
                 }
-
-                return true;
             }
 
             return false;
@@ -45,38 +46,41 @@ namespace BusinessLogicLayer.Logics
 
         public bool Create(Beneficiario beneficiario)
         {
-            _beneficiarioRepository.InsertBeneficiario(beneficiario);
-
-            if (_beneficiarioRepository.Save() == 0)
+            try
+            {
+                _beneficiarioRepository.InsertBeneficiario(beneficiario);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            return true;
         }
 
         public bool CreateMany(ICollection<Beneficiario> beneficiarios)
         {
-            _beneficiarioRepository.InsertMany(beneficiarios);
-
-            if (_beneficiarioRepository.Save() == 0)
+            try
+            {
+                _beneficiarioRepository.InsertMany(beneficiarios);
+                return true;
+            }
+            catch (Exception ex)
             {
                 return false;
             }
-
-            return true;
         }
 
         public bool Edit(Beneficiario beneficiario)
         {
-            _beneficiarioRepository.UpdateBeneficiario(beneficiario);
-
-            if (_beneficiarioRepository.Save() == 0)
+            try
+            {
+                _beneficiarioRepository.UpdateBeneficiario(beneficiario);
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }
-
-            return true;
         }
     }
 }

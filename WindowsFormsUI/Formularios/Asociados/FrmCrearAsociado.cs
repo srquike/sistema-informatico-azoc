@@ -16,8 +16,6 @@ namespace WindowsFormsUI.Formularios
         private readonly SocioBLL _asociadoLogic;
         private readonly BeneficiarioBLL _beneficiarioLogic;
         private IList<Beneficiario> _beneficiarios;
-        private int _filasMarcadas;
-        private bool _continuar;
 
         public FrmCrearAsociado()
         {
@@ -28,12 +26,6 @@ namespace WindowsFormsUI.Formularios
             _beneficiarios = new List<Beneficiario>();
         }
 
-        private void LlenarComboBoxCategorias(ref ComboBox combo)
-        {
-            string[] categorias = new string[] { "Zafrero", "Temporal", "Perpetuo" };
-            CmbCategoria.Items.AddRange(categorias);
-        }
-
         private void ActualizarListado(ref DataGridView dataGrid)
         {
             dataGrid.Rows.Clear();
@@ -41,9 +33,8 @@ namespace WindowsFormsUI.Formularios
             foreach (Beneficiario beneficiario in _beneficiarios)
             {
                 string nombre = string.Concat(beneficiario.PrimerNombre, " ", beneficiario.SegundoNombre, " ", beneficiario.TercerNombre, " ", beneficiario.PrimerApellido, " ", beneficiario.SegundoApellido, " ", beneficiario.TercerApellido);
-                string genero = beneficiario.Genero == "F" ? "Femenino" : "Masculino";
 
-                dataGrid.Rows.Add(false, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, genero, beneficiario.Porcentaje);
+                dataGrid.Rows.Add(false, beneficiario.Codigo, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, beneficiario.Genero, beneficiario.Porcentaje);
             }
 
             dataGrid.ClearSelection();
@@ -54,14 +45,39 @@ namespace WindowsFormsUI.Formularios
             CmbMunicipios.SelectedIndex = 0;
             CmbDepartamentos.SelectedIndex = 0;
             CmbGeneros.SelectedIndex = 0;
-            LlenarComboBoxCategorias(ref CmbCategoria);
+            CmbCategoria.SelectedIndex = 0;
+        }
+
+        private decimal ObtenerPorcentajeRestante()
+        {
+            decimal porcentaje = 0;
+
+            if (_beneficiarios.Count > 0)
+            {
+
+                foreach (Beneficiario beneficiario in _beneficiarios)
+                {
+                    porcentaje += beneficiario.Porcentaje;
+                }
+
+                if (porcentaje == 100)
+                {
+                    return 0.00M;
+                }
+                else
+                {
+                    return porcentaje;
+                }
+            }
+
+            return porcentaje;
         }
 
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
             if (_beneficiarios.Count < 6)
             {
-                FrmCrearBeneficiario crearBeneficiario = new FrmCrearBeneficiario(false);
+                FrmCrearBeneficiario crearBeneficiario = new FrmCrearBeneficiario(false, ObtenerPorcentajeRestante());
                 crearBeneficiario.StartPosition = FormStartPosition.CenterParent;
                 crearBeneficiario.ShowDialog();
 
@@ -91,7 +107,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    if (e.ColumnIndex == 7)
+                    if (e.ColumnIndex == 8)
                     {
                         FrmDetallesBeneficiario frmDetalles = new FrmDetallesBeneficiario(beneficiario);
                         frmDetalles.StartPosition = FormStartPosition.CenterParent;
@@ -102,9 +118,9 @@ namespace WindowsFormsUI.Formularios
                             frmDetalles.Close();
                         }
                     }
-                    else if (e.ColumnIndex == 8)
+                    else if (e.ColumnIndex == 9)
                     {
-                        FrmEditarBeneficiario frmEditar = new FrmEditarBeneficiario(beneficiario);
+                        FrmEditarBeneficiario frmEditar = new FrmEditarBeneficiario(beneficiario, ObtenerPorcentajeRestante());
                         frmEditar.StartPosition = FormStartPosition.CenterParent;
                         frmEditar.ShowDialog();
 
@@ -115,7 +131,7 @@ namespace WindowsFormsUI.Formularios
                             ActualizarListado(ref dataGrid);
                         }
                     }
-                    else if (e.ColumnIndex == 9)
+                    else if (e.ColumnIndex == 10)
                     {
                         if (MessageBox.Show("¿Esta seguro de querer eliminar al beneficiario?", "Eliminación de beneficiario: Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                         {
@@ -124,43 +140,30 @@ namespace WindowsFormsUI.Formularios
                         }
                     }
                 }
-                else if (dataGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn)
-                {
-                    if (marcada)
-                    {
-                        dataGrid.Rows[e.RowIndex].Cells["Seleccion"].Value = false;
-                        _filasMarcadas--;
-                    }
-                    else
-                    {
-                        dataGrid.Rows[e.RowIndex].Cells["Seleccion"].Value = true;
-                        _filasMarcadas++;
-                    }
-                }
             }
         }
 
-        private void ValidarEntradasRequeridas()
+        private bool ValidarEntradasRequeridas()
         {
-            if (string.IsNullOrEmpty(TxtPNombre.Text))
+            if (string.IsNullOrEmpty(TxtCodigo.Text))
             {
-                ErrPControles.SetError(TxtPNombre, "El primer nombre es requerido!");
+                ErrPControles.SetError(TxtCodigo, "El código es requerido");
             }
             else
             {
                 ErrPControles.Clear();
 
-                if (string.IsNullOrEmpty(TxtPApellido.Text))
+                if (string.IsNullOrEmpty(TxtPNombre.Text))
                 {
-                    ErrPControles.SetError(TxtPApellido, "El primer apellido es requerido!");
+                    ErrPControles.SetError(TxtPNombre, "El primer nombre es requerido!");
                 }
                 else
                 {
                     ErrPControles.Clear();
 
-                    if (CmbGeneros.SelectedIndex == 0)
+                    if (string.IsNullOrEmpty(TxtPApellido.Text))
                     {
-                        ErrPControles.SetError(CmbGeneros, "Seleccione un genero!");
+                        ErrPControles.SetError(TxtPApellido, "El primer apellido es requerido!");
                     }
                     else
                     {
@@ -173,20 +176,13 @@ namespace WindowsFormsUI.Formularios
                         else
                         {
                             ErrPControles.Clear();
-
-                            if (string.IsNullOrEmpty(TxtCodigo.Text))
-                            {
-                                ErrPControles.SetError(TxtCodigo, "El código es requerido");
-                            }
-                            else
-                            {
-                                ErrPControles.Clear();
-                                _continuar = true;
-                            }
+                            return true;
                         }
                     }
                 }
             }
+
+            return false;
         }
 
         private bool VerificarEntradasUnicas(string dui, string nit, string telefono, string id)
@@ -206,6 +202,11 @@ namespace WindowsFormsUI.Formularios
         {
             if (_beneficiarios.Count > 0)
             {
+                foreach (Beneficiario beneficiario in _beneficiarios)
+                {
+                    beneficiario.AsociadoId = asociadoId;
+                }
+
                 if (_beneficiarioLogic.CreateMany(_beneficiarios) == false)
                 {
                     MessageBox.Show("No se pudo agregar a los beneficiarios, por favor intente de nuevo!", "Agregar beneficiarios: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -215,9 +216,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnCrear_Click(object sender, EventArgs e)
         {
-            ValidarEntradasRequeridas();
-
-            if (_continuar)
+            if (ValidarEntradasRequeridas())
             {
                 string dui = MTxtDui.Text;
                 string nit = MTxtNit.Text;
@@ -226,10 +225,21 @@ namespace WindowsFormsUI.Formularios
 
                 if (VerificarEntradasUnicas(dui, nit, telefono, asociadoId))
                 {
-                    string genero = CmbGeneros.SelectedItem.ToString();
-                    string departamento = CmbDepartamentos.SelectedItem.ToString();
-                    string municipio = CmbMunicipios.SelectedItem.ToString();
-                    string categoria = CmbCategoria.SelectedItem.ToString();
+                    string genero = CmbGeneros.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbGeneros.SelectedItem.ToString();
+
+                    string departamento = CmbDepartamentos.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbDepartamentos.SelectedItem.ToString();
+
+                    string municipio = CmbMunicipios.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbMunicipios.SelectedItem.ToString();
+
+                    string categoria = CmbCategoria.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbCategoria.SelectedItem.ToString();
 
                     Socio asociado = new Socio()
                     {
@@ -271,6 +281,22 @@ namespace WindowsFormsUI.Formularios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
 
         private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)

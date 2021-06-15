@@ -8,75 +8,78 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class BeneficiarioRepository : IBeneficiarioRepository, IDisposable
+    public class BeneficiarioRepository : IBeneficiarioRepository
     {
-        private AzocDbContext _context;
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+        public BeneficiarioRepository()
         {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
 
-            disposed = true;
         }
-        public BeneficiarioRepository(AzocDbContext context)
-        {
-            _context = context;
-        }
+
         public void DeleteBeneficiario(Beneficiario beneficiario)
         {
-            _context.Beneficiarios.Remove(beneficiario);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Beneficiarios.Remove(beneficiario);
+                context.SaveChanges();
+            }
         }
 
         public Beneficiario GetBeneficiarioById(int id)
         {
-            return _context.Beneficiarios.Where(b => b.BeneficiarioId == id)
-                .Include(b => b.Asociado)
-                .AsNoTracking()
-                .FirstOrDefault();
+            Beneficiario beneficiario;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                beneficiario = context.Beneficiarios
+                    .AsNoTracking()
+                    .Include(b => b.Asociado)
+                    .Where(b => b.BeneficiarioId == id)
+                    .FirstOrDefault();
+            }
+
+            return beneficiario;
         }
 
         public IEnumerable<Beneficiario> GetBeneficiarios()
         {
-            return _context.Beneficiarios.Include(b => b.Asociado)
-                .AsNoTracking();
+            IEnumerable<Beneficiario> beneficiarios;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                beneficiarios = context.Beneficiarios
+                    .AsNoTracking()
+                    .Include(b => b.Asociado)
+                    .ToList();
+            }
+
+            return beneficiarios;
         }
 
         public void InsertBeneficiario(Beneficiario beneficiario)
         {
-            _context.Beneficiarios.Add(beneficiario);
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Beneficiarios.Add(beneficiario);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateBeneficiario(Beneficiario beneficiario)
         {
-            _context.Entry(beneficiario).State = EntityState.Modified;
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Entry(beneficiario).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
 
         public void InsertMany(ICollection<Beneficiario> beneficiarios)
         {
-            _context.Beneficiarios.AddRange(beneficiarios);
-        }
-
-        int IBeneficiarioRepository.Save()
-        {
-            throw new NotImplementedException();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Beneficiarios.AddRange(beneficiarios);
+                context.SaveChanges();
+            }
         }
     }
 }

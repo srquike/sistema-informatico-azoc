@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Security.Permissions;
 
 namespace WindowsFormsUI.Formularios
 {
@@ -143,16 +144,16 @@ namespace WindowsFormsUI.Formularios
 
             if (File.Exists(archivo))
             {
-                using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
+                if (PctAvatar.Image != null)
                 {
-                    if (PctAvatar.Image != null)
+                    using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
                     {
-                        using (Bitmap bitmap = new Bitmap(PctAvatar.Image, PctAvatar.Image.Size))
+                        using (FileStream fileStream = new FileStream(archivo, FileMode.Create, FileAccess.Write))
                         {
                             bitmap.Save(fileStream, ImageFormat.Jpeg);
-                        }
+                        }                        
                     }
-                }
+                }                
             }
         }
 

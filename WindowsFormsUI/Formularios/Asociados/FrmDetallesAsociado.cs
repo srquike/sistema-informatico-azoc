@@ -30,9 +30,8 @@ namespace WindowsFormsUI.Formularios
             foreach (Beneficiario beneficiario in beneficiarios)
             {
                 string nombre = string.Concat(beneficiario.PrimerNombre, " ", beneficiario.SegundoNombre, " ", beneficiario.TercerNombre, " ", beneficiario.PrimerApellido, " ", beneficiario.SegundoApellido, " ", beneficiario.TercerApellido);
-                string genero = beneficiario.Genero == "F" ? "Femenino" : "Masculino";
 
-                dataGrid.Rows.Add(beneficiario.BeneficiarioId, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, genero, beneficiario.Porcentaje);
+                dataGrid.Rows.Add(beneficiario.BeneficiarioId, beneficiario.Codigo, nombre, beneficiario.Dui, beneficiario.Nit, beneficiario.Telefono, beneficiario.Genero, beneficiario.Porcentaje);
             }
 
             dataGrid.ClearSelection();
@@ -81,7 +80,7 @@ namespace WindowsFormsUI.Formularios
 
                 if (dataGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
                 {
-                    if (e.ColumnIndex == 7)
+                    if (e.ColumnIndex == 8)
                     {
                         FrmDetallesBeneficiario frmDetalles = new FrmDetallesBeneficiario(beneficiarioId);
                         frmDetalles.StartPosition = FormStartPosition.CenterScreen;

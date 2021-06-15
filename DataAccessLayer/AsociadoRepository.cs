@@ -8,79 +8,71 @@ using System.Linq;
 
 namespace DataAccessLayer
 {
-    public class SocioRepository : IAsociadoRepository, IDisposable
+    public class SocioRepository : IAsociadoRepository
     {
-        private AzocDbContext _context;
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
+        public SocioRepository()
         {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    _context.Dispose();
-                }
-            }
 
-            disposed = true;
-        }
-
-        public SocioRepository(AzocDbContext context)
-        {
-            _context = context;
         }
 
         public void DeleteAsociado(Socio asociado)
         {
-            _context.Socios.Remove(asociado);
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Socios.Remove(asociado);
+                context.SaveChanges();
+            }
         }
 
         public Socio GetAsociadoById(int id)
         {
-            return _context.Socios.Where(a => a.SocioId == id)
-                .Include(a => a.Beneficiarios)
-                .Include(a => a.Creditos)
-                .AsNoTracking()
-                .FirstOrDefault();
+            Socio socio;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                socio = context.Socios
+                    .AsNoTracking()
+                    .Include(a => a.Beneficiarios)
+                    .Include(a => a.Creditos)
+                    .Where(a => a.SocioId == id)
+                    .FirstOrDefault();
+            }
+
+            return socio;
         }
 
         public IEnumerable<Socio> GetAsociados()
         {
-            return _context.Socios.Include(a => a.Beneficiarios)
-                .Include(a => a.Creditos)
-                .AsNoTracking()
-                .ToList();
+            IEnumerable<Socio> socios;
+
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                socios = context.Socios
+                    .AsNoTracking()
+                    .Include(a => a.Beneficiarios)
+                    .Include(a => a.Creditos)
+                    .ToList();
+            }
+
+            return socios;
         }
 
         public void InsertAsociado(Socio asociado)
         {
-            _context.Socios.Add(asociado);
-        }
-
-        public int Save()
-        {
-            return _context.SaveChanges();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Socios.Add(asociado);
+                context.SaveChanges();
+            }
         }
 
         public void UpdateAsociado(Socio asociado)
         {
-            _context.Entry(asociado).State = EntityState.Modified;
-        }
-
-        public Socio GetSocioByCode(string code)
-        {
-            return _context.Socios.Where(a => a.Codigo == code)
-                .Include(a => a.Beneficiarios)
-                .Include(a => a.Creditos)
-                .AsNoTracking()
-                .FirstOrDefault();
+            using (AzocDbContext context = new AzocDbContext())
+            {
+                context.Entry(asociado).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

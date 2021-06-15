@@ -15,14 +15,17 @@ namespace WindowsFormsUI.Formularios
     {
         private readonly BeneficiarioBLL _beneficiarioLogic;
         private bool _crear;
+        private readonly decimal _porcentaje;
+
         public Beneficiario Beneficiario { get; set; }
 
-        public FrmCrearBeneficiario(bool crear)
+        public FrmCrearBeneficiario(bool crear, decimal porcentaje)
         {
             InitializeComponent();
 
             _beneficiarioLogic = new BeneficiarioBLL();
             _crear = crear;
+            _porcentaje = porcentaje;
         }
 
         private void FrmAgregarBeneficiario_Load(object sender, EventArgs e)
@@ -30,6 +33,8 @@ namespace WindowsFormsUI.Formularios
             CmbDepartamentos.SelectedIndex = 0;
             CmbGeneros.SelectedIndex = 0;
             CmbMunicipios.SelectedIndex = 0;
+            NudPorcentaje.Value = _porcentaje;
+            NudPorcentaje.Maximum = _porcentaje > 0 ? _porcentaje : 100;
         }
 
         private bool ValidarEntradasRequeridas()
@@ -50,23 +55,14 @@ namespace WindowsFormsUI.Formularios
                 {
                     ErrPControles.Clear();
 
-                    if (CmbGeneros.SelectedIndex == 0)
+                    if (MTxtDui.MaskFull == false)
                     {
-                        ErrPControles.SetError(CmbGeneros, "Seleccione un genero!");
+                        ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
                     }
                     else
                     {
                         ErrPControles.Clear();
-
-                        if (MTxtDui.MaskFull == false)
-                        {
-                            ErrPControles.SetError(MTxtDui, "El número de DUI es requerido!");
-                        }
-                        else
-                        {
-                            ErrPControles.Clear();
-                            return true;
-                        }
+                        return true;
                     }
                 }
             }
@@ -97,13 +93,21 @@ namespace WindowsFormsUI.Formularios
 
                 if (VerificarEntradasUnicas(dui, nit, telefono))
                 {
-                    string genero = CmbGeneros.SelectedItem.ToString() == "Femenino" ? "F" : "M";
-                    string departamento = CmbDepartamentos.SelectedItem.ToString();
-                    string municipio = CmbMunicipios.SelectedItem.ToString();
-                    int porcentaje = Convert.ToInt32(NudPorcentaje.Value);
+                    string genero = CmbGeneros.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbGeneros.SelectedItem.ToString();
+
+                    string departamento = CmbDepartamentos.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbDepartamentos.SelectedItem.ToString();
+
+                    string municipio = CmbMunicipios.SelectedIndex == 0
+                        ? string.Empty
+                        : CmbMunicipios.SelectedItem.ToString();
 
                     Beneficiario beneficiario = new Beneficiario()
                     {
+                        Codigo = TxtCodigo.Text,
                         PrimerNombre = TxtPNombre.Text,
                         SegundoNombre = TxtSNombre.Text,
                         TercerNombre = TxtTNombre.Text,
@@ -119,7 +123,7 @@ namespace WindowsFormsUI.Formularios
                         Nit = MTxtNit.Text,
                         Dui = MTxtDui.Text,
                         Telefono = MTxtTelefono.Text,
-                        Porcentaje = porcentaje
+                        Porcentaje = NudPorcentaje.Value
                     };
 
                     if (_crear)
@@ -137,7 +141,7 @@ namespace WindowsFormsUI.Formularios
                         }
                         else
                         {
-                            MessageBox.Show("No fue posible crear al beneficiario, por favor intente de nuevo!", "Crear beneficiario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No fue posible agregar al beneficiario, por favor intente de nuevo!", "Crear beneficiario: error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
@@ -149,6 +153,59 @@ namespace WindowsFormsUI.Formularios
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TxtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            TxtCodigo.Clear();
+            NudPorcentaje.Value = 0;
+            TxtPNombre.Clear();
+            TxtSNombre.Clear();
+            TxtTNombre.Clear();
+            TxtPApellido.Clear();
+            TxtSApellido.Clear();
+            TxtTApellido.Clear();
+            TxtEmail.Clear();
+            CmbGeneros.SelectedIndex = 0;
+            TxtDireccion.Clear();
+            CmbDepartamentos.SelectedIndex = 0;
+            CmbMunicipios.SelectedIndex = 0;
+            MTxtDui.Clear();
+            MTxtNit.Clear();
+            MTxtTelefono.Clear();
+            TxtCodigo.Focus();
         }
     }
 }

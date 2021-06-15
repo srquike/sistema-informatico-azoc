@@ -4,7 +4,7 @@ using BusinessObjectsLayer.Models;
 
 namespace RepositoryLayer
 {
-   public  interface IBeneficiarioRepository:IDisposable
+   public  interface IBeneficiarioRepository
     {
         IEnumerable<Beneficiario> GetBeneficiarios();
         Beneficiario GetBeneficiarioById(int id);
@@ -12,7 +12,5 @@ namespace RepositoryLayer
         void InsertMany(ICollection<Beneficiario> beneficiarios);
         void DeleteBeneficiario(Beneficiario beneficiario);
         void UpdateBeneficiario(Beneficiario beneficiario);
-        int Save();
-
     }
 }

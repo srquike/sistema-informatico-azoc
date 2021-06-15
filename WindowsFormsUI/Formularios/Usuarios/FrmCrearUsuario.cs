@@ -266,22 +266,7 @@ namespace WindowsFormsUI.Formularios
 
         private void BtnElegirImagen_Click(object sender, EventArgs e)
         {
-            if (OfdElegirAvatar.ShowDialog() == DialogResult.OK)
-            {
-                string archivo = OfdElegirAvatar.FileName;
 
-                if (File.Exists(archivo))
-                {
-                    using (FileStream fileStream = new FileStream(archivo, FileMode.Open, FileAccess.Read))
-                    {
-                        PctAvatar.Image = Image.FromStream(fileStream);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("El archivo de la imagen no existe o esta dañado, selecione otra imagen!", "Elegir imagen: Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
         }
 
         private void BtnLimpiarControles_Click(object sender, EventArgs e)
